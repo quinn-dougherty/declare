@@ -1,0 +1,3 @@
+[submodule "users/qd/rescript-vscode"]
+	path = users/qd/rescript-vscode
+	url = https://github.com/rescript-lang/rescript-vscode
