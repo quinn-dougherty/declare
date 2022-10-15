@@ -25,11 +25,19 @@
     # daedalus.url = github:input-output-hk/daedalus/chore/ddw-1083-flakes;
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix, home-manager
-    , nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
+    , home-manager, nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
     let
       system = "x86_64-linux";
-      commonConfig = { allowUnfree = true; };
+      commonConfig = {
+        allowUnfree = true;
+        overlays = final: prev: {
+          factorio = prev.factorio.override {
+            username = "quinnd";
+            token = "\${FACTORIO_KEY}";
+          };
+        };
+      };
       pkgs = import nixpkgs {
         inherit system;
         config = commonConfig;
@@ -78,8 +86,9 @@
         };
       };
       devShells.${system}.default = let
-        coq-development =
-          import ./users/qd/packages/development/coq.nix { pkgs = pkgs-stable; };
+        coq-development = import ./users/qd/packages/development/coq.nix {
+          pkgs = pkgs-stable;
+        };
         python-development = import ./users/qd/packages/development/python.nix {
           inherit pkgs python-on-nix;
         };

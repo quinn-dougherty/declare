@@ -168,25 +168,16 @@
       EDITOR = "emacs";
       VISUAL = "emacs";
     };
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    systemPackages = with pkgs; [
-      dropbox-cli
-
-      # Gaming  # This can't be in home-manager because login.
-      factorio
-
-      wpa_supplicant_gui
-    ];
+#    # List packages installed in system profile. To search, run:
+#    # $ nix search wget
+#    systemPackages = with pkgs;
+#      [
+#        # Gaming  # This can't be in home-manager because login.
+#        factorio
+#      ];
   };
   nixpkgs.config = {
     st.conf = builtins.readFile ./st-config.h;
-    packageOverrides = pkgs: {
-      factorio = pkgs.factorio.override {
-        username = "quinnd";
-        token = "\${FACTORIO_KEY}";
-      };
-    };
     allowUnfree = true;
   };
 
@@ -210,9 +201,9 @@
       wantedBy = [ "graphical-session.target" ];
       environment = {
         QT_PLUGIN_PATH = "/run/current-system/sw/"
-                         + pkgs.qt5.qtbase.qtPluginPrefix;
+          + pkgs.qt5.qtbase.qtPluginPrefix;
         QML2_IMPORT_PATH = "/run/current-system/sw/"
-                           + pkgs.qt5.qtbase.qtQmlPrefix;
+          + pkgs.qt5.qtbase.qtQmlPrefix;
       };
       serviceConfig = {
         ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
