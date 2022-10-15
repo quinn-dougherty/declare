@@ -17,24 +17,7 @@ in {
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    settings = {
-      auto-optimise-store = true;
-      substituters = [
-        "https://iohk.cachix.org"
-        "https://hydra.iohk.io"
-        # "ssh://nix-ssh@ci.ardana.platonic.systems"
-        "https://quantified-uncertainty.cachix.org"
-        "https://effective-altruism.cachix.org"
-      ];
-      trusted-public-keys = [
-        "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
-        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-        # "ci.ardana.platonic.systems:yByqhxfJ9KIUOyiCe3FYhV7GMysJSA3i5JRvgPuySsI=
-        "quantified-uncertainty.cachix.org-1:6Dmk4ZKzEPai4o0FovuUyeZ0lZcf3/4v+MTHWaxczzc="
-        "effective-altruism.cachix.org-1:mybF0dFfu2Bxbc+LuNm7rb46MFY4FGG2GhwdHuQPWxU="
-      ];
-
-    };
+    settings.auto-optimise-store = true;
     gc = {
       automatic = true;
       dates = "weekly";
