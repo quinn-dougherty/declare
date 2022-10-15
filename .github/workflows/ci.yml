@@ -1,6 +1,7 @@
 name: "Build and cache"
 on:
-  push: main
+  push:
+  - main
 
 jobs:
 
