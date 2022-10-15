@@ -28,95 +28,67 @@
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
     , home-manager, nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
     let
+      lib = nixpkgs.lib;
+
+      hostname = "fw";
+      username = "qd";
       system = "x86_64-linux";
-      commonConfig = {
-        allowUnfree = true;
-        overlays = final: prev: {
+      config.allowUnfree = true;
+
+      overlays = let
+        factorioOverlay = final: prev: {
           factorio = prev.factorio.override {
             username = "quinnd";
             token = "\${FACTORIO_KEY}";
           };
         };
-      };
-      pkgs = import nixpkgs {
-        inherit system;
-        config = commonConfig;
-      };
-      lib = nixpkgs.lib;
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config = commonConfig;
-      };
+        pythonOnNixOverlay = final: prev: {
+          python-on-nix = python-on-nix.lib.${system};
+        };
+      in [ factorioOverlay pythonOnNixOverlay ];
+      pkgs = import nixpkgs { inherit system overlays config; };
+      pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
     in {
-      nixosConfigurations = {
-        fw = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./system/configuration.nix
-            nixos-hardware.nixosModules.framework
-            sops-nix.nixosModules.sops
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.qd = import ./users/qd/home.nix;
-                # extraSpecialArgs.daedalus = daedalus;
-              };
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
-            ({
-              home-manager.users.qd = lib.mkMerge [
-                nix-doom-emacs.hmModule
-                {
-                  programs.doom-emacs = {
-                    enable = true;
-                    doomPrivateDir = ./users/qd/doom.d;
-                  };
-                }
-              ];
-            })
-            ({ config, lib, pkgs, ... }: {
-              imports = [ hercules-ci-agent.nixosModules.agent-service ];
-              services.hercules-ci-agent.enable = true;
-              networking.firewall.allowedTCPPorts = [ 443 ];
-            })
-          ];
-        };
-      };
-      devShells.${system}.default = let
-        coq-development = import ./users/qd/packages/development/coq.nix {
-          pkgs = pkgs-stable;
-        };
-        python-development = import ./users/qd/packages/development/python.nix {
-          inherit pkgs python-on-nix;
-        };
-        rust-development = import ./users/qd/packages/development/rust.nix {
-          pkgs = pkgs-stable;
-        };
-        javascript-development =
-          import ./users/qd/packages/development/javascript.nix {
-            inherit pkgs;
-          };
-        ocaml-development =
-          import ./users/qd/packages/development/ocaml.nix { inherit pkgs; };
-        haskell-development =
-          import ./users/qd/packages/development/haskell.nix { inherit pkgs; };
-        ruby-development = import ./users/qd/packages/development/ruby.nix {
-          pkgs = pkgs-stable;
-        };
-      in pkgs.mkShell {
-        name = "qd@fw-development-home";
-        buildInputs = builtins.concatLists [
-          coq-development
-          python-development
-          rust-development
-          javascript-development
-          ocaml-development
-          ruby-development
-          [ pkgs.nixfmt ]
+      nixosConfigurations.${hostname} = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./system/configuration.nix
+          nixos-hardware.nixosModules.framework
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              # useUserPackages = true;
+              users.${username} = import ./users/qd/home.nix;
+              # extraSpecialArgs.daedalus = daedalus;
+            };
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+          ({
+            home-manager.users.${username} = lib.mkMerge [
+              nix-doom-emacs.hmModule
+              {
+                programs.doom-emacs = {
+                  enable = true;
+                  doomPrivateDir = ./users/qd/doom.d;
+                };
+              }
+            ];
+          })
+          ({ config, lib, pkgs, ... }: {
+            imports = [ hercules-ci-agent.nixosModules.agent-service ];
+            services.hercules-ci-agent.enable = true;
+            networking.firewall.allowedTCPPorts = [ 443 ];
+          })
         ];
+      };
+
+      devShells.${system}.default = pkgs.mkShell {
+        name = "qd@fw-development-home";
+        buildInputs =
+          import ./users/qd/packages/development { inherit pkgs pkgs-stable; };
       };
     };
 }

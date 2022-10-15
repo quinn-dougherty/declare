@@ -163,23 +163,11 @@
     shell = pkgs.fish;
   };
 
-  environment = {
-    variables = {
-      EDITOR = "emacs";
-      VISUAL = "emacs";
-    };
-#    # List packages installed in system profile. To search, run:
-#    # $ nix search wget
-#    systemPackages = with pkgs;
-#      [
-#        # Gaming  # This can't be in home-manager because login.
-#        factorio
-#      ];
+  environment.variables = {
+    EDITOR = "emacs";
+    VISUAL = "emacs";
   };
-  nixpkgs.config = {
-    st.conf = builtins.readFile ./st-config.h;
-    allowUnfree = true;
-  };
+  nixpkgs.config.allowUnfree = true;
 
   programs = {
     steam.enable = true;
