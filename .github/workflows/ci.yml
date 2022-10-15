@@ -6,6 +6,7 @@ on:
 jobs:
 
   build_nixos_configuration:
+    name: "NixOS configuration"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.0.2
@@ -19,6 +20,7 @@ jobs:
     - run: nix build .#nixosConfigurations."fw".config.system.build.toplevel
 
   build_shell:
+    name: "Development shell"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.0.2
