@@ -19,6 +19,8 @@ jobs:
         name: effective-altruism
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix build .#nixosConfigurations."fw".config.system.build.toplevel
+      env:
+        FACTORIO_KEY: '${{ secrets.FACTORIO_KEY }}'
 
   build_shell:
     name: "Development shell"
