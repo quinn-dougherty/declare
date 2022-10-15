@@ -5,6 +5,10 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-22.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +25,7 @@
     # daedalus.url = github:input-output-hk/daedalus/chore/ddw-1083-flakes;
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix, home-manager
     , nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
     let
       system = "x86_64-linux";
@@ -42,6 +46,7 @@
           modules = [
             ./system/configuration.nix
             nixos-hardware.nixosModules.framework
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             {
               home-manager = {

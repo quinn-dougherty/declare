@@ -184,7 +184,7 @@
     packageOverrides = pkgs: {
       factorio = pkgs.factorio.override {
         username = "quinnd";
-        token = import ./secrets/factorio-secret.nix;
+        token = "\${FACTORIO_KEY}";
       };
     };
     allowUnfree = true;

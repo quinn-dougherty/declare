@@ -1,3 +1,4 @@
 backups
 rescript-vscode
-factorio-secret.nix
+# factorio-secret.nix
+.env
