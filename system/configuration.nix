@@ -6,6 +6,7 @@
 let
   hostname = "fw";
   username = "qd";
+  timezone = "America/New_York";
 in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -35,36 +36,12 @@ in {
     kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
   };
 
-  networking = {
-    hostName = hostname; # Define your hostname.
-    wireless = {
-      enable = true; # Enables wireless support via wpa_supplicant.
-      userControlled.enable = true; # Enables wpa_supplicant gui
-      allowAuxiliaryImperativeNetworks = true;
-    };
-
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-    # Per-interface useDHCP will be mandatory in the future, so this generated config
-    # replicates the default behaviour.
-    useDHCP = false;
-    interfaces.wlp170s0.useDHCP = true;
-    # interfaces.tailscale0.useDHCP = true;
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # 17500 is for dropbox, 443 is for herc (I think)
-    firewall.allowedTCPPorts = [ 17500 443 ];
-    firewall.allowedUDPPorts = [ 17500 443 ];
-    # Or disable the firewall altogether.
-    # firewall.enable = false;
-  };
+  networking = import ./networking.nix { inherit hostname; };
 
   virtualisation.docker.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = timezone;
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -73,64 +50,7 @@ in {
   #   keyMap = "us";
   # };
 
-  services = {
-    fprintd.enable = true; # for fingerprint support
-
-    upower = {
-      percentageLow = 30;
-      percentageCritical = 11;
-      percentageAction = 5;
-    };
-
-    clipcat.enable = true;
-
-    xserver = {
-
-      # Enable the X11 windowing system.
-      enable = true;
-      # Enable xmonad
-      windowManager.xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
-      };
-      # Configure keymap in X11
-      layout = "us";
-
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput.enable = true;
-    };
-
-    fwupd.enable = true;
-
-    # Enable CUPS to print documents.
-    printing.enable = true;
-
-    tailscale.enable = false;
-    mullvad-vpn.enable = false;
-
-    postgresql = {
-      enable = true;
-      package = pkgs.postgresql_14;
-      enableTCPIP = true;
-      authentication = pkgs.lib.mkOverride 10 ''
-        local all all trust
-        host all all 127.0.0.1/32 trust
-        host all all ::1/128 trust
-      '';
-      initialScript = pkgs.writeText "backend-initScript" ''
-        CREATE USER "guesstimate-api" WITH PASSWORD 'password';
-        ALTER USER "guesstimate-api" CREATEDB;
-      '';
-    };
-
-    # Enable the OpenSSH daemon.
-    openssh.enable = true;
-
-    elasticsearch = {
-      package = pkgs.elasticsearch7;
-      enable = true;
-    };
-  };
+  services = import ./services.nix { inherit pkgs; };
 
   # Enable sound.
   sound.enable = true;
