@@ -1,7 +1,6 @@
 name: "Build and cache"
 on:
-  pull_request:
-  push:
+  push: main
 
 jobs:
 
