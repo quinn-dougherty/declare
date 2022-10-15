@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
-
-{
+let username = "qd";
+in {
   programs = {
     direnv = {
       enable = true;
@@ -15,8 +15,8 @@
 
   home = {
     packages = import ./packages { inherit pkgs; };
-    username = "qd";
-    homeDirectory = "/home/qd";
+    username = username;
+    homeDirectory = "/home/" + username;
 
     # You can update home-manager without changing this value
     stateVersion = "20.09";

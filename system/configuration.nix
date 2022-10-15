@@ -3,8 +3,10 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { pkgs, ... }:
-
-{
+let
+  hostname = "fw";
+  username = "qd";
+in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./cachix.nix
@@ -51,7 +53,7 @@
   };
 
   networking = {
-    hostName = "fw"; # Define your hostname.
+    hostName = hostname; # Define your hostname.
     wireless = {
       enable = true; # Enables wireless support via wpa_supplicant.
       userControlled.enable = true; # Enables wpa_supplicant gui
@@ -69,7 +71,7 @@
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    # 17500 is for dropbox, 443 is for herc
+    # 17500 is for dropbox, 443 is for herc (I think)
     firewall.allowedTCPPorts = [ 17500 443 ];
     firewall.allowedUDPPorts = [ 17500 443 ];
     # Or disable the firewall altogether.
@@ -151,14 +153,12 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # programs.fish.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.qd = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups =
       [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
-    home = "/home/qd";
+    home = "/home/" + username;
     description = "Quinn Dougherty";
     shell = pkgs.fish;
   };
