@@ -18,7 +18,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      config = builtins.readFile ./xmonad.hs;
+      config = builtins.readFile ./x/xmonad.hs;
       enableConfiguredRecompile = true;
     };
     # Configure keymap in X11
