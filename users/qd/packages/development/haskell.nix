@@ -5,4 +5,6 @@ with pkgs; [
   cabal-install
   cabal2nix
   hlint
+  stylish-haskell
+  stylish-cabal
 ]
