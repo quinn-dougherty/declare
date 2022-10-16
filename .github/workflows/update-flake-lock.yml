@@ -19,7 +19,7 @@ jobs:
       uses: technote-space/create-pr-action@v2
       with:
         EXECUTE_COMMANDS: ./flake-update.sh
-        COMMIT_MESSAGE: "Chore: update `flake.lock`"
+        COMMIT_MESSAGE: "Chore: update `flake.lock` (${{ env.NOW }})"
         COMMIT_NAME: "GitHub Actions"
         COMMIT_EMAIL: "actions@github.com"
         PR_BRANCH_NAME: "chore-flake-update-${PR_ID}"
