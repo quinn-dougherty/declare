@@ -6,5 +6,5 @@ with pkgs; [
   cabal2nix
   hlint
   stylish-haskell
-  stylish-cabal
+  # stylish-cabal  # broken
 ]
