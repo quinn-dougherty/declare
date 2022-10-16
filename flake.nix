@@ -59,6 +59,7 @@
           {
             home-manager = {
               useGlobalPkgs = true;
+              useUserPackages = true;
               users.${username} = import ./users/qd/home.nix;
               # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
             };
