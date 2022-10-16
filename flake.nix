@@ -59,12 +59,9 @@
           {
             home-manager = {
               useGlobalPkgs = true;
-              # useUserPackages = true;
               users.${username} = import ./users/qd/home.nix;
-              # extraSpecialArgs.daedalus = daedalus;
+              # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
             };
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
           ({
             home-manager.users.${username} = lib.mkMerge [

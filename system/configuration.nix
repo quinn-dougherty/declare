@@ -50,7 +50,7 @@ in {
   #   keyMap = "us";
   # };
 
-  services = import ./services.nix { inherit pkgs; };
+  services = import ./services { inherit pkgs; };
 
   # Enable sound.
   sound.enable = true;

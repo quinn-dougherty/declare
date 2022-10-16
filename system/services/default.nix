@@ -18,6 +18,8 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
+      config = builtins.readFile ./xmonad.hs;
+      enableConfiguredRecompile = true;
     };
     # Configure keymap in X11
     layout = "us";

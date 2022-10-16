@@ -4,4 +4,5 @@ with pkgs; [
   stack
   cabal-install
   cabal2nix
+  hlint
 ]
