@@ -1,11 +1,15 @@
 # NixOS build/config
 [![Hercules-ci][Herc badge]][Herc link]
 [![Cachix Cache][Cachix badge]][Cachix link]
+[![Weekly upgrade][Weekly upgrade badge]][Weekly upgrade link]
 
 [Herc badge]: https://img.shields.io/badge/Herc-CI-yellowgreen?style=plastic&logo=nixos
 [Herc link]: https://hercules-ci.com/github/quinn-dougherty/configuration.nix
 [Cachix badge]: https://img.shields.io/badge/Cachix-effective--altruism-blueviolet?style=plastic&logo=nixos
 [Cachix link]: https://effective-altruism.cachix.org
+[Weekly upgrade badge]: https://github.com/quinn-dougherty/configuration.nix/actions/workflows/upgrade.yml/badge.svg
+[Weekly upgrade link]: https://github.com/quinn-dougherty/configuration.nix/actions/workflows/upgrade.yml
+
 
 Includes: 
 - `xmonad` and `xmobar` config
