@@ -1,17 +1,17 @@
-import XMonad
-import XMonad.Config
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.FadeInactive
-import XMonad.Util.Run (spawnPipe)
-import XMonad.Util.EZConfig (additionalKeys)
-import Control.Monad (when)
-import Text.Printf (printf)
-import System.IO
-import System.Posix.Process (executeFile)
-import System.Info (arch,os)
-import System.Environment (getArgs)
-import System.FilePath ((</>))
+import           Control.Monad             (when)
+import           System.Environment        (getArgs)
+import           System.FilePath           ((</>))
+import           System.Info               (arch, os)
+import           System.IO
+import           System.Posix.Process      (executeFile)
+import           Text.Printf               (printf)
+import           XMonad
+import           XMonad.Config
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.FadeInactive
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Util.EZConfig      (additionalKeys)
+import           XMonad.Util.Run           (spawnPipe)
 
 terminalEmulator = "st"
 xmobarFGColor = "yellow"
