@@ -13,6 +13,7 @@ in builtins.concatLists [
   rust-development
   javascript-development
   ocaml-development
+  haskell-development
   ruby-development
   [ pkgs.nixfmt ]
 ]
