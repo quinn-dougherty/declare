@@ -1,26 +1,26 @@
 name: "Upgrade"
 on:
   schedule:
-  - cron: 0 0 * * 6
+    - cron: 0 0 * * 6
 jobs:
   update_flake_lock:
     name: Advance pins and open PR
     runs-on: ubuntu-latest
     steps:
-    - name: Set current date as env variable
-      run: echo "NOW=$(date +'%m-%d-%Y')" >> $GITHUB_ENV
-    - name: Checkout repository to $GITHUB_WORKSPACE
-      uses: actions/checkout@v3
-    - name: Install nix
-      uses: cachix/install-nix-action@v18
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    - name: Update `flake.lock`; open pull request
-      uses: technote-space/create-pr-action@v2
-      with:
-        EXECUTE_COMMANDS: nix flake update
-        COMMIT_MESSAGE: "⬆️chore⬆️: update `flake.lock` (${{ env.NOW }})"
-        COMMIT_NAME: "github_actions"
-        COMMIT_EMAIL: "actions@github.com"
-        PR_BRANCH_NAME: "chore-flake-update-${PR_ID}"
-        PR_TITLE: "⬆️chore⬆️: update `flake.lock` (${{ env.NOW }})"
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%m-%d-%Y')" >> $GITHUB_ENV
+      - name: Checkout repository to $GITHUB_WORKSPACE
+        uses: actions/checkout@v3
+      - name: Install nix
+        uses: cachix/install-nix-action@v18
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - name: Update `flake.lock`; open pull request
+        uses: technote-space/create-pr-action@v2
+        with:
+          EXECUTE_COMMANDS: nix flake update
+          COMMIT_MESSAGE: "⬆️chore⬆️: update `flake.lock` (${{ env.NOW }})"
+          COMMIT_NAME: "github_actions"
+          COMMIT_EMAIL: "actions@github.com"
+          PR_BRANCH_NAME: "chore-flake-update-${PR_ID}"
+          PR_TITLE: "⬆️chore⬆️: update `flake.lock` (${{ env.NOW }})"
