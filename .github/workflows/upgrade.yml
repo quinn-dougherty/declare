@@ -18,9 +18,9 @@ jobs:
     - name: Update `flake.lock`; open pull request
       uses: technote-space/create-pr-action@v2
       with:
-        EXECUTE_COMMANDS: ./flake-update.sh
-        COMMIT_MESSAGE: "Chore: update `flake.lock` (${{ env.NOW }})"
-        COMMIT_NAME: "GitHub Actions"
+        EXECUTE_COMMANDS: nix flake update
+        COMMIT_MESSAGE: "⬆️chore⬆️: update `flake.lock` (${{ env.NOW }})"
+        COMMIT_NAME: "github_actions"
         COMMIT_EMAIL: "actions@github.com"
         PR_BRANCH_NAME: "chore-flake-update-${PR_ID}"
-        PR_TITLE: "chore: update `flake.lock` (${{ env.NOW }})"
+        PR_TITLE: "⬆️chore⬆️: update `flake.lock` (${{ env.NOW }})"
