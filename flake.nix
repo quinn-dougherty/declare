@@ -94,17 +94,20 @@
         src = ./.;
         buildInputs = with pkgs; [ nixfmt nodePackages.prettier ];
         buildPhase = ''
-          export NIXFILES=$(find $src -type f | grep '[.]nix')
-          nixfmt --check $NIXFILES
-          nixfmt --verify $NIXFILES
+          for nixfile in $(find $src -type f | grep '[.]nix')
+          do
+            nixfmt --check $nixfile
+            nixfmt --verify $nixfile
+          done
           prettier --check $src
         '';
-        installPhase = "mkdir -p $out";
+        installPhase = "ls $out";
       };
 
       herculesCI.onPush = {
         shell.outputs = self.devShells.${system}.default;
-        os.outputs = self.nixosConfigurations.${hostname};
+        os.outputs =
+          self.nixosConfigurations.${hostname}.config.system.build.toplevel;
         lint.outputs = self.checks.${system}.default;
       };
     };
