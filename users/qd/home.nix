@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
-let username = "qd";
+{ framework, pkgs, nix-doom-emacs, ... }:
+let username = framework.username;
 in {
   programs = {
     direnv = {
@@ -9,10 +9,16 @@ in {
     vscode = import ./packages/codium.nix { inherit pkgs; };
     fish.enable = true;
 
+    doom-emacs = {
+      enable = true;
+      doomPrivateDir = ./doom.d;
+    };
+
     # let home-manager install and update itself
     home-manager.enable = true;
   };
 
+  imports = [ nix-doom-emacs.hmModule ];
   home = {
     packages = import ./packages { inherit pkgs; };
     username = username;

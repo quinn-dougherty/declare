@@ -29,30 +29,35 @@
     , home-manager, nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
     let
       lib = nixpkgs.lib;
-
-      hostname = "fw";
-      username = "qd";
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-
-      overlays = let
-        factorioOverlay = final: prev: {
-          factorio = prev.factorio.override {
-            username = "quinnd";
-            token = "\${FACTORIO_KEY}";
+      names = fromTOML (builtins.readFile ./names.toml);
+      framework = with names.framework; {
+        hostname = hostname;
+        username = username;
+        system = system;
+        timezone = timezone;
+        drv-name-prefix = "${username}@${hostname}:";
+        overlays = let
+          factorioOverlay = final: prev: {
+            factorio = prev.factorio.override {
+              username = "quinnd";
+              token = "\${FACTORIO_KEY}";
+            };
           };
-        };
-        pythonOnNixOverlay = final: prev: {
-          python-on-nix = python-on-nix.lib.${system};
-        };
-      in [ factorioOverlay pythonOnNixOverlay ];
-      pkgs = import nixpkgs { inherit system overlays config; };
-      pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
-    in rec {
+          pythonOnNixOverlay = final: prev: {
+            python-on-nix = python-on-nix.lib.${system};
+          };
+        in [ factorioOverlay pythonOnNixOverlay ];
+        config.allowUnfree = true;
+      };
+
+      pkgs = with framework; import nixpkgs { inherit system overlays config; };
+      pkgs-stable = with framework;
+        import nixpkgs-stable { inherit system overlays config; };
+    in with framework; rec {
       nixosConfigurations.${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
-          ./system/configuration.nix
+          (import ./system/configuration.nix { inherit framework pkgs; })
           nixos-hardware.nixosModules.framework
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
@@ -60,21 +65,12 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${username} = import ./users/qd/home.nix;
+              users.${username} = import ./users/qd/home.nix {
+                inherit framework pkgs nix-doom-emacs;
+              };
               # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
             };
           }
-          ({
-            home-manager.users.${username} = lib.mkMerge [
-              nix-doom-emacs.hmModule
-              {
-                programs.doom-emacs = {
-                  enable = true;
-                  doomPrivateDir = ./users/qd/doom.d;
-                };
-              }
-            ];
-          })
           ({ config, lib, pkgs, ... }: {
             imports = [ hercules-ci-agent.nixosModules.agent-service ];
             services.hercules-ci-agent.enable = true;
@@ -84,13 +80,13 @@
       };
 
       devShells.${system}.default = pkgs.mkShell {
-        name = "qd@fw:development-home";
+        name = "${drv-name-prefix}:development-home";
         buildInputs =
           import ./users/qd/packages/development { inherit pkgs pkgs-stable; };
       };
 
       checks.${system}.default = pkgs.stdenv.mkDerivation {
-        name = "qd@fw:dotfiles-lint";
+        name = "${drv-name-prefix}:dotfiles-lint";
         src = ./.;
         buildInputs = with pkgs; [ nixfmt nodePackages.prettier ];
         buildPhase = ''
@@ -105,7 +101,7 @@
 
       herculesCI.onPush = {
         shell.outputs = self.devShells.${system}.default;
-        os.outputs =
+        "${hostname}-os".outputs =
           self.nixosConfigurations.${hostname}.config.system.build.toplevel;
         lint.outputs = self.checks.${system}.default;
       };
