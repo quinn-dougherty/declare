@@ -3,7 +3,7 @@ on:
   push:
 jobs:
   lint:
-    name: "Check `.nix` files with `nixfmt` and `prettier` everything else"
+    name: "`nixfmt` & `prettier`"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
