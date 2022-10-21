@@ -12,8 +12,8 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - name: "Install linters"
         run: |
-          nix-env -iA nixpkgs.nixfmt
-          nix-env -iA nixpkgs.nodePackages.prettier
+          nix-env -iA nixpkgs.nixfmt -f '<nixpkgs>'
+          nix-env -iA nixpkgs.nodePackages.prettier -f '<nixpkgs>'
       - name: "Check `.nix` files"
         run: nixfmt --check $(find . -type f | grep '[.]nix')
       - name: "Check all other files"
