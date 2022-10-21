@@ -84,7 +84,7 @@
       };
 
       devShells.${system}.default = pkgs.mkShell {
-        name = "qd@fw-development-home";
+        name = "qd@fw:development-home";
         buildInputs =
           import ./users/qd/packages/development { inherit pkgs pkgs-stable; };
       };
@@ -97,11 +97,10 @@
           for nixfile in $(find $src -type f | grep '[.]nix')
           do
             nixfmt --check $nixfile
-            nixfmt --verify $nixfile
           done
           prettier --check $src
         '';
-        installPhase = "ls $out";
+        installPhase = "mkdir -p $out";
       };
 
       herculesCI.onPush = {
