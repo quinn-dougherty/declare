@@ -10,6 +10,11 @@ jobs:
       - uses: cachix/install-nix-action@v18
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix-env -iA nixpkgs.nixfmt -iA nixpkgs.nodePackages.prettier
-      - run: nixfmt --check $(find . -type f | grep '[.]nix')
-      - run: prettier --check .
+      - name: "Install linters"
+        run: |
+          nix-env -iA nixpkgs.nixfmt
+          nix-env -iA nixpkgs.nodePackages.prettier
+      - name: "Check `.nix` files"
+        run: nixfmt --check $(find . -type f | grep '[.]nix')
+      - name: "Check all other files"
+        run: prettier --check .
