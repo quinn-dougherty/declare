@@ -103,8 +103,8 @@
         "${framework.hostname}-os".outputs =
           self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
         lint.outputs = self.checks.${framework.system}.lint;
-        agent-os.outputs =
-          self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
+        # agent-os.outputs =
+        #   self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
       };
     };
 }
