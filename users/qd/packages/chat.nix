@@ -1,7 +1,7 @@
 { pkgs }:
 with pkgs; [
   # Chat
-  discord  # Due to updates, this is nix-env'd
+  discord # Due to updates, this is nix-env'd
   mattermost-desktop
   element-desktop
   zulip
