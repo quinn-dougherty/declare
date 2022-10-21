@@ -14,3 +14,4 @@
 Includes
 
 - `framework` (daily driver)
+- `agent` (hercules ci agent)

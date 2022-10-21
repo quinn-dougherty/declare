@@ -3,3 +3,9 @@ hostname = "fw"
 username = "qd"
 system = "x86_64-linux"
 timezone = "America/New_York"
+
+[agent]
+hostname = "agent"
+username = "hercules-ci-agent"
+system = "x86_64-linux"
+timezone = "America/New_York"

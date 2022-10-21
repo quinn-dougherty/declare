@@ -1,5 +1,5 @@
 {
-  description = "qd@fw";
+  description = "quinnd's NixOS configurations";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -28,14 +28,14 @@
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
     , home-manager, nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
     let
-      lib = nixpkgs.lib;
       machines = fromTOML (builtins.readFile ./machines.toml);
-      framework = with machines.framework; {
-        hostname = hostname;
-        username = username;
-        system = system;
-        timezone = timezone;
-        drv-name-prefix = "${username}@${hostname}:";
+      framework = rec {
+        hostname = machines.framework.hostname;
+        username = machines.framework.username;
+        system = machines.framework.system;
+        timezone = machines.framework.timezone;
+        drv-name-prefix =
+          "${machines.framework.username}@${machines.framework.hostname}:";
         overlays = let
           factorioOverlay = final: prev: {
             factorio = prev.factorio.override {
@@ -44,35 +44,49 @@
             };
           };
           pythonOnNixOverlay = final: prev: {
-            python-on-nix = python-on-nix.lib.${system};
+            python-on-nix = python-on-nix.lib.${machines.framework.system};
           };
         in [ factorioOverlay pythonOnNixOverlay ];
         config.allowUnfree = true;
+        pkgs = import nixpkgs { inherit system overlays config; };
+        pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
+      };
+      agent = with machines.agent; {
+        hostname = hostname;
+        username = username;
+        system = system;
+        timezone = timezone;
+        pkgs = import nixpkgs { inherit system; };
       };
 
-      pkgs = with framework; import nixpkgs { inherit system overlays config; };
-      pkgs-stable = with framework;
-        import nixpkgs-stable { inherit system overlays config; };
-    in with framework; rec {
-      nixosConfigurations.${hostname} = lib.nixosSystem {
-        inherit system;
-        modules = import ./framework/modules.nix {
-          inherit framework pkgs nixos-hardware sops-nix home-manager
-            nix-doom-emacs hercules-ci-agent;
+    in rec {
+      nixosConfigurations = {
+        "${framework.hostname}" = nixpkgs.lib.nixosSystem {
+          system = framework.system;
+          modules = import ./framework/modules.nix {
+            pkgs = framework.pkgs;
+            inherit framework nixos-hardware sops-nix home-manager
+              nix-doom-emacs hercules-ci-agent;
+          };
+        };
+        "${agent.hostname}" = nixpkgs.lib.nixosSystem {
+          system = agent.system;
+          modules = [ (import ./agent { inherit hercules-ci-agent; }) ];
         };
       };
 
-      devShells.${system}.default = pkgs.mkShell {
-        name = "${drv-name-prefix}:development-home";
+      devShells.${framework.system}.home-development = framework.pkgs.mkShell {
+        name = "${framework.drv-name-prefix}:development-home";
         buildInputs = import ./framework/users/qd/packages/development {
-          inherit pkgs pkgs-stable;
+          pkgs = framework.pkgs;
+          pkgs-stable = framework.pkgs-stable;
         };
       };
 
-      checks.${system}.default = pkgs.stdenv.mkDerivation {
-        name = "${drv-name-prefix}:dotfiles-lint";
+      checks.${framework.system}.lint = framework.pkgs.stdenv.mkDerivation {
+        name = "dotfiles-lint";
         src = ./.;
-        buildInputs = with pkgs; [ nixfmt nodePackages.prettier ];
+        buildInputs = with framework.pkgs; [ nixfmt nodePackages.prettier ];
         buildPhase = ''
           for nixfile in $(find $src -type f | grep '[.]nix')
           do
@@ -84,10 +98,13 @@
       };
 
       herculesCI.onPush = {
-        shell.outputs = self.devShells.${system}.default;
-        "${hostname}-os".outputs =
-          self.nixosConfigurations.${hostname}.config.system.build.toplevel;
-        lint.outputs = self.checks.${system}.default;
+        home-shell.outputs =
+          self.devShells.${framework.system}.home-development;
+        "${framework.hostname}-os".outputs =
+          self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
+        lint.outputs = self.checks.${framework.system}.lint;
+        agent-os.outputs =
+          self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
       };
     };
 }
