@@ -17,8 +17,4 @@ with pkgs; [
   # music
   puredata
   qtractor
-
-  # devops
-  cachix
-  heroku
 ]
