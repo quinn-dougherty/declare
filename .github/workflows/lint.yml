@@ -10,6 +10,6 @@ jobs:
       - uses: cachix/install-nix-action@v18
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix-env -i nixfmt -i nodePackages.prettier -f '<nixpkgs>'
+      - run: nix-env -iA nixpkgs.nixfmt -iA nixpkgs.nodePackages.prettier
       - run: nixfmt --check $(find . -type f | grep '[.]nix')
       - run: prettier --check .
