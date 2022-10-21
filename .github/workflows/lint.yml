@@ -10,5 +10,5 @@ jobs:
       - uses: cachix/install-nix-action@v18
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix-shell -p nixfmt --run "nixfmt --check $(find . -type f | grep \"[.]nix\")"
+      - run: nix-shell -p nixfmt --run "nixfmt --check $(find . -type f | grep '[.]nix')"
       - run: nix-shell -p nodePackages.prettier --run "prettier --check ."
