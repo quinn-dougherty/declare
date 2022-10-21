@@ -29,8 +29,8 @@
     , home-manager, nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
     let
       lib = nixpkgs.lib;
-      names = fromTOML (builtins.readFile ./names.toml);
-      framework = with names.framework; {
+      machines = fromTOML (builtins.readFile ./machines.toml);
+      framework = with machines.framework; {
         hostname = hostname;
         username = username;
         system = system;
