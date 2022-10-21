@@ -48,7 +48,7 @@
       in [ factorioOverlay pythonOnNixOverlay ];
       pkgs = import nixpkgs { inherit system overlays config; };
       pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
-    in {
+    in rec {
       nixosConfigurations.${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
@@ -87,6 +87,25 @@
         name = "qd@fw-development-home";
         buildInputs =
           import ./users/qd/packages/development { inherit pkgs pkgs-stable; };
+      };
+
+      checks.${system}.default = pkgs.stdenv.mkDerivation {
+        name = "qd@fw:dotfiles-lint";
+        src = ./.;
+        buildInputs = with pkgs; [ nixfmt nodePackages.prettier ];
+        buildPhase = ''
+          export NIXFILES=$(find $src -type f | grep '[.]nix')
+          nixfmt --check $NIXFILES
+          nixfmt --verify $NIXFILES
+          prettier --check $src
+        '';
+        installPhase = "mkdir -p $out";
+      };
+
+      herculesCI.onPush = {
+        shell.outputs = self.devShells.${system}.default;
+        os.outputs = self.nixosConfigurations.${hostname};
+        lint.outputs = self.checks.${system}.default;
       };
     };
 }
