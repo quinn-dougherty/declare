@@ -57,7 +57,7 @@
       nixosConfigurations.${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
-          (import ./system/configuration.nix { inherit framework pkgs; })
+          (import ./framework/system/configuration.nix { inherit framework pkgs; })
           nixos-hardware.nixosModules.framework
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
@@ -65,7 +65,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${username} = import ./users/qd/home.nix {
+              users.${username} = import ./framework/users/qd/home.nix {
                 inherit framework pkgs nix-doom-emacs;
               };
               # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
@@ -82,7 +82,7 @@
       devShells.${system}.default = pkgs.mkShell {
         name = "${drv-name-prefix}:development-home";
         buildInputs =
-          import ./users/qd/packages/development { inherit pkgs pkgs-stable; };
+          import ./framework/users/qd/packages/development { inherit pkgs pkgs-stable; };
       };
 
       checks.${system}.default = pkgs.stdenv.mkDerivation {
