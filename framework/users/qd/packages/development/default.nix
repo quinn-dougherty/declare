@@ -1,5 +1,6 @@
 { pkgs, pkgs-stable }:
 let
+  devops = import ./devops.nix { inherit pkgs; };
   coq-development = import ./coq.nix { pkgs = pkgs-stable; };
   python-development = import ./python.nix { inherit pkgs; };
   rust-development = import ./rust.nix { pkgs = pkgs-stable; };
@@ -8,6 +9,7 @@ let
   haskell-development = import ./haskell.nix { inherit pkgs; };
   ruby-development = import ./ruby.nix { pkgs = pkgs-stable; };
 in builtins.concatLists [
+  devops
   coq-development
   python-development
   rust-development
