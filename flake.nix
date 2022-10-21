@@ -56,33 +56,17 @@
     in with framework; rec {
       nixosConfigurations.${hostname} = lib.nixosSystem {
         inherit system;
-        modules = [
-          (import ./framework/system/configuration.nix { inherit framework pkgs; })
-          nixos-hardware.nixosModules.framework
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${username} = import ./framework/users/qd/home.nix {
-                inherit framework pkgs nix-doom-emacs;
-              };
-              # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
-            };
-          }
-          ({ config, lib, pkgs, ... }: {
-            imports = [ hercules-ci-agent.nixosModules.agent-service ];
-            services.hercules-ci-agent.enable = true;
-            networking.firewall.allowedTCPPorts = [ 443 ];
-          })
-        ];
+        modules = import ./framework/modules.nix {
+          inherit framework pkgs nixos-hardware sops-nix home-manager
+            nix-doom-emacs hercules-ci-agent;
+        };
       };
 
       devShells.${system}.default = pkgs.mkShell {
         name = "${drv-name-prefix}:development-home";
-        buildInputs =
-          import ./framework/users/qd/packages/development { inherit pkgs pkgs-stable; };
+        buildInputs = import ./framework/users/qd/packages/development {
+          inherit pkgs pkgs-stable;
+        };
       };
 
       checks.${system}.default = pkgs.stdenv.mkDerivation {

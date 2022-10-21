@@ -12,4 +12,5 @@
 [weekly upgrade link]: https://github.com/quinn-dougherty/configuration.nix/actions/workflows/upgrade.yml
 
 Includes
+
 - `framework` (daily driver)
