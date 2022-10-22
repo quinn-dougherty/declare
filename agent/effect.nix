@@ -1,6 +1,6 @@
 { agent, hercules-ci-agent }:
 with agent.pkgs.effects;
-runIf (src.ref == "refs/heads/main") (runNixOS {
+runIf (ref == "refs/heads/main") (runNixOS {
   configuration = ./network.nix { inherit hercules-ci-agent; };
 
   # this references secrets.json on your agent

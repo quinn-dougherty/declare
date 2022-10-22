@@ -116,8 +116,8 @@
         "${framework.hostname}-os".outputs =
           self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
         dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
-        agent-os.outputs.effects =
-          import agent/effect.nix { inherit agent hercules-ci-agent; };
+        agent-os.outputs.effects = ref:
+          import agent/effect.nix { inherit ref agent hercules-ci-agent; };
       };
     };
 }
