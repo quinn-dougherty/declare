@@ -17,7 +17,14 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
+    hercules-ci-agent = {
+      url = "github:hercules-ci/hercules-ci-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hercules-ci-effects = {
+      url = "github:hercules-ci/hercules-ci-effects";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     python-on-nix = {
       url = "github:on-nix/python";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +33,8 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
-    , home-manager, nix-doom-emacs, hercules-ci-agent, python-on-nix, ... }:
+    , home-manager, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
+    , python-on-nix, ... }:
     let
       machines = fromTOML (builtins.readFile ./machines.toml);
       framework = rec {
@@ -34,8 +42,7 @@
         username = machines.framework.username;
         system = machines.framework.system;
         timezone = machines.framework.timezone;
-        drv-name-prefix =
-          "${machines.framework.username}@${machines.framework.hostname}:";
+        drv-name-prefix = "${username}@${hostname}:";
         overlays = let
           factorioOverlay = final: prev: {
             factorio = prev.factorio.override {
@@ -44,19 +51,20 @@
             };
           };
           pythonOnNixOverlay = final: prev: {
-            python-on-nix = python-on-nix.lib.${machines.framework.system};
+            python-on-nix = python-on-nix.lib.${system};
           };
         in [ factorioOverlay pythonOnNixOverlay ];
         config.allowUnfree = true;
         pkgs = import nixpkgs { inherit system overlays config; };
         pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
       };
-      agent = with machines.agent; {
-        hostname = hostname;
-        username = username;
-        system = system;
-        timezone = timezone;
-        pkgs = import nixpkgs { inherit system; };
+      agent = rec {
+        hostname = machines.agent.hostname;
+        username = machines.agent.username;
+        system = machines.agent.system;
+        timezone = machines.agent.timezone;
+        overlays = [ hercules-ci-effects.overlay ];
+        pkgs = import nixpkgs { inherit system overlays; };
       };
 
     in rec {
