@@ -1,11 +1,11 @@
-[framework]
-hostname = "fw"
-username = "qd"
+[common]
 system = "x86_64-linux"
 timezone = "America/New_York"
 
+[framework]
+hostname = "fw"
+username = "qd"
+
 [agent]
-hostname = "agent"
+hostname = "herc-agent"
 username = "hercules-ci-agent"
-system = "x86_64-linux"
-timezone = "America/New_York"

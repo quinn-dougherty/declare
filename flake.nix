@@ -37,11 +37,14 @@
     , python-on-nix, ... }:
     let
       machines = fromTOML (builtins.readFile ./machines.toml);
+      common = machines.common // {
+        pkgs = import nixpkgs { system = machines.system; };
+      };
       framework = rec {
         hostname = machines.framework.hostname;
         username = machines.framework.username;
-        system = machines.framework.system;
-        timezone = machines.framework.timezone;
+        system = machines.common.system;
+        timezone = machines.common.timezone;
         drv-name-prefix = "${username}@${hostname}:";
         overlays = let
           factorioOverlay = final: prev: {
@@ -61,10 +64,10 @@
       agent = rec {
         hostname = machines.agent.hostname;
         username = machines.agent.username;
-        system = machines.agent.system;
-        timezone = machines.agent.timezone;
+        system = machines.common.system;
+        timezone = machines.common.timezone;
         # overlays = [ hercules-ci-effects.overlay ];
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = common.pkgs;
       };
 
     in rec {
@@ -92,26 +95,27 @@
         };
       };
 
-      checks.${framework.system}.lint = framework.pkgs.stdenv.mkDerivation {
-        name = "dotfiles-lint";
-        src = ./.;
-        buildInputs = with framework.pkgs; [ nixfmt nodePackages.prettier ];
-        buildPhase = ''
-          for nixfile in $(find $src -type f | grep '[.]nix')
-          do
-            nixfmt --check $nixfile
-          done
-          prettier --check $src
-        '';
-        installPhase = "mkdir -p $out";
-      };
+      checks.${machines.common.system}.lint =
+        framework.pkgs.stdenv.mkDerivation {
+          name = "dotfiles-lint";
+          src = ./.;
+          buildInputs = with framework.pkgs; [ nixfmt nodePackages.prettier ];
+          buildPhase = ''
+            for nixfile in $(find $src -type f | grep '[.]nix')
+            do
+              nixfmt --check $nixfile
+            done
+            prettier --check $src
+          '';
+          installPhase = "mkdir -p $out";
+        };
 
       herculesCI.onPush = {
         "${framework.hostname}-home-shell".outputs =
           self.devShells.${framework.system}.home-development;
         "${framework.hostname}-os".outputs =
           self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
-        dotfiles-lint.outputs = self.checks.${framework.system}.lint;
+        dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
         # agent-os = {
         #   # outputs = self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
         #   outputs.effects = with agent.pkgs.effects;
