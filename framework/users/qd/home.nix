@@ -1,6 +1,5 @@
-{ framework, pkgs, nix-doom-emacs, ... }:
-let username = framework.username;
-in {
+{ framework, nix-doom-emacs, ... }:
+with framework; {
   programs = {
     direnv = {
       enable = true;

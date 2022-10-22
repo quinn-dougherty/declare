@@ -2,12 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ framework, pkgs, ... }:
-let
-  hostname = framework.hostname;
-  username = framework.username;
-  timezone = framework.timezone;
-in {
+{ framework, ... }:
+with framework; {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./cachix.nix

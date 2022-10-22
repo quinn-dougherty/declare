@@ -8,4 +8,4 @@ username = "qd"
 
 [agent]
 hostname = "herc-agent"
-username = "hercules-ci-agent"
+username = "herc-admin"

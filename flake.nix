@@ -75,16 +75,16 @@
         "${framework.hostname}" = nixpkgs.lib.nixosSystem {
           system = framework.system;
           modules = import ./framework/modules.nix {
-            pkgs = framework.pkgs;
             inherit framework nixos-hardware sops-nix home-manager
               nix-doom-emacs hercules-ci-agent;
           };
         };
-        # "${agent.hostname}" = nixpkgs.lib.nixosSystem {
-        #   system = agent.system;
-        #   modules =
-        #     [ (import ./agent/network.nix { inherit hercules-ci-agent; }) ];
-        # };
+        "${agent.hostname}" = nixpkgs.lib.nixosSystem {
+          system = agent.system;
+          modules = [
+            (import ./agent/configuration.nix { inherit hercules-ci-agent; })
+          ];
+        };
       };
 
       devShells.${framework.system}.home-development = framework.pkgs.mkShell {
