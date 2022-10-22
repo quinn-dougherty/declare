@@ -19,7 +19,7 @@
     };
     hercules-ci-agent = {
       url = "github:hercules-ci/hercules-ci-agent";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # hercules-ci-effects = {
     #   url = "github:hercules-ci/hercules-ci-effects";
