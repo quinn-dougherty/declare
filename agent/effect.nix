@@ -1,7 +1,7 @@
 { ref, agent, hercules-ci-agent }:
 with agent.pkgs.effects;
 runIf (ref == "refs/heads/main") (runNixOS {
-  configuration = ./network.nix { inherit hercules-ci-agent; };
+  configuration = ./configuration.nix { inherit agent hercules-ci-agent; };
 
   # this references secrets.json on your agent
   secretsMap.ssh = "default-ssh";
