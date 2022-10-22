@@ -1,3 +1,4 @@
+# this only applies for `morph`. for the herc effect deployment I think the `agent/configuration.nix` should be the move.
 { hercules-ci-agent }: {
   herc-agent = { modulesPath, lib, name, ... }: {
     imports =
