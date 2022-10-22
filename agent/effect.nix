@@ -1,4 +1,4 @@
-{ agent, hercules-ci-agent }:
+{ ref, agent, hercules-ci-agent }:
 with agent.pkgs.effects;
 runIf (ref == "refs/heads/main") (runNixOS {
   configuration = ./network.nix { inherit hercules-ci-agent; };
