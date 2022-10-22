@@ -21,10 +21,10 @@
       url = "github:hercules-ci/hercules-ci-agent";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    # hercules-ci-effects = {
-    #   url = "github:hercules-ci/hercules-ci-effects";
-    #   # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    hercules-ci-effects = {
+      url = "github:hercules-ci/hercules-ci-effects";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     python-on-nix = {
       url = "github:on-nix/python";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +33,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
-    , home-manager, nix-doom-emacs, hercules-ci-agent # , hercules-ci-effects
+    , home-manager, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
     , python-on-nix, ... }:
     let
       machines = fromTOML (builtins.readFile ./machines.toml);
@@ -66,8 +66,8 @@
         username = machines.agent.username;
         system = machines.common.system;
         timezone = machines.common.timezone;
-        # overlays = [ hercules-ci-effects.overlay ];
-        pkgs = common.pkgs;
+        overlays = [ hercules-ci-effects.overlay ];
+        pkgs = import nixpkgs-stable { inherit system overlays; };
       };
 
     in rec {
@@ -116,28 +116,7 @@
         "${framework.hostname}-os".outputs =
           self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
         dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
-        # agent-os = {
-        #   # outputs = self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-        #   outputs.effects = with agent.pkgs.effects;
-        #     runIf (src.ref == "refs/heads/main") (runNixOS {
-        #       configuration = ./agent/network.nix;
-        #
-        #       # this references secrets.json on your agent
-        #       secretsMap.ssh = "default-ssh";
-        #
-        #       # replace this with the appropriate line from ~/.ssh/known_hosts
-        #       userSetupScript = ''
-        #         writeSSHKey ssh
-        #         cat >>~/.ssh/known_hosts <<EOF
-        #         64.225.11.209 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMKFa4HNszRLl2G9m3+qkNDiQ3EPMZtdBlowBrb+jkfA
-        #         EOF
-        #       '';
-        #
-        #       # replace with hostname or ip address for ssh
-        #       ssh.destination = "64.225.11.209";
-        #
-        #     });
-        # };
+        agent-os.outputs.effects = import agent/effect.nix { inherit agent; };
+        };
       };
-    };
 }

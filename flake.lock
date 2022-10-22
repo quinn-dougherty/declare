@@ -267,6 +267,26 @@
         "type": "github"
       }
     },
+    "hercules-ci-effects": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1664386111,
+        "narHash": "sha256-VCQzAMEjgXNTbAB8v5eQav/KpOC44E/RapXz1KPhroE=",
+        "owner": "hercules-ci",
+        "repo": "hercules-ci-effects",
+        "rev": "ac59fc51b1f25b6436ed55d7cdb5fdd051cd4dbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "hercules-ci-effects",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -611,6 +631,7 @@
     "root": {
       "inputs": {
         "hercules-ci-agent": "hercules-ci-agent",
+        "hercules-ci-effects": "hercules-ci-effects",
         "home-manager": "home-manager",
         "nix-doom-emacs": "nix-doom-emacs",
         "nixos-hardware": "nixos-hardware",

@@ -1,5 +1,6 @@
+{ hercules-ci-agent }:
 {
-  herc-agent = { modulesPath, lib, name, hercules-ci-agent, ... }: {
+  herc-agent = { modulesPath, lib, name, ... }: {
     imports =
       lib.optional (builtins.pathExists ./do-userdata.nix) ./do-userdata.nix
       ++ [
