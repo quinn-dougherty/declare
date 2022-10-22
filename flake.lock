@@ -248,9 +248,7 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nix-darwin": "nix-darwin",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix"
       },
       "locked": {
@@ -264,26 +262,6 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "hercules-ci-agent",
-        "type": "github"
-      }
-    },
-    "hercules-ci-effects": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1664386111,
-        "narHash": "sha256-VCQzAMEjgXNTbAB8v5eQav/KpOC44E/RapXz1KPhroE=",
-        "owner": "hercules-ci",
-        "repo": "hercules-ci-effects",
-        "rev": "ac59fc51b1f25b6436ed55d7cdb5fdd051cd4dbf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "hercules-ci-effects",
         "type": "github"
       }
     },
@@ -427,17 +405,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1665643254,
-        "narHash": "sha256-IBVWNJxGCsshwh62eRfR6+ry3bSXmulB3VQRzLQo3hk=",
+        "lastModified": 1666282307,
+        "narHash": "sha256-O1T2HGLARLKDLfdOmjPBfn3eC4cSIaQD71wUN4I/6/s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ba187fbdc5e35322c7dff556ef2c47bddfd6e8d7",
+        "rev": "b7d8c687782c8f9a1d425a7e486eb989654f6468",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
+        "owner": "NixOS",
         "ref": "nixos-unstable",
-        "type": "indirect"
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-22_05": {
@@ -468,6 +447,21 @@
       "original": {
         "id": "nixpkgs",
         "ref": "nixos-22.05",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1665643254,
+        "narHash": "sha256-IBVWNJxGCsshwh62eRfR6+ry3bSXmulB3VQRzLQo3hk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ba187fbdc5e35322c7dff556ef2c47bddfd6e8d7",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
         "type": "indirect"
       }
     },
@@ -631,11 +625,10 @@
     "root": {
       "inputs": {
         "hercules-ci-agent": "hercules-ci-agent",
-        "hercules-ci-effects": "hercules-ci-effects",
         "home-manager": "home-manager",
         "nix-doom-emacs": "nix-doom-emacs",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
         "python-on-nix": "python-on-nix",
         "sops-nix": "sops-nix"

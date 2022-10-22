@@ -19,12 +19,12 @@
     };
     hercules-ci-agent = {
       url = "github:hercules-ci/hercules-ci-agent";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
-    hercules-ci-effects = {
-      url = "github:hercules-ci/hercules-ci-effects";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hercules-ci-effects = {
+    #   url = "github:hercules-ci/hercules-ci-effects";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
     python-on-nix = {
       url = "github:on-nix/python";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +33,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
-    , home-manager, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
+    , home-manager, nix-doom-emacs, hercules-ci-agent # , hercules-ci-effects
     , python-on-nix, ... }:
     let
       machines = fromTOML (builtins.readFile ./machines.toml);
@@ -63,8 +63,8 @@
         username = machines.agent.username;
         system = machines.agent.system;
         timezone = machines.agent.timezone;
-        overlays = [ hercules-ci-effects.overlay ];
-        pkgs = import nixpkgs { inherit system overlays; };
+        # overlays = [ hercules-ci-effects.overlay ];
+        pkgs = import nixpkgs { inherit system; };
       };
 
     in rec {
@@ -77,10 +77,11 @@
               nix-doom-emacs hercules-ci-agent;
           };
         };
-        "${agent.hostname}" = nixpkgs.lib.nixosSystem {
-          system = agent.system;
-          modules = [ (import ./agent/network.nix { inherit hercules-ci-agent; }) ];
-        };
+       # "${agent.hostname}" = nixpkgs.lib.nixosSystem {
+       #   system = agent.system;
+       #   modules =
+       #     [ (import ./agent/network.nix { inherit hercules-ci-agent; }) ];
+       # };
       };
 
       devShells.${framework.system}.home-development = framework.pkgs.mkShell {
@@ -113,8 +114,8 @@
         dotfiles-lint.outputs = self.checks.${framework.system}.lint;
         agent-os = {
           # outputs = self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-          outputs.effects = with agent.pkgs.effects; runIf (src.ref == "refs/heads/master")
-            (runNixOS {
+          outputs.effects = with agent.pkgs.effects;
+            runIf (src.ref == "refs/heads/master") (runNixOS {
               configuration = ./agent/network.nix;
 
               # this references secrets.json on your agent

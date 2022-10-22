@@ -1,1 +1,1 @@
-morph deploy network.nix switch
+morph deploy ./agent/network.nix switch
