@@ -36,6 +36,7 @@
     , home-manager, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
     , python-on-nix, ... }:
     let
+      lib = nixpkgs.lib;
       machines = fromTOML (builtins.readFile ./machines.toml);
       common = machines.common // {
         pkgs = import nixpkgs { system = machines.system; };
@@ -72,14 +73,14 @@
 
     in rec {
       nixosConfigurations = {
-        "${framework.hostname}" = nixpkgs.lib.nixosSystem {
+        "${framework.hostname}" = lib.nixosSystem {
           system = framework.system;
           modules = import ./framework/modules.nix {
             inherit framework nixos-hardware sops-nix home-manager
               nix-doom-emacs hercules-ci-agent;
           };
         };
-        "${agent.hostname}" = nixpkgs.lib.nixosSystem {
+        "${agent.hostname}" = lib.nixosSystem {
           system = agent.system;
           modules = [
             (import ./agent/configuration.nix { inherit hercules-ci-agent; })
@@ -117,7 +118,7 @@
           self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
         dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
         "${agent.hostname}-os".outputs = ref:
-          import agent/effect.nix { inherit ref agent hercules-ci-agent; };
+          import agent/effect.nix { inherit ref agent lib hercules-ci-agent; };
       };
     };
 }
