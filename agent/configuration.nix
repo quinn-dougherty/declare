@@ -2,10 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, modulesPath, lib, hercules-ci-agent, ... }:
-with agent; {
+{ agent, hercules-ci-agent, ... }@inputs:
+with inputs;
+let
+  lib = agent.pkgs.lib;
+  modulesPath = agent.pkgs.nixos.modules;
+in {
   imports = builtins.concatLists [
-    (lib.optional (builtins.pathExists ./do-userdata.nix) ./do-userdata.nix)
+    (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
+      ./do-userdata.nix)
     [
       (modulesPath + "/virtualisation/digital-ocean-config.nix")
       ./hardware-configuration.nix
@@ -22,14 +27,14 @@ with agent; {
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-  networking.hostName = hostname; # Define your hostname.
+  networking.hostName = agent.hostname; # Define your hostname.
   # Pick only one of the below networking options.
   networking.wireless.enable =
     true; # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  time.timeZone = timezone;
+  time.timeZone = agent.timezone;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -64,10 +69,10 @@ with agent; {
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
+  users.users.${agent.username} = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

@@ -52,7 +52,9 @@
         "${agent.hostname}" = lib.nixosSystem {
           system = agent.system;
           modules = [
-            (import ./agent/configuration.nix { inherit hercules-ci-agent; })
+            (import ./agent/configuration.nix {
+              inherit agent hercules-ci-agent;
+            })
           ];
         };
       };
@@ -86,8 +88,8 @@
         "${framework.hostname}-os".outputs =
           self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
         dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
-        "${agent.hostname}-os".outputs = ref:
-          import agent/effect.nix { inherit ref agent lib hercules-ci-agent; };
+        # "${agent.hostname}-os".outputs = ref:
+        #   import agent/effect.nix { inherit ref agent hercules-ci-agent; };
       };
     };
 }
