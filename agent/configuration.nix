@@ -70,9 +70,14 @@ in {
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${agent.username} = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  users.users = {
+    ${agent.username} = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      openssh.authorizedKeys.keyFiles = [ ./../common/id_ed25519.pub ];
+    };
+    root.openssh.authorizedKeys.keyFiles =
+      [ ./../common/herc-default-id_rsa.pub ];
   };
 
   # List packages installed in system profile. To search, run:

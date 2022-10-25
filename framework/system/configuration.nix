@@ -61,10 +61,14 @@ with framework; {
       home = "/home/" + username;
       description = "Quinn Dougherty";
       shell = pkgs.fish;
+      openssh.authorizedKeys.keyFiles = [
+        ./../../common/secrets/id_ed2559.pub
+        ./../../common/secrets/id_rsa.pub
+        ./../../common/herc-default-id_rsa.pub
+      ];
     };
-    root.openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCyJAP5TohEIOSV2uuz4XE0B8x55LLQUlXgRad84hAN01Az5U0xWfZhyCrQO+3rhZ6YgBwbpZrMc7+Pyb4z6BHE2i4e7omSIATFMt7eSFuOaRYiXUEKX56AFlWiU1NcLNVKnFCnhAHKh/eDGBtRR6C0oA2DoMj8OOhYwgYOT4c+Y7IDOtlC+RmwRUhRlhrchz3Z1zg9Z4aln75dreq30xtBU+wfLdsvOUiVqtkMwiCfzvbF/DoVWqAzsciXhGvMR5B69l0CZU3lMDnqZ/VYVEYgcILC9ME5l6FhYTHwoToi0QTu+BIFFej3PCS/puLta/vzCvlT+J4jCnLMQW4qkVzEbZ3eQJ1Yf8HH1elHj+aT1RjWg80DTJhZAG+LpITEizEE3PIwg+85aY14zuxox7gHzBbNRzrdW7wWT1KTT7xfwNpS2AM8eJWzDypjSJRa9oj9wR9MT7lnyYor4B/fx5RB9Ch7so1uICfhGACmfrvriv0KaSm4YPHuarAp6WL5uRE= default-ssh@hercules-ci"
-    ];
+    root.openssh.authorizedKeys.keyFiles =
+      [ ./../../comon/herc-default-id_rsa.pub ];
   };
 
   environment.variables = {
