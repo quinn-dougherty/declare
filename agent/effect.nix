@@ -3,7 +3,7 @@ with agent.pkgs;
 let herc-droplet-host = "64.225.11.209";
 in effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   effectScript = ''
-    nix run ..#apps.nixinate.${agent.hostname}
+    nix run .#apps.nixinate.${agent.hostname}
   '';
 
   # this references secrets.json on your agent

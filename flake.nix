@@ -63,8 +63,8 @@
             {
               _module.args.nixinate = {
                 host = "64.225.11.209";
-                sshUser = "root";
-                buildOn = "remote"; # valid args are "local" or "remote"
+                sshUser = agent.username;
+                buildOn = "local"; # valid args are "local" or "remote"
                 substituteOnTarget =
                   true; # if buildOn is "local" then it will substitute on the target, "-s"
                 hermetic = true;

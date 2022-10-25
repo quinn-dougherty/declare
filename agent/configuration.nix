@@ -19,6 +19,8 @@ in {
     ]
   ];
 
+  nix.gc.automatic = true;
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -30,8 +32,7 @@ in {
 
   networking.hostName = agent.hostname; # Define your hostname.
   # Pick only one of the below networking options.
-  networking.wireless.enable =
-    true; # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
