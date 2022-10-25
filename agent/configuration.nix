@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ nixpkgs, agent, hercules-ci-agent, ... }@inputs:
+{ agent, hercules-ci-agent, ... }@inputs:
 with inputs;
 let
   lib = agent.pkgs.lib;

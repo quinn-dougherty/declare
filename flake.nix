@@ -58,7 +58,7 @@
           system = agent.system;
           modules = [
             (import ./agent/configuration.nix {
-              inherit nixpkgs agent hercules-ci-agent;
+              inherit agent hercules-ci-agent;
             })
             {
               _module.args.nixinate = {
@@ -74,18 +74,18 @@
         };
       };
 
-      devShells.${framework.system}.home-development = framework.pkgs.mkShell {
-        name = "${framework.drv-name-prefix}:development-home";
-        buildInputs = import ./framework/users/qd/packages/development {
-          pkgs = framework.pkgs;
-          pkgs-stable = framework.pkgs-stable;
+      devShells.${framework.system}.home-development = with framework;
+        pkgs.mkShell {
+          name = "${drv-name-prefix}:development-home";
+          buildInputs = import ./framework/users/qd/packages/development {
+            inherit pkgs pkgs-stable;
+          };
         };
-      };
 
       checks.${common.system}.lint =
         import ./common/lint.nix { inherit common; };
 
-      herculesCI = ci-inputs: {
+      herculesCI = hci-inputs: {
         onPush = {
           ${framework.hostname}.outputs = {
             development-home =
@@ -98,8 +98,8 @@
               self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
             effects.deployment = import ./agent/effect.nix {
               inherit agent hercules-ci-agent;
-              ref = ci-inputs.ref;
-              nixinateApps = self.apps.${agent.system}.nixinate;
+              ref = hci-inputs.ref;
+              nixinateApps = self.apps.nixinate;
             };
           };
           dotfiles-lint.outputs = self.checks.${common.system}.lint;
