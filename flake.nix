@@ -67,7 +67,7 @@
                 buildOn = "remote"; # valid args are "local" or "remote"
                 substituteOnTarget =
                   true; # if buildOn is "local" then it will substitute on the target, "-s"
-                # hermetic = false;
+                hermetic = true;
               };
             }
           ];
