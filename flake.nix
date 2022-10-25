@@ -63,7 +63,7 @@
             {
               _module.args.nixinate = {
                 host = "64.225.11.209";
-                sshUser = "qd";
+                sshUser = "root";
                 buildOn = "remote"; # valid args are "local" or "remote"
                 substituteOnTarget =
                   true; # if buildOn is "local" then it will substitute on the target, "-s"
@@ -107,8 +107,11 @@
         ${agent.hostname}.outputs = {
           operating-system =
             self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-          # deployment-effect = ref: import agent/effect.nix { inherit ref agent hercules-ci-agent; };
-          # deployment-effect
+          deployment-effect = ref:
+            import agent/effect.nix {
+              inherit ref agent hercules-ci-agent;
+              nixinateApps = self.apps.nixinate;
+            };
         };
         dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
       };

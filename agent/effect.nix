@@ -1,8 +1,9 @@
-{ ref, agent, hercules-ci-agent }:
+{ ref, agent, nixinateApps, hercules-ci-agent }:
 with agent.pkgs;
-effects.runIf (ref == "refs/heads/main") (effects.runNixOS {
-  configuration =
-    import ./configuration.nix { inherit agent hercules-ci-agent; };
+effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
+  effectScript = ''
+    nix run ${nixinateApps.${agent.hostname}}
+  '';
 
   # this references secrets.json on your agent
   secretsMap.ssh = "default-ssh";
