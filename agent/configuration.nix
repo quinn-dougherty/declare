@@ -110,6 +110,7 @@
       enable = true;
       settings.concurrentTasks = "auto";
     };
+    do-agent.enable = true;
   };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 443 ];
