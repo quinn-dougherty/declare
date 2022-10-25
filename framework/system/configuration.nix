@@ -6,7 +6,7 @@
 with framework; {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./cachix.nix
+    ./../../common/cachix.nix
   ];
 
   nix = {

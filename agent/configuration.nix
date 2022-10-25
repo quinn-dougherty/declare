@@ -13,6 +13,7 @@ in {
       ./do-userdata.nix)
     [
       # (nixpkgs.nixos.modules.virtualisation + "/digital-ocean-config.nix")
+      ./../common/cachix.nix
       ./hardware-configuration.nix
       hercules-ci-agent.nixosModules.agent-service
     ]
