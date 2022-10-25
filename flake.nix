@@ -95,7 +95,7 @@
         ${agent.hostname}.outputs = {
           operating-system =
             self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-          deployment-effect = ref:
+          effects.deployment-effect = ref:
             import ./agent/effect.nix {
               inherit ref agent hercules-ci-agent;
               nixinateApps = self.apps.nixinate;
