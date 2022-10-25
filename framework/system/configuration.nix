@@ -64,11 +64,11 @@ with framework; {
       openssh.authorizedKeys.keyFiles = [
         ./../../common/secrets/id_ed2559.pub
         ./../../common/secrets/id_rsa.pub
-        ./../../common/herc-default-id_rsa.pub
+        ./../../common/secrets/herc-default-id_rsa.pub
       ];
     };
     root.openssh.authorizedKeys.keyFiles =
-      [ ./../../comon/herc-default-id_rsa.pub ];
+      [ ./../../common/secrets/herc-default-id_rsa.pub ];
   };
 
   environment.variables = {

@@ -74,10 +74,10 @@ in {
     ${agent.username} = {
       isNormalUser = true;
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      openssh.authorizedKeys.keyFiles = [ ./../common/id_ed25519.pub ];
+      openssh.authorizedKeys.keyFiles = [ ./../common/secrets/id_ed25519.pub ];
     };
     root.openssh.authorizedKeys.keyFiles =
-      [ ./../common/herc-default-id_rsa.pub ];
+      [ ./../common/secrets/herc-default-id_rsa.pub ];
   };
 
   # List packages installed in system profile. To search, run:
