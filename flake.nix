@@ -63,7 +63,7 @@
             {
               _module.args.nixinate = {
                 host = "64.225.11.209";
-                sshUser = agent.username;
+                sshUser = "root"; # agent.username;
                 buildOn = "local"; # valid args are "local" or "remote"
                 substituteOnTarget =
                   true; # if buildOn is "local" then it will substitute on the target, "-s"
@@ -102,7 +102,7 @@
               # nixinateApps = self.apps.nixinate;
             };
           };
-          dotfiles-lint.outputs = self.checks.${common.system}.lint;
+          dotfiles-lint.outputs.check = self.checks.${common.system}.lint;
         };
       };
     };
