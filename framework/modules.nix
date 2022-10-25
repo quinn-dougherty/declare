@@ -1,10 +1,8 @@
-{ framework, nixos-hardware, sops-nix, home-manager, nix-doom-emacs
-, hercules-ci-agent }:
+{ framework, nixos-hardware, home-manager, nix-doom-emacs }:
 
 [
   (import ./system/configuration.nix { inherit framework; })
   nixos-hardware.nixosModules.framework
-  sops-nix.nixosModules.sops
   home-manager.nixosModules.home-manager
   {
     home-manager = {
@@ -15,9 +13,4 @@
       # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
     };
   }
-  ({ config, lib, pkgs, ... }: {
-    imports = [ hercules-ci-agent.nixosModules.agent-service ];
-    services.hercules-ci-agent.enable = true;
-    networking.firewall.allowedTCPPorts = [ 443 ];
-  })
 ]

@@ -5,10 +5,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-22.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,9 +32,9 @@
     # daedalus.url = github:input-output-hk/daedalus/chore/ddw-1083-flakes;
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
-    , home-manager, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
-    , nixinate, python-on-nix, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
+    , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate
+    , python-on-nix, ... }:
     let
       lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
@@ -50,8 +46,7 @@
         ${framework.hostname} = lib.nixosSystem {
           system = framework.system;
           modules = import ./framework/modules.nix {
-            inherit framework nixos-hardware sops-nix home-manager
-              nix-doom-emacs hercules-ci-agent;
+            inherit framework nixos-hardware home-manager nix-doom-emacs;
           };
         };
         ${agent.hostname} = lib.nixosSystem {
@@ -62,7 +57,7 @@
             })
             {
               _module.args.nixinate = {
-                host = "64.225.11.209";
+                host = import ./agent/host.nix;
                 sshUser = "root"; # agent.username;
                 buildOn = "local"; # valid args are "local" or "remote"
                 substituteOnTarget =

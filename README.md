@@ -15,3 +15,8 @@ Includes
 
 - `framework` (daily driver)
 - `agent` (hercules ci agent)
+
+## _todo_
+- Improve my secrets ergonomics with `sops-nix` or `agenix`
+- Less stuff be imperatively managed in `~/.config`
+- A matrix server

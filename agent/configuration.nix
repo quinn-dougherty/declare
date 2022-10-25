@@ -4,9 +4,7 @@
 
 { agent, hercules-ci-agent, ... }@inputs:
 with inputs;
-let
-  lib = agent.pkgs.lib;
-  # modulesPath = agent.pkgs.nixos.modules;
+let lib = agent.pkgs.lib;
 in {
   imports = builtins.concatLists [
     (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)

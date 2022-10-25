@@ -18,8 +18,10 @@
   # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # 17500 is for dropbox, 443 is for herc (I think)
-  firewall.allowedTCPPorts = [ 17500 443 ];
-  firewall.allowedUDPPorts = [ 17500 443 ];
-  # Or disable the firewall altogether.
-  # firewall.enable = false;
+  firewall = {
+    allowedTCPPorts = [ 17500 ];
+    allowedUDPPorts = [ 17500 ];
+    # Or disable the firewall altogether.
+    # firewall.enable = false;
+  };
 }
