@@ -62,7 +62,7 @@ with framework; {
       description = "Quinn Dougherty";
       shell = pkgs.fish;
       openssh.authorizedKeys.keyFiles = [
-        ./../../common/secrets/id_ed2559.pub
+        ./../../common/secrets/id_ed25519.pub
         ./../../common/secrets/id_rsa.pub
         ./../../common/secrets/herc-default-id_rsa.pub
       ];
