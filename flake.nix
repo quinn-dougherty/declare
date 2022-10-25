@@ -83,10 +83,11 @@
         };
 
       herculesCI.onPush = {
-        "${framework.hostname}-home-shell".outputs =
-          self.devShells.${framework.system}.home-development;
-        "${framework.hostname}-os".outputs =
-          self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
+        "${framework.hostname}".outputs = {
+          shell = self.devShells.${framework.system}.home-development;
+          os =
+            self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
+        };
         dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
         # "${agent.hostname}-os".outputs = ref:
         #   import agent/effect.nix { inherit ref agent hercules-ci-agent; };
