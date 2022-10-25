@@ -85,7 +85,7 @@
       checks.${common.system}.lint =
         import ./common/lint.nix { inherit common; };
 
-      herculesCI = { ref }: {
+      herculesCI = ci-inputs: {
         onPush = {
           ${framework.hostname}.outputs = {
             development-home =
@@ -97,7 +97,8 @@
             operating-system =
               self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
             effects.deployment-effect = import ./agent/effect.nix {
-              inherit ref agent hercules-ci-agent;
+              inherit agent hercules-ci-agent;
+              ref = ci-inputs.ref;
               nixinateApps = self.apps.nixinate;
             };
           };
