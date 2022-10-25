@@ -19,7 +19,10 @@ in {
     ]
   ];
 
-  nix.gc.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
