@@ -99,7 +99,7 @@
             effects.deployment = import ./agent/effect.nix {
               inherit agent hercules-ci-agent;
               ref = hci-inputs.ref;
-              nixinateApps = self.apps.nixinate;
+              # nixinateApps = self.apps.nixinate;
             };
           };
           dotfiles-lint.outputs = self.checks.${common.system}.lint;

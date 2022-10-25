@@ -1,8 +1,8 @@
-{ ref, agent, nixinateApps, hercules-ci-agent }:
+{ ref, agent, hercules-ci-agent }:
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   effectScript = ''
-    nix run ${nixinateApps.${agent.hostname}.${agent.system}}
+    nix run ..#apps.nixinate.${agent.hostname}
   '';
 
   # this references secrets.json on your agent
