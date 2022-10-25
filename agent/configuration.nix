@@ -33,6 +33,16 @@
   };
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  swapDevices = [{
+    device = "/var/swapfile";
+    size = 2048;
+  }];
+  fileSystems."/mnt/${agent.volume}" = {
+    device = "/dev/disk/by-id/scsi-0DO_Volume_${agent.volume}";
+    fsType = "ext4";
+    options = [ "discard" "defaults" "noatime" ];
+  };
+
   networking.hostName = agent.hostname; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.

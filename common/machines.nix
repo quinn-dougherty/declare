@@ -30,6 +30,7 @@ in {
     username = machines.agent.username;
     system = machines.common.system;
     timezone = machines.common.timezone;
+    volume = machines.agent.volume;
     overlays = [ hercules-ci-effects.overlay ];
     pkgs = import nixpkgs-stable { inherit system overlays; };
   };
