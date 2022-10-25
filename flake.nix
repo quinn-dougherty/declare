@@ -82,20 +82,8 @@
         };
       };
 
-      checks.${machines.common.system}.lint =
-        framework.pkgs.stdenv.mkDerivation {
-          name = "dotfiles-lint";
-          src = ./.;
-          buildInputs = with framework.pkgs; [ nixfmt nodePackages.prettier ];
-          buildPhase = ''
-            for nixfile in $(find $src -type f | grep '[.]nix')
-            do
-              nixfmt --check $nixfile
-            done
-            prettier --check $src
-          '';
-          installPhase = "mkdir -p $out";
-        };
+      checks.${common.system}.lint =
+        import ./common/lint.nix { inherit common; };
 
       herculesCI.onPush = {
         ${framework.hostname}.outputs = {
@@ -113,7 +101,7 @@
               nixinateApps = self.apps.nixinate;
             };
         };
-        dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
+        dotfiles-lint.outputs = self.checks.${common.system}.lint;
       };
     };
 }

@@ -2,7 +2,7 @@
 let machines = fromTOML (builtins.readFile ./machines.toml);
 in {
   common = machines.common // {
-    pkgs = import nixpkgs { system = machines.system; };
+    pkgs = import nixpkgs { system = machines.common.system; };
   };
   framework = rec {
     hostname = machines.framework.hostname;
