@@ -2,7 +2,7 @@
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   effectScript = ''
-    nix run ${nixinateApps.${agent.hostname}}
+    nix run ${nixinateApps.${agent.system}.${agent.hostname}}
   '';
 
   # this references secrets.json on your agent
