@@ -106,7 +106,10 @@
   # Enable the OpenSSH daemon.
   services = {
     openssh.enable = true;
-    hercules-ci-agent.enable = true;
+    hercules-ci-agent = {
+      enable = true;
+      settings.concurrentTasks = "auto";
+    };
   };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 443 ];
