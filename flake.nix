@@ -25,6 +25,10 @@
       url = "github:hercules-ci/hercules-ci-effects";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    nixinate = {
+      url = "github:matthewcroughan/nixinate";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     python-on-nix = {
       url = "github:on-nix/python";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,27 +38,38 @@
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, sops-nix
     , home-manager, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
-    , python-on-nix, ... }:
+    , nixinate, python-on-nix, ... }:
     let
       lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable python-on-nix hercules-ci-effects;
       };
     in with machines; rec {
+      apps = nixinate.nixinate.${common.system} self;
       nixosConfigurations = {
-        "${framework.hostname}" = lib.nixosSystem {
+        ${framework.hostname} = lib.nixosSystem {
           system = framework.system;
           modules = import ./framework/modules.nix {
             inherit framework nixos-hardware sops-nix home-manager
               nix-doom-emacs hercules-ci-agent;
           };
         };
-        "${agent.hostname}" = lib.nixosSystem {
+        ${agent.hostname} = lib.nixosSystem {
           system = agent.system;
           modules = [
             (import ./agent/configuration.nix {
-              inherit agent hercules-ci-agent;
+              inherit nixpkgs agent hercules-ci-agent;
             })
+            {
+              _module.args.nixinate = {
+                host = "64.225.11.209";
+                sshUser = "qd";
+                buildOn = "remote"; # valid args are "local" or "remote"
+                substituteOnTarget =
+                  true; # if buildOn is "local" then it will substitute on the target, "-s"
+                # hermetic = false;
+              };
+            }
           ];
         };
       };
@@ -83,14 +98,19 @@
         };
 
       herculesCI.onPush = {
-        "${framework.hostname}".outputs = {
-          shell = self.devShells.${framework.system}.home-development;
-          os =
+        ${framework.hostname}.outputs = {
+          development-home =
+            self.devShells.${framework.system}.home-development;
+          operating-system =
             self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
         };
+        ${agent.hostname}.outputs = {
+          operating-system =
+            self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
+          # deployment-effect = ref: import agent/effect.nix { inherit ref agent hercules-ci-agent; };
+          # deployment-effect
+        };
         dotfiles-lint.outputs = self.checks.${machines.common.system}.lint;
-        # "${agent.hostname}-os".outputs = ref:
-        #   import agent/effect.nix { inherit ref agent hercules-ci-agent; };
       };
     };
 }

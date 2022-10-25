@@ -2,17 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, hercules-ci-agent, ... }@inputs:
+{ nixpkgs, agent, hercules-ci-agent, ... }@inputs:
 with inputs;
 let
   lib = agent.pkgs.lib;
-  modulesPath = agent.pkgs.nixos.modules;
+  # modulesPath = agent.pkgs.nixos.modules;
 in {
   imports = builtins.concatLists [
     (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
       ./do-userdata.nix)
     [
-      (modulesPath + "/virtualisation/digital-ocean-config.nix")
+      # (nixpkgs.nixos.modules.virtualisation + "/digital-ocean-config.nix")
       ./hardware-configuration.nix
       hercules-ci-agent.nixosModules.agent-service
     ]
@@ -25,7 +25,7 @@ in {
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
-  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.loader.grub.device = "nodev"; # "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = agent.hostname; # Define your hostname.
   # Pick only one of the below networking options.
@@ -76,7 +76,7 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with agent.pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
