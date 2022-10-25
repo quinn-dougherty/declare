@@ -2,34 +2,36 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, hercules-ci-agent, ... }@inputs:
-with inputs;
-let lib = agent.pkgs.lib;
-in {
+{ agent, hercules-ci-agent }: {
   imports = builtins.concatLists [
     (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
       ./do-userdata.nix)
     [
-      # (nixpkgs.nixos.modules.virtualisation + "/digital-ocean-config.nix")
       ./../common/cachix.nix
       ./hardware-configuration.nix
       hercules-ci-agent.nixosModules.agent-service
     ]
   ];
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
+  nix = {
+    extraOptions = "experimental-features = nix-command flakes";
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+    settings.auto-optimise-store = true;
   };
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    # efiSupport = true;
+    # efiInstallAsRemovable = true;
+    # Define on which hard drive you want to install Grub.
+    device = "nodev"; # "/dev/sda"; # or "nodev" for efi only
+  };
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "nodev"; # "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = agent.hostname; # Define your hostname.
   # Pick only one of the below networking options.
@@ -102,9 +104,10 @@ in {
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.hercules-ci-agent.enable = true;
-
+  services = {
+    openssh.enable = true;
+    hercules-ci-agent.enable = true;
+  };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 443 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -118,5 +121,4 @@ in {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }

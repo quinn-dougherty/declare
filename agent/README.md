@@ -9,5 +9,8 @@ let config = {
 };
 in
 (pkgs.nixos config).digitalOceanImage
-
 ```
+
+I then built out from `nixos-generate-config` on the box and enabled the hercules agent.
+
+I deploy with [`nixinate`](https://github.commatthewcroughan/nixinate).

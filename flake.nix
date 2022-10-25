@@ -51,21 +51,8 @@
         };
         ${agent.hostname} = lib.nixosSystem {
           system = agent.system;
-          modules = [
-            (import ./agent/configuration.nix {
-              inherit agent hercules-ci-agent;
-            })
-            {
-              _module.args.nixinate = {
-                host = import ./agent/host.nix;
-                sshUser = "root"; # agent.username;
-                buildOn = "local"; # valid args are "local" or "remote"
-                substituteOnTarget =
-                  true; # if buildOn is "local" then it will substitute on the target, "-s"
-                hermetic = true;
-              };
-            }
-          ];
+          modules =
+            import ./agent/modules.nix { inherit agent hercules-ci-agent; };
         };
       };
 
@@ -94,7 +81,6 @@
             effects.deployment = import ./agent/effect.nix {
               inherit agent hercules-ci-agent;
               ref = hci-inputs.ref;
-              # nixinateApps = self.apps.nixinate;
             };
           };
           dotfiles-lint.outputs.check = self.checks.${common.system}.lint;

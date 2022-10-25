@@ -17,6 +17,8 @@ Includes
 - `agent` (hercules ci agent)
 
 ## _todo_
-- Improve my secrets ergonomics with `sops-nix` or `agenix`
-- Less stuff be imperatively managed in `~/.config`
-- A matrix server
+
+- Daily driver: improve my secrets ergonomics with [`sops-nix`](https://github.com/Mic92/sops-nix) or `agenix`
+- Daily driver (home-manager): less stuff be imperatively managed in `~/.config`
+- New project: a [matrix](https://www.foxypossibilities.com/2018/02/04/running-matrix-synapse-on-nixos/) server
+- Continuously deliver the herc agent (with hercules effects)
