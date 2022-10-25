@@ -96,10 +96,10 @@
           ${agent.hostname}.outputs = {
             operating-system =
               self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-            effects.deployment-effect = import ./agent/effect.nix {
+            effects.deployment = import ./agent/effect.nix {
               inherit agent hercules-ci-agent;
               ref = ci-inputs.ref;
-              nixinateApps = self.apps.nixinate;
+              nixinateApps = self.apps.${agent.system}.nixinate;
             };
           };
           dotfiles-lint.outputs = self.checks.${common.system}.lint;
