@@ -74,14 +74,15 @@ in {
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
+  users.users = let pubkeys-path = ./../common/pubkeys;
+  in {
     ${agent.username} = {
       isNormalUser = true;
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      openssh.authorizedKeys.keyFiles = [ ./../common/secrets/id_ed25519.pub ];
+      openssh.authorizedKeys.keyFiles = [ (pubkeys-path + "/id_ed25519.pub") ];
     };
     root.openssh.authorizedKeys.keyFiles =
-      [ ./../common/secrets/herc-default-id_rsa.pub ];
+      [ (pubkeys-path + "/herc-default-id_rsa.pub") ];
   };
 
   # List packages installed in system profile. To search, run:

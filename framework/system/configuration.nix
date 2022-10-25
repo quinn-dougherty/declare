@@ -53,7 +53,8 @@ with framework; {
   hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
+  users.users = let pubkeys-path = ./../../common/pubkeys;
+  in {
     ${username} = {
       isNormalUser = true;
       extraGroups =
@@ -62,13 +63,13 @@ with framework; {
       description = "Quinn Dougherty";
       shell = pkgs.fish;
       openssh.authorizedKeys.keyFiles = [
-        ./../../common/secrets/id_ed25519.pub
-        ./../../common/secrets/id_rsa.pub
-        ./../../common/secrets/herc-default-id_rsa.pub
+        (pubkeys-path + "/id_ed25519.pub")
+        (pubkeys-path + "/id_rsa.pub")
+        (pubkeys-path + "/herc-default-id_rsa.pub")
       ];
     };
     root.openssh.authorizedKeys.keyFiles =
-      [ ./../../common/secrets/herc-default-id_rsa.pub ];
+      [ (pubkeys-path + "/herc-default-id_rsa.pub") ];
   };
 
   environment.variables = {
