@@ -75,7 +75,7 @@ with framework; {
     EDITOR = "emacs";
     VISUAL = "emacs";
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = config;
 
   programs = {
     steam.enable = true;
