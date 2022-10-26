@@ -10,10 +10,10 @@ hci-inputs: {
     ${machines.agent.hostname}.outputs = {
       operating-system =
         outputs.nixosConfigurations.${machines.agent.hostname}.config.system.build.toplevel;
-      effects.deployment = agentdeploy {
-        ref = hci-inputs.ref;
-        nixination = outputs.apps.nixinate;
-      };
+      #      effects.deployment = agentdeploy {
+      #        ref = hci-inputs.ref;
+      #        nixination = outputs.apps.nixinate;
+      #      };
       effects.deployment2 = agentdeploy2 { ref = hci-inputs.ref; };
     };
     dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
