@@ -57,8 +57,7 @@
         lib.osForAll [ machines.framework.name machines.agent.name ];
       devShells.${machines.framework.system}.homeshell = framework.homeshell;
 
-      checks.${machines.common.system}.lint = with machines;
-        import ./common/lint.nix { inherit common; };
+      checks.${machines.common.system}.lint = lib.lint;
 
       herculesCI = lib.herc;
     };
