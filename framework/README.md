@@ -1,6 +1,6 @@
 # Framework (daily driver)
 
-![qd@fw neofetch](/repository/framework/neofetch.png?raw=true "qd@fw neofetch")
+![qd@fw neofetch](neofetch.png "qd@fw neofetch")
 
 Includes:
 
