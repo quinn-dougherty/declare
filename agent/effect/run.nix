@@ -1,5 +1,5 @@
 # In this file, unlike effect/default.nix, we utilize the runNixOS command from the effects library.
-{ ref, agent-os }:
+{ ref, agent, agent-os }:
 let
   known-hosts-fragment = with agent;
     import ./knownhostsfragment.nix { inherit ip; };

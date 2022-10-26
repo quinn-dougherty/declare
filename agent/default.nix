@@ -1,5 +1,5 @@
 { lib, agent, hercules-ci-agent }:
-agent // {
+agent // rec {
   # hostname = agent.hostname;
   operatingsystem = lib.nixosSystem {
     system = agent.system;
@@ -8,5 +8,5 @@ agent // {
   deploymenteffect = { ref, nixination }:
     import ./effect/nixinate.nix { inherit ref agent nixination; };
   deploymenteffect2 = { ref, agent-os }:
-    import ./effect/run.nix { inherit ref agent-os; };
+    import ./effect/run.nix { inherit ref agent; agent-os = operatingsystem; };
 }
