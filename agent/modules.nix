@@ -4,7 +4,7 @@
   (import ./configuration.nix { inherit agent hercules-ci-agent; })
   {
     _module.args.nixinate = {
-      host = import ./host.nix;
+      host = agent.host;
       sshUser = "root"; # agent.username;
       buildOn = "local"; # valid args are "local" or "remote"
       substituteOnTarget =
