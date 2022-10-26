@@ -1,11 +1,11 @@
 # In this file, unlike effect/default.nix, we utilize the runNixOS command from the effects library.
-{ ref, agent }:
+{ ref, agent-os }:
 let
   known-hosts-fragment = with agent;
     import ./knownhostsfragment.nix { inherit ip; };
 in with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.runNixOS {
-  config = agent.operatingsystem;
+  config = agent-os;
   secretsMap.default-ssh = "default-ssh";
   userSetupScript = ''
     KEYNAME=herc-default-id_rsa
