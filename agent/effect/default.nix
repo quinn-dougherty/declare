@@ -10,7 +10,7 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   userSetupScript = ''
     writeSSHKey default-ssh ~/.ssh/herc-default-id_rsa
     cat >>~/.ssh/known_hosts <<EOF
-    ${with agent; import ./knownhostsfragment.nix { inherit ip; }}
+    ${with agent; (import ./knownhostsfragment.nix { inherit ip; }).default}
     EOF
   '';
 
