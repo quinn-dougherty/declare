@@ -1,7 +1,7 @@
 { ref, agent, nixination }:
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
-  effectScript = "echo ${builtins.attrNames nixination}";
+  effectScript = "echo ${builtins.toString (builtins.attrNames nixination)}";
 
   # this references secrets.json on your agent
   secretsMap = { "default-ssh" = "default-ssh"; };
