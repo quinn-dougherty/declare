@@ -8,5 +8,8 @@ agent // rec {
   deploymenteffect = { ref, nixination }:
     import ./effect/nixinate.nix { inherit ref agent nixination; };
   deploymenteffect2 = { ref, agent-os }:
-    import ./effect/run.nix { inherit ref agent; agent-os = operatingsystem; };
+    import ./effect/run.nix {
+      inherit ref agent;
+      agent-os = operatingsystem;
+    };
 }
