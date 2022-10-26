@@ -67,24 +67,23 @@
       checks.${common.system}.lint =
         import ./common/lint.nix { inherit common; };
 
-      herculesCI = hci-inputs: {
-        onPush = {
-          ${framework.hostname}.outputs = {
-            development-home =
-              self.devShells.${framework.system}.home-development;
-            operating-system =
-              self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
-          };
-          ${agent.hostname}.outputs = {
-            operating-system =
-              self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-            effects.deployment = import ./agent/effect.nix {
-              inherit agent hercules-ci-agent;
-              ref = hci-inputs.ref;
+      herculesCI = hci-inputs:
+        with hci-inputs; {
+          onPush = {
+            ${framework.hostname}.outputs = {
+              development-home =
+                self.devShells.${framework.system}.home-development;
+              operating-system =
+                self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
             };
+            ${agent.hostname}.outputs = {
+              operating-system =
+                self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
+              effects.deployment =
+                import ./agent/effect.nix { inherit ref agent; };
+            };
+            dotfiles-lint.outputs.check = self.checks.${common.system}.lint;
           };
-          dotfiles-lint.outputs.check = self.checks.${common.system}.lint;
         };
-      };
     };
 }
