@@ -19,5 +19,5 @@ effects.runIf (ref == "refs/heads/main") (effects.runNixOS {
   '';
 
   # This is directly from docs, but is causing deployment to break.
-  # ssh.destination = agent.ip;
+  ssh.destination = agent.ip;
 })
