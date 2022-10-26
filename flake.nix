@@ -54,7 +54,6 @@
         outputs = self;
         agentdeploy = agent.deploymenteffect;
         agentdeploy2 = agent.deploymenteffect2;
-        agent-os = agent.operatingsystem;
       };
     in {
       apps = nixinate.nixinate.${machines.common.system} self;
