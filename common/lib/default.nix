@@ -1,4 +1,4 @@
-{ machines, agent, outputs }:
+{ machines, agentdeploy, outputs }:
 let
   osFor = machine: {
     name = machine.hostname;
