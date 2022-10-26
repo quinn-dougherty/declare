@@ -7,7 +7,7 @@
     (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
       ./do-userdata.nix)
     [
-      ./../common/cachix.nix
+      ./../../common/cachix.nix
       ./hardware-configuration.nix
       hercules-ci-agent.nixosModules.agent-service
     ]
@@ -104,7 +104,6 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
-    flock
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

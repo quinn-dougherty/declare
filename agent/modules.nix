@@ -1,7 +1,7 @@
 { agent, hercules-ci-agent }:
 
 [
-  (import ./configuration.nix { inherit agent hercules-ci-agent; })
+  (import ./system/configuration.nix { inherit agent hercules-ci-agent; })
   {
     _module.args.nixinate = {
       host = agent.ip;
