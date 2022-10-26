@@ -5,7 +5,7 @@
   {
     _module.args.nixinate = {
       host = import ./host.nix;
-      sshUser = agent.username;
+      sshUser = "root"; # agent.username;
       buildOn = "local"; # valid args are "local" or "remote"
       substituteOnTarget =
         true; # if buildOn is "local" then it will substitute on the target, "-s"
