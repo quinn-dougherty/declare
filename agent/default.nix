@@ -7,5 +7,6 @@ agent // {
   };
   deploymenteffect = { ref, nixination }:
     import ./effect { inherit ref agent nixination; };
-  deploymenteffect2 = { ref }: import ./effect/run.nix { inherit ref agent; };
+  deploymenteffect2 = { ref, agent-os }:
+    import ./effect/run.nix { inherit ref agent-os; };
 }
