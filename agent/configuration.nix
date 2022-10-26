@@ -89,7 +89,10 @@
     ${agent.username} = {
       isNormalUser = true;
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      openssh.authorizedKeys.keyFiles = [ (pubkeys-path + "/id_ed25519.pub") ];
+      openssh.authorizedKeys.keyFiles = [
+        (pubkeys-path + "/id_ed25519.pub")
+        (pubkeys-path + "/herc-default-id_rsa.pub")
+      ];
     };
     root.openssh.authorizedKeys.keyFiles =
       [ (pubkeys-path + "/herc-default-id_rsa.pub") ];
