@@ -11,7 +11,7 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   userSetupScript = ''
     writeSSHKey ssh
     cat >>~/.ssh/known_hosts <<EOF
-    ${agent.host} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMKFa4HNszRLl2G9m3+qkNDiQ3EPMZtdBlowBrb+jkfA
+    ${agent.host} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgl+QJ+NlZG22AASEkWHv+ihYdLzpLMUzbNG/MJb7ei
     EOF
   '';
 
