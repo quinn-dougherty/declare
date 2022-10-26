@@ -84,7 +84,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = let pubkeys-path = ./../common/pubkeys;
+  users.users = let pubkeys-path = ./../../common/pubkeys;
   in {
     ${agent.username} = {
       isNormalUser = true;
