@@ -1,7 +1,7 @@
 { pkgs }:
 with pkgs; [
   # Gaming
-  factorio
+  # factorio  # having trouble getting token to agent.
   lutris
   vulkan-tools
   vulkan-loader
