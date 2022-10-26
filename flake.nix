@@ -78,7 +78,7 @@
             ${agent.hostname}.outputs = {
               operating-system =
                 self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-              effects.deployment = import ./agent/effect.nix {
+              effects.deployment = import ./agent/effect {
                 inherit ref agent;
                 nixination = self.apps.nixinate.herc-agent;
               };
