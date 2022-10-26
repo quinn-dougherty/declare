@@ -2,12 +2,13 @@
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   effectScript = ''
-    mkdir -p flockpath
-    cp ${util-linux}/bin/flock flockpath/flock
-    export PATH=$PATH:flockpath
+    mkdir -p pathaugment
+    cp ${openssh}/bin/ssh pathaugment/ssh
+    cp ${util-linux}/bin/flock pathaugment/flock
+    export PATH=$PATH:pathaugment
     ${nixination.${agent.hostname}.program}
   '';
-  inputs = [ util-linux ];
+  # inputs = [ util-linux ];
   secretsMap.default-ssh = "default-ssh";
   userSetupScript = ''
     writeSSHKey default-ssh ~/.ssh/herc-default-id_rsa
