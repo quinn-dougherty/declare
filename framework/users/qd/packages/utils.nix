@@ -5,7 +5,7 @@ with pkgs; [
   vim
   wget
   curl
-  dropbox-cli
+  # dropbox-cli
   # Utils
   gnumake
   patchelf
