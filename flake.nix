@@ -54,7 +54,7 @@
         outputs = self;
         agentdeploy = agent.deploymenteffect;
       };
-    in rec {
+    in {
       apps = nixinate.nixinate.${machines.common.system} self;
 
       nixosConfigurations = util.osForAll [ framework agent ];
