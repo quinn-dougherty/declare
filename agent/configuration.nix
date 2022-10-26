@@ -35,7 +35,7 @@
 
   swapDevices = [{
     device = "/var/swapfile";
-    size = 2048;
+    size = 4096;
   }];
   fileSystems."/mnt/${agent.volume}" = {
     device = "/dev/disk/by-id/scsi-0DO_Volume_${agent.volume}";
