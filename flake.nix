@@ -70,7 +70,7 @@
         with hci-inputs; {
           onPush = {
             ${framework.hostname}.outputs = {
-              development-home =
+              development-home-shell =
                 self.devShells.${framework.system}.home-development;
               operating-system =
                 self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
@@ -78,8 +78,10 @@
             ${agent.hostname}.outputs = {
               operating-system =
                 self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-              effects.deployment =
-                import ./agent/effect.nix { inherit ref agent; nixination = self.apps.nixinate; };
+              effects.deployment = import ./agent/effect.nix {
+                inherit ref agent;
+                nixination = self.apps.nixinate.herc-agent;
+              };
             };
             dotfiles-lint.outputs.check = self.checks.${common.system}.lint;
           };
