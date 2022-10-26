@@ -2,7 +2,7 @@
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   effectScript = "${nixination.${agent.hostname}.program}";
-  inputs = [ nixination.${agent.hostname} flock ];
+  inputs = [ nixination.${agent.hostname}.program flock ];
   # this references secrets.json on your agent
   secretsMap = { "default-ssh" = "default-ssh"; };
   # replace this with the appropriate line from ~/.ssh/known_hosts
