@@ -5,7 +5,7 @@ in {
     pkgs = import nixpkgs { system = machines.common.system; };
   };
   framework = rec {
-    name = "framework";
+    machinename = "framework";
     hostname = machines.framework.hostname;
     username = machines.framework.username;
     system = machines.common.system;
@@ -27,7 +27,7 @@ in {
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
   };
   agent = rec {
-    name = "agent";
+    machinename = "agent";
     hostname = machines.agent.hostname;
     username = machines.agent.username;
     system = machines.common.system;

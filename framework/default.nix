@@ -1,5 +1,6 @@
-{ framework, nixos-hardware, home-manager, nix-doom-emacs }: {
-  operatingsystem = framework.pkgs.lib.nixosSystem {
+{ lib, framework, nixos-hardware, home-manager, nix-doom-emacs }:
+framework // {
+  operatingsystem = lib.nixosSystem {
     system = framework.system;
     modules = import ./modules.nix {
       inherit framework nixos-hardware home-manager nix-doom-emacs;

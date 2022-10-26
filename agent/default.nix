@@ -1,5 +1,7 @@
-{ agent, hercules-ci-agent }: {
-  operatingsystem = agent.pkgs.lib.nixosSystem {
+{ lib, agent, hercules-ci-agent }:
+agent // {
+  # hostname = agent.hostname;
+  operatingsystem = lib.nixosSystem {
     system = agent.system;
     modules = import ./modules.nix { inherit agent hercules-ci-agent; };
   };

@@ -40,25 +40,28 @@
         inherit nixpkgs nixpkgs-stable python-on-nix hercules-ci-effects;
       };
       framework = import ./framework {
-        framework = machines.framework;
         inherit nixos-hardware home-manager nix-doom-emacs;
+        lib = nixpkgs.lib;
+        framework = machines.framework;
       };
       agent = import ./agent {
-        agent = machines.agent;
         inherit hercules-ci-agent;
+        lib = nixpkgs.lib;
+        agent = machines.agent;
       };
-      lib = import ./common/lib {
+      commonlib = import ./common/lib {
         inherit machines agent;
         outputs = self;
       };
     in rec {
       apps = nixinate.nixinate.${machines.common.system} self;
-      nixosConfigurations =
-        lib.osForAll [ machines.framework.name machines.agent.name ];
+
+      nixosConfigurations = commonlib.osForAll [ framework agent ];
+
       devShells.${machines.framework.system}.homeshell = framework.homeshell;
 
-      checks.${machines.common.system}.lint = lib.lint;
+      checks.${machines.common.system}.lint = commonlib.lint;
 
-      herculesCI = lib.herc;
+      herculesCI = commonlib.herc;
     };
 }
