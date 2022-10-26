@@ -13,8 +13,7 @@ hci-inputs: {
         ref = hci-inputs.ref;
         nixination = outputs.apps.nixinate;
       };
-      dotfiles-lint.outputs.check =
-        outputs.checks.${machines.common.system}.lint;
     };
+    dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
   };
 }
