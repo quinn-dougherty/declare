@@ -16,5 +16,5 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   '';
 
   # replace with hostname or ip address for ssh
-  ssh.destination = agent.host;
+  # ssh.destination = agent.host;
 })
