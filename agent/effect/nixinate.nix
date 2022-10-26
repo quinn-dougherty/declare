@@ -20,8 +20,7 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
     writeSSHKey default-ssh ~/.ssh/$KEYNAME
     chmod 600 ~/.ssh/$KEYNAME
     chmod 644 ~/.ssh/$KEYNAME.pub
-    echo "${known-hosts-fragment.one}" >> ~/.ssh/known_hosts
-    echo "${known-hosts-fragment.two}" >> ~/.ssh/known_hosts
+    echo "${known-hosts-fragment}" >> ~/.ssh/known_hosts
     chmod 600 ~/.ssh/known_hosts
   '';
 

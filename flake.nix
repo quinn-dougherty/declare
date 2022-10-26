@@ -34,7 +34,7 @@
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
     , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate
-    , python-on-nix, ... }:
+    , python-on-nix }:
     let
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable python-on-nix hercules-ci-effects;

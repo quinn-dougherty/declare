@@ -1,4 +1,3 @@
-# In this file, unlike effect/nixinate.nix, we utilize the runNixOS command from the effects library.
 { ref, agent, agent-os }:
 let
   known-hosts-fragment = with agent;
@@ -10,7 +9,7 @@ effects.runIf (ref == "refs/heads/main") (effects.runNixOS {
   userSetupScript = ''
     writeSSHKey ssh
     cat >>~/.ssh/known_hosts <<EOF
-    ${known-hosts-fragment.one}
+    ${known-hosts-fragment}
     EOF
   '';
 
