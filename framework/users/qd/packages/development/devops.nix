@@ -4,4 +4,5 @@ with pkgs; [
   cachix
   morph
   heroku
+  hci
 ]
