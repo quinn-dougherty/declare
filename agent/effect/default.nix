@@ -1,8 +1,7 @@
 { ref, agent, nixination }:
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
-  effectScript =
-    "${nixination.program}"; # "echo ${builtins.toString (builtins.attrNames nixination)}";
+  effectScript = "${nixination.${agent.hostname}.program}";
   inputs = [ flock ];
   # this references secrets.json on your agent
   secretsMap = { "default-ssh" = "default-ssh"; };
@@ -10,7 +9,7 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   userSetupScript = ''
     writeSSHKey default-ssh ~/.ssh/herc-default-id_rsa
     cat >>~/.ssh/known_hosts <<EOF
-    ${with agent; (import ./knownhostsfragment.nix { inherit ip; }).default}
+    ${(with agent; import ./knownhostsfragment.nix { inherit ip; }).default}
     EOF
   '';
 
