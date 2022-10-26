@@ -39,52 +39,27 @@
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable python-on-nix hercules-ci-effects;
       };
-    in with machines; rec {
-      apps = nixinate.nixinate.${common.system} self;
-      nixosConfigurations = {
-        ${framework.hostname} = nixpkgs.lib.nixosSystem {
-          system = framework.system;
-          modules = import ./framework/modules.nix {
-            inherit framework nixos-hardware home-manager nix-doom-emacs;
-          };
-        };
-        ${agent.hostname} = nixpkgs.lib.nixosSystem {
-          system = agent.system;
-          modules =
-            import ./agent/modules.nix { inherit agent hercules-ci-agent; };
-        };
+      framework = import ./framework {
+        framework = machines.framework;
+        inherit nixos-hardware home-manager nix-doom-emacs;
       };
+      agent = import ./agent {
+        agent = machines.agent;
+        inherit hercules-ci-agent;
+      };
+      lib = import ./common/lib {
+        inherit machines agent;
+        outputs = self;
+      };
+    in rec {
+      apps = nixinate.nixinate.${machines.common.system} self;
+      nixosConfigurations =
+        lib.osForAll [ machines.framework.name machines.agent.name ];
+      devShells.${machines.framework.system}.homeshell = framework.homeshell;
 
-      devShells.${framework.system}.home-development = with framework;
-        pkgs.mkShell {
-          name = "${drv-name-prefix}:development-home";
-          buildInputs = import ./framework/users/qd/packages/development {
-            inherit pkgs pkgs-stable;
-          };
-        };
-
-      checks.${common.system}.lint =
+      checks.${machines.common.system}.lint = with machines;
         import ./common/lint.nix { inherit common; };
 
-      herculesCI = hci-inputs:
-        with hci-inputs; {
-          onPush = {
-            ${framework.hostname}.outputs = {
-              development-home-shell =
-                self.devShells.${framework.system}.home-development;
-              operating-system =
-                self.nixosConfigurations.${framework.hostname}.config.system.build.toplevel;
-            };
-            ${agent.hostname}.outputs = {
-              operating-system =
-                self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
-              effects.deployment = import ./agent/effect {
-                inherit ref agent;
-                nixination = self.apps.nixinate;
-              };
-            };
-            dotfiles-lint.outputs.check = self.checks.${common.system}.lint;
-          };
-        };
+      herculesCI = lib.herc;
     };
 }
