@@ -5,7 +5,7 @@ let
     import ./knownhostsfragment.nix { inherit ip; };
 in with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.runNixOS {
-  configuration = agent-os;
+  config = agent-os.config;
   secretsMap.default-ssh = "default-ssh";
   userSetupScript = ''
     KEYNAME=herc-default-id_rsa
