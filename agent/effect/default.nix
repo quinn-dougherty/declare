@@ -14,7 +14,11 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
     cp ${util-linux}/bin/flock pathaugment/flock
     export PATH=$PATH:pathaugment
 
-    writeSSHKey default-ssh ~/.ssh/herc-default-id_rsa
+    KEYNAME=herc-default-id_rsa
+    mkdir -p ~/.ssh
+    writeSSHKey default-ssh ~/.ssh/$KEYNAME
+    chmod 600 ~/.ssh/$KEYNAME
+    chmod 644 ~/.ssh/$KEYNAME.pub
     echo "${known-hosts-fragment.one}" >> ~/.ssh/known_hosts
     echo "${known-hosts-fragment.two}" >> ~/.ssh/known_hosts
   '';

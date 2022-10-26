@@ -10,7 +10,7 @@ hci-inputs: {
     ${machines.agent.hostname}.outputs = {
       operating-system =
         outputs.nixosConfigurations.${machines.agent.hostname}.config.system.build.toplevel;
-      effects.deploy = agentdeploy {
+      effects.deployment = agentdeploy {
         ref = hci-inputs.ref;
         nixination = outputs.apps.nixinate;
       };
