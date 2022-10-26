@@ -50,8 +50,9 @@
         agent = machines.agent;
       };
       commonlib = import ./common/lib {
-        inherit machines agent;
+        inherit machines;
         outputs = self;
+        agentdeploy = agent.deploymenteffect;
       };
     in rec {
       apps = nixinate.nixinate.${machines.common.system} self;

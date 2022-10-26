@@ -1,4 +1,4 @@
-{ machines, outputs, agent }:
+{ outputs, machines, agentdeploy }:
 hci-inputs: {
   onPush = {
     ${machines.framework.hostname}.outputs = {
@@ -9,7 +9,7 @@ hci-inputs: {
     ${machines.agent.hostname}.outputs = {
       operating-system =
         outputs.nixosConfigurations.${machines.agent.hostname}.config.system.build.toplevel;
-      effects.deploy = agent.deployeffect {
+      effects.deploy = agentdeploy {
         ref = hci-inputs.ref;
         nixination = outputs.apps.nixinate;
       };
