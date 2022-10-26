@@ -1,4 +1,4 @@
-{ outputs, machines, agentdeploy }:
+{ outputs, machines, agentdeploy, agentdeploy2 }:
 hci-inputs: {
   onPush = {
     ${machines.framework.hostname}.outputs = {
@@ -14,6 +14,7 @@ hci-inputs: {
         ref = hci-inputs.ref;
         nixination = outputs.apps.nixinate;
       };
+      effects.deployment2 = agentdeploy2 { ref = hci-inputs.ref; };
     };
     dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
   };
