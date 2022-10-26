@@ -49,7 +49,7 @@
         lib = nixpkgs.lib;
         agent = machines.agent;
       };
-      commonlib = import ./common/lib {
+      util = import ./common/util.nix {
         inherit machines;
         outputs = self;
         agentdeploy = agent.deploymenteffect;
@@ -57,12 +57,12 @@
     in rec {
       apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations = commonlib.osForAll [ framework agent ];
+      nixosConfigurations = util.osForAll [ framework agent ];
 
       devShells.${machines.framework.system}.homeshell = framework.homeshell;
 
-      checks.${machines.common.system}.lint = commonlib.lint;
+      checks.${machines.common.system}.lint = util.lint;
 
-      herculesCI = commonlib.herc;
+      herculesCI = util.herc;
     };
 }
