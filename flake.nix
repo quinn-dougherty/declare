@@ -59,7 +59,8 @@
 
       nixosConfigurations = util.osForAll [ framework agent ];
 
-      devShells.${machines.framework.system}.homeshell = framework.homeshell;
+      devShells.${framework.system}."${framework.hostname}-homeshell" =
+        framework.homeshell;
 
       checks.${machines.common.system}.lint = util.lint;
 

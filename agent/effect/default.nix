@@ -1,11 +1,14 @@
 { ref, agent, nixination }:
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
-  effectScript = "${nixination.${agent.hostname}.program}";
-  inputs = [ nixination.${agent.hostname}.program flock ];
-  # this references secrets.json on your agent
-  secretsMap = { "default-ssh" = "default-ssh"; };
-  # replace this with the appropriate line from ~/.ssh/known_hosts
+  effectScript = ''
+    mkdir -p flockpath
+    cp ${util-linux}/bin/flock flockpath/flock
+    export PATH=$PATH:flockpath
+    ${nixination.${agent.hostname}.program}
+  '';
+  inputs = [ util-linux ];
+  secretsMap.default-ssh = "default-ssh";
   userSetupScript = ''
     writeSSHKey default-ssh ~/.ssh/herc-default-id_rsa
     cat >>~/.ssh/known_hosts <<EOF
@@ -13,6 +16,6 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
     EOF
   '';
 
-  # replace with hostname or ip address for ssh
+  # This is directly from docs, but is causing deployment to break.
   # ssh.destination = agent.ip;
 })

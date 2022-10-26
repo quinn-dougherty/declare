@@ -6,7 +6,6 @@ let
   };
 in {
   herc = import ./herc.nix { inherit outputs machines agentdeploy; };
-  osForAll = operating-systems:
-    builtins.listToAttrs (map osFor operating-systems);
+  osForAll = machines: builtins.listToAttrs (map osFor machines);
   lint = with machines; import ./lint.nix { inherit common; };
 }
