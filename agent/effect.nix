@@ -1,9 +1,7 @@
-{ ref, agent }:
+{ ref, agent, nixination }:
 with agent.pkgs;
 effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
-  effectScript = ''
-    nix run .#apps.nixinate.${agent.hostname}
-  '';
+  effectScript = nixination.herc-agent;
 
   # this references secrets.json on your agent
   secretsMap = { "default-ssh" = "default-ssh"; };

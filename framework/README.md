@@ -1,5 +1,7 @@
 # Framework (daily driver)
 
+![qd@fw neofetch](/repository/framework/neofetch.png?raw=true "qd@fw neofetch")
+
 Includes:
 
 - `xmonad` and `xmobar` config

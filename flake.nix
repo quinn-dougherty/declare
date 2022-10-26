@@ -36,20 +36,19 @@
     , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate
     , python-on-nix, ... }:
     let
-      lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable python-on-nix hercules-ci-effects;
       };
     in with machines; rec {
       apps = nixinate.nixinate.${common.system} self;
       nixosConfigurations = {
-        ${framework.hostname} = lib.nixosSystem {
+        ${framework.hostname} = nixpkgs.lib.nixosSystem {
           system = framework.system;
           modules = import ./framework/modules.nix {
             inherit framework nixos-hardware home-manager nix-doom-emacs;
           };
         };
-        ${agent.hostname} = lib.nixosSystem {
+        ${agent.hostname} = nixpkgs.lib.nixosSystem {
           system = agent.system;
           modules =
             import ./agent/modules.nix { inherit agent hercules-ci-agent; };
@@ -80,7 +79,7 @@
               operating-system =
                 self.nixosConfigurations.${agent.hostname}.config.system.build.toplevel;
               effects.deployment =
-                import ./agent/effect.nix { inherit ref agent; };
+                import ./agent/effect.nix { inherit ref agent; nixination = self.apps.nixinate; };
             };
             dotfiles-lint.outputs.check = self.checks.${common.system}.lint;
           };

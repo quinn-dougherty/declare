@@ -1,4 +1,4 @@
-# Herc CI agent
+# [Herc CI agent](https://docs.hercules-ci.com/hercules-ci-agent/)
 
 I began with a starter image for a digital ocean droplet, found [here](https://justinas.org/nixos-in-the-cloud-step-by-step-part-1)
 
