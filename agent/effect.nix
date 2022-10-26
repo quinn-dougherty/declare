@@ -11,10 +11,10 @@ effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
   userSetupScript = ''
     writeSSHKey ssh
     cat >>~/.ssh/known_hosts <<EOF
-    ${agent.host} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgl+QJ+NlZG22AASEkWHv+ihYdLzpLMUzbNG/MJb7ei
+    ${agent.ip} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgl+QJ+NlZG22AASEkWHv+ihYdLzpLMUzbNG/MJb7ei
     EOF
   '';
 
   # replace with hostname or ip address for ssh
-  # ssh.destination = agent.host;
+  # ssh.destination = agent.ip;
 })
