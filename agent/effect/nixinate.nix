@@ -1,3 +1,4 @@
+# Defunct, in favor of `effects.runNixOS`
 { ref, agent, nixination }:
 let
   known-hosts-fragment = with agent;

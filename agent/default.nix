@@ -4,10 +4,10 @@ agent // rec {
     system = agent.system;
     modules = import ./modules.nix { inherit agent hercules-ci-agent; };
   };
-  deploymenteffect = { ref, nixination }:
+  deploymenteffect-nixinate = { ref, nixination }:
     import ./effect/nixinate.nix { inherit ref agent nixination; };
-  deploymenteffect2 = { ref }:
-    import ./effect/run.nix {
+  deploymenteffect = { ref }:
+    import ./effect {
       inherit ref agent;
       agent-os = operatingsystem;
     };

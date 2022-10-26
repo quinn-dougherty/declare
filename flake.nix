@@ -53,7 +53,6 @@
         inherit machines;
         outputs = self;
         agentdeploy = agent.deploymenteffect;
-        agentdeploy2 = agent.deploymenteffect2;
       };
     in {
       apps = nixinate.nixinate.${machines.common.system} self;
