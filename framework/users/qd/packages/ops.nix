@@ -2,6 +2,9 @@
 with pkgs; [
   pass
 
+  maestral
+  maestral-gui
+
   firefox
   brave
   nyxt
