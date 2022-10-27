@@ -1,6 +1,6 @@
 # [Herc CI agent](https://docs.hercules-ci.com/hercules-ci-agent/)
 
-I began with a starter image for a digital ocean droplet, found [here](https://justinas.org/nixos-in-the-cloud-step-by-step-part-1)
+I began with a starter image for a digital ocean droplet, found [here](https://justinas.org/nixos-in-the-cloud-step-by-step-part-1).
 
 ```nix
 { pkgs ? import <nixpkgs> { } }:
@@ -13,4 +13,4 @@ in
 
 I then built out from `nixos-generate-config` on the box and enabled the hercules agent.
 
-I deploy with [`nixinate`](https://github.commatthewcroughan/nixinate).
+I deploy with [`nixinate`](https://github.commatthewcroughan/nixinate) when I would like to do so manually, otherwise I use the `runNixOS` function from `hercules-ci-effects`.
