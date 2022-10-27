@@ -1,7 +1,7 @@
 { pkgs }:
 with pkgs; [
   # Gaming
-  # factorio
+  factorio
   lutris
   vulkan-tools
   vulkan-loader

@@ -51,7 +51,7 @@
 
 (after! rescript-mode
 	(setq lsp-rescript-server-command
-	      '("node" "/home/qd/Dropbox/dotfiles/users/qd/rescript-vscode/server/out/server.js" "--stdio"))
+	      '("node" "/home/qd/Dropbox/dotfiles/framework/users/qd/rescript-vscode/server/out/server.js" "--stdio"))
 	;; Tell `lsp-mode` about the `rescript-vscode` LSP server
 	(require 'lsp-rescript)
 	;; Enable `lsp-mode` in rescript-mode buffers

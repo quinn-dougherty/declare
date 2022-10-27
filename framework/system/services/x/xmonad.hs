@@ -15,7 +15,7 @@ import           XMonad.Util.Run           (spawnPipe)
 
 terminalEmulator = "st"
 xmobarFGColor = "yellow"
-unfocusedWindowOpacity = 0.825
+unfocusedWindowOpacity = 0.775
 
 compiledConfig = printf "xmonad-%s-%s" arch os
 
@@ -42,7 +42,8 @@ myConfig xmproc = docks def
     } `additionalKeys`
     [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
     , ((mod4Mask, xK_q), restart "xmonad" True)
-    , ((mod4Mask,xK_r), compileRestart True)
+    , ((mod4Mask .|. shiftMask, xK_e), spawn "emacs")
+    , ((mod4Mask .|. shiftMask, xK_w), spawn "firefox")
     ]
 
 main = do
