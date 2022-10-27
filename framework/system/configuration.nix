@@ -126,6 +126,7 @@ with framework; {
   };
 
   security.audit.enable = true;
+  sops = import ./sops-secrets.nix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
