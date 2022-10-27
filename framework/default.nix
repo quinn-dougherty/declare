@@ -1,9 +1,9 @@
-{ lib, framework, nixos-hardware, home-manager, nix-doom-emacs }:
+{ lib, framework, nixos-hardware, home-manager, sops-nix, nix-doom-emacs }:
 framework // {
   operatingsystem = lib.nixosSystem {
     system = framework.system;
     modules = import ./modules.nix {
-      inherit framework nixos-hardware home-manager nix-doom-emacs;
+      inherit framework nixos-hardware home-manager sops-nix nix-doom-emacs;
     };
   };
   homeshell = with framework;

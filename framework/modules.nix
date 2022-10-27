@@ -1,9 +1,10 @@
-{ framework, nixos-hardware, home-manager, nix-doom-emacs }:
+{ framework, nixos-hardware, home-manager, sops-nix, nix-doom-emacs }:
 
 [
   (import ./system/configuration.nix { inherit framework; })
   nixos-hardware.nixosModules.framework
   home-manager.nixosModules.home-manager
+  sops-nix.nixosModules.sops
   {
     home-manager = {
       useGlobalPkgs = true;

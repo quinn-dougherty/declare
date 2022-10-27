@@ -460,6 +460,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-22_05": {
+      "locked": {
+        "lastModified": 1666488099,
+        "narHash": "sha256-DANs2epN5QgvxWzH7xF3dzb4WE0lEuMLrMEu/vPmQxw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f9115594149ebcb409a42e303bec4956814a8419",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1666350917,
@@ -642,7 +658,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
-        "python-on-nix": "python-on-nix"
+        "python-on-nix": "python-on-nix",
+        "sops-nix": "sops-nix"
       }
     },
     "rotate-text": {
@@ -674,6 +691,27 @@
       "original": {
         "owner": "sensorflo",
         "repo": "sln-mode",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-22_05": "nixpkgs-22_05"
+      },
+      "locked": {
+        "lastModified": 1666499473,
+        "narHash": "sha256-q1eFnBFL0kHgcnUPeKagw3BfbE/5sMJNGL2E2AR+a2M=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "1b5f9512a265f0c9687dbff47893180f777f4809",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },

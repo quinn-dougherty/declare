@@ -5,4 +5,7 @@ with pkgs; [
   # morph
   heroku
   hci
+  # Secrets
+  sops
+  age
 ]

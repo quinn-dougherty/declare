@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,14 +37,14 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate
+    , sops-nix, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate
     , python-on-nix }:
     let
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable python-on-nix hercules-ci-effects;
       };
       framework = import ./framework {
-        inherit nixos-hardware home-manager nix-doom-emacs;
+        inherit nixos-hardware home-manager sops-nix nix-doom-emacs;
         lib = nixpkgs.lib;
         framework = machines.framework;
       };
