@@ -1,3 +1,4 @@
 backups
 .env
 result
+.sops.yaml.swp

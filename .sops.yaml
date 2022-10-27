@@ -4,8 +4,10 @@
 # for a more complex example.
 keys:
   - &admin_qd 698786DF39813249062DE66C20A700485D3B1EEE
+  - &server_herc-agent dd0a6d2550d4203c82bce8d79af5b6bdaf3b5345
 creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
+  - path_regex: common/secrets/[^/]+\.yaml$
     key_groups:
       - pgp:
           - *admin_qd
+          - *server_herc-agent

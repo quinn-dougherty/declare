@@ -53,7 +53,7 @@ with framework; {
   hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = let pubkeys-path = ./../../common/pubkeys;
+  users.users = let keys-path = ./../../common/keys;
   in {
     ${username} = {
       isNormalUser = true;
@@ -63,13 +63,13 @@ with framework; {
       description = "Quinn Dougherty";
       shell = pkgs.fish;
       openssh.authorizedKeys.keyFiles = [
-        (pubkeys-path + "/id_ed25519.pub")
-        (pubkeys-path + "/id_rsa.pub")
-        (pubkeys-path + "/herc-default-id_rsa.pub")
+        (keys-path + "/id_ed25519.pub")
+        (keys-path + "/id_rsa.pub")
+        (keys-path + "/herc-default-id_rsa.pub")
       ];
     };
     root.openssh.authorizedKeys.keyFiles =
-      [ (pubkeys-path + "/herc-default-id_rsa.pub") ];
+      [ (keys-path + "/herc-default-id_rsa.pub") ];
   };
 
   environment.variables = {
@@ -126,7 +126,7 @@ with framework; {
   };
 
   security.audit.enable = true;
-  sops = import ./sops-secrets.nix;
+  sops = import ./sops.nix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
