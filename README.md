@@ -21,5 +21,4 @@ Includes
 - Daily driver: improve my secrets ergonomics with [`sops-nix`](https://github.com/Mic92/sops-nix) or `agenix`
 - Daily driver (home-manager): less stuff be imperatively managed in `~/.config`
 - New project: a [matrix](https://www.foxypossibilities.com/2018/02/04/running-matrix-synapse-on-nixos/) server
-- Add a flag to make `herc-agent.operatingsystem` an output on hercules when `ref != main`
 - Agent: [moving the store](https://nixos.wiki/wiki/Storage_optimization) to utilize extra volume.

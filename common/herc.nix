@@ -7,8 +7,13 @@ hci-inputs: {
       operating-system =
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
-    ${machines.agent.hostname}.outputs.effects.deployment =
-      agentdeploy { ref = hci-inputs.ref; };
+    ${machines.agent.hostname}.outputs = with hci-inputs;
+      if ref == "refs/heads/main" then {
+        effects.deployment = agentdeploy { inherit ref; };
+      } else {
+        operating-system =
+          outputs.nixosConfigurations.${machines.agent.hostname}.config.system.build.toplevel;
+      };
     dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
   };
 }
