@@ -22,3 +22,4 @@ Includes
 - Daily driver (home-manager): less stuff be imperatively managed in `~/.config`
 - New project: a [matrix](https://www.foxypossibilities.com/2018/02/04/running-matrix-synapse-on-nixos/) server
 - Agent: [moving the store](https://nixos.wiki/wiki/Storage_optimization) to utilize extra volume.
+- New project: home router on nixos, plus pi-hole.
