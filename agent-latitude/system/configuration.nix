@@ -2,20 +2,33 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ agent, hercules-ci-agent, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    hercules-ci-agent.nixosModules.agent-service
+  ];
+
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      min-free = ${toString (100 * 1024 * 1024)}
+      max-free = ${toString (1024 * 1024 * 1024)}
+    '';
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+    settings.auto-optimise-store = true;
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "herc-agent-latitude"; # Define your hostname.
+  networking.hostName = agent.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -26,7 +39,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = agent.timezone;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
@@ -68,24 +81,28 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.herc-admin = {
-    isNormalUser = true;
-    description = "Hercules Administrator";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    #  vim
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC56bCs35tjxJuOPDlYxwnrCuHUWXz1Q2/lApV5IcmG9o08rmabhYAthQQ9NQy9uknmv74uLNYeSvjiUrp3tHE8Mdky5oPKZqWQ5ccrq4henGXmzxDPdy1AptixVdneXlJn9U/pAOqGe5xoGcMGYkTEGOKMurfDWsl/TMM6s2V+mW6EGL0ORIaRO3atrKr/OCosHNFu12+/4ZGTWTHmEeebTjA29qhYLwIBtjYqmBeiyEjfbM1glx+ymcDARTiUZtBgHthkaJrmymvkPYFESf9ulujA6TPB9CWC8BXXMzsFYqvywZ1pw7THrhQuDDQeKjr/TpDQ4jr3Pey99LXMJ/kGUufhbEOARLAK/kXPfanBkSSNc3UdE2wREJ78LWTyyw6ETqHNwwej6KJipIU5EcXBb5GchUTbfwf8V7mvU9G4fmJCznj3orKziebNf5vf2Aq9iZIwZANLChysTptj1ymJiTfFyNYGEQvjkIv/PbBwqaAuQh7KsBxzAXDN4TXdTxM= default-ssh@hercules-ci"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBAA5b5OdwoNQQUiMZ2xevGDXxEvhlxQ88C5V1EIRH2D quinnd@tutanota.com"
+  users.users = let keys-path = ./../../common/pubkeys; in {
+    $(agent.username} = {
+      isNormalUser = true;
+      description = agent.user-fullname;
+      extraGroups = [ "networkmanager" "wheel" ];
+      packages = with agent.pkgs;
+        [
+          firefox
+        ];
+      openssh.authorizedKeys.keyFiles = [
+        (keys-path + "/id_ed25519.pub")
+        (keys-path + "/herc-default-id_rsa.pub")
+      ];
+    };
+    root.openssh.authorizedKeys.keyFiles = [
+      (keys-path + "/herc-default-id_rsa.pub")
     ];
   };
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "herc-admin";
+  services.xserver.displayManager.autoLogin.user = agent.username;
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -96,7 +113,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with agent.pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
@@ -114,7 +131,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.avahi.enable = true; 
+  services.avahi.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
