@@ -6,12 +6,13 @@ timezone = "America/New_York"
 hostname = "fw"
 username = "qd"
 
-[agent-do]
-hostname = "herc-agent"
+[agent-digitalocean]
+hostname = "herc-agent-digitalocean"
 username = "herc-admin"
 volume = "volume-nyc3-01"
 ip = "142.93.190.80"
 
 [agent-latitude]
-hostname = "herc-agent"
+hostname = "herc-agent-latitude"
 username = "herc-admin"
+ip = ""

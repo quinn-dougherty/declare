@@ -1,8 +1,9 @@
-{ lib, agent, hercules-ci-agent }:
+{ lib, agent, nixos-hardware, hercules-ci-agent }:
 let
   os = lib.nixosSystem {
     system = agent.system;
-    modules = import ./modules.nix { inherit agent hercules-ci-agent; };
+    modules =
+      import ./modules.nix { inherit agent nixos-hardware hercules-ci-agent; };
   };
 in agent // {
   operatingsystem = os;

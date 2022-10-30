@@ -14,3 +14,7 @@ in
 I then built out from `nixos-generate-config` on the box and enabled the hercules agent.
 
 I deploy with [`nixinate`](https://github.commatthewcroughan/nixinate) when I would like to do so manually, otherwise I use the `runNixOS` function from `hercules-ci-effects`.
+
+## Imperative assumptions
+
+This code currently assumes some imperative steps have been taken, like copying over a `hercules-ci-agent/secrets` directory manually.

@@ -44,10 +44,10 @@
         lib = nixpkgs.lib;
         framework = machines.framework;
       };
-      agent-do = import ./agent-do {
+      agent-digitalocean = import ./agent-digitalocean {
         inherit hercules-ci-agent;
         lib = nixpkgs.lib;
-        agent = machines.agent;
+        agent = machines.agent-digitalocean;
       };
       agent-latitude = import ./agent-latitude {
         inherit hercules-ci-agent nixos-hardware;
@@ -57,12 +57,13 @@
       util = import ./common/util.nix {
         inherit machines;
         outputs = self;
-        agentdeploy = agent-do.deploymenteffect;
+        agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
       };
     in {
       apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations = util.osForAll [ framework agent-do agent-latitude ];
+      nixosConfigurations =
+        util.osForAll [ framework agent-digitalocean agent-latitude ];
 
       devShells.${framework.system}."${framework.hostname}-homeshell" =
         framework.homeshell;

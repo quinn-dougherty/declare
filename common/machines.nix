@@ -25,13 +25,13 @@ in {
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
   };
-  agent-do = rec {
-    hostname = machines.agent-do.hostname;
-    username = machines.agent-do.username;
+  agent-digitalocean = rec {
+    hostname = machines.agent-digitalocean.hostname;
+    username = machines.agent-digitalocean.username;
     system = machines.common.system;
     timezone = machines.common.timezone;
-    ip = machines.agent-do.ip;
-    volume = machines.agent-do.volume;
+    ip = machines.agent-digitalocean.ip;
+    volume = machines.agent-digitalocean.volume;
     overlays = [ hercules-ci-effects.overlay ];
     pkgs = import nixpkgs-stable { inherit system overlays; };
   };
@@ -40,7 +40,7 @@ in {
     username = machines.agent-latitude.username;
     system = machines.common.system;
     timezone = machines.common.timezone;
-    ip = "";
+    ip = machines.agent-latitude.ip;
     overlays = [ hercules-ci-effects.overlay ];
     pkgs = import nixpkgs-stable { inherit system overlays; };
   };
