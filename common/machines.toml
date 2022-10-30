@@ -10,12 +10,12 @@ user-fullname = "Quinn Dougherty"
 [agent-digitalocean]
 hostname = "herc-agent-digitalocean"
 username = "herc-admin"
-user-fullname = "Hercules Administrator (Digital Ocean)"
+user-fullname = "Hercules Administrator Digital Ocean"
 volume = "volume-nyc3-01"
 ip = "142.93.190.80"
 
 [agent-latitude]
 hostname = "herc-agent-latitude"
 username = "herc-admin"
-user-fullname = "Hercules Administrator (Dell Latitude)"
+user-fullname = "Hercules Administrator Latitude"
 ip = "192.168.1.189"
