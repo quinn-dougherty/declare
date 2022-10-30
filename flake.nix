@@ -44,20 +44,25 @@
         lib = nixpkgs.lib;
         framework = machines.framework;
       };
-      agent = import ./agent {
+      agent-do = import ./agent-do {
         inherit hercules-ci-agent;
         lib = nixpkgs.lib;
         agent = machines.agent;
       };
+      agent-latitude = import ./agent-latitude {
+        inherit hercules-ci-agent nixos-hardware;
+        lib = nixpkgs.lib;
+        agent = machines.agent-latitude;
+      };
       util = import ./common/util.nix {
         inherit machines;
         outputs = self;
-        agentdeploy = agent.deploymenteffect;
+        agentdeploy = agent-do.deploymenteffect;
       };
     in {
       apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations = util.osForAll [ framework agent ];
+      nixosConfigurations = util.osForAll [ framework agent-do agent-latitude ];
 
       devShells.${framework.system}."${framework.hostname}-homeshell" =
         framework.homeshell;

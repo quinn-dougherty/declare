@@ -25,13 +25,22 @@ in {
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
   };
-  agent = rec {
-    hostname = machines.agent.hostname;
-    username = machines.agent.username;
+  agent-do = rec {
+    hostname = machines.agent-do.hostname;
+    username = machines.agent-do.username;
     system = machines.common.system;
     timezone = machines.common.timezone;
-    ip = machines.agent.ip;
-    volume = machines.agent.volume;
+    ip = machines.agent-do.ip;
+    volume = machines.agent-do.volume;
+    overlays = [ hercules-ci-effects.overlay ];
+    pkgs = import nixpkgs-stable { inherit system overlays; };
+  };
+  agent-latitude = rec {
+    hostname = machines.agent-latitude.hostname;
+    username = machines.agent-latitude.username;
+    system = machines.common.system;
+    timezone = machines.common.timezone;
+    ip = "";
     overlays = [ hercules-ci-effects.overlay ];
     pkgs = import nixpkgs-stable { inherit system overlays; };
   };
