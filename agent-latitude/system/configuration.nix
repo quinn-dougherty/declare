@@ -78,25 +78,25 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = let keys-path = ./../../common/pubkeys; in {
+  users.users = let keys-path = ./../../common/pubkeys;
+  in {
     ${agent.username} = {
       isNormalUser = true;
       description = agent.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
-      packages = with agent.pkgs;
-        [
-          firefox
-        ];
+      packages = with agent.pkgs; [ firefox ];
       openssh.authorizedKeys.keyFiles = [
-        (keys-path + "/id_ed25519.pub")
-        (keys-path + "/herc-default-id_rsa.pub")
+        # (keys-path + "/id_ed25519.pub")
+        # (keys-path + "/herc-default-id_rsa.pub")
+        ./../../common/authorized_keys
       ];
     };
     root.openssh.authorizedKeys.keyFiles = [
-      (keys-path + "/herc-default-id_rsa.pub")
+      # (keys-path + "/herc-default-id_rsa.pub")
+      ./../../common/authorized_keys
     ];
   };
 
@@ -130,7 +130,12 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    # require public key authentication for better security
+    passwordAuthentication = false;
+    kbdInteractiveAuthentication = false;
+  };
   services.avahi.enable = true;
   services.hercules-ci-agent = {
     enable = true;
