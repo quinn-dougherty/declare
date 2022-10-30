@@ -8,7 +8,7 @@ hci-inputs: {
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
     ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
-      if ref == "refs/heads/main" then {
+      if false then { # ref == "refs/heads/main" then {
         effects.deployment = agent-digitalocean-deploy { inherit ref; };
       } else {
         operating-system =
