@@ -58,6 +58,7 @@
         inherit machines;
         outputs = self;
         agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
+        agent-latitude-deploy = agent-latitude.deploymenteffect;
       };
     in {
       apps = nixinate.nixinate.${machines.common.system} self;
