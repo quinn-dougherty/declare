@@ -12,5 +12,5 @@
       hermetic = true;
     };
   }
-  nixos-hardware.nixosModules.dell-latitude-3480
+  nixos-hardware.nixosModules.dell-latitude-3480 # This is actually a 3340, but why split hairs
 ]

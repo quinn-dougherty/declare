@@ -2,104 +2,101 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, hercules-ci-agent }: {
-  imports = builtins.concatLists [
-    (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
-      ./do-userdata.nix)
-    [
-      ./../../common/cachix.nix
-      # ./hardware-configuration.nix
-      hercules-ci-agent.nixosModules.agent-service
-    ]
-  ];
+{ config, pkgs, ... }:
 
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      min-free = ${toString (100 * 1024 * 1024)}
-      max-free = ${toString (1024 * 1024 * 1024)}
-    '';
-    gc = {
-      automatic = true;
-      dates = "weekly";
-    };
-    settings.auto-optimise-store = true;
-  };
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    # efiSupport = true;
-    # efiInstallAsRemovable = true;
-    # Define on which hard drive you want to install Grub.
-    device = "nodev"; # "/dev/sda"; # or "nodev" for efi only
-  };
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  swapDevices = [{
-    device = "/var/swapfile";
-    size = 4096;
-  }];
-
-  networking.hostName = agent.hostname; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # Set your time zone.
-  time.timeZone = agent.timezone;
+  networking.hostName = "herc-agent-latitude"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "America/New_York";
+
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
+  i18n.defaultLocale = "en_US.utf8";
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = let pubkeys-path = ./../../common/pubkeys;
-  in {
-    ${agent.username} = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      openssh.authorizedKeys.keyFiles = [
-        (pubkeys-path + "/id_ed25519.pub")
-        (pubkeys-path + "/herc-default-id_rsa.pub")
-      ];
-    };
-    root.openssh.authorizedKeys.keyFiles =
-      [ (pubkeys-path + "/herc-default-id_rsa.pub") ];
+  users.users.herc-admin = {
+    isNormalUser = true;
+    description = "Hercules Administrator";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      firefox
+    #  thunderbird
+    #  vim
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC56bCs35tjxJuOPDlYxwnrCuHUWXz1Q2/lApV5IcmG9o08rmabhYAthQQ9NQy9uknmv74uLNYeSvjiUrp3tHE8Mdky5oPKZqWQ5ccrq4henGXmzxDPdy1AptixVdneXlJn9U/pAOqGe5xoGcMGYkTEGOKMurfDWsl/TMM6s2V+mW6EGL0ORIaRO3atrKr/OCosHNFu12+/4ZGTWTHmEeebTjA29qhYLwIBtjYqmBeiyEjfbM1glx+ymcDARTiUZtBgHthkaJrmymvkPYFESf9ulujA6TPB9CWC8BXXMzsFYqvywZ1pw7THrhQuDDQeKjr/TpDQ4jr3Pey99LXMJ/kGUufhbEOARLAK/kXPfanBkSSNc3UdE2wREJ78LWTyyw6ETqHNwwej6KJipIU5EcXBb5GchUTbfwf8V7mvU9G4fmJCznj3orKziebNf5vf2Aq9iZIwZANLChysTptj1ymJiTfFyNYGEQvjkIv/PbBwqaAuQh7KsBxzAXDN4TXdTxM= default-ssh@hercules-ci"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBAA5b5OdwoNQQUiMZ2xevGDXxEvhlxQ88C5V1EIRH2D quinnd@tutanota.com"
+    ];
   };
+
+  # Enable automatic login for the user.
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "herc-admin";
+
+  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with agent.pkgs; [
+  environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
@@ -116,16 +113,11 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services = {
-    openssh.enable = true;
-    hercules-ci-agent = {
-      enable = true;
-      settings.concurrentTasks = "auto";
-    };
-    do-agent.enable = true;
-  };
+  services.openssh.enable = true;
+  services.avahi.enable = true; 
+
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 443 ];
+  # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -137,4 +129,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
+
 }

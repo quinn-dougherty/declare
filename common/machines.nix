@@ -7,6 +7,7 @@ in {
   framework = rec {
     hostname = machines.framework.hostname;
     username = machines.framework.username;
+    user-fullname = machines.framework.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
     drv-name-prefix = "${username}@${hostname}:";
@@ -28,6 +29,7 @@ in {
   agent-digitalocean = rec {
     hostname = machines.agent-digitalocean.hostname;
     username = machines.agent-digitalocean.username;
+    user-fullname = machines.agent-digitalocean.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
     ip = machines.agent-digitalocean.ip;
@@ -38,6 +40,7 @@ in {
   agent-latitude = rec {
     hostname = machines.agent-latitude.hostname;
     username = machines.agent-latitude.username;
+    user-fullname = machines.agent-latitude.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
     ip = machines.agent-latitude.ip;

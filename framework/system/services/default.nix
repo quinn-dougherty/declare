@@ -54,6 +54,7 @@
 
   # Enable the OpenSSH daemon.
   openssh.enable = true;
+  avahi.enable = true;
 
   elasticsearch = {
     package = pkgs.elasticsearch7;
