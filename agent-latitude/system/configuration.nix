@@ -82,7 +82,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = let keys-path = ./../../common/pubkeys; in {
-    $(agent.username} = {
+    ${agent.username} = {
       isNormalUser = true;
       description = agent.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
@@ -132,9 +132,13 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.avahi.enable = true;
+  services.hercules-ci-agent = {
+    enable = true;
+    settings.concurrentTasks = "auto";
+  };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 443 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
