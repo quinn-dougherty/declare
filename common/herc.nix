@@ -1,4 +1,4 @@
-{ outputs, machines, agentdeploy }:
+{ outputs, machines, agent-digitalocean-deploy, agent-latitude-deploy }:
 hci-inputs: {
   onPush = {
     ${machines.framework.hostname}.outputs = {
@@ -7,12 +7,19 @@ hci-inputs: {
       operating-system =
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
-    ${machines.agent.hostname}.outputs = with hci-inputs;
-      if ref == "refs/heads/main" then {
-        effects.deployment = agentdeploy { inherit ref; };
+    ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
+      if false then { # ref == "refs/heads/main" then {
+        effects.deployment = agent-digitalocean-deploy { inherit ref; };
       } else {
         operating-system =
-          outputs.nixosConfigurations.${machines.agent.hostname}.config.system.build.toplevel;
+          outputs.nixosConfigurations.${machines.agent-digitalocean.hostname}.config.system.build.toplevel;
+      };
+    ${machines.agent-latitude.hostname}.outputs = with hci-inputs;
+      if ref == "refs/heads/main" then {
+        effects.deployment = agent-latitude-deploy { inherit ref; };
+      } else {
+        operating-system =
+          outputs.nixosConfigurations.${machines.agent-latitude.hostname}.config.system.build.toplevel;
       };
     dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
   };

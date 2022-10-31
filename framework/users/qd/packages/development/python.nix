@@ -9,7 +9,7 @@ with pkgs; [
       "hypothesis" = "6.20.1";
     };
   }).dev
-  poetry
+  # poetry  # update flake.lock pin job is failing
   mypy
   black
 ]

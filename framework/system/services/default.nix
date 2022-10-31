@@ -1,5 +1,7 @@
 { pkgs }: {
-  fprintd.enable = true; # for fingerprint support
+  # 1. I never use this, 2. https://github.com/NixOS/nixpkgs/issues/198038
+  # At least give it a week or so for the fix to propagate to `nixos-unstable` pin.
+  fprintd.enable = false; # for fingerprint support
 
   upower = {
     enable = true;
@@ -53,6 +55,7 @@
 
   # Enable the OpenSSH daemon.
   openssh.enable = true;
+  avahi.enable = true;
 
   elasticsearch = {
     package = pkgs.elasticsearch7;

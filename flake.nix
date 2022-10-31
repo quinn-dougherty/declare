@@ -48,20 +48,27 @@
         lib = nixpkgs.lib;
         framework = machines.framework;
       };
-      agent = import ./agent {
+      agent-digitalocean = import ./agent-digitalocean {
         inherit hercules-ci-agent;
         lib = nixpkgs.lib;
-        agent = machines.agent;
+        agent = machines.agent-digitalocean;
+      };
+      agent-latitude = import ./agent-latitude {
+        inherit hercules-ci-agent nixos-hardware;
+        lib = nixpkgs.lib;
+        agent = machines.agent-latitude;
       };
       util = import ./common/util.nix {
         inherit machines;
         outputs = self;
-        agentdeploy = agent.deploymenteffect;
+        agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
+        agent-latitude-deploy = agent-latitude.deploymenteffect;
       };
     in {
       apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations = util.osForAll [ framework agent ];
+      nixosConfigurations =
+        util.osForAll [ framework agent-digitalocean agent-latitude ];
 
       devShells.${framework.system}."${framework.hostname}-homeshell" =
         framework.homeshell;

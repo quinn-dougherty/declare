@@ -2,8 +2,8 @@
 with pkgs; [
   pass
 
-  maestral
-  maestral-gui
+  # maestral
+  # maestral-gui
 
   firefox
   brave

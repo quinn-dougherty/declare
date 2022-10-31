@@ -60,7 +60,7 @@ with framework; {
       extraGroups =
         [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
       home = "/home/" + username;
-      description = "Quinn Dougherty";
+      description = user-fullname;
       shell = pkgs.fish;
       openssh.authorizedKeys.keyFiles = [
         (keys-path + "/id_ed25519.pub")
