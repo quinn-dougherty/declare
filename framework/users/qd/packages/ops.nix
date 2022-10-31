@@ -2,6 +2,7 @@
 with pkgs; [
   pass
 
+  dropbox-cli
   # maestral
   # maestral-gui
 

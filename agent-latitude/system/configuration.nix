@@ -2,15 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, hercules-ci-agent, ... }:
+{ agent, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    hercules-ci-agent.nixosModules.agent-service
-    ./../../common/cachix.nix
-  ];
-
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -25,20 +19,29 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot/efi";
+  };
 
-  networking.hostName = agent.hostname; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = agent.hostname; # Define your hostname.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # Enable networking
+    networkmanager.enable = true;
+    # Open ports in the firewall.
+    firewall.allowedTCPPorts = [ 443 ]; # For herc
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
 
+  };
   # Set your time zone.
   time.timeZone = agent.timezone;
 
@@ -46,20 +49,47 @@
   i18n.defaultLocale = "en_US.utf8";
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services = {
+    xserver = {
+      enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+      # Enable the GNOME Desktop Environment.
+      desktopManager.gnome.enable = true;
+      displayManager = {
+        gdm.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+        # Enable automatic login for the user.
+        autoLogin = {
+          enable = true;
+          user = agent.username;
+        };
+      };
+
+      # Gnome has touchpad support by default, so we skip this.
+      # libinput.enable = true;
+
+      # Configure keymap in X11
+      layout = "us";
+      xkbVariant = "";
+    };
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    # Enable the OpenSSH daemon.
+    openssh = {
+      enable = true;
+      # require public key authentication for better security
+      passwordAuthentication = false;
+      kbdInteractiveAuthentication = false;
+    };
+    avahi.enable = true;
+    hercules-ci-agent = {
+      enable = true;
+      settings.concurrentTasks = "auto";
+    };
+
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -78,76 +108,41 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = let keys-path = ./../../common/pubkeys;
-  in {
+  users.users = {
     ${agent.username} = {
       isNormalUser = true;
       description = agent.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
-      packages = with agent.pkgs; [ firefox ];
-      openssh.authorizedKeys.keyFiles = [
-        # (keys-path + "/id_ed25519.pub")
-        # (keys-path + "/herc-default-id_rsa.pub")
-        ./../../common/authorized_keys
-      ];
+      openssh.authorizedKeys.keyFiles = [ ./../../common/authorized_keys ];
     };
-    root.openssh.authorizedKeys.keyFiles = [
-      # (keys-path + "/herc-default-id_rsa.pub")
-      ./../../common/authorized_keys
-    ];
+    root.openssh.authorizedKeys.keyFiles = [ ./../../common/authorized_keys ];
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = agent.username;
-
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
+  systemd.services = {
+    "getty@tty1".enable = false;
+    "autovt@tty1".enable = false;
+  };
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with agent.pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    curl
+  environment.systemPackages = builtins.concatLists [
+    (import ./../../common/packages/utils.nix { pkgs = agent.pkgs; })
+    (import ./../../common/packages/devops.nix { pkgs = agent.pkgs; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    # require public key authentication for better security
-    passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
+  programs = {
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
-  services.avahi.enable = true;
-  services.hercules-ci-agent = {
-    enable = true;
-    settings.concurrentTasks = "auto";
-  };
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 443 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

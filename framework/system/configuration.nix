@@ -4,11 +4,6 @@
 
 { framework, ... }:
 with framework; {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./../../common/cachix.nix
-  ];
-
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
