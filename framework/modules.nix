@@ -8,9 +8,12 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users.${framework.username} =
-        import ./users/qd/home.nix { inherit framework nix-doom-emacs; };
-      # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
+      users = {
+        ${framework.username} =
+          import ./users/qd/home.nix { inherit framework nix-doom-emacs; };
+        # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
+        root = import ./users/root/home.nix { inherit framework; };
+      };
     };
   }
 ]
