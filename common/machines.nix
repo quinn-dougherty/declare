@@ -12,29 +12,16 @@ in {
     timezone = machines.common.timezone;
     drv-name-prefix = "${username}@${hostname}:";
     overlays = let
-      factorioOverlay = final: prev: {
+      factorio-overlay = final: prev: {
         factorio = prev.factorio.override {
           username = "quinnd";
           token = "\${FACTORIO_KEY}";
         };
       };
-      pythonOnNixOverlay = final: prev: {
+      python-on-nix-overlay = final: prev: {
         python-on-nix = python-on-nix.lib.${system};
       };
-      pythonDbusOverlay = (final: prev: {
-        python3 = prev.python3.override {
-          packageOverrides = self: super: {
-            # https://github.com/NixOS/nixpkgs/issues/197408
-            dbus-next = super.dbus-next.overridePythonAttrs (old: {
-              checkPhase = builtins.replaceStrings [ "not test_peer_interface" ]
-                [
-                  "not test_peer_interface and not test_tcp_connection_with_forwarding"
-                ] old.checkPhase;
-            });
-          };
-        };
-      });
-    in [ factorioOverlay pythonOnNixOverlay pythonDbusOverlay ];
+    in [ factorio-overlay python-on-nix-overlay ];
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
