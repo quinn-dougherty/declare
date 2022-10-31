@@ -1,7 +1,7 @@
 { pkgs }:
 
 let
-  utils = import ./../../common/utils.nix { inherit pkgs; };
+  utils = import ./../../../../common/packages/utils.nix { inherit pkgs; };
   ops = import ./ops.nix { inherit pkgs; };
   chat = import ./chat.nix { inherit pkgs; };
   desktop = import ./x.nix { inherit pkgs; };

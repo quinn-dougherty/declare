@@ -13,8 +13,8 @@ with framework; {
 
   home = {
     packages = builtins.concatLists [
-      (import ../common/utils.nix { inherit pkgs; })
-      (import ../common/devops.nix { inherit pkgs; })
+      (import ./../../../common/packages/utils.nix { inherit pkgs; })
+      (import ./../../../common/packages/devops.nix { inherit pkgs; })
     ];
     username = "root";
     homeDirectory = "/root";
