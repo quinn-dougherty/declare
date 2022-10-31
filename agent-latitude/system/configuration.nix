@@ -15,15 +15,13 @@
   };
 
   networking = {
-    hostName = agent.hostname; # Define your hostname.
+    hostName = agent.hostname;
     networkmanager.enable = true;
   };
   time.timeZone = agent.timezone;
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
-  # Enable the X11 windowing system.
   services = {
     xserver.displayManager.autoLogin = {
       enable = true;
@@ -31,13 +29,11 @@
     };
     fwupd.enable = true;
 
-    # Enable CUPS to print documents.
     printing.enable = true;
 
     avahi.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     ${agent.username} = {
       isNormalUser = true;
@@ -49,14 +45,6 @@
       [ ./../../common/keys/authorized_keys ];
   };
 
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services = {
-    "getty@tty1".enable = false;
-    "autovt@tty1".enable = false;
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   programs = {
     mtr.enable = true;
     gnupg.agent = {
