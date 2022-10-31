@@ -44,7 +44,7 @@ with framework; {
   services = import ./services { inherit pkgs; };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = let pubkeys-path = ./../../common/pubkeys;
+  users.users = let keys-path = ./../../common/keys;
   in {
     ${username} = {
       isNormalUser = true;
@@ -54,13 +54,13 @@ with framework; {
       description = user-fullname;
       shell = pkgs.fish;
       openssh.authorizedKeys.keyFiles = [
-        (pubkeys-path + "/id_ed25519.pub")
-        (pubkeys-path + "/id_rsa.pub")
-        (pubkeys-path + "/herc-default-id_rsa.pub")
+        (keys-path + "/id_ed25519.pub")
+        (keys-path + "/id_rsa.pub")
+        (keys-path + "/herc-default-id_rsa.pub")
       ];
     };
     root.openssh.authorizedKeys.keyFiles =
-      [ (pubkeys-path + "/herc-default-id_rsa.pub") ];
+      [ (keys-path + "/herc-default-id_rsa.pub") ];
   };
 
   environment.variables = {

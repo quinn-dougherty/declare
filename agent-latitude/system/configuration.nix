@@ -97,9 +97,10 @@
       isNormalUser = true;
       description = agent.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
-      openssh.authorizedKeys.keyFiles = [ ./../../common/authorized_keys ];
+      openssh.authorizedKeys.keyFiles = [ ./../../common/keys/authorized_keys ];
     };
-    root.openssh.authorizedKeys.keyFiles = [ ./../../common/authorized_keys ];
+    root.openssh.authorizedKeys.keyFiles =
+      [ ./../../common/keys/authorized_keys ];
   };
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
