@@ -17,5 +17,7 @@
   nixos-hardware.nixosModules.dell-latitude-3340
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service
-  ./../common/cachix.nix
+  ./../common/modules/cachix
+  ./../common/modules/sound.nix
+  ./../common/modules/hercules.nix
 ]

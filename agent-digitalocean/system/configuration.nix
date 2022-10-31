@@ -7,7 +7,7 @@
     (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
       ./do-userdata.nix)
     [
-      ./../../common/cachix.nix
+      ./../../common/modules/cachix
       ./hardware-configuration.nix
       hercules-ci-agent.nixosModules.agent-service
     ]

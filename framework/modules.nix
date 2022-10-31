@@ -3,7 +3,7 @@
 [
   (import ./system/configuration.nix { inherit framework; })
   ./system/hardware-configuration.nix
-  ./../common/cachix.nix
+  ./../common/modules/cachix
   nixos-hardware.nixosModules.framework
   home-manager.nixosModules.home-manager
   {
@@ -18,4 +18,5 @@
       };
     };
   }
+  ./../common/modules/sound.nix
 ]

@@ -43,10 +43,6 @@ with framework; {
 
   services = import ./services { inherit pkgs; };
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = let pubkeys-path = ./../../common/pubkeys;
   in {
