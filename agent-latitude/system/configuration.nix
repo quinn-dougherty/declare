@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, hercules-ci-agent, ... }:
+{ agent, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    hercules-ci-agent.nixosModules.agent-service
-    ./../../common/cachix.nix
-  ];
+  # imports = [ # Include the results of the hardware scan.
+  #   ./hardware-configuration.nix
+  #   hercules-ci-agent.nixosModules.agent-service
+  #   ./../../common/cachix.nix
+  # ];
 
   nix = {
     extraOptions = ''
