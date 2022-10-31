@@ -266,7 +266,7 @@
         "flake-parts": "flake-parts",
         "nix-darwin": "nix-darwin",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-stable"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix"
       },
@@ -287,7 +287,7 @@
     "hercules-ci-effects": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-stable"
         ]
       },
       "locked": {
