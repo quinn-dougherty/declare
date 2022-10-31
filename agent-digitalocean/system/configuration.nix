@@ -40,13 +40,9 @@
     ${agent.username} = {
       isNormalUser = true;
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      openssh.authorizedKeys.keyFiles = [
-        (keys-path + "/id_ed25519.pub")
-        (keys-path + "/herc-default-id_rsa.pub")
-      ];
+      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
     };
-    root.openssh.authorizedKeys.keyFiles =
-      [ (keys-path + "/herc-default-id_rsa.pub") ];
+    root.openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are

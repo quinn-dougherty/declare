@@ -8,8 +8,10 @@
   # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot/efi";
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
   };
 
   networking = {
@@ -23,29 +25,10 @@
 
   # Enable the X11 windowing system.
   services = {
-    xserver = {
+    xserver.displayManager.autoLogin = {
       enable = true;
-
-      # Enable the GNOME Desktop Environment.
-      desktopManager.gnome.enable = true;
-      displayManager = {
-        gdm.enable = true;
-
-        # Enable automatic login for the user.
-        autoLogin = {
-          enable = true;
-          user = agent.username;
-        };
-      };
-
-      # Gnome has touchpad support by default, so we skip this.
-      # libinput.enable = true;
-
-      # Configure keymap in X11
-      layout = "us";
-      xkbVariant = "";
+      user = agent.username;
     };
-
     fwupd.enable = true;
 
     # Enable CUPS to print documents.
@@ -71,8 +54,6 @@
     "getty@tty1".enable = false;
     "autovt@tty1".enable = false;
   };
-  # Allow unfree packages
-  # nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
