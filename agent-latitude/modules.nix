@@ -1,4 +1,4 @@
-{ agent, hercules-ci-agent, nixos-hardware }:
+{ agent, nixos-hardware-3340, hercules-ci-agent }:
 
 [
   (import ./system/configuration.nix { inherit agent hercules-ci-agent; })
@@ -12,6 +12,7 @@
       hermetic = true;
     };
   }
-  # Touchpad wasn't working, so we tried commenting this out.
-  # nixos-hardware.nixosModules.dell-latitude-3480 # This is actually a 3340, but why split hairs
+  # The `nixos-hardware` module breaks the touchpad
+  # https://github.com/NixOS/nixos-hardware/blob/419dcc0ec767803182ed01a326f134230578bf60/dell/latitude/3480/default.nix#L11
+  nixos-hardware-3340.nixosModules.dell-latitude-3340
 ]

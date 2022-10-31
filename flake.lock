@@ -463,6 +463,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware-3340": {
+      "locked": {
+        "lastModified": 1667222022,
+        "narHash": "sha256-KT+Ysz8JuIewLcgh2NzQSR92r2oLWY/Vgpc6iFgZyds=",
+        "owner": "quinn-dougherty",
+        "repo": "nixos-hardware",
+        "rev": "8246bd85a054bcd5faa64ab89f8fea0ddc8628f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "quinn-dougherty",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1666869603,
@@ -658,6 +673,7 @@
         "nix-doom-emacs": "nix-doom-emacs",
         "nixinate": "nixinate",
         "nixos-hardware": "nixos-hardware",
+        "nixos-hardware-3340": "nixos-hardware-3340",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "python-on-nix": "python-on-nix"
