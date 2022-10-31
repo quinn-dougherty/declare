@@ -5,12 +5,6 @@
 { agent, ... }:
 
 {
-  # imports = [ # Include the results of the hardware scan.
-  #   ./hardware-configuration.nix
-  #   hercules-ci-agent.nixosModules.agent-service
-  #   ./../../common/cachix.nix
-  # ];
-
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
