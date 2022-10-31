@@ -12,5 +12,6 @@
       hermetic = true;
     };
   }
-  nixos-hardware.nixosModules.dell-latitude-3480 # This is actually a 3340, but why split hairs
+  # Touchpad wasn't working, so we tried commenting this out.
+  # nixos-hardware.nixosModules.dell-latitude-3480 # This is actually a 3340, but why split hairs
 ]
