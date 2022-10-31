@@ -2,6 +2,8 @@
 
 [
   (import ./system/configuration.nix { inherit framework; })
+  ./system/hardware-configuration.nix
+  ./../common/cachix.nix
   nixos-hardware.nixosModules.framework
   home-manager.nixosModules.home-manager
   {
