@@ -6,6 +6,6 @@ with pkgs; [
   heroku
   hci
   # Secrets
-  sops
   age
+  sops
 ]
