@@ -14,22 +14,8 @@
 
   networking = {
     hostName = agent.hostname; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
     networkmanager.enable = true;
-    # Open ports in the firewall.
-    # firewall.allowedTCPPorts = [ 443 ]; # For herc
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
-
   };
-  # Set your time zone.
   time.timeZone = agent.timezone;
 
   # Select internationalisation properties.
@@ -65,13 +51,6 @@
     # Enable CUPS to print documents.
     printing.enable = true;
 
-    # Enable the OpenSSH daemon.
-    openssh = {
-      enable = true;
-      # require public key authentication for better security
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
-    };
     avahi.enable = true;
   };
 
@@ -94,15 +73,6 @@
   };
   # Allow unfree packages
   # nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = let packages = ./../../common/packages;
-  in builtins.concatLists [
-    (import "${packages}/utils.nix" { pkgs = agent.pkgs; })
-    (import "${packages}/devops.nix" { pkgs = agent.pkgs; })
-    (import "${packages}/observability.nix" { pkgs = agent.pkgs; })
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -15,9 +15,8 @@ with framework; {
   virtualisation.docker.enable = true;
 
   time.timeZone = timezone;
-
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.utf8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
