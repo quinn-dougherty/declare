@@ -3,10 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { agent, hercules-ci-agent }: {
-  imports = [
-    (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
-      ./do-userdata.nix)
-  ];
+  imports = (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
+    ./do-userdata.nix);
 
   nix.gc = {
     automatic = true;

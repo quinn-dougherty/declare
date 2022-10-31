@@ -6,7 +6,7 @@ let
   toImport = name: value: folder + ("/" + name);
   filterCaches = key: value:
     value == "regular" && lib.hasSuffix ".nix" key
-    && !(lib.hasPrefix "default");
+    && !(lib.hasPrefix "default" key);
   imports = lib.mapAttrsToList toImport
     (lib.filterAttrs filterCaches (builtins.readDir folder));
 in {
