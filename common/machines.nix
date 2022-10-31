@@ -12,16 +12,16 @@ in {
     timezone = machines.common.timezone;
     drv-name-prefix = "${username}@${hostname}:";
     overlays = let
-      factorioOverlay = final: prev: {
+      factorio-overlay = final: prev: {
         factorio = prev.factorio.override {
           username = "quinnd";
           token = "\${FACTORIO_KEY}";
         };
       };
-      pythonOnNixOverlay = final: prev: {
+      python-on-nix-overlay = final: prev: {
         python-on-nix = python-on-nix.lib.${system};
       };
-    in [ factorioOverlay pythonOnNixOverlay ];
+    in [ factorio-overlay python-on-nix-overlay ];
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
