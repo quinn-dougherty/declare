@@ -17,3 +17,5 @@ Includes
 - `agent` (hercules ci agent)
   - I have a dormant one for Digital Ocean, that I'm keeping in the codebase (with effect triggers set to `false`) just in case I need to spin up an agent on a droplet some day.
   - My actual agent that builds my repos is `agent-latitude`.
+- `chat` (matrix server)
+  - (Not deployed as of this writing, making decisions about that).

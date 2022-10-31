@@ -17,7 +17,7 @@
   };
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostname = chat.hostname;
+  networking.hostName = chat.hostname;
 
   time.timeZone = chat.timezone;
   i18n.defaultLocale = "en_US.utf8";
