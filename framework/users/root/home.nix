@@ -12,9 +12,11 @@ with framework; {
   };
 
   home = {
-    packages = builtins.concatLists [
-      (import ./../../../common/packages/utils.nix { inherit pkgs; })
-      (import ./../../../common/packages/devops.nix { inherit pkgs; })
+    packages = let packages = ./../../../common/packages;
+    in builtins.concatLists [
+      (import "${packages}/utils.nix" { inherit pkgs; })
+      (import "${packages}/devops.nix" { inherit pkgs; })
+      (import "${packages}/observability.nix" { inherit pkgs; })
     ];
     username = "root";
     homeDirectory = "/root";
