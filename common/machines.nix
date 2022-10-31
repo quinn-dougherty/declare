@@ -45,6 +45,7 @@ in {
     timezone = machines.common.timezone;
     ip = machines.agent-latitude.ip;
     overlays = [ hercules-ci-effects.overlay ];
-    pkgs = import nixpkgs-stable { inherit system overlays; };
+    config.allowUnfree = true;
+    pkgs = import nixpkgs-stable { inherit system config overlays; };
   };
 }
