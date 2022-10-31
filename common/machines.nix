@@ -21,7 +21,20 @@ in {
       pythonOnNixOverlay = final: prev: {
         python-on-nix = python-on-nix.lib.${system};
       };
-    in [ factorioOverlay pythonOnNixOverlay ];
+      pythonDbusOverlay = (final: prev: {
+        python3 = prev.python3.override {
+          packageOverrides = self: super: {
+            # https://github.com/NixOS/nixpkgs/issues/197408
+            dbus-next = super.dbus-next.overridePythonAttrs (old: {
+              checkPhase = builtins.replaceStrings [ "not test_peer_interface" ]
+                [
+                  "not test_peer_interface and not test_tcp_connection_with_forwarding"
+                ] old.checkPhase;
+            });
+          };
+        };
+      });
+    in [ factorioOverlay pythonOnNixOverlay pythonDbusOverlay ];
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
