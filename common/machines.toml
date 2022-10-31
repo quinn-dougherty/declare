@@ -21,7 +21,7 @@ user-fullname = "Hercules Administrator Latitude"
 ip = "192.168.1.189"
 
 [chat]
-hostname = "talk"
+hostname = "matrix-server"
 username = "synapse-admin"
 user-fullname = "Matrix Administrator"
 ip = ""
