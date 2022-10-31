@@ -16,13 +16,17 @@
     '';
     matrix-synapse = {
       enable = true;
-      server_name = "example.com";
-      registration_shared_secret = "secret";
-      database_type = "psycopg2";
-      database_args.database = "matrix-synapse";
-      extraConfig = ''
-        max_upload_size: "50M"
-      '';
+      settings = {
+        server_name = "example.com";
+        registration_shared_secret = "secret";
+        extraConfig = ''
+          max_upload_size: "50M"
+        '';
+        database = {
+          name = "psycopg2";
+          args.database = "matrix-synapse";
+        };
+      };
     };
   };
   networking.firewall = {
