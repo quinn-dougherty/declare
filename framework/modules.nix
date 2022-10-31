@@ -19,4 +19,6 @@
     };
   }
   ./../common/modules/sound.nix
+  ./../common/modules/dropbox.nix
+  ./../common/modules/nix.nix
 ]

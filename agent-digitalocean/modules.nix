@@ -12,4 +12,9 @@
       hermetic = true;
     };
   }
+  ./../common/modules/hercules.nix
+  ./../common/modules/cachix
+  ./../common/modules/nix.nix
+  ./system/hardware-configuration.nix
+  hercules-ci-agent.nixosModules.agent-service
 ]

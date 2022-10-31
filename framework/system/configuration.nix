@@ -1,29 +1,12 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { framework, ... }:
 with framework; {
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    settings.auto-optimise-store = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      # options = "--delete-older-than 60d";
-    };
-  };
-
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_latest; # for wifi support
+    # kernelPackages = pkgs.linuxPackages_latest; # This was needed for wifi back in 21.11, but I don't think it is anymore.
     kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
   };
 
@@ -31,7 +14,6 @@ with framework; {
 
   virtualisation.docker.enable = true;
 
-  # Set your time zone.
   time.timeZone = timezone;
 
   # Select internationalisation properties.
@@ -43,13 +25,11 @@ with framework; {
 
   services = import ./services { inherit pkgs; };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = let keys-path = ./../../common/keys;
   in {
     ${username} = {
       isNormalUser = true;
-      extraGroups =
-        [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "networkmanager" "docker" ];
       home = "/home/" + username;
       description = user-fullname;
       shell = pkgs.fish;
@@ -81,38 +61,14 @@ with framework; {
     };
   };
 
-  systemd.user.services = {
-    dropbox = {
-      description = "Dropbox <cloud backup>";
-      after = [ "xembedsniproxy.service" ];
-      wants = [ "xembedsniproxy.service" ];
-      wantedBy = [ "graphical-session.target" ];
-      environment = {
-        QT_PLUGIN_PATH = "/run/current-system/sw/"
-          + pkgs.qt5.qtbase.qtPluginPrefix;
-        QML2_IMPORT_PATH = "/run/current-system/sw/"
-          + pkgs.qt5.qtbase.qtQmlPrefix;
-      };
-      serviceConfig = {
-        ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
-        ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
-        KillMode = "control-group";
-        Restart = "on-failure";
-        PrivateTmp = true;
-        ProtectSystem = "full";
-        Nice = 10;
-      };
-    };
-
-    dunst = {
-      enable = true;
-      description = "Dunst <notifications>";
-      wantedBy = [ "default.target" ];
-      serviceConfig = {
-        Restart = "always";
-        RestartSec = 2;
-        ExecStart = "${pkgs.dunst}/bin/dunst";
-      };
+  systemd.user.services.dunst = {
+    enable = true;
+    description = "Dunst <notifications>";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = 2;
+      ExecStart = "${pkgs.dunst}/bin/dunst";
     };
   };
 

@@ -5,19 +5,6 @@
 { agent, ... }:
 
 {
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      min-free = ${toString (100 * 1024 * 1024)}
-      max-free = ${toString (1024 * 1024 * 1024)}
-    '';
-    gc = {
-      automatic = true;
-      dates = "weekly";
-    };
-    settings.auto-optimise-store = true;
-  };
-
   # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;
@@ -36,7 +23,7 @@
     # Enable networking
     networkmanager.enable = true;
     # Open ports in the firewall.
-    firewall.allowedTCPPorts = [ 443 ]; # For herc
+    # firewall.allowedTCPPorts = [ 443 ]; # For herc
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
@@ -73,6 +60,8 @@
       xkbVariant = "";
     };
 
+    fwupd.enable = true;
+
     # Enable CUPS to print documents.
     printing.enable = true;
 
@@ -84,11 +73,6 @@
       kbdInteractiveAuthentication = false;
     };
     avahi.enable = true;
-    hercules-ci-agent = {
-      enable = true;
-      settings.concurrentTasks = "auto";
-    };
-
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -113,9 +97,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = builtins.concatLists [
-    (import ./../../common/packages/utils.nix { pkgs = agent.pkgs; })
-    (import ./../../common/packages/devops.nix { pkgs = agent.pkgs; })
+  environment.systemPackages = let packages = ./../../common/packages;
+  in builtins.concatLists [
+    (import "${packages}/utils.nix" { pkgs = agent.pkgs; })
+    (import "${packages}/devops.nix" { pkgs = agent.pkgs; })
+    (import "${packages}/observability.nix" { pkgs = agent.pkgs; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

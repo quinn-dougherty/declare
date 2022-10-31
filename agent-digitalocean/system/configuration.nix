@@ -3,27 +3,14 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { agent, hercules-ci-agent }: {
-  imports = builtins.concatLists [
+  imports = [
     (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
       ./do-userdata.nix)
-    [
-      ./../../common/modules/cachix
-      ./hardware-configuration.nix
-      hercules-ci-agent.nixosModules.agent-service
-    ]
   ];
 
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      min-free = ${toString (100 * 1024 * 1024)}
-      max-free = ${toString (1024 * 1024 * 1024)}
-    '';
-    gc = {
-      automatic = true;
-      dates = "weekly";
-    };
-    settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
   };
 
   # Use the GRUB 2 boot loader.
@@ -104,10 +91,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with agent.pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    curl
+  environment.systemPackages = let packages = ./../../common/packages;
+  in builtins.concatLists [
+    (import "${packages}/utils.nix" { pkgs = agent.pkgs; })
+    (import "${packages}/devops.nix" { pkgs = agent.pkgs; })
+    (import "${packages}/observability.nix" { pkgs = agent.pkgs; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -123,14 +111,10 @@
   # Enable the OpenSSH daemon.
   services = {
     openssh.enable = true;
-    hercules-ci-agent = {
-      enable = true;
-      settings.concurrentTasks = "auto";
-    };
     do-agent.enable = true;
   };
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 443 ];
+  # networking.firewall.allowedTCPPorts = [ 443 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
