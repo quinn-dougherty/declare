@@ -47,4 +47,13 @@ in {
     overlays = [ hercules-ci-effects.overlay ];
     pkgs = import nixpkgs-stable { inherit system overlays; };
   };
+  chat = rec {
+    hostname = machines.chat.hostname;
+    username = machines.chat.username;
+    user-fullname = machines.chat.user-fullname;
+    system = machines.common.system;
+    timezone = machines.common.timezone;
+    ip = machines.chat.ip;
+    pkgs = import nixpkgs { inherit system; };
+  };
 }

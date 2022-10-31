@@ -21,6 +21,8 @@ hci-inputs: {
         operating-system =
           outputs.nixosConfigurations.${machines.agent-latitude.hostname}.config.system.build.toplevel;
       };
+    ${machines.chat.hostname}.outputs.operating-system =
+      outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
     dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
   };
 }
