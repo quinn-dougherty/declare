@@ -10,6 +10,4 @@ with pkgs; [
   patchelf
   unzip
   tree
-  ## docker
-  docker-compose
 ]

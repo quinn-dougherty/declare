@@ -46,13 +46,17 @@
       };
       agent-digitalocean = import ./agent-digitalocean {
         inherit hercules-ci-agent;
-        lib = nixpkgs.lib;
+        lib = nixpkgs-stable.lib;
         agent = machines.agent-digitalocean;
       };
       agent-latitude = import ./agent-latitude {
         inherit hercules-ci-agent nixos-hardware;
-        lib = nixpkgs.lib;
+        lib = nixpkgs-stable.lib;
         agent = machines.agent-latitude;
+      };
+      chat = import ./chat {
+        lib = nixpkgs.lib;
+        chat = machines.chat;
       };
       util = import ./common/util.nix {
         inherit machines;
@@ -64,7 +68,7 @@
       apps = nixinate.nixinate.${machines.common.system} self;
 
       nixosConfigurations =
-        util.osForAll [ framework agent-digitalocean agent-latitude ];
+        util.osForAll [ framework agent-digitalocean agent-latitude chat ];
 
       devShells.${framework.system}."${framework.hostname}-homeshell" =
         framework.homeshell;

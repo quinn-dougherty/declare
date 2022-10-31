@@ -2,10 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, hercules-ci-agent }: {
-  imports = (agent.pkgs.lib.optional (builtins.pathExists ./do-userdata.nix)
-    ./do-userdata.nix);
-
+{ agent }: {
   nix.gc = {
     automatic = true;
     dates = "weekly";
