@@ -12,6 +12,7 @@
 
   clipcat.enable = true;
 
+  autorandr = import ./x/randr;
   xserver = {
     enable = true;
     windowManager.xmonad = {
