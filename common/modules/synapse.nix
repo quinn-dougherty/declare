@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./postgres.nix ./openssh.nix ./default-packages.nix ];
+  imports = [ ./postgres.nix ./openssh.nix ];
   services = {
 
     postgresql.initialScript = pkgs.writeText "backend-initScript" ''

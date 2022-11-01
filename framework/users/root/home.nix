@@ -10,7 +10,7 @@ with framework; {
   };
 
   home = {
-    packages = import ./../../../common/packages/devops.nix { inherit pkgs; };
+    packages = import ./../common/devops.nix { inherit pkgs; };
     username = "root";
     homeDirectory = "/root";
 

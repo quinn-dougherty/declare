@@ -37,7 +37,10 @@ with framework; {
       shell = pkgs.fish;
       openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
     };
-    root.openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+    root = {
+      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+      shell = pkgs.fish;
+    };
   };
 
   environment.variables = {

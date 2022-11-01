@@ -58,7 +58,7 @@
         lib = nixpkgs.lib;
         chat = machines.chat;
       };
-      util = import ./common/util.nix {
+      util = import ./common {
         inherit machines;
         outputs = self;
         agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
