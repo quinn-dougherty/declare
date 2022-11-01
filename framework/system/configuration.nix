@@ -52,9 +52,6 @@ with framework; {
   programs = {
     steam.enable = true;
 
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    mtr.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -68,6 +65,4 @@ with framework; {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
-

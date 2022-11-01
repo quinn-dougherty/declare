@@ -9,4 +9,5 @@
     mtr.enable = true;
     wireshark.enable = true;
   };
+  services.avahi.enable = true;
 }

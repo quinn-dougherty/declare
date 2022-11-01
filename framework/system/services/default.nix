@@ -40,7 +40,6 @@
   postgresql = import ./guesstimate-postgres.nix { inherit pkgs; };
 
   openssh.enable = true;
-  avahi.enable = true;
 
   elasticsearch = {
     package = pkgs.elasticsearch7;

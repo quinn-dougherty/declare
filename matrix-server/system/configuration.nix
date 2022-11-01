@@ -31,5 +31,4 @@
     root.openssh.authorizedKeys.keyFiles =
       [ ./../../common/keys/authorized_keys ];
   };
-
 }

@@ -30,8 +30,6 @@
     fwupd.enable = true;
 
     printing.enable = true;
-
-    avahi.enable = true;
   };
 
   users.users = {
@@ -45,12 +43,9 @@
       [ ./../../common/keys/authorized_keys ];
   };
 
-  programs = {
-    mtr.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
 
   # This value determines the NixOS release from which the default
@@ -60,5 +55,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }
