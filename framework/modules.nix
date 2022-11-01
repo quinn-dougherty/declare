@@ -10,4 +10,5 @@
   ./../common/modules/audio.nix
   ./../common/modules/dropbox.nix
   ./../common/modules/nix.nix
+  ./../common/modules/audit.nix
 ]

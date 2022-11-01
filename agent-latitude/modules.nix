@@ -20,4 +20,5 @@
   ./../common/modules/hercules.nix
   ./../common/modules/nix.nix
   ./../common/modules/gnome.nix
+  ./../common/modules/audit.nix
 ]

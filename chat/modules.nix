@@ -6,4 +6,5 @@
   ./../common/modules/synapse.nix
   ./../common/modules/cachix
   ./../common/modules/digitalocean.nix
+  ./../common/modules/audit.nix
 ]

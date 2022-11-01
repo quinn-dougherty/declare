@@ -18,4 +18,5 @@
   ./../common/modules/digitalocean.nix
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service
+  ./../common/modules/audit.nix
 ]
