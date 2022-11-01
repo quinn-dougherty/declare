@@ -7,6 +7,7 @@ hci-inputs: {
       operating-system =
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
+
     ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
       if false then { # ref == "refs/heads/main" then {
         effects.deployment = agent-digitalocean-deploy { inherit ref; };
@@ -14,6 +15,7 @@ hci-inputs: {
         operating-system =
           outputs.nixosConfigurations.${machines.agent-digitalocean.hostname}.config.system.build.toplevel;
       };
+
     ${machines.agent-latitude.hostname}.outputs = with hci-inputs;
       if ref == "refs/heads/main" then {
         effects.deployment = agent-latitude-deploy { inherit ref; };
@@ -21,6 +23,10 @@ hci-inputs: {
         operating-system =
           outputs.nixosConfigurations.${machines.agent-latitude.hostname}.config.system.build.toplevel;
       };
+
+    ${machines.chat.hostname}.outputs.operating-system =
+      outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
+
     dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
   };
 }

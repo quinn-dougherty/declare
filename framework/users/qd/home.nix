@@ -6,7 +6,6 @@ with framework; {
       nix-direnv.enable = true;
     };
     vscode = import ./packages/codium.nix { inherit pkgs; };
-    fish.enable = true;
 
     doom-emacs = {
       enable = true;

@@ -5,17 +5,12 @@ with framework; {
       enable = true;
       nix-direnv.enable = true;
     };
-    # fish.enable = true;
-
     # let home-manager install and update itself
     home-manager.enable = true;
   };
 
   home = {
-    packages = builtins.concatLists [
-      (import ./../../../common/packages/utils.nix { inherit pkgs; })
-      (import ./../../../common/packages/devops.nix { inherit pkgs; })
-    ];
+    packages = import ./../common/devops.nix { inherit pkgs; };
     username = "root";
     homeDirectory = "/root";
 

@@ -5,143 +5,47 @@
 { agent, ... }:
 
 {
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      min-free = ${toString (100 * 1024 * 1024)}
-      max-free = ${toString (1024 * 1024 * 1024)}
-    '';
-    gc = {
-      automatic = true;
-      dates = "weekly";
-    };
-    settings.auto-optimise-store = true;
-  };
-
   # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot/efi";
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
   };
 
   networking = {
-    hostName = agent.hostname; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
+    hostName = agent.hostname;
     networkmanager.enable = true;
-    # Open ports in the firewall.
-    firewall.allowedTCPPorts = [ 443 ]; # For herc
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
-
   };
-  # Set your time zone.
   time.timeZone = agent.timezone;
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
-  # Enable the X11 windowing system.
   services = {
-    xserver = {
+    xserver.displayManager.autoLogin = {
       enable = true;
-
-      # Enable the GNOME Desktop Environment.
-      desktopManager.gnome.enable = true;
-      displayManager = {
-        gdm.enable = true;
-
-        # Enable automatic login for the user.
-        autoLogin = {
-          enable = true;
-          user = agent.username;
-        };
-      };
-
-      # Gnome has touchpad support by default, so we skip this.
-      # libinput.enable = true;
-
-      # Configure keymap in X11
-      layout = "us";
-      xkbVariant = "";
+      user = agent.username;
     };
+    fwupd.enable = true;
 
-    # Enable CUPS to print documents.
     printing.enable = true;
-
-    # Enable the OpenSSH daemon.
-    openssh = {
-      enable = true;
-      # require public key authentication for better security
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
-    };
-    avahi.enable = true;
-    hercules-ci-agent = {
-      enable = true;
-      settings.concurrentTasks = "auto";
-    };
-
   };
 
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     ${agent.username} = {
       isNormalUser = true;
       description = agent.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
-      openssh.authorizedKeys.keyFiles = [ ./../../common/authorized_keys ];
+      openssh.authorizedKeys.keyFiles = [ ./../../common/keys/authorized_keys ];
     };
-    root.openssh.authorizedKeys.keyFiles = [ ./../../common/authorized_keys ];
+    root.openssh.authorizedKeys.keyFiles =
+      [ ./../../common/keys/authorized_keys ];
   };
 
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services = {
-    "getty@tty1".enable = false;
-    "autovt@tty1".enable = false;
-  };
-  # Allow unfree packages
-  # nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = builtins.concatLists [
-    (import ./../../common/packages/utils.nix { pkgs = agent.pkgs; })
-    (import ./../../common/packages/devops.nix { pkgs = agent.pkgs; })
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs = {
-    mtr.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
 
   # This value determines the NixOS release from which the default
@@ -151,5 +55,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }
