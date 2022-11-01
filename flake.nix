@@ -54,7 +54,7 @@
         lib = nixpkgs-stable.lib;
         agent = machines.agent-latitude;
       };
-      chat = import ./chat {
+      chat = import ./matrix-server {
         lib = nixpkgs.lib;
         chat = machines.chat;
       };
