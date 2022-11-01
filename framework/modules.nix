@@ -3,11 +3,12 @@
 [
   (import ./system/configuration.nix { inherit framework; })
   ./system/hardware-configuration.nix
-  ./../common/modules/cachix
+  ./modules/x.nix
   nixos-hardware.nixosModules.framework
   home-manager.nixosModules.home-manager
-  (import ./system/hm.nix { inherit framework nix-doom-emacs; })
+  (import ./modules/hm.nix { inherit framework nix-doom-emacs; })
   ./../common/modules/audio.nix
+  ./../common/modules/cachix
   ./../common/modules/dropbox.nix
   ./../common/modules/nix.nix
   ./../common/modules/audit.nix
