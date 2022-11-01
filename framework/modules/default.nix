@@ -13,4 +13,5 @@
   ./../../common/modules/dropbox.nix
   ./../../common/modules/dunst.nix
   ./../../common/modules/audit.nix
+  ./../../common/modules/default-packages.nix
 ]

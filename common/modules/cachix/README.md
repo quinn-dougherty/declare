@@ -1,3 +1,10 @@
-# `sudo cachix use <cache-name> -d tmp && mv tmp/cachix/<cache-name>.nix ~/Dropbox/dotfiles/common/modules/cachix && rm tmp/*`
+# This is a departure from standard `cachix use` usage.
 
-You'll need to rerun `nixfmt common/modules/cachix/*.nix` every time you `cachix use`.
+```sh
+mkdir tmp
+sudo cachix use <cache-name> -d tmp
+mv tmp/cachix/<cache-name>.nix ~/Dropbox/dotfiles/common/modules/cachix
+rm tmp/*`
+```
+
+You'll need to rerun `nixfmt common/modules/cachix/<cachix-name>.nix`.
