@@ -1,6 +1,6 @@
-{ config, lib, pkgs, ... }:
-with pkgs; {
-  environment.systemPackages = [
+{ config, lib, pkgs, ... }: {
+  hardware.acpilight.enable = true;
+  environment.systemPackages = with pkgs; [
     dmenu
     tmate
     haskellPackages.xmobar

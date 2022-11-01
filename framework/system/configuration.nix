@@ -31,7 +31,7 @@ with framework; {
   in {
     ${username} = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "docker" ];
+      extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
       home = "/home/" + username;
       description = user-fullname;
       shell = pkgs.fish;
@@ -55,17 +55,6 @@ with framework; {
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-    };
-  };
-
-  systemd.user.services.dunst = {
-    enable = true;
-    description = "Dunst <notifications>";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = 2;
-      ExecStart = "${pkgs.dunst}/bin/dunst";
     };
   };
 

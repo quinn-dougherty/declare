@@ -2,7 +2,7 @@
 framework // {
   operatingsystem = lib.nixosSystem {
     system = framework.system;
-    modules = import ./modules.nix {
+    modules = import ./modules {
       inherit framework nixos-hardware home-manager nix-doom-emacs;
     };
   };
