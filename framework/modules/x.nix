@@ -6,6 +6,7 @@ with pkgs; {
     haskellPackages.xmobar
     xcompmgr
     xscreensaver
+    xorg.xbacklight
     st
     feh
     flameshot
