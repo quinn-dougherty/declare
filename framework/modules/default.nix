@@ -17,4 +17,5 @@
   ./../../common/modules/observability.nix
   ./../../common/modules/utilities.nix
   ./../../common/modules/age-secrets.nix
+  ./gaming.nix
 ]
