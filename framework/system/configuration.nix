@@ -6,11 +6,14 @@ with framework; {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    # kernelPackages = pkgs.linuxPackages_latest; # This was needed for wifi back in 21.11, but I don't think it is anymore.
     kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
   };
 
-  networking = import ./networking.nix { inherit hostname; };
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
+    interfaces.wlp170s0.useDHCP = true;
+  };
 
   virtualisation.docker.enable = true;
 

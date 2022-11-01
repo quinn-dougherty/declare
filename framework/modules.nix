@@ -7,7 +7,7 @@
   nixos-hardware.nixosModules.framework
   home-manager.nixosModules.home-manager
   (import ./system/hm.nix { inherit framework nix-doom-emacs; })
-  ./../common/modules/sound.nix
+  ./../common/modules/audio.nix
   ./../common/modules/dropbox.nix
   ./../common/modules/nix.nix
 ]

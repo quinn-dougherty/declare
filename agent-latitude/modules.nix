@@ -16,7 +16,7 @@
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service
   ./../common/modules/cachix
-  ./../common/modules/sound.nix
+  ./../common/modules/audio.nix
   ./../common/modules/hercules.nix
   ./../common/modules/nix.nix
   ./../common/modules/gnome.nix
