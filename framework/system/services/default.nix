@@ -1,9 +1,4 @@
 { pkgs }: {
-  # 1. I never use this, 2. https://github.com/NixOS/nixpkgs/issues/198038
-  # At least give it a week or so for the fix to propagate to `nixos-unstable` pin.
-  fprintd.enable = true; # for fingerprint support
-  # Also note: this is in the nixos-hardware fw module
-
   upower = {
     enable = true;
     percentageLow = 30;
