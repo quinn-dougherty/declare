@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, pkgs-stable }:
 with pkgs; [
   pass
   pavucontrol
@@ -12,7 +12,7 @@ with pkgs; [
   nyxt
   # Media apps and stuff
   anki
-  libreoffice
+  pkgs-stable.libreoffice
   zotero
   pinta
   obs-studio

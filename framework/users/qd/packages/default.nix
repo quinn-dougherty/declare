@@ -1,7 +1,7 @@
-{ pkgs }:
+{ pkgs, pkgs-stable }:
 
 let
-  ops = import ./ops.nix { inherit pkgs; };
+  ops = import ./ops.nix { inherit pkgs pkgs-stable; };
   chat = import ./chat.nix { inherit pkgs; };
   gaming = import ./gaming.nix { inherit pkgs; };
 in builtins.concatLists [
