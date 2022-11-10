@@ -18,7 +18,7 @@ with framework; {
 
   imports = [ nix-doom-emacs.hmModule ];
   home = {
-    packages = import ./packages { inherit pkgs; };
+    packages = import ./packages { inherit pkgs pkgs-stable; };
     username = username;
     homeDirectory = "/home/" + username;
 
