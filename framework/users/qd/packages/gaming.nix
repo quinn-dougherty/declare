@@ -1,6 +1,6 @@
 { pkgs }:
 with pkgs; [
-  factorio
+  # factorio
   lutris
   vulkan-tools
   vulkan-loader

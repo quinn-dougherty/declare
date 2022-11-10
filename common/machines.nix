@@ -19,17 +19,17 @@ in {
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
-    #    pkgs-gaming = { factorio-token }:
-    #      let
-    #        overlays = [
-    #          (final: prev: {
-    #            factorio = prev.factorio.override {
-    #              username = "quinnd";
-    #              token = factorio-token;
-    #            };
-    #          })
-    #        ];
-    #      in import nixpkgs { inherit system overlays config; };
+    pkgs-gaming = factorio-token:
+      let
+        overlays = [
+          (final: prev: {
+            factorio = prev.factorio.override {
+              username = "quinnd";
+              token = factorio-token;
+            };
+          })
+        ];
+      in import nixpkgs { inherit system overlays config; };
   };
   agent-digitalocean = rec {
     hostname = machines.agent-digitalocean.hostname;

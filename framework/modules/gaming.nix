@@ -1,15 +1,10 @@
-{ config, lib, pkgs, ... }:
-let factorio-token = config.age.secrets.factorio.file;
+{ config, lib, pkgs, machine, ... }:
+let
+  factorio-token = config.age.secrets.factorio.file;
+  pkgs-gaming = machine.pkgs-gaming factorio-token;
 in {
-  nixpkgs.overlays = [
-    (final: prev: {
-      factorio = prev.factorio.override {
-        username = "quinnd";
-        token = factorio-token;
-      };
-    })
-  ];
-  environment.systemPackages = with pkgs; [
+  age.secrets.factorio.file = ./../../common/secrets/factorio.age;
+  environment.systemPackages = with pkgs-gaming; [
     factorio
     lutris
     vulkan-tools
