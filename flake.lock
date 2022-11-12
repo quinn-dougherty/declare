@@ -36,11 +36,11 @@
     "emacs-overlay": {
       "flake": false,
       "locked": {
-        "lastModified": 1667507825,
-        "narHash": "sha256-Tss8NXLO5HIqcY+v+lMy/tcdBKNwKxW5Lb4PkuS5rmY=",
+        "lastModified": 1668107626,
+        "narHash": "sha256-+SqPtgD0fQ/LvYxPH+1I5lR76rAqI67GcjQ1gvwUt6U=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "ccefa5f7ddbb036656d8617ed2862fe057d60fb4",
+        "rev": "a5732835d449b66324efa829e3b8be73be3d505e",
         "type": "github"
       },
       "original": {
@@ -348,11 +348,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1668065367,
-        "narHash": "sha256-v8LdAfDSzxRS4BS+qZvorRGC8nXhN9xMJevu/hf+Gt0=",
+        "lastModified": 1668147980,
+        "narHash": "sha256-dHu5VIGQvZoHtqr5tmndpiVVk5JnJ/6wZUNRwEfvIxk=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
-        "rev": "692309d1cbb24847cc2b0a345ec9f0fe9481a7db",
+        "rev": "244595b8dcfea8c6ac52a99157653162d26ea6d3",
         "type": "github"
       },
       "original": {
@@ -477,11 +477,11 @@
         "ws-butler": "ws-butler"
       },
       "locked": {
-        "lastModified": 1667731647,
-        "narHash": "sha256-E/Y5yxX8u0RlLt07PJoQ+QAYMbbL19WayLU/SJDtnMw=",
+        "lastModified": 1668132183,
+        "narHash": "sha256-oHycAYbl3vU8sHQ4vwjW5SZ4T3x+B6bckSDCMjlRMdk=",
         "owner": "nix-community",
         "repo": "nix-doom-emacs",
-        "rev": "c38ccd08345f58001cac2c2578e71d3f29b59bc0",
+        "rev": "d73237307872f29f2c6492aa81dfc8be0dead7a8",
         "type": "github"
       },
       "original": {
