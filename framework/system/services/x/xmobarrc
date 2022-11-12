@@ -4,8 +4,8 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
        , position = TopW L 100
        , commands = [ Run Weather "EGPF" ["-t","<tempF>F","-L","64","-H","77","--normal","green","--high","red","--low","lightblue"] 36000
                     , Run DynNetwork     [ "--template" , "<dev>: UP=<tx>kB/s * DOWN=<rx>kB/s"
-                                         , "--Low"      , "1000"
-                                         , "--High"     , "5000"
+                                         , "--Low"      , "3750"
+                                         , "--High"     , "10000"
                                          , "--low"      , "darkgreen"
                                          , "--normal"   , "darkorange"
                                          , "--high"     , "darkred"

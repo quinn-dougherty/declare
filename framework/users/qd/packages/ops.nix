@@ -22,4 +22,6 @@ with pkgs; [
   # music
   puredata
   qtractor
+
+  graphviz
 ]
