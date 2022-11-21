@@ -27,7 +27,10 @@
   fwupd.enable = true;
 
   # Enable CUPS to print documents.
-  printing.enable = true;
+  printing = {
+    enable = true;
+    drives = [ pkgs.hplip ];
+  };
 
   tailscale.enable = false;
   mullvad-vpn.enable = false;
