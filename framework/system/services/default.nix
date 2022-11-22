@@ -29,7 +29,7 @@
   # Enable CUPS to print documents.
   printing = {
     enable = true;
-    drives = [ pkgs.hplip ];
+    drivers = [ pkgs.hplip ];
   };
 
   tailscale.enable = false;
