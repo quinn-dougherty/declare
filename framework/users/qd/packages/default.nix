@@ -9,4 +9,5 @@ in builtins.concatLists [
   chat
   gaming
   # [ daedalus ] # .outputs.${pkgs.system}.daedalus.packages.default ]
+  [ pkgs.mononoki ]
 ]
