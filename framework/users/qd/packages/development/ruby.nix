@@ -1,1 +1,1 @@
-{ pkgs }: with pkgs; [ bundler bundix ruby rubyPackages.rails postgresql_14 ]
+{ pkgs }: with pkgs; [ bundler bundix ruby ] # rubyPackages.rails postgresql_14

@@ -26,7 +26,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-manegarm)
+(setq doom-theme 'doom-dark+)
 
 (setq projectile-project-search-path '("~/Dropbox/Projects/") projectile-sort-order 'recentf)
 
@@ -67,7 +67,7 @@
        ("\\.lagda.md\\'" . agda2-mode))
      auto-mode-alist))
 (load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
+                (shell-command-to-string "/nix/store/ng7c07n2c5hnph4ysb9hbrb1ch2w0xr0-agdaWithPackages-2.6.2.2/bin/agda-mode locate")))
 
 ;;
 ;; Here are some additional functions/macros that could help you configure Doom:
