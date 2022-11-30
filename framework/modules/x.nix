@@ -5,7 +5,6 @@
     tmate
     haskellPackages.xmobar
     xcompmgr
-    xscreensaver
     xorg.xbacklight
     st
     feh

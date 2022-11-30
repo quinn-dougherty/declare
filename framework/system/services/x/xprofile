@@ -1,5 +1,4 @@
 xcompmgr -cn &
-xscreensaver -no-splash &
 clipcatd
 xrandr --dpi 162
 feh --bg-fill -z /home/qd/Dropbox/dotfiles/framework/system/services/x/desktopbackgrounds/*
