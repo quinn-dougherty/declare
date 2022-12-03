@@ -263,21 +263,6 @@
         "type": "github"
       }
     },
-    "flakeUtils": {
-      "locked": {
-        "lastModified": 1634851050,
-        "narHash": "sha256-N83GlSGPJJdcqhUxSCS/WwW5pksYf3VP1M13cDRTSVA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "c91f3de5adaf1de973b797ef7485e441a65b8935",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "format-all": {
       "flake": false,
       "locked": {
@@ -379,27 +364,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "makes": {
-      "inputs": {
-        "nixpkgs": [
-          "python-on-nix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1634846450,
-        "narHash": "sha256-zgI1NpOMYeP154DoL7ko1SjaGR8mjuYhVPsD56g9l7Q=",
-        "owner": "fluidattacks",
-        "repo": "makes",
-        "rev": "27f7fdb09400295a4fa58f2a9ccdac97c8f26d8c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fluidattacks",
-        "repo": "makes",
         "type": "github"
       }
     },
@@ -765,28 +729,6 @@
         "type": "github"
       }
     },
-    "python-on-nix": {
-      "inputs": {
-        "flakeUtils": "flakeUtils",
-        "makes": "makes",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1667928309,
-        "narHash": "sha256-Vvgr30wxGnNY8+iHHo7BfN2b4I7lZG8ZR/uGTcQ3R3w=",
-        "owner": "on-nix",
-        "repo": "python",
-        "rev": "20f3103372515a92e3cc750cfa3caf4a15cf0962",
-        "type": "github"
-      },
-      "original": {
-        "owner": "on-nix",
-        "repo": "python",
-        "type": "github"
-      }
-    },
     "revealjs": {
       "flake": false,
       "locked": {
@@ -812,8 +754,7 @@
         "nixinate": "nixinate",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-stable": "nixpkgs-stable",
-        "python-on-nix": "python-on-nix"
+        "nixpkgs-stable": "nixpkgs-stable"
       }
     },
     "rotate-text": {

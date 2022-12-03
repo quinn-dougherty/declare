@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-stable, python-on-nix, hercules-ci-effects }:
+{ nixpkgs, nixpkgs-stable, hercules-ci-effects }:
 let machines = fromTOML (builtins.readFile ./machines.toml);
 in {
   common = machines.common // {
@@ -18,10 +18,7 @@ in {
           token = "\${FACTORIO_KEY}";
         };
       };
-      python-on-nix-overlay = final: prev: {
-        python-on-nix = python-on-nix.lib.${system};
-      };
-    in [ factorio-overlay python-on-nix-overlay ];
+    in [ factorio-overlay ];
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };

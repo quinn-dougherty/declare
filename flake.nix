@@ -25,19 +25,14 @@
       url = "github:matthewcroughan/nixinate";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    python-on-nix = {
-      url = "github:on-nix/python";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # daedalus.url = github:input-output-hk/daedalus/chore/ddw-1083-flakes;
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate
-    , python-on-nix }:
+    , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate }:
     let
       machines = import ./common/machines.nix {
-        inherit nixpkgs nixpkgs-stable python-on-nix hercules-ci-effects;
+        inherit nixpkgs nixpkgs-stable hercules-ci-effects;
       };
       framework = import ./framework {
         inherit nixos-hardware home-manager nix-doom-emacs;
