@@ -45,7 +45,7 @@ in {
     timezone = machines.common.timezone;
     ip = machines.agent-latitude.ip;
     overlays = [ hercules-ci-effects.overlay ];
-    pkgs = import nixpkgs-stable { inherit system overlays; };
+    pkgs = import nixpkgs { inherit system overlays; };
   };
   chat = rec {
     hostname = machines.chat.hostname;
