@@ -28,6 +28,6 @@
 
   elasticsearch = {
     package = pkgs.elasticsearch7;
-    enable = true;
+    enable = false;
   };
 }

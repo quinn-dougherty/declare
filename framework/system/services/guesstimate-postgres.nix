@@ -1,6 +1,6 @@
 # This file is for development on the guesstimate-backend repo
 { pkgs }: {
-  enable = true;
+  enable = false;
   package = pkgs.postgresql_14;
   enableTCPIP = true;
   authentication = pkgs.lib.mkOverride 10 ''
