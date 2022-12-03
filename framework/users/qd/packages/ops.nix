@@ -24,4 +24,7 @@ with pkgs; [
   qtractor
 
   graphviz
+
+  # x
+  warpd
 ]

@@ -9,20 +9,7 @@
   clipcat.enable = true;
 
   autorandr = import ./x/randr;
-  xserver = {
-    enable = true;
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      config = builtins.readFile ./x/xmonad.hs;
-      enableConfiguredRecompile = true;
-    };
-    # Configure keymap in X11
-    layout = "us";
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
-  };
+  xserver = import ./x;
 
   fwupd.enable = true;
 
