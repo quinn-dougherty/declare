@@ -51,7 +51,7 @@
       };
       agent-latitude = import ./agent-latitude {
         inherit hercules-ci-agent nixos-hardware;
-        lib = nixpkgs-stable.lib;
+        lib = nixpkgs.lib;
         agent = machines.agent-latitude;
       };
       chat = import ./matrix-server {
