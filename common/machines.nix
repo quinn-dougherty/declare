@@ -32,7 +32,7 @@ in {
     ip = machines.agent-digitalocean.ip;
     volume = machines.agent-digitalocean.volume;
     overlays = [ hercules-ci-effects.overlay ];
-    pkgs = import nixpkgs-stable { inherit system overlays; };
+    pkgs = import nixpkgs { inherit system overlays; };
   };
   agent-latitude = rec {
     hostname = machines.agent-latitude.hostname;
