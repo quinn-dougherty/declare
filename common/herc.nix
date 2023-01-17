@@ -33,6 +33,6 @@ hci-inputs: {
   onSchedule.auto-update = {
     outputs.effects =
       machines.common.pkgs.effects.flakeUpdate { autoMergeMethod = "merge"; };
-    when.dayOfMonth = 1;
+    when.dayOfMonth = [ 1 ];
   };
 }
