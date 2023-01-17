@@ -27,6 +27,15 @@ hci-inputs: {
     ${machines.chat.hostname}.outputs.operating-system =
       outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
 
-    dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
+    repository.outputs = {
+
+      dotfiles-lint = outputs.checks.${machines.common.system}.lint;
+
+      effects.update-repository = machines.common.pkgs.effects.flakeUpdate {
+        enable = true;
+        when.dayOfMonth = 1;
+        autoMergeMethod = "merge";
+      };
+    };
   };
 }
