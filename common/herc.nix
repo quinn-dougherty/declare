@@ -31,8 +31,10 @@ hci-inputs: {
 
   };
   onSchedule.auto-update = {
-    outputs.effects =
-      machines.common.pkgs.effects.flakeUpdate { autoMergeMethod = "merge"; };
+    outputs.effects = machines.common.pkgs.effects.flakeUpdate {
+      autoMergeMethod = "merge";
+      gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
+    };
     when.dayOfMonth = [ 1 ];
   };
 }
