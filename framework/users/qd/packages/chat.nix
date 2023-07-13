@@ -2,6 +2,8 @@
 with pkgs; [
   # Chat
   discord # Due to updates, this is nix-env'd
+  signal-desktop
+  tdesktop
   mattermost-desktop
   element-desktop
   zulip
