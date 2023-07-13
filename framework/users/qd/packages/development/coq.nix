@@ -6,7 +6,7 @@ with pkgs.coqPackages; [
   QuickChick
   ITree
   paco
-  parsec
+  # parsec # deprecated apparently
   simple-io
   VST
   mathcomp
