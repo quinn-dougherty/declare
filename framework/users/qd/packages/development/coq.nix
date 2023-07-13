@@ -8,7 +8,7 @@ with pkgs.coqPackages; [
   paco
   # parsec # deprecated apparently
   simple-io
-  VST
+  # VST # also not here anymore
   mathcomp
   mathcomp-analysis
 ]
