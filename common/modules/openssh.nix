@@ -5,8 +5,8 @@
     enable = true;
     # require public key authentication for better security
     settings = {
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
     };
   };
 }
