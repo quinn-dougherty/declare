@@ -25,7 +25,6 @@
       url = "github:matthewcroughan/nixinate";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # daedalus.url = github:input-output-hk/daedalus/chore/ddw-1083-flakes;
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
