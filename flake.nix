@@ -15,11 +15,11 @@
     };
     hercules-ci-agent = {
       url = "github:hercules-ci/hercules-ci-agent";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     hercules-ci-effects = {
       url = "github:hercules-ci/hercules-ci-effects";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nixinate = {
       url = "github:matthewcroughan/nixinate";
@@ -41,7 +41,7 @@
       };
       agent-digitalocean = import ./agent-digitalocean {
         inherit hercules-ci-agent;
-        lib = nixpkgs-stable.lib;
+        lib = nixpkgs.lib;
         agent = machines.agent-digitalocean;
       };
       agent-latitude = import ./agent-latitude {
