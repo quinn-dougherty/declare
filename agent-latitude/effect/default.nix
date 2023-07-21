@@ -3,7 +3,7 @@ let
   known-hosts-fragment = with agent;
     import ./knownhostsfragment.nix { inherit ip; };
 in with agent.pkgs;
-effects.runIf (ref == "refs/heads/main") (effects.runNixOS {
+hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
   config = agent-os.config;
   secretsMap.ssh = "default-ssh";
   userSetupScript = ''

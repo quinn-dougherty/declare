@@ -4,7 +4,7 @@ let
   known-hosts-fragment = with agent;
     import ./knownhostsfragment.nix { inherit ip; };
 in with agent.pkgs;
-effects.runIf (ref == "refs/heads/main") (effects.mkEffect {
+hci-effects.runIf (ref == "refs/heads/main") (hci-effects.mkEffect {
   effectScript = ''
     ${nixination.${agent.hostname}.program}
   '';
