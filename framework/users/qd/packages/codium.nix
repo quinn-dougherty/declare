@@ -8,7 +8,7 @@
       chenglou92.rescript-vscode
       jnoortheen.nix-ide
       esbenp.prettier-vscode
-      silvenon.mdx
+      # silvenon.mdx # deprecated, wait for https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx I guess
       ms-vscode-remote.remote-ssh
       ms-python.python
     ] ++ (pkgs.vscode-utils.extensionsFromVscodeMarketplace [{

@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-22.11";
+    nixpkgs-stable.url = "nixpkgs/nixos-23.05";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,17 +15,16 @@
     };
     hercules-ci-agent = {
       url = "github:hercules-ci/hercules-ci-agent";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     hercules-ci-effects = {
       url = "github:hercules-ci/hercules-ci-effects";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nixinate = {
       url = "github:matthewcroughan/nixinate";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # daedalus.url = github:input-output-hk/daedalus/chore/ddw-1083-flakes;
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
@@ -41,7 +40,7 @@
       };
       agent-digitalocean = import ./agent-digitalocean {
         inherit hercules-ci-agent;
-        lib = nixpkgs-stable.lib;
+        lib = nixpkgs.lib;
         agent = machines.agent-digitalocean;
       };
       agent-latitude = import ./agent-latitude {

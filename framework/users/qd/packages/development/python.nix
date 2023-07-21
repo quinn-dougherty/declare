@@ -1,7 +1,7 @@
 { pkgs }:
 let
-  python = pkgs.python310.buildEnv.override {
-    extraLibs = with pkgs.python310Packages; [
+  python = pkgs.python311.buildEnv.override {
+    extraLibs = with pkgs.python311Packages; [
       hypothesis
       flake8
       pytest

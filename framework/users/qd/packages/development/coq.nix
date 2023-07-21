@@ -6,9 +6,9 @@ with pkgs.coqPackages; [
   QuickChick
   ITree
   paco
-  parsec
+  # parsec # not for latest coq version
   simple-io
-  VST
+  # VST # not for latest coq version
   mathcomp
   mathcomp-analysis
 ]
