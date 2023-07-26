@@ -45,8 +45,7 @@ in {
     timezone = machines.common.timezone;
     ip = machines.agent-latitude.ip;
     overlays = [ hercules-ci-effects.overlay ];
-    config.allowUnfree = true; # lutris
-    pkgs = import nixpkgs { inherit system overlays config; };
+    pkgs = import nixpkgs { inherit system overlays; };
   };
   chat = rec {
     hostname = machines.chat.hostname;
