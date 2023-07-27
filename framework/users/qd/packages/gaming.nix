@@ -4,8 +4,12 @@ with pkgs; [
   # runescape
   runelite
   # factorio
-  wineWowPackages.full
-  winetricks
+  #  (wineWowPackages.full.override {
+  #    wineRelease = "staging";
+  #    mingwSupport = true;
+  #  })
+  #  winetricks
+  protonup-qt
   lutris
   dxvk
   vulkan-tools

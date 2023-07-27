@@ -5,4 +5,5 @@ with pkgs; [
   # morph
   heroku
   hci
+  onionshare
 ]
