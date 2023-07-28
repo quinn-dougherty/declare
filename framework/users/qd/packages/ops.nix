@@ -4,8 +4,8 @@ with pkgs; [
   pavucontrol
 
   nextcloud-client
-  dropbox-cli
 
+  dropbox-cli
   firefox
   brave
   nyxt
@@ -13,6 +13,8 @@ with pkgs; [
   tor
 
   # Media apps and stuff
+  qownnotes
+  qc
   anki
   libreoffice
   zotero
