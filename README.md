@@ -16,3 +16,4 @@ Includes
   - My actual agent that builds my repos is `agent-latitude`.
 - `chat` (matrix server)
   - (Not deployed as of this writing, making decisions about that).
+- `router` (home wifi router) (**stub/TODO**)
