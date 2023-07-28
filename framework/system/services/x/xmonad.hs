@@ -44,6 +44,9 @@ myConfig xmproc = docks def
     , ((mod4Mask, xK_q), restart "xmonad" True)
     , ((mod4Mask .|. shiftMask, xK_e), spawn "emacs")
     , ((mod4Mask .|. shiftMask, xK_w), spawn "firefox")
+    , ((mod1Mask, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
+    , ((mod1Mask, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
+    , ((mod1Mask, xK_F3), spawn "wpctl set-sink-volume @DEFAULT_SINK@ +10%")
     ]
 
 main = do
