@@ -6,7 +6,9 @@
     vim
     wget
     curl
+    pciutils
     gnumake
+    cmake
     patchelf
     unzip
     tree

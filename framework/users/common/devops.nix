@@ -6,4 +6,6 @@ with pkgs; [
   heroku
   hci
   onionshare
+  nettools
+  netproc
 ]

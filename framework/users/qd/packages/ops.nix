@@ -10,6 +10,9 @@ with pkgs; [
   firefox
   brave
   nyxt
+  tor-browser-bundle-bin
+  tor
+
   # Media apps and stuff
   anki
   libreoffice
