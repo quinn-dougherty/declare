@@ -3,9 +3,8 @@ with pkgs; [
   pass
   pavucontrol
 
+  nextcloud-client
   dropbox-cli
-  # maestral
-  # maestral-gui
 
   firefox
   brave

@@ -18,6 +18,7 @@
   ./../common/modules/cachix
   ./../common/modules/audio.nix
   ./../common/modules/hercules.nix
+  ./../common/modules/nextcloud.nix
   ./../common/modules/nix.nix
   ./../common/modules/gnome.nix
   ./../common/modules/audit.nix
