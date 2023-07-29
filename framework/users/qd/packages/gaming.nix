@@ -10,6 +10,7 @@ with pkgs; [
   #  })
   #  winetricks
   protonup-qt
+  protonup-ng
   lutris
   dxvk
   vulkan-tools

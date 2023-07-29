@@ -8,4 +8,5 @@ with pkgs; [
   onionshare
   nettools
   netproc
+  minicom
 ]

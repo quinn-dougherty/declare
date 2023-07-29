@@ -9,6 +9,7 @@ with pkgs; [
   firefox
   brave
   nyxt
+  lynx
   tor-browser-bundle-bin
   tor
 
