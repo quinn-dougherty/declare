@@ -22,6 +22,7 @@
   ./../common/modules/nix.nix
   ./../common/modules/gnome.nix
   ./../common/modules/audit.nix
+  ./../common/modules/crosscompilation.nix
   ./../common/modules/observability.nix
   ./../common/modules/utilities.nix
 ]

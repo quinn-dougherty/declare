@@ -15,5 +15,6 @@
   ./../../common/modules/dunst.nix
   ./../../common/modules/audit.nix
   ./../../common/modules/observability.nix
+  ./../../common/modules/crosscompilation.nix
   ./../../common/modules/utilities.nix
 ]

@@ -17,3 +17,4 @@ Includes
 - `chat` (matrix server)
   - (Not deployed as of this writing, making decisions about that).
 - `router` (home wifi router) (**stub/TODO**)
+- `phone` (PinePhone)
