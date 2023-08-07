@@ -9,6 +9,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mobile-nixos = {
+      url =
+        "github:nixos/mobile-nixos/efbe2c3c5409c868309ae0770852638e623690b5";
+      flake = false;
+    };
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +33,8 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate }:
+    , mobile-nixos, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
+    , nixinate }:
     let
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable hercules-ci-effects;
@@ -48,6 +54,11 @@
         lib = nixpkgs.lib;
         agent = machines.agent-latitude;
       };
+      pinephone = import ./phone {
+        inherit home-manager mobile-nixos;
+        lib = nixpkgs.lib;
+        pinephone = machines.pinephone;
+      };
       chat = import ./matrix-server {
         lib = nixpkgs.lib;
         chat = machines.chat;
@@ -61,8 +72,13 @@
     in {
       apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations =
-        util.osForAll [ framework agent-digitalocean agent-latitude chat ];
+      nixosConfigurations = util.osForAll [
+        framework
+        pinephone
+        agent-digitalocean
+        agent-latitude
+        chat
+      ];
 
       devShells.${framework.system}."${framework.hostname}-homeshell" =
         framework.homeshell;

@@ -8,6 +8,10 @@ hci-inputs: {
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
 
+    ${machines.pinephone.hostname}.outputs = {
+      operating-system =
+        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot.disk-image;
+    };
     ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
       if false then { # ref == "refs/heads/main" then {
         effects.deployment = agent-digitalocean-deploy { inherit ref; };

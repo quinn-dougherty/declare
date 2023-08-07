@@ -1,12 +1,16 @@
 { nixpkgs, nixpkgs-stable, hercules-ci-effects }:
-let machines = fromTOML (builtins.readFile ./machines.toml);
+let
+  machines = fromTOML (builtins.readFile ./machines.toml);
+  config.allowUnfree = true;
+  agent-onprem-tz = "America/New_York";
 in {
-  common = machines.common // {
-    pkgs = import nixpkgs {
-      system = machines.common.system;
-      overlays = [ hercules-ci-effects.overlay ];
-    };
-  };
+  common = machines.common;
+  # // {
+  # pkgs = import nixpkgs {
+  #   system = machines.common.system;
+  #  overlays = [ hercules-ci-effects.overlay ];
+  # };
+  # };
   framework = rec {
     hostname = machines.framework.hostname;
     username = machines.framework.username;
@@ -22,9 +26,18 @@ in {
         };
       };
     in [ factorio-overlay ];
-    config.allowUnfree = true;
+    config = config;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
+  };
+  pinephone = rec {
+    hostname = machines.pinephone.hostname;
+    username = machines.pinephone.username;
+    user-fullname = machines.pinephone.user-fullname;
+    system = machines.pinephone.system;
+    timezone = machines.common.timezone;
+    config = config;
+    pkgs = import nixpkgs { inherit system config; };
   };
   agent-digitalocean = rec {
     hostname = machines.agent-digitalocean.hostname;
@@ -42,7 +55,7 @@ in {
     username = machines.agent-latitude.username;
     user-fullname = machines.agent-latitude.user-fullname;
     system = machines.common.system;
-    timezone = machines.common.timezone;
+    timezone = agent-onprem-tz;
     ip = machines.agent-latitude.ip;
     overlays = [ hercules-ci-effects.overlay ];
     pkgs = import nixpkgs { inherit system overlays; };

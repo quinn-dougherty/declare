@@ -16,5 +16,6 @@
   ./../../common/modules/audit.nix
   ./../../common/modules/observability.nix
   ./../../common/modules/crosscompilation.nix
+  ./../../common/modules/openssh.nix
   ./../../common/modules/utilities.nix
 ]

@@ -368,6 +368,23 @@
         "type": "github"
       }
     },
+    "mobile-nixos": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653513225,
+        "narHash": "sha256-DjIrBfb3cbLG15cWKpSIfBxorXCMWVBeFOc1K7HOzw4=",
+        "owner": "nixos",
+        "repo": "mobile-nixos",
+        "rev": "efbe2c3c5409c868309ae0770852638e623690b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "mobile-nixos",
+        "rev": "efbe2c3c5409c868309ae0770852638e623690b5",
+        "type": "github"
+      }
+    },
     "nix-doom-emacs": {
       "inputs": {
         "doom-emacs": "doom-emacs",
@@ -675,6 +692,7 @@
         "hercules-ci-agent": "hercules-ci-agent",
         "hercules-ci-effects": "hercules-ci-effects",
         "home-manager": "home-manager",
+        "mobile-nixos": "mobile-nixos",
         "nix-doom-emacs": "nix-doom-emacs",
         "nixinate": "nixinate",
         "nixos-hardware": "nixos-hardware",

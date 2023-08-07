@@ -7,6 +7,12 @@ hostname = "fw"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 
+[pinephone]
+hostname = "pine"
+username = "qd"
+user-fullname = "Quinn Dougherty"
+system = "aarch64-linux"
+
 [agent-digitalocean]
 hostname = "herc-agent-digitalocean"
 username = "herc-admin"
