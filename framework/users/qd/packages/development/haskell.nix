@@ -7,5 +7,5 @@ with pkgs; [
   stylish-haskell
   ghc
   # stylish-cabal  # broken
-  (agda.withPackages (ps: [ ps.standard-library ]))
+  # (agda.withPackages (ps: [ ps.standard-library ]))
 ]

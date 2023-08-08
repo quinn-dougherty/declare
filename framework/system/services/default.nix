@@ -24,7 +24,7 @@
 
   postgresql = import ./guesstimate-postgres.nix { inherit pkgs; };
 
-  openssh.enable = true;
+  # openssh.enable = true;  # delete if using module import works.
 
   elasticsearch = {
     package = pkgs.elasticsearch7;

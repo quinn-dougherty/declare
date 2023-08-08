@@ -1,13 +1,21 @@
 { outputs, machines, agent-digitalocean-deploy, agent-latitude-deploy }:
 hci-inputs: {
   onPush = {
+    # TODO: clean this up with `common/lib.nix`
     ${machines.framework.hostname}.outputs = {
       home-shell =
-        outputs.devShells.${machines.framework.system}."${machines.framework.hostname}-homeshell";
+        outputs.devShells.${machines.framework.system}."${machines.framework.drv-name-prefix}homeshell";
       operating-system =
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
 
+    ${machines.pinephone.hostname}.outputs = let
+      pinephone-uboot =
+        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot;
+    in {
+      os_disk-image = pinephone-uboot.disk-image;
+      os_boot-partition = pinephone-uboot.boot-partition;
+    };
     ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
       if false then { # ref == "refs/heads/main" then {
         effects.deployment = agent-digitalocean-deploy { inherit ref; };

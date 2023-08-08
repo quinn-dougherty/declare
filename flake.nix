@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mobile-nixos = {
+      url = "github:nixos/mobile-nixos";
+      flake = false;
+    };
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +32,8 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , nix-doom-emacs, hercules-ci-agent, hercules-ci-effects, nixinate }:
+    , mobile-nixos, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
+    , nixinate }:
     let
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable hercules-ci-effects;
@@ -48,27 +53,37 @@
         lib = nixpkgs.lib;
         agent = machines.agent-latitude;
       };
+      pinephone = import ./phone {
+        inherit home-manager mobile-nixos;
+        lib = nixpkgs.lib;
+        pinephone = machines.pinephone;
+      };
       chat = import ./matrix-server {
         lib = nixpkgs.lib;
         chat = machines.chat;
       };
-      util = import ./common {
+      common = import ./common {
         inherit machines;
         outputs = self;
         agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
         agent-latitude-deploy = agent-latitude.deploymenteffect;
       };
-    in {
+      immobiles = [ framework agent-digitalocean agent-latitude chat ];
+      mobiles = [ pinephone ];
+    in with common; {
       apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations =
-        util.osForAll [ framework agent-digitalocean agent-latitude chat ];
+      nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
 
-      devShells.${framework.system}."${framework.hostname}-homeshell" =
+      # Just aliases to `nix build .#<machine.hostname>`
+      packages.${machines.common.system} =
+        commonlib.packagesFromAllOs { inherit immobiles mobiles; };
+
+      devShells.${framework.system}."${framework.drv-name-prefix}homeshell" =
         framework.homeshell;
 
-      checks.${machines.common.system}.lint = util.lint;
+      checks.${machines.common.system}.lint = lint;
 
-      herculesCI = util.herc;
+      herculesCI = herc;
     };
 }

@@ -12,5 +12,6 @@
     patchelf
     unzip
     tree
+    nix-tree
   ];
 }
