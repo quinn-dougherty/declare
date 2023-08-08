@@ -1,8 +1,5 @@
 { outputs, machines, agent-digitalocean-deploy, agent-latitude-deploy }:
 hci-inputs: {
-
-  ciSystems = [ machines.common.system ];
-
   onPush = {
 
     ${machines.framework.hostname}.outputs = {
