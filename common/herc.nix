@@ -14,7 +14,7 @@ hci-inputs: {
 
     ${machines.pinephone.hostname}.outputs = {
       operating-system =
-        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot.disk-image;
+        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot;
     };
     ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
       if false then { # ref == "refs/heads/main" then {

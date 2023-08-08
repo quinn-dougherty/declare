@@ -71,13 +71,13 @@
       immobiles = [ framework agent-digitalocean agent-latitude chat ];
       mobiles = [ pinephone ];
     in with common; {
-      # apps = nixinate.nixinate.${machines.common.system} self;
+      apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations = util.osForAll (immobiles ++ mobiles);
+      nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
 
       # Just aliases to `nix build .#<machine.hostname>`
       packages.${machines.common.system} =
-        util.packagesFromAllOs { inherit immobiles mobiles; };
+        commonlib.packagesFromAllOs { inherit immobiles mobiles; };
 
       devShells.${framework.system}."${framework.drv-name-prefix}homeshell" =
         framework.homeshell;

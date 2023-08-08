@@ -1,5 +1,5 @@
 { machines, agent-digitalocean-deploy, agent-latitude-deploy, outputs }: {
-  util = import ./utilities.nix;
+  commonlib = import ./lib.nix;
   herc = import ./herc.nix {
     inherit outputs machines agent-digitalocean-deploy agent-latitude-deploy;
   };
