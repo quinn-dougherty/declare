@@ -9,7 +9,7 @@ let
   };
   packageFromMobile = machine: {
     name = machine.hostname;
-    value = machine.operatingsystem.config.system.build.toplevel;
+    value = machine.operatingsystem.config.mobile.outputs.u-boot.disk-image;
   };
   packagesFromAllImmobile = machines:
     builtins.listToAttrs (map packageFromImmobile machines);
