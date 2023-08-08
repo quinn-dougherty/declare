@@ -2,11 +2,12 @@
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
   agent-onprem-tz = "America/New_York";
+  herc-effects-overlays = [ hercules-ci-effects.overlay ];
 in {
   common = machines.common // {
     pkgs = import nixpkgs {
       system = machines.common.system;
-      overlays = [ hercules-ci-effects.overlay ];
+      overlays = herc-effects-overlays;
     };
   };
   framework = rec {
@@ -46,7 +47,10 @@ in {
     ip = machines.agent-digitalocean.ip;
     volume = machines.agent-digitalocean.volume;
     overlays = [ hercules-ci-effects.overlay ];
-    pkgs = import nixpkgs { inherit system overlays; };
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = herc-effects-overlays;
+    };
   };
   agent-latitude = rec {
     hostname = machines.agent-latitude.hostname;
@@ -55,8 +59,10 @@ in {
     system = machines.common.system;
     timezone = agent-onprem-tz;
     ip = machines.agent-latitude.ip;
-    overlays = [ hercules-ci-effects.overlay ];
-    pkgs = import nixpkgs { inherit system overlays; };
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = herc-effects-overlays;
+    };
   };
   chat = rec {
     hostname = machines.chat.hostname;
