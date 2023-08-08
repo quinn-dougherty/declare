@@ -11,7 +11,6 @@ let
     name = machine.hostname;
     value = machine.operatingsystem.config.system.build.toplevel;
   };
-
   packagesFromAllImmobile = machines:
     builtins.listToAttrs (map packageFromImmobile machines);
   packagesFromAllMobile = machines:

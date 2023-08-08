@@ -3,7 +3,7 @@ hci-inputs: {
   onPush = {
     ${machines.framework.hostname}.outputs = {
       home-shell =
-        outputs.devShells.${machines.framework.system}."${machines.framework.hostname}-homeshell";
+        outputs.devShells.${machines.framework.system}."${machines.framework.drv-name-prefix}homeshell";
       operating-system =
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };

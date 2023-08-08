@@ -4,7 +4,10 @@ let
   agent-onprem-tz = "America/New_York";
 in {
   common = machines.common // {
-    pkgs = import nixpkgs { system = machines.common.system; };
+    pkgs = import nixpkgs {
+      system = machines.common.system;
+      overlays = [ hercules-ci-effects.overlay ];
+    };
   };
   framework = rec {
     hostname = machines.framework.hostname;
