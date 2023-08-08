@@ -1,10 +1,11 @@
-{ nixpkgs, nixpkgs-stable, hercules-ci-effects }:
+{ nixpkgs, nixpkgs-stable, nixpkgs-mobile, hercules-ci-effects }:
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
-  config.allowUnfree = true;
   agent-onprem-tz = "America/New_York";
 in {
-  common = machines.common;
+  common = machines.common // {
+    pkgs = import nixpkgs { system = machines.common.system; };
+  };
   # // {
   # pkgs = import nixpkgs {
   #   system = machines.common.system;
@@ -26,7 +27,7 @@ in {
         };
       };
     in [ factorio-overlay ];
-    config = config;
+    config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
   };
@@ -36,8 +37,8 @@ in {
     user-fullname = machines.pinephone.user-fullname;
     system = machines.pinephone.system;
     timezone = machines.common.timezone;
-    config = config;
-    pkgs = import nixpkgs { inherit system config; };
+    config.allowUnfree = true;
+    pkgs = import nixpkgs-mobile { inherit system config; };
   };
   agent-digitalocean = rec {
     hostname = machines.agent-digitalocean.hostname;

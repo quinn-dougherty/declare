@@ -1,10 +1,6 @@
-{ pinephone, mobile-nixos }:
+{ pinephone }:
 
-with pinephone;
-
-(import "${mobile-nixos}/lib/configuration.nix" {
-  device = "pine64-pinephone";
-}) // {
+with pinephone; {
 
   networking = {
     hostName = hostname;
@@ -39,5 +35,5 @@ with pinephone;
 
   nixpkgs.config = config;
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "22.05";
 }

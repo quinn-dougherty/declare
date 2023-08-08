@@ -8,7 +8,7 @@ username = "qd"
 user-fullname = "Quinn Dougherty"
 
 [pinephone]
-hostname = "pine"
+hostname = "pinephone"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 system = "aarch64-linux"
