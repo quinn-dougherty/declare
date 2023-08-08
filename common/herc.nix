@@ -41,4 +41,6 @@ hci-inputs: {
     };
     when.dayOfMonth = [ 1 ];
   };
+
+  ciSystems = [ "x86_64-linux" "aarch64-linux" ];
 }
