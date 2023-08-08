@@ -12,9 +12,13 @@ hci-inputs: {
         outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
 
-    ${machines.pinephone.hostname}.outputs = {
-      operating-system =
-        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot;
+    ${machines.pinephone.hostname}.outputs = let
+      pinephone-uboot =
+        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot.disk-image;
+    in {
+      os_disk-image = pinephone-uboot.disk-image;
+      os_u-boot = pinephone-uboot.u-boot;
+      os_boot-partition = pinephone-uboot.boot-partition;
     };
     ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
       if false then { # ref == "refs/heads/main" then {
