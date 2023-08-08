@@ -50,6 +50,6 @@ myConfig xmproc = docks def
     ]
 
 main = do
-  xmproc <- spawnPipe "xmobar ~/Dropbox/dotfiles/framework/system/services/x/xmobarrc"
+  xmproc <- spawnPipe "xmobar ~/Dropbox/dotfiles/framework/system/services/x/xmobarrc.hs"
 
   xmonad (myConfig xmproc)

@@ -21,12 +21,17 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "mononoki" :size 13 :weight 'semi-light)
+(setq doom-font (font-spec :family "monospace" :size 13 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "sans" :size 15))
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dark+)
+;; (setq doom-theme 'manoj-dark)  ;; I also like `doom-dark+` `doom-manegarm'
+(require 'rand-theme)
+;; Themes I *only* want to be selected
+(setq rand-theme-wanted '(doom-dark+ doom-manegarm manoj-dark))
+(rand-theme)
+
 
 (setq projectile-project-search-path '("~/Dropbox/Projects/") projectile-sort-order 'recentf)
 
@@ -61,13 +66,13 @@
 	(add-hook 'rescript-mode-hook 'lsp-ui-doc-mode))
 
 ;; auto-load agda-mode for .agda and .lagda.md
-(setq auto-mode-alist
-   (append
-     '(("\\.agda\\'" . agda2-mode)
-       ("\\.lagda.md\\'" . agda2-mode))
-     auto-mode-alist))
-(load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "/nix/store/ng7c07n2c5hnph4ysb9hbrb1ch2w0xr0-agdaWithPackages-2.6.2.2/bin/agda-mode locate")))
+;;(setq auto-mode-alist
+;;   (append
+;;     '(("\\.agda\\'" . agda2-mode)
+;;       ("\\.lagda.md\\'" . agda2-mode))
+;;     auto-mode-alist))
+;; (load-file (let ((coding-system-for-read 'utf-8))
+;;                 (shell-command-to-string "/nix/store/ng7c07n2c5hnph4ysb9hbrb1ch2w0xr0-agdaWithPackages-2.6.2.2/bin/agda-mode locate")))
 
 ;;
 ;; Here are some additional functions/macros that could help you configure Doom:

@@ -4,7 +4,7 @@ with pkgs; [
   nodePackages.typescript
   yarn
   node2nix
-  # haskellPackages.yarn2nix
+  haskellPackages.yarn2nix
   nodePackages.prettier
   nodePackages.esy
 ]
