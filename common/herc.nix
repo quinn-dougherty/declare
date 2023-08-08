@@ -1,7 +1,7 @@
 { outputs, machines, agent-digitalocean-deploy, agent-latitude-deploy }:
 hci-inputs: {
   onPush = {
-
+    # TODO: clean this up with `common/lib.nix`
     ${machines.framework.hostname}.outputs = {
       home-shell =
         outputs.devShells.${machines.framework.system}."${machines.framework.drv-name-prefix}homeshell";
