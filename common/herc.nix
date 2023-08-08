@@ -9,7 +9,7 @@ hci-inputs: {
       home-shell =
         outputs.devShells.${machines.framework.system}."${machines.framework.drv-name-prefix}homeshell";
       operating-system =
-        outputs.nixosConfigurations.${machines.framework.hostname}; # .config.system.build.toplevel;
+        outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
     };
 
     ${machines.pinephone.hostname}.outputs = {
