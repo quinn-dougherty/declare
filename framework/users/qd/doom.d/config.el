@@ -27,9 +27,9 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'manoj-dark)  ;; I also like `doom-dark+` `doom-manegarm'
-(require 'rand-theme)
-;; Themes I *only* want to be selected
-(setq rand-theme-wanted '(doom-dark+ doom-manegarm manoj-dark))
+;; (require 'rand-theme)
+(load "./rand-theme.el")
+(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark doom-manegarm manoj-dark))
 (rand-theme)
 
 
