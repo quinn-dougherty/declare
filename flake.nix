@@ -10,13 +10,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mobile-nixos = {
-      url =
-        "github:nixos/mobile-nixos/efbe2c3c5409c868309ae0770852638e623690b5";
+      url = "github:nixos/mobile-nixos";
       flake = false;
     };
-    # pin a nixpkgs from the same time as the mobile-nixos pin, to help factor out tow-boot.
-    nixpkgs-mobile.url = "nixpkgs/dfd82985c273aac6eced03625f454b334daae2e8";
-    hm-for-pine.url = "github:nix-community/home-manager/release-22.05";
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,11 +32,11 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , mobile-nixos, nixpkgs-mobile, hm-for-pine, nix-doom-emacs
-    , hercules-ci-agent, hercules-ci-effects, nixinate }:
+    , mobile-nixos, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
+    , nixinate }:
     let
       machines = import ./common/machines.nix {
-        inherit nixpkgs nixpkgs-stable nixpkgs-mobile hercules-ci-effects;
+        inherit nixpkgs nixpkgs-stable hercules-ci-effects;
       };
       framework = import ./framework {
         inherit nixos-hardware home-manager nix-doom-emacs;
@@ -58,37 +54,36 @@
         agent = machines.agent-latitude;
       };
       pinephone = import ./phone {
-        inherit mobile-nixos;
-        home-manager = hm-for-pine;
-        lib = nixpkgs-mobile.lib;
+        inherit home-manager mobile-nixos;
+        lib = nixpkgs.lib;
         pinephone = machines.pinephone;
       };
       chat = import ./matrix-server {
         lib = nixpkgs.lib;
         chat = machines.chat;
       };
-      util = import ./common {
+      common = import ./common {
         inherit machines;
         outputs = self;
         agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
         agent-latitude-deploy = agent-latitude.deploymenteffect;
       };
-    in {
+      immobiles = [ framework agent-digitalocean agent-latitude chat ];
+      mobiles = [ pinephone ];
+    in with common; {
       # apps = nixinate.nixinate.${machines.common.system} self;
 
-      nixosConfigurations = util.osForAll [
-        framework
-        pinephone
-        agent-digitalocean
-        agent-latitude
-        chat
-      ];
+      nixosConfigurations = util.osForAll (immobiles ++ mobiles);
 
-      devShells.${framework.system}."${framework.hostname}-homeshell" =
+      # Just aliases to `nix build .#<machine.hostname>`
+      packages.${machines.common.system} =
+        util.packagesFromAllOs { inherit immobiles mobiles; };
+
+      devShells.${framework.system}."${framework.drv-name-prefix}homeshell" =
         framework.homeshell;
 
-      checks.${machines.common.system}.lint = util.lint;
+      checks.${machines.common.system}.lint = lint;
 
-      herculesCI = util.herc;
+      herculesCI = herc;
     };
 }

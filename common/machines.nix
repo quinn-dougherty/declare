@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-stable, nixpkgs-mobile, hercules-ci-effects }:
+{ nixpkgs, nixpkgs-stable, hercules-ci-effects }:
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
   agent-onprem-tz = "America/New_York";
@@ -6,12 +6,6 @@ in {
   common = machines.common // {
     pkgs = import nixpkgs { system = machines.common.system; };
   };
-  # // {
-  # pkgs = import nixpkgs {
-  #   system = machines.common.system;
-  #  overlays = [ hercules-ci-effects.overlay ];
-  # };
-  # };
   framework = rec {
     hostname = machines.framework.hostname;
     username = machines.framework.username;
@@ -38,7 +32,7 @@ in {
     system = machines.pinephone.system;
     timezone = machines.common.timezone;
     config.allowUnfree = true;
-    pkgs = import nixpkgs-mobile { inherit system config; };
+    pkgs = import nixpkgs { inherit system config; };
   };
   agent-digitalocean = rec {
     hostname = machines.agent-digitalocean.hostname;

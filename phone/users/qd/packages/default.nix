@@ -1,16 +1,6 @@
 { pkgs }:
-
-with pkgs; [
-  # useful CLI/admin tools to have during setup
-  fatresize
-  gptfdisk
-  # networkmanager
-  # sudo
-  vim
-  wget
-
-  # it's good to have a variety of terminals (x11, Qt, GTK) to handle more failures
-  xterm
-  plasma5Packages.konsole
-  gnome.gnome-terminal
-]
+let
+  ops = import ./ops.nix { inherit pkgs; };
+  terminals = import ./terminals.nix { inherit pkgs; };
+  comms = import ./comms.nix { inherit pkgs; };
+in builtins.concatLists [ ops terminals comms ]

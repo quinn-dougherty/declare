@@ -4,6 +4,7 @@ with pinephone; {
     home-manager.enable = true;
     firefox.enable = true;
     git.enable = true;
+    vim.enable = true;
   };
 
   home = {
@@ -12,7 +13,7 @@ with pinephone; {
     packages = import ./packages { inherit pkgs; };
 
     # You can update home-manager without changing this value
-    stateVersion = "21.11";
+    stateVersion = "22.05";
   };
 
 }
