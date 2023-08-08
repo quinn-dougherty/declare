@@ -11,7 +11,7 @@ hci-inputs: {
 
     ${machines.pinephone.hostname}.outputs = let
       pinephone-uboot =
-        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot.disk-image;
+        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot;
     in {
       os_disk-image = pinephone-uboot.disk-image;
       os_boot-partition = pinephone-uboot.boot-partition;
