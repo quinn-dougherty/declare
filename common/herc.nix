@@ -1,7 +1,7 @@
 { outputs, machines, agent-digitalocean-deploy, agent-latitude-deploy }:
 hci-inputs: {
 
-  ciSystems = [ "x86_64-linux" ];
+  ciSystems = [ machines.common.system ];
 
   onPush = {
 
