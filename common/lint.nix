@@ -3,13 +3,15 @@ with common.pkgs;
 stdenv.mkDerivation {
   name = "dotfiles-lint";
   src = ./../.;
-  buildInputs = [ nixfmt nodePackages.prettier ];
+  buildInputs =
+    [ nixfmt nodePackages.prettier haskellPackages.stylish-haskell ];
   buildPhase = ''
     for nixfile in $(find $src -type f | grep '[.]nix')
     do
       nixfmt --check $nixfile
     done
     prettier --check $src --ignore-path .gitignore
+    stylish-haskell -i $src/framework/system/services/x/*.hs
   '';
   installPhase = "mkdir -p $out";
 }

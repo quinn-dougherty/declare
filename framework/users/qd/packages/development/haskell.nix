@@ -5,7 +5,7 @@ with pkgs; [
   cabal2nix
   hlint
   stylish-haskell
+  haskellPackages.cabal-fmt
   ghc
-  # stylish-cabal  # broken
   (agda.withPackages (ps: [ ps.standard-library ]))
 ]

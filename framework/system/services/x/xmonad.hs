@@ -6,6 +6,7 @@ import           System.IO
 import           System.Posix.Process      (executeFile)
 import           Text.Printf               (printf)
 import           XMonad
+import           XMonad.Actions.SpawnOn    (manageSpawn, spawnHere, spawnOn)
 import           XMonad.Config
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.FadeInactive
@@ -16,6 +17,9 @@ import           XMonad.Util.Run           (spawnPipe)
 terminalEmulator = "st"
 xmobarFGColor = "yellow"
 unfocusedWindowOpacity = 0.775
+
+modShift = mod4Mask .|. shiftMask
+alt = mod1Mask
 
 compiledConfig = printf "xmonad-%s-%s" arch os
 
@@ -39,16 +43,18 @@ myConfig xmproc = docks def
                   }
     , modMask = mod4Mask -- rebind Mod to the Windows key
     , borderWidth = 2
+    , manageHook = manageSpawn
     } `additionalKeys`
-    [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+    [ ((modShift, xK_z), spawn "xscreensaver-command -lock")
     , ((mod4Mask, xK_q), restart "xmonad" True)
-    , ((mod4Mask .|. shiftMask, xK_e), spawn "emacs")
-    , ((mod4Mask .|. shiftMask, xK_w), spawn "firefox")
-    , ((mod4Mask .|. shiftMask, xK_b), spawn "lutris battlenet")
-    , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot launcher")
-    , ((mod1Mask, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
-    , ((mod1Mask, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
-    , ((mod1Mask, xK_F3), spawn "wpctl set-sink-volume @DEFAULT_SINK@ +10%")
+    , ((modShift, xK_e), spawnOn "4" "emacs")
+    , ((modShift, xK_w), spawnOn "1" "firefox")
+    , ((modShift, xK_m), spawnOn "3" "thunderbird")
+    , ((modShift, xK_b), spawnOn "9" "lutris battlenet")
+    , ((modShift, xK_s), spawnHere "flameshot launcher")
+    , ((alt, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
+    , ((alt, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
+    , ((alt, xK_F3), spawn "wpctl set-sink-volume @DEFAULT_SINK@ +10%")
     ]
 
 main = do
