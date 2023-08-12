@@ -12,6 +12,7 @@ with pkgs; [
   protonup-qt
   protonup-ng
   lutris
+  gamemode
   dxvk
   vulkan-tools
   vulkan-loader
