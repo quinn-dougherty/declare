@@ -26,10 +26,12 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(load! "rand-theme.el")
 (setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark doom-manegarm manoj-dark))
 (rand-theme)
 
+; other defaults for startup.
+(minimap-mode)
+(add-hook 'window-setup-hook #'treemacs t)
 
 (setq projectile-project-search-path '("~/Dropbox/Projects/") projectile-sort-order 'recentf)
 
@@ -50,9 +52,6 @@
 (custom-set-variables
  `(coq-prog-name "coqtop")
  )
-
-; (minimap 1) ;; minimap always on
-; (treemacs 1) ;; treemacs always on
 
 (after! rescript-mode
 	(setq lsp-rescript-server-command

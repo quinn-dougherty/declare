@@ -59,3 +59,4 @@
 (package! envrc)
 (package! rescript-mode)
 (package! lsp-rescript)
+(package! rand-theme)
