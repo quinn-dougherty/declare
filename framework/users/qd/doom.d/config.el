@@ -47,13 +47,12 @@
 
 ;; coq, proof general
 (custom-set-variables '(proof-three-window-enable t))
-
 (custom-set-variables
  `(coq-prog-name "coqtop")
  )
 
-(minimap 1) ;; minimap always on
-(treemacs 1) ;; treemacs always on
+; (minimap 1) ;; minimap always on
+; (treemacs 1) ;; treemacs always on
 
 (after! rescript-mode
 	(setq lsp-rescript-server-command
