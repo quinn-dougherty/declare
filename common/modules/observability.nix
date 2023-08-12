@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     lm_sensors
+    xsensors
+    inxi
     tcpdump
     termshark
     conntrack-tools
