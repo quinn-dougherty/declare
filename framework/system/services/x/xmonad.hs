@@ -50,7 +50,7 @@ myConfig xmproc = docks def
     , ((modShift, xK_e), spawnOn "4" "emacs")
     , ((modShift, xK_w), spawnOn "1" "firefox")
     , ((modShift, xK_m), spawnOn "3" "thunderbird")
-    -- , ((modShift, xK_b), spawnOn "9" "lutris battlenet")
+    , ((modShift, xK_b), spawnOn "9" "lutris battlenet")
     , ((modShift, xK_s), spawnHere "flameshot launcher")
     , ((alt, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
     , ((alt, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
