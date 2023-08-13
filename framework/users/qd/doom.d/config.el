@@ -66,7 +66,7 @@
 
 (after! lsp-haskell
   (setq lsp-haskell-formatting-provider "stylish-haskell"))
-(set-formatter! 'stylish-haskell "stylish-haskell" '(haskell-mode))
+(set-formatter! 'stylish-haskell "stylish-haskell" :mode '(haskell-mode))
 ;; auto-load agda-mode for .agda and .lagda.md
 ;;(setq auto-mode-alist
 ;;   (append
