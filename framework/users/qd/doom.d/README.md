@@ -4,5 +4,5 @@ Notice `rescript-mode` manual wiring up in `config.el` (hence the git submodules
 
 ## TODO:
 
-- [ ] Fix `agda` (see commented out code in `config.el`)
+- [x] Fix `agda` (see commented out code in `config.el`)
 - [ ] Fix `python3` bug in `treemacs` at startup.
