@@ -1,0 +1,20 @@
+# `x` for windows!
+
+## Unfocused opacity
+
+We like to reduce opacity for unfocused windows sometimes.
+
+[ ] TODO: a `.patch` file to disable unfocused window opacity. For the time being, do these steps manually:
+
+- comment out `, logHook = fadeInactiveLogHook unfocusedWindowOpacity` in `xmonad.hs`
+- comment out `xcompmgr -cn &` in `xprofile` (perhaps delete if comments are not allowed)
+- comment out `xorg.xcompmgr` in `framework/modules/x.nix`
+
+## Screensavers
+
+We like to enable screensavers sometimes.
+
+[ ] TODO: a `.patch` file to enable screensavers. For the time being, do these steps manually
+
+- Add `xscreensaver` to `framework/modules/x.nix`
+- Add something like `xscreensaver &` to `xprofile`

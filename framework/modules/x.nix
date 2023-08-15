@@ -4,7 +4,7 @@
     dmenu
     tmate
     haskellPackages.xmobar
-    xcompmgr
+    # xcompmgr  # possible performance boost
     xorg.xbacklight
     st
     feh

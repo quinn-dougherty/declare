@@ -21,6 +21,18 @@ unfocusedWindowOpacity = 0.775
 modShift = mod4Mask .|. shiftMask
 alt = mod1Mask
 
+keybinds = [ ((modShift, xK_z), spawn "xscreensaver-command -lock")
+    , ((mod4Mask, xK_q), restart "xmonad" True)
+    , ((modShift, xK_e), spawnOn "4" "emacs")
+    , ((modShift, xK_w), spawnOn "1" "firefox")
+    , ((modShift, xK_m), spawnOn "3" "thunderbird")
+    , ((modShift, xK_b), spawnOn "9" "lutris battlenet & lutris trade-skill-master")
+    , ((modShift, xK_s), spawnHere "flameshot launcher")
+    , ((alt, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
+    , ((alt, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
+    , ((alt, xK_F3), spawn "wpctl set-sink-volume @DEFAULT_SINK@ +10%")
+    ]
+
 compiledConfig = printf "xmonad-%s-%s" arch os
 
 compileRestart resume = do
@@ -33,29 +45,20 @@ compileRestart resume = do
               executeFile (cacheDir dirs </> compiledConfig) False args Nothing
           )
 
+
 myConfig xmproc = docks def
     { terminal = terminalEmulator
     , layoutHook = avoidStruts $ layoutHook def
-    , logHook = fadeInactiveLogHook unfocusedWindowOpacity
-      <+> dynamicLogWithPP xmobarPP
+    -- , logHook = fadeInactiveLogHook unfocusedWindowOpacity <+>
+    , logHook = dynamicLogWithPP xmobarPP
                   { ppOutput = hPutStrLn xmproc
                   , ppTitle = xmobarColor xmobarFGColor "" . shorten 50
                   }
     , modMask = mod4Mask -- rebind Mod to the Windows key
     , borderWidth = 2
     , manageHook = manageSpawn
-    } `additionalKeys`
-    [ ((modShift, xK_z), spawn "xscreensaver-command -lock")
-    , ((mod4Mask, xK_q), restart "xmonad" True)
-    , ((modShift, xK_e), spawnOn "4" "emacs")
-    , ((modShift, xK_w), spawnOn "1" "firefox")
-    , ((modShift, xK_m), spawnOn "3" "thunderbird")
-    , ((modShift, xK_b), spawnOn "9" "lutris battlenet & lutris trade-skill-master")
-    , ((modShift, xK_s), spawnHere "flameshot launcher")
-    , ((alt, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
-    , ((alt, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
-    , ((alt, xK_F3), spawn "wpctl set-sink-volume @DEFAULT_SINK@ +10%")
-    ]
+    } `additionalKeys` keybinds
+
 
 main = do
   xmproc <- spawnPipe "xmobar ~/Dropbox/dotfiles/framework/system/services/x/xmobarrc.hs"
