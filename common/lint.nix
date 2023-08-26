@@ -11,7 +11,7 @@ stdenv.mkDerivation {
       nixfmt --check $nixfile
     done
     prettier --check $src --ignore-path .gitignore
-    stylish-haskell -i $src/framework/system/services/x/*.hs
+    stylish-haskell $src/framework/system/services/x/*.hs
   '';
   installPhase = "mkdir -p $out";
 }

@@ -3,8 +3,8 @@
   environment.systemPackages = with pkgs; [
     dmenu
     tmate
-    haskellPackages.xmobar
-    # xcompmgr  # possible performance boost
+    # haskellPackages.xmobar # Not needed cuz of the modular/service version
+    xcompmgr # possible performance boost
     xorg.xbacklight
     st
     feh
