@@ -1,7 +1,5 @@
 { pkgs }:
 builtins.concatLists [
-  [
-    pkgs.runelite
-  ]
-  # (import ./blizzard.nix { inherit pkgs; })
+  [ pkgs.runelite ]
+  (import ./blizzard.nix { inherit pkgs; })
 ]
