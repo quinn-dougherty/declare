@@ -24,6 +24,7 @@
   ./../common/modules/audit.nix
   ./../common/modules/crosscompilation.nix
   ./../common/modules/observability.nix
+  ./../common/modules/ivpn.nix
   ./../common/modules/devops.nix
   ./../common/modules/utilities.nix
 ]
