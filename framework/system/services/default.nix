@@ -21,6 +21,7 @@
 
   tailscale.enable = false;
   mullvad-vpn.enable = false;
+  ivpn.enable = true;
 
   postgresql = import ./guesstimate-postgres.nix { inherit pkgs; };
 

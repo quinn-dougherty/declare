@@ -55,6 +55,7 @@
 ; (package! yaml-mode)  ; I think there's an item in init.el that covers this.
 (package! pdf-tools)
 (package! org-kanban)
+(package! org-transclusion)
 (package! direnv)
 (package! envrc)
 (package! rescript-mode)
