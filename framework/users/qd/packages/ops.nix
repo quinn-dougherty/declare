@@ -1,6 +1,5 @@
 { pkgs }:
 with pkgs; [
-  pass
   pavucontrol
 
   nextcloud-client

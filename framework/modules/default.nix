@@ -11,7 +11,7 @@
   ./../../common/modules/bluetooth.nix
   ./../../common/modules/nix.nix
   ./../../common/modules/cachix
-  ./../../common/modules/dropbox.nix
+  # ./../../common/modules/dropbox.nix
   ./../../common/modules/dunst.nix
   ./../../common/modules/audit.nix
   ./../../common/modules/observability.nix

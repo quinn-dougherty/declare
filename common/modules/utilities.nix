@@ -13,5 +13,8 @@
     unzip
     tree
     nix-tree
+    _1password
+    _1password-gui
+    pass
   ];
 }
