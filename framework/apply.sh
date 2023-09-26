@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
-pushd ~/Dropbox/dotfiles
+pushd ~/Dropbox/TmpDropboxFixing/configuration.nix
 sudo nixos-rebuild switch --flake .#
 popd
