@@ -7,6 +7,8 @@ with framework; {
       efi.canTouchEfiVariables = true;
     };
     kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
+    # trying to improve lid close situation:
+    kernelParames = [ "mem_sleep_default=deep" ];
   };
 
   networking = {
