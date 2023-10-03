@@ -6,10 +6,12 @@
     vim
     wget
     curl
+    jq
     pciutils
     gnumake
     cmake
     patchelf
+    openssl
     unzip
     tree
     nix-tree
