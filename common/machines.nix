@@ -1,7 +1,7 @@
 { nixpkgs, nixpkgs-stable, hercules-ci-effects }:
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
-  agent-onprem-tz = "America/New_York";
+  agent-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
 in {
   common = machines.common // {
