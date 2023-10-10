@@ -59,8 +59,9 @@ in {
     system = machines.common.system;
     timezone = agent-onprem-tz;
     ip = machines.agent-latitude.ip;
+    config.allowUnfree = true;
     pkgs = import nixpkgs {
-      inherit system;
+      inherit system config;
       overlays = herc-effects-overlays;
     };
   };
