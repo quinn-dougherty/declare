@@ -71,6 +71,7 @@ in {
     system = machines.common.system;
     timezone = machines.common.timezone;
     ip = machines.chat.ip;
-    pkgs = import nixpkgs { inherit system; };
+    config.allowUnfree = true;
+    pkgs = import nixpkgs { inherit system config; };
   };
 }
