@@ -50,7 +50,7 @@
 ;; coq, proof general
 (custom-set-variables '(proof-three-window-enable t))
 (custom-set-variables
- `(coq-prog-name "coqtop")
+ `(coq-prog-name "dune coq top")
  )
 
 (after! rescript-mode
@@ -67,6 +67,15 @@
 (after! lsp-haskell
   (setq lsp-haskell-formatting-provider "stylish-haskell"))
 (set-formatter! 'stylish-haskell "stylish-haskell" :modes '(haskell-mode ".hs"))
+
+(use-package! org-transclusion
+  :after org
+  :init
+  (map!
+   :map global-map "<f12>" #'org-transclusion-add
+   :leader
+   :prefix "n"
+   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append

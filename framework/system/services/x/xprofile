@@ -1,4 +1,4 @@
 xcompmgr -cn &
 clipcatd
 xrandr --dpi 162
-feh --bg-fill -z /home/qd/Dropbox/dotfiles/framework/system/services/x/desktopbackgrounds/*
+feh --bg-fill -z /home/qd/ProjectsSync/dotfiles/framework/system/services/x/desktopbackgrounds/*

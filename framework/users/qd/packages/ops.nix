@@ -1,9 +1,9 @@
 { pkgs }:
 with pkgs; [
-  pass
   pavucontrol
 
   nextcloud-client
+  sqlite
 
   dropbox-cli
   firefox
@@ -22,6 +22,7 @@ with pkgs; [
   pinta
   obs-studio
   vlc
+  ffmpeg
   pandoc
 
   # music

@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
-pushd ~/Dropbox/dotfiles
+pushd ~/ProjectsSync/dotfiles
 sudo nixos-rebuild switch --flake .#
 popd

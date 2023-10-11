@@ -16,6 +16,7 @@ with framework; {
   };
 
   imports = [ nix-doom-emacs.hmModule ];
+  services.dropbox.enable = true;
   home = {
     packages = import ./packages { inherit pkgs; };
     username = username;

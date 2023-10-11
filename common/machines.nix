@@ -1,7 +1,7 @@
 { nixpkgs, nixpkgs-stable, hercules-ci-effects }:
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
-  agent-onprem-tz = "America/New_York";
+  agent-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
 in {
   common = machines.common // {
@@ -59,8 +59,9 @@ in {
     system = machines.common.system;
     timezone = agent-onprem-tz;
     ip = machines.agent-latitude.ip;
+    config.allowUnfree = true;
     pkgs = import nixpkgs {
-      inherit system;
+      inherit system config;
       overlays = herc-effects-overlays;
     };
   };
@@ -71,6 +72,7 @@ in {
     system = machines.common.system;
     timezone = machines.common.timezone;
     ip = machines.chat.ip;
-    pkgs = import nixpkgs { inherit system; };
+    config.allowUnfree = true;
+    pkgs = import nixpkgs { inherit system config; };
   };
 }
