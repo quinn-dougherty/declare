@@ -164,10 +164,7 @@
     },
     "flake-parts": {
       "inputs": {
-        "nixpkgs-lib": [
-          "hercules-ci-agent",
-          "nixpkgs"
-        ]
+        "nixpkgs-lib": ["hercules-ci-agent", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1688466019,
@@ -202,11 +199,7 @@
     },
     "flake-parts_3": {
       "inputs": {
-        "nixpkgs-lib": [
-          "hercules-ci-effects",
-          "hercules-ci-agent",
-          "nixpkgs"
-        ]
+        "nixpkgs-lib": ["hercules-ci-effects", "hercules-ci-agent", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1688466019,
@@ -350,9 +343,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1696737557,
@@ -399,9 +390,7 @@
         "flake-utils": "flake-utils",
         "format-all": "format-all",
         "nix-straight": "nix-straight",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": ["nixpkgs"],
         "nose": "nose",
         "ob-racket": "ob-racket",
         "org": "org",
@@ -446,9 +435,7 @@
     },
     "nixinate": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1688141737,
