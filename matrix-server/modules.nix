@@ -9,4 +9,5 @@
   ./../common/modules/audit.nix
   ./../common/modules/observability.nix
   ./../common/modules/utilities.nix
+  ./../common/modules/allowUnfree.nix
 ]
