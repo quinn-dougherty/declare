@@ -27,4 +27,5 @@
   ./../common/modules/ivpn.nix
   ./../common/modules/devops.nix
   ./../common/modules/utilities.nix
+  ./../common/modules/allowUnfree.nix
 ]
