@@ -6,6 +6,7 @@
     tcpdump
     termshark
     conntrack-tools
+    linuxKernel.packages.linux_libre.perf
   ];
   programs = {
     mtr.enable = true;
