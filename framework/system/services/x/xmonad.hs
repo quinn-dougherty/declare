@@ -16,7 +16,7 @@ import           XMonad.Util.Run           (spawnPipe)
 
 terminalEmulator = "st"
 xmobarFGColor = "yellow"
-unfocusedWindowOpacity = 0.775
+unfocusedWindowOpacity = 0.7
 
 modShift = mod4Mask .|. shiftMask
 alt = mod1Mask
@@ -28,6 +28,7 @@ keybinds = [ ((modShift, xK_z), spawn "xscreensaver-command -lock")
     , ((modShift, xK_m), spawnOn "3" "thunderbird")
     , ((modShift, xK_b), spawnOn "9" "lutris battlenet & lutris trade-skill-master")
     , ((modShift, xK_s), spawnHere "flameshot launcher")
+    , ((modShift, xK_h), spawnHere "blueman-manager")
     , ((alt, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
     , ((alt, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
     , ((alt, xK_F3), spawn "wpctl set-sink-volume @DEFAULT_SINK@ +10%")
