@@ -17,6 +17,10 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    smos = {
+      url = "github:NorfairKing/smos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hercules-ci-agent = {
       url = "github:hercules-ci/hercules-ci-agent";
       # inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -32,14 +36,14 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , mobile-nixos, nix-doom-emacs, hercules-ci-agent, hercules-ci-effects
+    , mobile-nixos, nix-doom-emacs, smos, hercules-ci-agent, hercules-ci-effects
     , nixinate }:
     let
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable hercules-ci-effects;
       };
       framework = import ./framework {
-        inherit nixos-hardware home-manager nix-doom-emacs;
+        inherit nixos-hardware home-manager nix-doom-emacs smos;
         lib = nixpkgs.lib;
         framework = machines.framework;
       };

@@ -1,4 +1,4 @@
-{ framework, nix-doom-emacs, ... }:
+{ framework, nix-doom-emacs, smos, ... }:
 with framework; {
   programs = {
     direnv = {
@@ -15,7 +15,10 @@ with framework; {
     home-manager.enable = true;
   };
 
-  imports = [ nix-doom-emacs.hmModule ];
+  imports = [
+    nix-doom-emacs.hmModule
+    smos.homeManagerModules.${framework.system}.default
+  ];
   services.dropbox.enable = true;
   home = {
     packages = import ./packages { inherit pkgs; };

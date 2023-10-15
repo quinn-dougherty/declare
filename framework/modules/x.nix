@@ -4,10 +4,11 @@
     dmenu
     tmate
     haskellPackages.xmobar
-    xcompmgr # possible performance boost
+    xcompmgr # removal is possible performance boost?
     xorg.xbacklight
     st
     feh
     flameshot
+    xscreensaver
   ];
 }
