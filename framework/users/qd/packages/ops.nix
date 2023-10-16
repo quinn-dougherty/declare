@@ -14,6 +14,7 @@ with pkgs; [
   tor
 
   # Media apps and stuff
+  obsidian
   qownnotes
   qc
   anki
