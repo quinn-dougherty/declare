@@ -5,7 +5,7 @@ with pinephone; {
   networking = {
     hostName = hostname;
     networkmanager.enable = true;
-    interfaces.wlp170s0.useDHCP = true;
+    interfaces.wlan0.useDHCP = true;
   };
 
   time.timeZone = timezone;
@@ -22,7 +22,7 @@ with pinephone; {
       # uid = 1000;
       # make this numeric so that you can enter it in the phosh lockscreen.
       # DON'T leave this empty: not all greeters support passwordless users.
-      initialPassword = "999999";
+      initialPassword = "9999";
       extraGroups = [ "wheel" "networkmanager" ];
       openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
     };
