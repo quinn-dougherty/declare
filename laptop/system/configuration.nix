@@ -1,5 +1,5 @@
-{ framework, ... }:
-with framework; {
+{ laptop, ... }:
+with laptop; {
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.

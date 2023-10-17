@@ -1,5 +1,5 @@
-{ pinephone }:
-with pinephone; {
+{ phone }:
+with phone; {
   programs = {
     home-manager.enable = true;
     firefox.enable = true;

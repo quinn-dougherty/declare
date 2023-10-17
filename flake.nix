@@ -39,41 +39,33 @@
     , mobile-nixos, nix-doom-emacs, smos, hercules-ci-agent, hercules-ci-effects
     , nixinate }:
     let
+      lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable hercules-ci-effects;
       };
-      framework = import ./framework {
-        inherit nixos-hardware home-manager nix-doom-emacs smos;
-        lib = nixpkgs.lib;
-        framework = machines.framework;
+      laptop = import ./laptop {
+        inherit lib nixos-hardware home-manager nix-doom-emacs smos;
+        laptop = machines.laptop;
       };
-      agent-digitalocean = import ./agent-digitalocean {
-        inherit hercules-ci-agent;
-        lib = nixpkgs.lib;
-        agent = machines.agent-digitalocean;
+      server = import ./server {
+        inherit lib nixos-hardware hercules-ci-agent;
+        server = machines.server;
       };
-      agent-latitude = import ./agent-latitude {
-        inherit hercules-ci-agent nixos-hardware;
-        lib = nixpkgs.lib;
-        agent = machines.agent-latitude;
+      phone = import ./phone {
+        inherit lib home-manager mobile-nixos;
+        phone = machines.phone;
       };
-      pinephone = import ./phone {
-        inherit home-manager mobile-nixos;
-        lib = nixpkgs.lib;
-        pinephone = machines.pinephone;
-      };
-      chat = import ./matrix-server {
-        lib = nixpkgs.lib;
+      chat = import ./chat {
+        inherit lib;
         chat = machines.chat;
       };
       common = import ./common {
         inherit machines;
         outputs = self;
-        agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
-        agent-latitude-deploy = agent-latitude.deploymenteffect;
+        server-deploy = server.deploymenteffect;
       };
-      immobiles = [ framework agent-digitalocean agent-latitude chat ];
-      mobiles = [ pinephone ];
+      immobiles = [ laptop server chat ];
+      mobiles = [ phone ];
     in with common; {
       apps = nixinate.nixinate.${machines.common.system} self;
 
@@ -83,8 +75,8 @@
       packages.${machines.common.system} =
         commonlib.packagesFromAllOs { inherit immobiles mobiles; };
 
-      devShells.${framework.system}."${framework.drv-name-prefix}homeshell" =
-        framework.homeshell;
+      devShells.${laptop.system}."${laptop.drv-name-prefix}homeshell" =
+        laptop.homeshell;
 
       checks.${machines.common.system}.lint = lint;
 

@@ -1,5 +1,5 @@
-{ framework, nix-doom-emacs, smos, ... }:
-with framework; {
+{ laptop, nix-doom-emacs, smos, ... }:
+with laptop; {
   programs = {
     direnv = {
       enable = true;
@@ -17,7 +17,7 @@ with framework; {
 
   imports = [
     nix-doom-emacs.hmModule
-    smos.homeManagerModules.${framework.system}.default
+    smos.homeManagerModules.${laptop.system}.default
   ];
   services.dropbox.enable = true;
   home = {

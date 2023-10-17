@@ -1,6 +1,6 @@
-{ pinephone }:
+{ phone }:
 
-with pinephone; {
+with phone; {
 
   networking = {
     hostName = hostname;
