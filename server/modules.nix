@@ -1,4 +1,4 @@
-{ agent, nixos-hardware, hercules-ci-agent }:
+{ server, nixos-hardware, hercules-ci-agent }:
 
 [
   (import ./system/configuration.nix { inherit agent; })

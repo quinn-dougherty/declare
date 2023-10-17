@@ -1,12 +1,12 @@
-{ framework, nixos-hardware, home-manager, nix-doom-emacs, smos }:
+{ laptop, nixos-hardware, home-manager, nix-doom-emacs, smos }:
 
 [
-  (import ./../system/configuration.nix { inherit framework; })
+  (import ./../system/configuration.nix { inherit laptop; })
   ./../system/hardware-configuration.nix
   ./x.nix
   nixos-hardware.nixosModules.framework
   home-manager.nixosModules.home-manager
-  (import ./hm.nix { inherit framework nix-doom-emacs smos; })
+  (import ./hm.nix { inherit laptop nix-doom-emacs smos; })
   ./../../common/modules/audio.nix
   ./../../common/modules/bluetooth.nix
   ./../../common/modules/nix.nix

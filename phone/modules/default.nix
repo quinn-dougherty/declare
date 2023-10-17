@@ -1,4 +1,4 @@
-{ pinephone, home-manager, mobile-nixos }:
+{ phone, home-manager, mobile-nixos }:
 
 [
   (import ./../system/mobile.nix { inherit mobile-nixos; })
