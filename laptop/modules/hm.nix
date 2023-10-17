@@ -1,12 +1,11 @@
-{ framework, nix-doom-emacs, smos }: {
+{ laptop, nix-doom-emacs, smos }: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {
-      ${framework.username} = import ./../users/qd/home.nix {
-        inherit framework nix-doom-emacs smos;
-      };
-      root = import ./../users/root/home.nix { inherit framework; };
+      ${laptop.username} =
+        import ./../users/qd/home.nix { inherit laptop nix-doom-emacs smos; };
+      root = import ./../users/root/home.nix { inherit laptop; };
     };
     # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
   };

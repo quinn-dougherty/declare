@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ agent, ... }:
+{ server, ... }:
 
 {
   # Bootloader.
@@ -15,17 +15,17 @@
   };
 
   networking = {
-    hostName = agent.hostname;
+    hostName = server.hostname;
     networkmanager.enable = true;
   };
-  time.timeZone = agent.timezone;
+  time.timeZone = server.timezone;
 
   i18n.defaultLocale = "en_US.utf8";
 
   services = {
     xserver.displayManager.autoLogin = {
       enable = true;
-      user = agent.username;
+      user = server.username;
     };
     fwupd.enable = true;
 
@@ -33,9 +33,9 @@
   };
 
   users.users = {
-    ${agent.username} = {
+    ${server.username} = {
       isNormalUser = true;
-      description = agent.user-fullname;
+      description = server.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keyFiles = [ ./../../common/keys/authorized_keys ];
     };
@@ -43,12 +43,12 @@
       [ ./../../common/keys/authorized_keys ];
   };
 
-  programs.gnupg.agent = {
+  programs.gnupg.server = {
     enable = true;
     enableSSHSupport = true;
   };
 
-  environment.systemPackages = [ agent.pkgs.deluge ];
+  environment.systemPackages = [ server.pkgs.deluge ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

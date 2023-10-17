@@ -1,12 +1,12 @@
 # Defunct, in favor of `effects.runNixOS`
-{ ref, agent, nixination }:
+{ ref, server, nixination }:
 let
-  known-hosts-fragment = with agent;
+  known-hosts-fragment = with server;
     import ./knownhostsfragment.nix { inherit ip; };
-in with agent.pkgs;
+in with server.pkgs;
 hci-effects.runIf (ref == "refs/heads/main") (hci-effects.mkEffect {
   effectScript = ''
-    ${nixination.${agent.hostname}.program}
+    ${nixination.${server.hostname}.program}
   '';
   secretsMap.default-ssh = "default-ssh";
   userSetupScript = ''
@@ -25,5 +25,5 @@ hci-effects.runIf (ref == "refs/heads/main") (hci-effects.mkEffect {
   '';
 
   # This is directly from docs, but is causing deployment to break.
-  # ssh.destination = agent.ip;
+  # ssh.destination = server.ip;
 })

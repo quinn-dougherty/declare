@@ -1,10 +1,10 @@
-{ ref, agent, agent-os }:
+{ ref, server, server-os }:
 let
-  known-hosts-fragment = with agent;
+  known-hosts-fragment = with server;
     import ./knownhostsfragment.nix { inherit ip; };
-in with agent.pkgs;
+in with server.pkgs;
 hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
-  config = agent-os.config;
+  config = server-os.config;
   secretsMap.ssh = "default-ssh";
   userSetupScript = ''
     writeSSHKey ssh
@@ -14,5 +14,5 @@ hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
   '';
 
   # This is directly from docs, but is causing deployment to break.
-  ssh.destination = agent.ip;
+  ssh.destination = server.ip;
 })

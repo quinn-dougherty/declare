@@ -1,5 +1,5 @@
-{ framework, ... }:
-with framework; {
+{ laptop, ... }:
+with laptop; {
   programs = {
     direnv = {
       enable = true;
