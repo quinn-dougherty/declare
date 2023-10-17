@@ -1,7 +1,7 @@
 { nixpkgs, nixpkgs-stable, hercules-ci-effects }:
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
-  agent-onprem-tz = "America/Los_Angeles";
+  server-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
 in {
   common = machines.common // {
@@ -10,10 +10,10 @@ in {
       overlays = herc-effects-overlays;
     };
   };
-  framework = rec {
-    hostname = machines.framework.hostname;
-    username = machines.framework.username;
-    user-fullname = machines.framework.user-fullname;
+  laptop = rec {
+    hostname = machines.laptop.hostname;
+    username = machines.laptop.username;
+    user-fullname = machines.laptop.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
     drv-name-prefix = "${username}@${hostname}:";
@@ -29,36 +29,22 @@ in {
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
   };
-  pinephone = rec {
-    hostname = machines.pinephone.hostname;
-    username = machines.pinephone.username;
-    user-fullname = machines.pinephone.user-fullname;
-    system = machines.pinephone.system;
+  phone = rec {
+    hostname = machines.phone.hostname;
+    username = machines.phone.username;
+    user-fullname = machines.phone.user-fullname;
+    system = machines.phone.system;
     timezone = machines.common.timezone;
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system config; };
   };
-  agent-digitalocean = rec {
-    hostname = machines.agent-digitalocean.hostname;
-    username = machines.agent-digitalocean.username;
-    user-fullname = machines.agent-digitalocean.user-fullname;
+  server = rec {
+    hostname = machines.server.hostname;
+    username = machines.server.username;
+    user-fullname = machines.server.user-fullname;
     system = machines.common.system;
-    timezone = machines.common.timezone;
-    ip = machines.agent-digitalocean.ip;
-    volume = machines.agent-digitalocean.volume;
-    overlays = [ hercules-ci-effects.overlay ];
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = herc-effects-overlays;
-    };
-  };
-  agent-latitude = rec {
-    hostname = machines.agent-latitude.hostname;
-    username = machines.agent-latitude.username;
-    user-fullname = machines.agent-latitude.user-fullname;
-    system = machines.common.system;
-    timezone = agent-onprem-tz;
-    ip = machines.agent-latitude.ip;
+    timezone = server-onprem-tz;
+    ip = machines.server.ip;
     pkgs = import nixpkgs {
       inherit system;
       overlays = herc-effects-overlays;

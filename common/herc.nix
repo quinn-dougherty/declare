@@ -1,35 +1,27 @@
-{ outputs, machines, agent-digitalocean-deploy, agent-latitude-deploy }:
+{ outputs, machines, server-deploy }:
 hci-inputs: {
   onPush = {
     # TODO: clean this up with `common/lib.nix`
-    ${machines.framework.hostname}.outputs = {
+    ${machines.laptop.hostname}.outputs = {
       home-shell =
-        outputs.devShells.${machines.framework.system}."${machines.framework.drv-name-prefix}homeshell";
+        outputs.devShells.${machines.laptop.system}."${machines.laptop.drv-name-prefix}homeshell";
       operating-system =
-        outputs.nixosConfigurations.${machines.framework.hostname}.config.system.build.toplevel;
+        outputs.nixosConfigurations.${machines.laptop.hostname}.config.system.build.toplevel;
     };
 
-    ${machines.pinephone.hostname}.outputs = let
-      pinephone-uboot =
-        outputs.nixosConfigurations.${machines.pinephone.hostname}.config.mobile.outputs.u-boot;
+    ${machines.phone.hostname}.outputs = let
+      phone-uboot =
+        outputs.nixosConfigurations.${machines.phone.hostname}.config.mobile.outputs.u-boot;
     in {
-      os_disk-image = pinephone-uboot.disk-image;
-      os_boot-partition = pinephone-uboot.boot-partition;
+      os_disk-image = phone-uboot.disk-image;
+      os_boot-partition = phone-uboot.boot-partition;
     };
-    ${machines.agent-digitalocean.hostname}.outputs = with hci-inputs;
-      if false then { # ref == "refs/heads/main" then {
-        effects.deployment = agent-digitalocean-deploy { inherit ref; };
-      } else {
-        operating-system =
-          outputs.nixosConfigurations.${machines.agent-digitalocean.hostname}.config.system.build.toplevel;
-      };
-
-    ${machines.agent-latitude.hostname}.outputs = with hci-inputs;
+    ${machines.server.hostname}.outputs = with hci-inputs;
       if ref == "refs/heads/main" then {
-        effects.deployment = agent-latitude-deploy { inherit ref; };
+        effects.deployment = server-deploy { inherit ref; };
       } else {
         operating-system =
-          outputs.nixosConfigurations.${machines.agent-latitude.hostname}.config.system.build.toplevel;
+          outputs.nixosConfigurations.${machines.server.hostname}.config.system.build.toplevel;
       };
 
     ${machines.chat.hostname}.outputs.operating-system =

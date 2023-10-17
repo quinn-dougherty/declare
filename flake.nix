@@ -42,20 +42,15 @@
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable hercules-ci-effects;
       };
-      framework = import ./framework {
+      laptop = import ./laptop {
         inherit nixos-hardware home-manager nix-doom-emacs smos;
         lib = nixpkgs.lib;
-        framework = machines.framework;
+        laptop = machines.laptop;
       };
-      agent-digitalocean = import ./agent-digitalocean {
-        inherit hercules-ci-agent;
-        lib = nixpkgs.lib;
-        agent = machines.agent-digitalocean;
-      };
-      agent-latitude = import ./agent-latitude {
+      server = import ./server {
         inherit hercules-ci-agent nixos-hardware;
         lib = nixpkgs.lib;
-        agent = machines.agent-latitude;
+        agent = machines.server;
       };
       pinephone = import ./phone {
         inherit home-manager mobile-nixos;
@@ -69,10 +64,9 @@
       common = import ./common {
         inherit machines;
         outputs = self;
-        agent-digitalocean-deploy = agent-digitalocean.deploymenteffect;
-        agent-latitude-deploy = agent-latitude.deploymenteffect;
+        server-deploy = server.deploymenteffect;
       };
-      immobiles = [ framework agent-digitalocean agent-latitude chat ];
+      immobiles = [ laptop server chat ];
       mobiles = [ pinephone ];
     in with common; {
       apps = nixinate.nixinate.${machines.common.system} self;
@@ -83,8 +77,8 @@
       packages.${machines.common.system} =
         commonlib.packagesFromAllOs { inherit immobiles mobiles; };
 
-      devShells.${framework.system}."${framework.drv-name-prefix}homeshell" =
-        framework.homeshell;
+      devShells.${laptop.system}."${laptop.drv-name-prefix}homeshell" =
+        laptop.homeshell;
 
       checks.${machines.common.system}.lint = lint;
 

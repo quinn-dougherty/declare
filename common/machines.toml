@@ -2,32 +2,25 @@
 system = "x86_64-linux"
 timezone = "America/Los_Angeles"
 
-[framework]
-hostname = "fw"
+[laptop]
+hostname = "laptop"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 
-[pinephone]
+[phone]
 hostname = "phone"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 system = "aarch64-linux"
 
-[agent-digitalocean]
-hostname = "herc-agent-digitalocean"
-username = "herc-admin"
-user-fullname = "Hercules Administrator Digital Ocean"
-volume = "volume-nyc3-01"
-ip = "142.93.190.80"
-
-[agent-latitude]
-hostname = "herc-agent-latitude"
-username = "herc-admin"
+[server]
+hostname = "server"
+username = "admin"
 user-fullname = "Hercules Administrator Latitude"
 ip = "192.168.6.18"
 
 [chat]
-hostname = "matrix-server"
+hostname = "chat"
 username = "synapse-admin"
 user-fullname = "Matrix Administrator"
 ip = ""
