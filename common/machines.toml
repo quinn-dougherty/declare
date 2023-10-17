@@ -24,7 +24,7 @@ ip = "142.93.190.80"
 hostname = "herc-agent-latitude"
 username = "herc-admin"
 user-fullname = "Hercules Administrator Latitude"
-ip = "192.168.6.4"
+ip = "192.168.6.18"
 
 [chat]
 hostname = "matrix-server"
