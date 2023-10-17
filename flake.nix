@@ -39,26 +39,24 @@
     , mobile-nixos, nix-doom-emacs, smos, hercules-ci-agent, hercules-ci-effects
     , nixinate }:
     let
+      lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
         inherit nixpkgs nixpkgs-stable hercules-ci-effects;
       };
       laptop = import ./laptop {
-        inherit nixos-hardware home-manager nix-doom-emacs smos;
-        lib = nixpkgs.lib;
+        inherit lib nixos-hardware home-manager nix-doom-emacs smos;
         laptop = machines.laptop;
       };
       server = import ./server {
-        inherit hercules-ci-agent nixos-hardware;
-        lib = nixpkgs.lib;
+        inherit lib nixos-hardware hercules-ci-agent;
         server = machines.server;
       };
       phone = import ./phone {
-        inherit home-manager mobile-nixos;
-        lib = nixpkgs.lib;
-        pinephone = machines.phone;
+        inherit lib home-manager mobile-nixos;
+        phone = machines.phone;
       };
-      chat = import ./server {
-        lib = nixpkgs.lib;
+      chat = import ./chat {
+        inherit lib;
         chat = machines.chat;
       };
       common = import ./common {
