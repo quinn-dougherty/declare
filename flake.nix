@@ -50,14 +50,14 @@
       server = import ./server {
         inherit hercules-ci-agent nixos-hardware;
         lib = nixpkgs.lib;
-        agent = machines.server;
+        server = machines.server;
       };
-      pinephone = import ./phone {
+      phone = import ./phone {
         inherit home-manager mobile-nixos;
         lib = nixpkgs.lib;
-        pinephone = machines.pinephone;
+        pinephone = machines.phone;
       };
-      chat = import ./matrix-server {
+      chat = import ./server {
         lib = nixpkgs.lib;
         chat = machines.chat;
       };
@@ -67,7 +67,7 @@
         server-deploy = server.deploymenteffect;
       };
       immobiles = [ laptop server chat ];
-      mobiles = [ pinephone ];
+      mobiles = [ phone ];
     in with common; {
       apps = nixinate.nixinate.${machines.common.system} self;
 
