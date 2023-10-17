@@ -11,6 +11,8 @@
   autorandr = import ./x/randr;
   xserver = import ./x;
 
+  urxvtd.enable = true;
+
   fwupd.enable = true;
 
   # Enable CUPS to print documents.

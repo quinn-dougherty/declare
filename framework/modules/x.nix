@@ -6,9 +6,14 @@
     haskellPackages.xmobar
     xcompmgr # removal is possible performance boost?
     xorg.xbacklight
-    st
     feh
     flameshot
     xscreensaver
+    # Extra terminals
+    st
+    gnome.gnome-terminal
+    libsForQt5.konsole
+    xterm
+    # plasma5Packages.konsole
   ];
 }
