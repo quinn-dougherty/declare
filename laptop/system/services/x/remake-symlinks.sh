@@ -2,7 +2,7 @@
 
 # Don't forget also to edit path to `xmobar` in `xmonad.hs`
 
-pushd ~/ProjectsSync/dotfiles/framework/system/services/x
+pushd ~/ProjectsSync/dotfiles/laptop/system/services/x
 HERE=$(pwd)
 rm -rf ~/.xprofile
 rm -rf ~/.config/xmonad/xmonad.hs
