@@ -1,13 +1,13 @@
-{ lib, framework, nixos-hardware, home-manager, nix-doom-emacs, smos }:
-framework // {
+{ lib, laptop, nixos-hardware, home-manager, nix-doom-emacs, smos }:
+laptop // {
   operatingsystem = lib.nixosSystem {
-    system = framework.system;
-    # specialArgs = framework;  # TODO: clean up all module declaration syntax with specialArgs
+    system = laptop.system;
+    # specialArgs = laptop;  # TODO: clean up all module declaration syntax with specialArgs
     modules = import ./modules {
-      inherit framework nixos-hardware home-manager nix-doom-emacs smos;
+      inherit laptop nixos-hardware home-manager nix-doom-emacs smos;
     };
   };
-  homeshell = with framework;
+  homeshell = with laptop;
     pkgs.mkShell {
       name = "${drv-name-prefix}:home-shell";
       buildInputs =

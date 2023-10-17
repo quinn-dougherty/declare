@@ -1,17 +1,17 @@
-{ lib, agent, nixos-hardware, hercules-ci-agent }:
+{ lib, server, nixos-hardware, hercules-ci-agent }:
 let
   os = lib.nixosSystem {
-    system = agent.system;
+    system = server.system;
     modules =
-      import ./modules.nix { inherit agent nixos-hardware hercules-ci-agent; };
+      import ./modules.nix { inherit server nixos-hardware hercules-ci-agent; };
   };
-in agent // {
+in server // {
   operatingsystem = os;
   deploymenteffect-nixinate = { ref, nixination }:
-    import ./effect/nixinate.nix { inherit ref agent nixination; };
+    import ./effect/nixinate.nix { inherit ref server nixination; };
   deploymenteffect = { ref }:
     import ./effect {
-      inherit ref agent;
-      agent-os = os;
+      inherit ref server;
+      server-os = os;
     };
 }

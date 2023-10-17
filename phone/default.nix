@@ -1,8 +1,8 @@
-{ lib, pinephone, home-manager, mobile-nixos }:
+{ lib, phone, home-manager, mobile-nixos }:
 
-pinephone // {
+phone // {
   operatingsystem = lib.nixosSystem {
-    system = pinephone.system;
-    modules = import ./modules { inherit pinephone home-manager mobile-nixos; };
+    system = phone.system;
+    modules = import ./modules { inherit phone home-manager mobile-nixos; };
   };
 }
