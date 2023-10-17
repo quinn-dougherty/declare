@@ -43,7 +43,7 @@
       [ ./../../common/keys/authorized_keys ];
   };
 
-  programs.gnupg.server = {
+  programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
