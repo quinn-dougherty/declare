@@ -14,6 +14,8 @@
     gnome.gnome-terminal
     libsForQt5.konsole
     xterm
+    sakura
+    xfce4-terminal
     # plasma5Packages.konsole
   ];
 }

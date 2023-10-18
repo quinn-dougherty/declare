@@ -58,6 +58,7 @@ with laptop; {
       enable = true;
       enableSSHSupport = true;
     };
+    thunar.enable = true;
   };
   hardware.opengl.driSupport32Bit = true; # helps with lutris?
   # This value determines the NixOS release from which the default
