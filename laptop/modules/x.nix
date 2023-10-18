@@ -15,7 +15,7 @@
     libsForQt5.konsole
     xterm
     sakura
-    xfce4-terminal
+    xfce.xfce4-terminal
     # plasma5Packages.konsole
   ];
 }
