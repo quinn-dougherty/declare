@@ -15,10 +15,8 @@ with laptop; {
     home-manager.enable = true;
   };
 
-  imports = [
-    nix-doom-emacs.hmModule
-    smos.homeManagerModules.${laptop.system}.default
-  ];
+  imports =
+    [ nix-doom-emacs.hmModule smos.homeManagerModules.${system}.default ];
   services.dropbox.enable = true;
   home = {
     packages = import ./packages { inherit pkgs; };

@@ -12,7 +12,9 @@
     cmake
     patchelf
     openssl
+    zip
     unzip
+    ncdu
     tree
     nix-tree
     _1password
