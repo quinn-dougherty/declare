@@ -50,7 +50,7 @@
 ;; coq, proof general
 (custom-set-variables '(proof-three-window-enable t))
 (custom-set-variables
- `(coq-prog-name "dune coq top")
+ `(coq-prog-name "coqtop")
  )
 
 (after! rescript-mode

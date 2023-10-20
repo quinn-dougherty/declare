@@ -4,7 +4,7 @@
   (import ./../system/configuration.nix { inherit laptop; })
   ./../system/hardware-configuration.nix
   ./x.nix
-  nixos-hardware.nixosModules.framework
+  nixos-hardware.nixosModules.framework-13th-gen-intel
   home-manager.nixosModules.home-manager
   (import ./hm.nix { inherit laptop nix-doom-emacs smos; })
   ./../../common/modules/audio.nix
