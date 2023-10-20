@@ -17,8 +17,9 @@
     ncdu
     tree
     nix-tree
-    _1password
-    _1password-gui
+    bitwarden
+    bitwarden-cli
+    bitwarden-menu
     pass
   ];
 }
