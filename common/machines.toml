@@ -16,8 +16,9 @@ system = "aarch64-linux"
 [server]
 hostname = "server"
 username = "admin"
-user-fullname = "Hercules Administrator Latitude"
-ip = "192.168.6.18"
+user-fullname = "Hercules Administrator"
+ip = "192.168.7.244"
+static4 = "192.168.1.1"
 
 [chat]
 hostname = "chat"

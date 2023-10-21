@@ -17,6 +17,10 @@
   networking = {
     hostName = server.hostname;
     networkmanager.enable = true;
+    interfaces.wlp3s0.ipv4.addresses = [{
+      address = server.static4;
+      prefixLength = 24;
+    }];
   };
   time.timeZone = server.timezone;
 

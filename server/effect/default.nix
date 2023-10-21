@@ -13,6 +13,5 @@ hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
     EOF
   '';
 
-  # This is directly from docs, but is causing deployment to break.
-  ssh.destination = server.ip;
+  ssh.destination = server.static4;
 })
