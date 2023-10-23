@@ -57,6 +57,7 @@
 (package! org-kanban)
 (package! org-transclusion)
 (package! org-noter)
+(package! nov)
 (package! direnv)
 (package! envrc)
 (package! rescript-mode)
