@@ -56,6 +56,7 @@
 (package! pdf-tools)
 (package! org-kanban)
 (package! org-transclusion)
+(package! org-noter)
 (package! direnv)
 (package! envrc)
 (package! rescript-mode)

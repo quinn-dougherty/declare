@@ -14,7 +14,6 @@ with pkgs; [
   tor
 
   # Media apps and stuff
-  adobe-reader
   obsidian
   qownnotes
   qc
