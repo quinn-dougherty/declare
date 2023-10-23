@@ -5,7 +5,7 @@ with pkgs; [
   nextcloud-client
   sqlite
 
-  dropbox-cli
+  # dropbox-cli
   firefox
   brave
   nyxt
@@ -14,6 +14,7 @@ with pkgs; [
   tor
 
   # Media apps and stuff
+  adobe-reader
   obsidian
   qownnotes
   qc
@@ -23,15 +24,12 @@ with pkgs; [
   pinta
   obs-studio
   vlc
+  # cli infra
   ffmpeg
   pandoc
+  graphviz
 
   # music
   puredata
   qtractor
-
-  graphviz
-
-  # x
-  warpd
 ]

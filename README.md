@@ -9,5 +9,5 @@
 [cachix link]: https://quinn-dougherty.cachix.org
 
 - `laptop`: daily driver
-- `server`: hercules ci agent, (up next: nextcloud, router, matrix bridges)
+- `server`: hercules ci agent, (**up next**: nextcloud, router, matrix bridges)
 - `phone` (pine64 pinephone)

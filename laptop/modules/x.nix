@@ -17,5 +17,8 @@
     sakura
     xfce.xfce4-terminal
     # plasma5Packages.konsole
+
+    # keyboard
+    warpd
   ];
 }
