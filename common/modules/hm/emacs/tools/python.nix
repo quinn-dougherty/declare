@@ -6,6 +6,7 @@
     jupyter
     black
     poetry
+    python311Packages.jupyterlab
     python311Packages.jedi-language-server
   ];
 }

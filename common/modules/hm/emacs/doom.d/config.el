@@ -47,6 +47,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
 
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-modern-mode))
+
 ;; coq, proof general
 (custom-set-variables '(proof-three-window-enable t))
 (custom-set-variables
@@ -77,7 +79,7 @@
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 
-(setq auth-sources '("./../../../keys/authinfo.gpg"))
+(setq auth-sources '("~/.authinfo.gpg"))
 
 (setq gpt-openai-key "")
 (setq gpt-openai-engine "gpt-4")
@@ -85,6 +87,13 @@
 ;; (setq gpt-openai-org "org-5p...Y")  ;; NOT SET
 (setq gpt-openai-max-tokens 2000)
 (setq gpt-openai-temperature 0)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (julia . t)
+   (python . t)
+   (jupyter . t)))
 
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist

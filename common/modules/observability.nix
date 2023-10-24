@@ -7,6 +7,7 @@
     termshark
     conntrack-tools
     linuxKernel.packages.linux_libre.perf
+    # postman
   ];
   programs = {
     mtr.enable = true;

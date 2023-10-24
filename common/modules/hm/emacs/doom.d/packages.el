@@ -66,4 +66,5 @@
 (package! rescript-mode)
 (package! lsp-rescript)
 (package! gptel)
+;; (package! gptel-extensions)
 (package! rand-theme)

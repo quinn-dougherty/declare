@@ -25,8 +25,6 @@ with pkgs; [
   vlc
   # cli infra
   ffmpeg
-  pandoc
-  graphviz
 
   # music
   puredata
