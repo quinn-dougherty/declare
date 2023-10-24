@@ -6,4 +6,9 @@ with pkgs; [
   wasm-pack
   rustfmt
   rust-analyzer
+  wasmtime
+  binaryen
+  wasm-bindgen-cli
+  pkg-config
+  libressl
 ]
