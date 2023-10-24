@@ -1,5 +1,19 @@
 { config, lib, pkgs, ... }:
-
-{
-  environment.systemPackages = with pkgs; [ ];
+with pkgs;
+let
+  vulkan = [
+    mesa
+    dxvk
+    vkBasalt
+    vulkan-tools
+    vulkan-loader
+    vulkan-extension-layer
+    vulkan-headers
+    vulkan-tools-lunarg
+  ];
+in {
+  home = {
+    imports = [ ./light.nix ];
+    packages = vulkan;
+  };
 }
