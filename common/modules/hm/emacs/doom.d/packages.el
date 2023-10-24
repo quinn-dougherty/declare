@@ -65,4 +65,5 @@
 (package! envrc)
 (package! rescript-mode)
 (package! lsp-rescript)
+(package! gpt)
 (package! rand-theme)

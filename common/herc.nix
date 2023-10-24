@@ -16,6 +16,7 @@ hci-inputs: {
       os_disk-image = phone-uboot.disk-image;
       os_boot-partition = phone-uboot.boot-partition;
     };
+
     ${machines.server.hostname}.outputs = with hci-inputs;
       if ref == "refs/heads/main" then {
         effects.deployment = server-deploy { inherit ref; };
@@ -23,6 +24,8 @@ hci-inputs: {
         operating-system =
           outputs.nixosConfigurations.${machines.server.hostname}.config.system.build.toplevel;
       };
+
+    "${machines.ubuntu.hostname}-home".outputs.homeConfig = outputs.homeManagerConfigurations.${machines.ubuntu.}
 
     ${machines.chat.hostname}.outputs.operating-system =
       outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;

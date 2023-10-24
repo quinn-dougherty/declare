@@ -70,7 +70,7 @@
       };
       immobiles = [ laptop server chat ];
       mobiles = [ phone ];
-      other = [ ubuntu ];
+      others = [ ubuntu ];
     in with common; {
       apps = nixinate.nixinate.${machines.common.system} self;
 
@@ -80,7 +80,7 @@
 
       # Just aliases to `nix build .#<machine.hostname>`
       packages.${machines.common.system} =
-        commonlib.packagesFromAllOs { inherit immobiles mobiles other; };
+        commonlib.packagesFromAllOs { inherit immobiles mobiles others; };
 
       devShells.${laptop.system}."${laptop.drv-name-prefix}homeshell" =
         laptop.homeshell;

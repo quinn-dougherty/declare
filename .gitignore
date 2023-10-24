@@ -2,3 +2,4 @@ backups
 .env
 result
 phone/bootstrapping
+authinfo

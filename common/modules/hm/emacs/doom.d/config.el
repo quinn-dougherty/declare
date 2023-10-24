@@ -76,6 +76,9 @@
    :leader
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
+
+(setq auth-sources '("./authinfo.gpg"))
+
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append

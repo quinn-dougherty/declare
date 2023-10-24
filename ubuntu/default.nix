@@ -1,6 +1,6 @@
 { lib, ubuntu, home-manager, nix-doom-emacs }:
 
-with ubuntu; {
+ubuntu // (with ubuntu; {
   homemanager = home-manager.lib.homeManagerConfiguration {
     inherit pkgs system username;
     homeDirectory = "/home/${username}";
@@ -8,4 +8,4 @@ with ubuntu; {
     configuration = import ./home.nix;
   };
   homeshell = { };
-}
+})
