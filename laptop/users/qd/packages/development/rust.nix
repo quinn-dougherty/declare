@@ -5,6 +5,7 @@ with pkgs; [
   cargo-generate
   wasm-pack
   rustfmt
+  clippy
   rust-analyzer
   wasmtime
   binaryen

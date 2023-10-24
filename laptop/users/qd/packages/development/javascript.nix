@@ -1,11 +1,12 @@
 { pkgs }:
-with pkgs; [
+with pkgs;
+with nodePackages_latest; [
   nodejs
-  nodePackages.typescript
+  typescript
+  typescript-language-server
   yarn
   node2nix
   # haskellPackages.yarn2nix
-  nodePackages.npm-check-updates
-  nodePackages.prettier
-  nodePackages.esy
+  npm-check-updates
+  prettier
 ]
