@@ -59,9 +59,21 @@ with laptop; {
     };
   };
 
-  environment.variables = {
-    EDITOR = "emacs";
-    VISUAL = "emacs";
+  environment = {
+    variables = {
+      EDITOR = "emacs";
+      VISUAL = "emacs";
+    };
+    etc."xdg/user-dirs.defaults".text = ''
+      DESKTOP=desktop
+      DOWNLOAD=downloads
+      TEMPLATES=pdf
+      PUBLICSHARE=documents
+      PICTURES=screenshots
+      DOCUMENTS=projects
+      MUSIC=org
+      VIDEOS=games
+    '';
   };
   nixpkgs.config = config;
 
@@ -81,5 +93,5 @@ with laptop; {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }
