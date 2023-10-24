@@ -7,6 +7,7 @@
   nixos-hardware.nixosModules.framework-13th-gen-intel
   home-manager.nixosModules.home-manager
   (import ./hm.nix { inherit laptop nix-doom-emacs smos; })
+  ./../../common/modules/fonts.nix
   ./../../common/modules/audio.nix
   ./../../common/modules/bluetooth.nix
   ./../../common/modules/nix.nix

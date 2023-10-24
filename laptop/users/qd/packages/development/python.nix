@@ -6,8 +6,7 @@ let
       flake8
       pytest
       mypy
-      black
       nose
     ];
   };
-in [ python pkgs.poetry ]
+in [ python ]

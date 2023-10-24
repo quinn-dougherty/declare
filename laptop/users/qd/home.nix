@@ -7,16 +7,15 @@ with laptop; {
     };
 
     vscode = import ./packages/codium.nix { inherit pkgs; };
-    doom-emacs = let doomDir = ./doom.d;
-    in with pkgs;
-    import ./packages/emacs.nix { inherit doomDir linkFarm emptyFile; };
-
     # let home-manager install and update itself
     home-manager.enable = true;
   };
 
-  imports =
-    [ nix-doom-emacs.hmModule smos.homeManagerModules.${system}.default ];
+  imports = [
+    nix-doom-emacs.hmModule
+    ./../../../common/modules/hm/emacs
+    smos.homeManagerModules.${system}.default
+  ];
   # services.dropbox.enable = true;
   home = {
     packages = import ./packages { inherit pkgs; };
