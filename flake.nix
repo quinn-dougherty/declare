@@ -55,6 +55,10 @@
         inherit lib home-manager mobile-nixos;
         phone = machines.phone;
       };
+      ubuntu = import ./ubuntu {
+        inherit lib home-manager nix-doom-emacs;
+        ubuntu = machines.ubuntu;
+      };
       chat = import ./chat {
         inherit lib;
         chat = machines.chat;
@@ -66,14 +70,17 @@
       };
       immobiles = [ laptop server chat ];
       mobiles = [ phone ];
+      other = [ ubuntu ];
     in with common; {
       apps = nixinate.nixinate.${machines.common.system} self;
 
       nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
 
+      homeConfigurations = { };
+
       # Just aliases to `nix build .#<machine.hostname>`
       packages.${machines.common.system} =
-        commonlib.packagesFromAllOs { inherit immobiles mobiles; };
+        commonlib.packagesFromAllOs { inherit immobiles mobiles other; };
 
       devShells.${laptop.system}."${laptop.drv-name-prefix}homeshell" =
         laptop.homeshell;

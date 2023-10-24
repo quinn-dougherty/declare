@@ -20,6 +20,11 @@ user-fullname = "Hercules Administrator"
 ip = "192.168.7.244"
 static4 = "192.168.1.1"
 
+[ubuntu]
+hostname = "ubuntu"
+username = "qd"
+user-fullname = "Quinn Dougherty"
+
 [chat]
 hostname = "chat"
 username = "synapse-admin"

@@ -58,6 +58,8 @@
 (package! org-transclusion)
 ;; (package! (org-clock-reminder :recipe (:host github :repo inickey/org-clock-reminder)))
 (package! org-modern)
+(package! org-sync)
+(package! org-sync-snippets)
 (package! nov)
 (package! direnv)
 (package! envrc)

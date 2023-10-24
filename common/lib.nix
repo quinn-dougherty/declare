@@ -16,11 +16,16 @@ let
         boot-partition = mobile-uboot.boot-partition;
       };
     };
+  packageFromOther = machine: {
+    name = machine.hostname + "-home";
+    value = machine.homeconfig;
+  };
   packagesFromAll = fromFn: machines:
     builtins.listToAttrs (map fromFn machines);
 in {
   osForAll = machines: builtins.listToAttrs (map osFor machines);
-  packagesFromAllOs = { immobiles, mobiles }:
+  packagesFromAllOs = { immobiles, mobiles, other }:
     (packagesFromAll packageFromImmobile immobiles)
-    // (packagesFromAll packageFromMobile mobiles);
+    // (packagesFromAll packageFromMobile mobiles)
+    // (packagesFromAll packageFromOther other);
 }

@@ -50,6 +50,15 @@ in {
       overlays = herc-effects-overlays;
     };
   };
+  ubuntu = rec {
+    hostname = machines.ubuntu.hostname;
+    username = machines.ubuntu.username;
+    user-fullname = machines.ubuntu.user-fullname;
+    system = machines.common.system;
+    timezone = machines.common.timezone;
+    config.allowUnfree = true;
+    pkgs = import nixpkgs { inherit system config; };
+  };
   chat = rec {
     hostname = machines.chat.hostname;
     username = machines.chat.username;
