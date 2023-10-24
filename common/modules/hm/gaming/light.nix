@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 with pkgs;
 let
-  wine = [
+  wine-etc = [
     wine # I think just for bootstrapping?
     lutris # Launcher
     # bottles # Alt launcher
@@ -9,4 +9,4 @@ let
     protonup-qt # Manage wine packages to finetune lutris (gui)
     protonup-ng # Manage wine packages (cli)
   ];
-in { home.packages = builtins.concatLists [ [ runelite ] wine ]; }
+in { home.packages = builtins.concatLists [ [ runelite ] wine-etc ]; }

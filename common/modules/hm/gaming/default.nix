@@ -12,8 +12,6 @@ let
     vulkan-tools-lunarg
   ];
 in {
-  home = {
-    imports = [ ./light.nix ];
-    packages = vulkan;
-  };
+  imports = [ ./light.nix ];
+  home.packages = vulkan;
 }
