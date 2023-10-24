@@ -56,7 +56,7 @@
 (package! pdf-tools)
 (package! org-kanban)
 (package! org-transclusion)
-(package! (org-clock-reminder :recipe (:host github :repo inickey/org-clock-reminder)))
+;; (package! (org-clock-reminder :recipe (:host github :repo inickey/org-clock-reminder)))
 (package! org-modern)
 (package! nov)
 (package! direnv)
