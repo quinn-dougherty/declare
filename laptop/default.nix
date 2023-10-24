@@ -8,9 +8,7 @@ laptop // {
     };
   };
   homeshell = with laptop;
-    pkgs.mkShell {
-      name = "${drv-name-prefix}:home-shell";
-      buildInputs =
-        import ./users/qd/packages/development { inherit pkgs pkgs-stable; };
+    import ./../common/developer/shell.nix {
+      inherit pkgs pkgs-stable drv-name-prefix;
     };
 }

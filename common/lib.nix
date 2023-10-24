@@ -3,6 +3,10 @@ let
     name = machine.hostname;
     value = machine.operatingsystem;
   };
+  hmFor = machine: {
+    name = machine.hostname;
+    value = machine.homemanager;
+  };
   packageFromImmobile = machine: {
     name = machine.hostname;
     value = machine.operatingsystem.config.system.build.toplevel;
@@ -17,15 +21,16 @@ let
       };
     };
   packageFromOther = machine: {
-    name = machine.hostname + "-home";
+    name = "${machine.drv-name-prefix}homeconfig";
     value = machine.homeconfig;
   };
   packagesFromAll = fromFn: machines:
     builtins.listToAttrs (map fromFn machines);
 in {
   osForAll = machines: builtins.listToAttrs (map osFor machines);
-  packagesFromAllOs = { immobiles, mobiles, other }:
+  packagesFromAllOs = { immobiles, mobiles, others }:
     (packagesFromAll packageFromImmobile immobiles)
     // (packagesFromAll packageFromMobile mobiles)
-    // (packagesFromAll packageFromOther other);
+    // (packagesFromAll packageFromOther others);
+  hmForAll = machines: builtins.listToAttrs (map hmFor machines);
 }

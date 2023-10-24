@@ -76,7 +76,7 @@
 
       nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
 
-      homeConfigurations = { };
+      homeConfigurations = commonlib.hmForAll other;
 
       # Just aliases to `nix build .#<machine.hostname>`
       packages.${machines.common.system} =

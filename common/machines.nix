@@ -3,6 +3,7 @@ let
   machines = fromTOML (builtins.readFile ./machines.toml);
   server-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
+  drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}:";
 in {
   common = machines.common // {
     pkgs = import nixpkgs {
@@ -16,7 +17,7 @@ in {
     user-fullname = machines.laptop.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
-    drv-name-prefix = "${username}@${hostname}:";
+    drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
     overlays = let
       factorio-overlay = final: prev: {
         factorio = prev.factorio.override {
@@ -56,6 +57,7 @@ in {
     user-fullname = machines.ubuntu.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
+    drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system config; };
   };
