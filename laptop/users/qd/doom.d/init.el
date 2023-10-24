@@ -84,6 +84,7 @@
 
        :tools
        ;;ansible
+       biblio
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
@@ -147,7 +148,7 @@
        ;;nim               ; python + lisp at the speed of c
        nix               ; I hereby declare "nix geht mehr!"
        (ocaml +lsp)             ; an objective camel
-       (org +roam2 +pretty +pandoc +gnuplot)               ; organize your plain life in plain text
+       (org +roam2 +pretty +pandoc +gnuplot +dragndrop +jupyter +noter)     ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -161,7 +162,7 @@
        (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
-       sh                ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +bash +fish)               ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
@@ -184,5 +185,5 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       ;;literate
+       literate
        (default +bindings +smartparens))
