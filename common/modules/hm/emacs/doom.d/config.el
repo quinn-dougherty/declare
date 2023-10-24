@@ -79,6 +79,13 @@
 
 (setq auth-sources '("./../../../keys/authinfo.gpg"))
 
+(setq gpt-openai-key "")
+(setq gpt-openai-engine "gpt-4")
+;; (setq gpt-openai-use-chat-api t)
+;; (setq gpt-openai-org "org-5p...Y")  ;; NOT SET
+(setq gpt-openai-max-tokens 2000)
+(setq gpt-openai-temperature 0)
+
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append
