@@ -9,6 +9,7 @@
     feh
     flameshot
     xscreensaver
+    xclip
     # Extra terminals
     st
     gnome.gnome-terminal
