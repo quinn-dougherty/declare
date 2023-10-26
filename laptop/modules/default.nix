@@ -13,7 +13,7 @@
   ./../../common/modules/nix.nix
   ./../../common/modules/cachix
   # ./../../common/modules/dropbox.nix
-  ./../../common/modules/dunst.nix
+  # ./../../common/modules/dunst.nix # There's a hm take now
   ./../../common/modules/audit.nix
   ./../../common/modules/observability.nix
   ./../../common/modules/ivpn.nix

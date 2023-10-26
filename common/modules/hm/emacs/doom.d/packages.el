@@ -52,9 +52,9 @@
 ;;; Code:
 (package! multi-term)
 (package! all-the-icons)
-; (package! yaml-mode)  ; I think there's an item in init.el that covers this.
+;; (package! yaml-mode)  ; I think there's an item in init.el that covers this.
 (package! pdf-tools)
-(package! org-kanban)
+;; (package! org-kanban)
 (package! org-transclusion)
 ;; (package! (org-clock-reminder :recipe (:host github :repo inickey/org-clock-reminder)))
 (package! org-modern)
