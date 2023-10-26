@@ -10,6 +10,7 @@
     flameshot
     xscreensaver
     xclip
+    dunst # systemd configured in common/modules/, but this for on the fly cli
     # Extra terminals
     st
     gnome.gnome-terminal

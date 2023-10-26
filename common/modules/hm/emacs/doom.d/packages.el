@@ -66,5 +66,6 @@
 (package! rescript-mode)
 (package! lsp-rescript)
 (package! gptel)
+(package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)
