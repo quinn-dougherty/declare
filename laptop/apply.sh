@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
-pushd ~/projects/dotfiles
+pushd ~/projects/declare
 sudo nixos-rebuild switch --flake .#laptop --show-trace
 popd
