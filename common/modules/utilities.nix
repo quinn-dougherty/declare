@@ -2,8 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-    git
-    vim
+    # git  # In hm now
+    # vim  # In hm now
     wget
     curl
     jq

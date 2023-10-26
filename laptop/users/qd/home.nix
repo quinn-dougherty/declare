@@ -5,12 +5,9 @@ with laptop; {
       enable = true;
       nix-direnv.enable = true;
     };
-
-    vscode = import ./packages/codium.nix { inherit pkgs; };
-    # let home-manager install and update itself
-    home-manager.enable = true;
+    git = import ./../git.nix;
+    vim = import ./../vim.nix;
   };
-
   imports = [
     nix-doom-emacs.hmModule
     ./../../../common/modules/hm/emacs

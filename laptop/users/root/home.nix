@@ -5,6 +5,8 @@ with laptop; {
       enable = true;
       nix-direnv.enable = true;
     };
+    git = ./../git.nix;
+    vim = ./../vim.nix;
     # let home-manager install and update itself
     home-manager.enable = true;
   };
