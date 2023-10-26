@@ -9,5 +9,5 @@
     ./fonts.nix
     ./latex.nix
   ];
-  home.packages = with pkgs; [ nixfmt sqlite ];
+  home.packages = with pkgs; [ nixpkgs-fmt sqlite ];
 }

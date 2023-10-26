@@ -9,4 +9,5 @@ let
     protonup-qt # Manage wine packages to finetune lutris (gui)
     protonup-ng # Manage wine packages (cli)
   ];
-in { home.packages = builtins.concatLists [ [ runelite ] wine-etc ]; }
+in
+{ home.packages = builtins.concatLists [ [ runelite ] wine-etc ]; }

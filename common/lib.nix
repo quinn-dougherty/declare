@@ -26,7 +26,8 @@ let
   };
   packagesFromAll = fromFn: machines:
     builtins.listToAttrs (map fromFn machines);
-in {
+in
+{
   osForAll = machines: builtins.listToAttrs (map osFor machines);
   packagesFromAllOs = { immobiles, mobiles, others }:
     (packagesFromAll packageFromImmobile immobiles)

@@ -4,7 +4,8 @@ let
   server-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
   drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}:";
-in {
+in
+{
   common = machines.common // {
     pkgs = import nixpkgs {
       system = machines.common.system;
@@ -18,14 +19,16 @@ in {
     system = machines.common.system;
     timezone = machines.common.timezone;
     drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
-    overlays = let
-      factorio-overlay = final: prev: {
-        factorio = prev.factorio.override {
-          username = "quinnd";
-          token = "\${FACTORIO_KEY}";
+    overlays =
+      let
+        factorio-overlay = final: prev: {
+          factorio = prev.factorio.override {
+            username = "quinnd";
+            token = "\${FACTORIO_KEY}";
+          };
         };
-      };
-    in [ factorio-overlay ];
+      in
+      [ factorio-overlay ];
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };

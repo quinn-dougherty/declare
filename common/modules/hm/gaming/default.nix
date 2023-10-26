@@ -11,7 +11,8 @@ let
     vulkan-headers
     vulkan-tools-lunarg
   ];
-in {
+in
+{
   imports = [ ./light.nix ];
   home.packages = vulkan;
 }

@@ -32,6 +32,8 @@
 ; other defaults for startup.
 (minimap-mode)
 (add-hook 'window-setup-hook #'treemacs t)
+;; gcal sync on boot will be like ~add-hook~
+(setq doom-themes-treemacs-enable-variable-pitch nil)
 
 ;; (setq projectile-project-search-path '("~/Dropbox/Projects/") projectile-sort-order 'recentf)
 
@@ -91,7 +93,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (julia . t)
+   ; (julia . t)
    (python . t)
    (jupyter . t)))
 
