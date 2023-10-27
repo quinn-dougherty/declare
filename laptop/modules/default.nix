@@ -20,5 +20,6 @@
   ./../../common/modules/crosscompilation.nix
   ./../../common/modules/openssh.nix
   ./../../common/modules/devops.nix
+  ./../../common/modules/il8n.nix
   ./../../common/modules/utilities.nix
 ]

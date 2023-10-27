@@ -20,21 +20,7 @@ with laptop; {
   virtualisation.docker.enable = true;
 
   time.timeZone = timezone;
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.utf8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
-    };
-  };
+
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
@@ -42,22 +28,21 @@ with laptop; {
 
   services = import ./services { inherit pkgs; };
 
-  users.users =
-    let keys-path = ./../../common/keys;
-    in {
-      ${username} = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
-        home = "/home/" + username;
-        description = user-fullname;
-        shell = pkgs.fish;
-        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
-      };
-      root = {
-        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
-        shell = pkgs.fish;
-      };
+  users.users = let keys-path = ./../../common/keys;
+  in {
+    ${username} = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
+      home = "/home/" + username;
+      description = user-fullname;
+      shell = pkgs.fish;
+      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
     };
+    root = {
+      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+      shell = pkgs.fish;
+    };
+  };
 
   environment = {
     variables = {
@@ -88,6 +73,7 @@ with laptop; {
     slock.enable = true;
   };
   hardware.opengl.driSupport32Bit = true; # helps with lutris?
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

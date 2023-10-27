@@ -9,15 +9,13 @@ hci-inputs: {
         outputs.nixosConfigurations.${machines.laptop.hostname}.config.system.build.toplevel;
     };
 
-    ${machines.phone.hostname}.outputs =
-      let
-        phone-uboot =
-          outputs.nixosConfigurations.${machines.phone.hostname}.config.mobile.outputs.u-boot;
-      in
-      {
-        os_disk-image = phone-uboot.disk-image;
-        os_boot-partition = phone-uboot.boot-partition;
-      };
+    ${machines.phone.hostname}.outputs = let
+      phone-uboot =
+        outputs.nixosConfigurations.${machines.phone.hostname}.config.mobile.outputs.u-boot;
+    in {
+      os_disk-image = phone-uboot.disk-image;
+      os_boot-partition = phone-uboot.boot-partition;
+    };
 
     ${machines.server.hostname}.outputs = with hci-inputs;
       if ref == "refs/heads/main" then {
@@ -33,8 +31,7 @@ hci-inputs: {
     ${machines.chat.hostname}.outputs.operating-system =
       outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
 
-    dotfiles-lint.outputs.check =
-      outputs.checks.${machines.common.system}.formatted;
+    format.outputs.check = outputs.checks.${machines.common.system}.formatted;
 
   };
   onSchedule.auto-update = {

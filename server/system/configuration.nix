@@ -8,31 +8,21 @@
   # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
-    };
+    efi.canTouchEfiVariables = true;
   };
 
   networking = {
     hostName = server.hostname;
     networkmanager.enable = true;
-    interfaces.wlp3s0.ipv4.addresses = [{
+    interfaces.wlp170s0.ipv4.addresses = [{
       address = server.static4;
       prefixLength = 24;
     }];
   };
   time.timeZone = server.timezone;
 
-  i18n.defaultLocale = "en_US.utf8";
-
   services = {
-    xserver.displayManager.autoLogin = {
-      enable = true;
-      user = server.username;
-    };
     fwupd.enable = true;
-
     printing.enable = true;
   };
 
@@ -42,14 +32,18 @@
       description = server.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keyFiles = [ ./../../common/keys/authorized_keys ];
+      shell = server.pkgs.fish;
     };
     root.openssh.authorizedKeys.keyFiles =
       [ ./../../common/keys/authorized_keys ];
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    fish.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 
   # This value determines the NixOS release from which the default
@@ -58,5 +52,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }

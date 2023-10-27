@@ -54,21 +54,22 @@
 (package! all-the-icons)
 ;; (package! yaml-mode)  ; I think there's an item in init.el that covers this.
 (package! pdf-tools)
-;; (package! org-kanban)
+(package! org-kanban)
 (package! org-transclusion)
 ;; (package! (org-clock-reminder :recipe (:host github :repo inickey/org-clock-reminder)))
 (package! org-sync)
 (package! org-sync-snippets)
-(use-package! org-modern
-  :hook (org-mode . global-org-modern-mode)
-  :config
-  (setq org-modern-label-border 0.3))
+(package! org-modern)
+; (use-package! org-modern
+;   :hook (org-mode . global-org-modern-mode)
+;  :config
+;  (setq org-modern-label-border 0.3))
 (package! nov)
 (package! direnv)
 (package! envrc)
 (package! rescript-mode)
 (package! lsp-rescript)
 (package! gptel)
-(package! kanban)
+; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)

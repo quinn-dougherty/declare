@@ -17,8 +17,8 @@ system = "aarch64-linux"
 hostname = "server"
 username = "admin"
 user-fullname = "Hercules Administrator"
-ip = "192.168.7.244"
-static4 = "192.168.1.1"
+ip = "192.168.7.236"
+static4 = "192.168.42.42"
 
 [ubuntu]
 hostname = "ubuntu"
