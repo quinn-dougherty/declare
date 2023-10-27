@@ -76,7 +76,7 @@
       mobiles = [ phone ];
       others = [ ubuntu ];
     in with common; {
-      formatter.${machines.common.system} = format;
+      formatter.${machines.common.system} = format.config.build.wrapper;
 
       apps = nixinate.nixinate.${machines.common.system} self;
 
