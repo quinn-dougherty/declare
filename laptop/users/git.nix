@@ -5,6 +5,7 @@
   aliases = {
     s = "status";
     c = "commit";
+    a = "add";
   };
   lfs.enable = true;
   ignores = [ "*~" "*.swp" ".DS_Store" ".idea" ];

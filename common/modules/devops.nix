@@ -7,6 +7,7 @@
     # morph
     heroku
     hci
+    arion
     onionshare
     nettools
     netproc

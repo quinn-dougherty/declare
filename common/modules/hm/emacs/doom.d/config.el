@@ -40,8 +40,25 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(load! "./extras/org-download-clipboard-pdf.el")
 ;; (add-to-list 'auto-mode-alist '("\\.org\\'" . org-modern-mode))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(use-package! org-transclusion
+  :after org
+  :init
+  (map!
+   :map global-map "<f12>" #'org-transclusion-add
+   :leader
+   :prefix "n"
+   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
+(map! :after org :map org-mode-map :prefix "SPC m d" "p" #'org-download-clipboard-pdf)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   ; (julia . t)
+   (python . t)
+   (jupyter . t)))
+
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -72,15 +89,6 @@
   (setq lsp-haskell-formatting-provider "stylish-haskell"))
 (set-formatter! 'stylish-haskell "stylish-haskell" :modes '(haskell-mode ".hs"))
 
-(use-package! org-transclusion
-  :after org
-  :init
-  (map!
-   :map global-map "<f12>" #'org-transclusion-add
-   :leader
-   :prefix "n"
-   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
-
 (setq auth-sources '("~/.authinfo.gpg"))
 
 (setq gpt-openai-key "")
@@ -89,13 +97,6 @@
 ;; (setq gpt-openai-org "org-5p...Y")  ;; NOT SET
 (setq gpt-openai-max-tokens 2000)
 (setq gpt-openai-temperature 0)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   ; (julia . t)
-   (python . t)
-   (jupyter . t)))
 
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
