@@ -39,9 +39,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , mobile-nixos, nix-doom-emacs, treefmt-nix, smos, hercules-ci-agent
-    , hercules-ci-effects, nixinate }:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , nixos-hardware
+    , home-manager
+    , mobile-nixos
+    , nix-doom-emacs
+    , treefmt-nix
+    , smos
+    , hercules-ci-agent
+    , hercules-ci-effects
+    , nixinate
+    }:
     let
       lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
@@ -75,7 +86,8 @@
       immobiles = [ laptop server chat ];
       mobiles = [ phone ];
       others = [ ubuntu ];
-    in with common; {
+    in
+    with common; {
       formatter.${machines.common.system} = format.config.build.wrapper;
 
       apps = nixinate.nixinate.${machines.common.system} self;

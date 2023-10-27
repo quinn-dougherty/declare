@@ -28,21 +28,22 @@ with laptop; {
 
   services = import ./services { inherit pkgs; };
 
-  users.users = let keys-path = ./../../common/keys;
-  in {
-    ${username} = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
-      home = "/home/" + username;
-      description = user-fullname;
-      shell = pkgs.fish;
-      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+  users.users =
+    let keys-path = ./../../common/keys;
+    in {
+      ${username} = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
+        home = "/home/" + username;
+        description = user-fullname;
+        shell = pkgs.fish;
+        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+      };
+      root = {
+        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+        shell = pkgs.fish;
+      };
     };
-    root = {
-      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
-      shell = pkgs.fish;
-    };
-  };
 
   environment = {
     variables = {
