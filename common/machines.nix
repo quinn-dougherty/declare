@@ -49,6 +49,7 @@ in
     system = machines.common.system;
     timezone = server-onprem-tz;
     ip = machines.server.ip;
+    static4 = ip;
     pkgs = import nixpkgs {
       inherit system;
       overlays = herc-effects-overlays;

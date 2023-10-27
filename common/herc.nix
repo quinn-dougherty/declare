@@ -27,12 +27,14 @@ hci-inputs: {
           outputs.nixosConfigurations.${machines.server.hostname}.config.system.build.toplevel;
       };
 
-    "${machines.ubuntu.hostname}-home".outputs.homeConfig = outputs.homeManagerConfigurations.${machines.ubuntu.}
+    "${machines.ubuntu.hostname}-home".outputs.homeConfig =
+      outputs.homeManagerConfigurations.${machines.ubuntu.system}.homemanager;
 
     ${machines.chat.hostname}.outputs.operating-system =
-    outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
+      outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
 
-    dotfiles-lint.outputs.check = outputs.checks.${machines.common.system}.lint;
+    dotfiles-lint.outputs.check =
+      outputs.checks.${machines.common.system}.formatted;
 
   };
   onSchedule.auto-update = {

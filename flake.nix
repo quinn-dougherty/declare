@@ -39,9 +39,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
-    , mobile-nixos, nix-doom-emacs, treefmt-nix, smos, hercules-ci-agent
-    , hercules-ci-effects, nixinate }:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , nixos-hardware
+    , home-manager
+    , mobile-nixos
+    , nix-doom-emacs
+    , treefmt-nix
+    , smos
+    , hercules-ci-agent
+    , hercules-ci-effects
+    , nixinate
+    }:
     let
       lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
@@ -75,14 +86,15 @@
       immobiles = [ laptop server chat ];
       mobiles = [ phone ];
       others = [ ubuntu ];
-    in with common; {
+    in
+    with common; {
       formatter.${machines.common.system} = format.config.build.wrapper;
 
-      apps = nixinate.nixinate.${machines.common.system} self;
+      # apps = nixinate.nixinate.${machines.common.system} self;
 
       nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
 
-      homeConfigurations = commonlib.hmForAll other;
+      homeConfigurations = commonlib.hmForAll others;
 
       # Just aliases to `nix build .#<machine.hostname>`
       packages.${machines.common.system} =
@@ -91,7 +103,8 @@
       devShells.${laptop.system}."${laptop.drv-name-prefix}homeshell" =
         laptop.homeshell;
 
-      checks.${machines.common.system}.formatted = format.${system}.check self;
+      checks.${machines.common.system}.formatted =
+        format.config.build.check self;
 
       herculesCI = herc;
     };

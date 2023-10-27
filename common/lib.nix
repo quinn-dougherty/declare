@@ -7,20 +7,19 @@ let
     name = machine.hostname;
     value = machine.homemanager;
   };
-  packageFromImmobile = machine: {
+  packageFromX86 = machine: {
     name = machine.hostname;
     value = machine.operatingsystem.config.system.build.toplevel;
   };
-  packageFromMobile = machine:
-    let mobile-uboot = machine.operatingsystem.config.mobile.outputs.u-boot;
-    in {
-      name = machine.hostname;
-      value = {
-        disk-image = mobile-uboot.disk-image;
-        boot-partition = mobile-uboot.boot-partition;
-      };
-    };
-  packageFromOther = machine: {
+  packageFromAarchDiskImg = machine: {
+    name = "${machine.hostname}-disk-image";
+    value = machine.operatingsystem.config.mobile.outputs.u-boot.disk-image;
+  };
+  packageFromAarchBootPartition = machine: {
+    name = "${machine.hostname}-boot-partition";
+    value = machine.operatingsystem.mobile.outputs.u-boot.boot-partition;
+  };
+  packageFromNonNixos = machine: {
     name = "${machine.drv-name-prefix}homeconfig";
     value = machine.homeconfig;
   };
@@ -30,8 +29,9 @@ in
 {
   osForAll = machines: builtins.listToAttrs (map osFor machines);
   packagesFromAllOs = { immobiles, mobiles, others }:
-    (packagesFromAll packageFromImmobile immobiles)
-    // (packagesFromAll packageFromMobile mobiles)
-    // (packagesFromAll packageFromOther others);
+    (packagesFromAll packageFromX86 immobiles)
+    // (packagesFromAll packageFromAarchDiskImg mobiles)
+    // (packagesFromAll packageFromAarchBootPartition mobiles)
+    // (packagesFromAll packageFromNonNixos others);
   hmForAll = machines: builtins.listToAttrs (map hmFor machines);
 }
