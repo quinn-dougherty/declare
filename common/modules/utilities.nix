@@ -2,8 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # git  # In hm now
-    # vim  # In hm now
+    vim
     wget
     curl
     jq
@@ -20,6 +19,5 @@
     bitwarden
     bitwarden-cli
     bitwarden-menu
-    pass
   ];
 }

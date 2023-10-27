@@ -2,16 +2,6 @@
 
 [
   (import ./system/configuration.nix { inherit server; })
-  {
-    _module.args.nixinate = {
-      host = server.ip;
-      sshUser = "root"; # server.username;
-      buildOn = "local"; # valid args are "local" or "remote"
-      substituteOnTarget =
-        true; # if buildOn is "local" then it will substitute on the target, "-s"
-      hermetic = true;
-    };
-  }
   nixos-hardware.nixosModules.framework # 11th gen
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service

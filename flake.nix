@@ -25,18 +25,8 @@
       url = "github:NorfairKing/smos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hercules-ci-agent = {
-      url = "github:hercules-ci/hercules-ci-agent";
-      # inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    hercules-ci-effects = {
-      url = "github:hercules-ci/hercules-ci-effects";
-      # inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    nixinate = {
-      url = "github:matthewcroughan/nixinate";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
   };
 
   outputs =
@@ -51,7 +41,6 @@
     , smos
     , hercules-ci-agent
     , hercules-ci-effects
-    , nixinate
     }:
     let
       lib = nixpkgs.lib;
@@ -89,8 +78,6 @@
     in
     with common; {
       formatter.${machines.common.system} = format.config.build.wrapper;
-
-      apps = nixinate.nixinate.${machines.common.system} self;
 
       nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
 
