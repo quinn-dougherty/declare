@@ -1,5 +1,5 @@
-{ machines, server-deploy, outputs }: {
+{ machines, treefmt-nix, server-deploy, outputs }: {
   commonlib = import ./lib.nix;
   herc = import ./herc.nix { inherit outputs machines server-deploy; };
-  lint = with machines; import ./lint.nix { inherit common; };
+  format = with machines; import ./format.nix { inherit common treefmt-nix; };
 }

@@ -356,7 +356,10 @@
     },
     "flake-parts": {
       "inputs": {
-        "nixpkgs-lib": ["hercules-ci-agent", "nixpkgs"]
+        "nixpkgs-lib": [
+          "hercules-ci-agent",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1688466019,
@@ -391,7 +394,11 @@
     },
     "flake-parts_3": {
       "inputs": {
-        "nixpkgs-lib": ["hercules-ci-effects", "hercules-ci-agent", "nixpkgs"]
+        "nixpkgs-lib": [
+          "hercules-ci-effects",
+          "hercules-ci-agent",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1688466019,
@@ -534,7 +541,11 @@
     },
     "gitignore_2": {
       "inputs": {
-        "nixpkgs": ["smos", "pre-commit-hooks", "nixpkgs"]
+        "nixpkgs": [
+          "smos",
+          "pre-commit-hooks",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1660459072,
@@ -552,8 +563,14 @@
     },
     "haskell-dependency-graph-nix": {
       "inputs": {
-        "nixpkgs": ["smos", "nixpkgs"],
-        "pre-commit-hooks": ["smos", "pre-commit-hooks"]
+        "nixpkgs": [
+          "smos",
+          "nixpkgs"
+        ],
+        "pre-commit-hooks": [
+          "smos",
+          "pre-commit-hooks"
+        ]
       },
       "locked": {
         "lastModified": 1670417232,
@@ -662,7 +679,9 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1697371398,
@@ -792,7 +811,9 @@
         "flake-utils": "flake-utils",
         "format-all": "format-all",
         "nix-straight": "nix-straight",
-        "nixpkgs": ["nixpkgs"],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nose": "nose",
         "ob-racket": "ob-racket",
         "org": "org",
@@ -837,7 +858,9 @@
     },
     "nixinate": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1688141737,
@@ -1249,7 +1272,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable",
-        "smos": "smos"
+        "smos": "smos",
+        "treefmt-nix": "treefmt-nix"
       }
     },
     "rotate-text": {
@@ -1351,7 +1375,9 @@
         "linkcheck": "linkcheck",
         "looper": "looper",
         "mergeful": "mergeful",
-        "nixpkgs": ["nixpkgs"],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "openapi-code-generator": "openapi-code-generator",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "safe-coloured-text": "safe-coloured-text_2",
@@ -1484,6 +1510,26 @@
       "original": {
         "owner": "NorfairKing",
         "repo": "template-haskell-reload",
+        "type": "github"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1697388351,
+        "narHash": "sha256-63N2eBpKaziIy4R44vjpUu8Nz5fCJY7okKrkixvDQmY=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "aae39f64f5ecbe89792d05eacea5cb241891292a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
         "type": "github"
       }
     },

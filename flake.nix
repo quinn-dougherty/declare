@@ -17,6 +17,10 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     smos = {
       url = "github:NorfairKing/smos";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,19 +39,9 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-stable
-    , nixos-hardware
-    , home-manager
-    , mobile-nixos
-    , nix-doom-emacs
-    , smos
-    , hercules-ci-agent
-    , hercules-ci-effects
-    , nixinate
-    }:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager
+    , mobile-nixos, nix-doom-emacs, treefmt-nix, smos, hercules-ci-agent
+    , hercules-ci-effects, nixinate }:
     let
       lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
@@ -74,16 +68,15 @@
         chat = machines.chat;
       };
       common = import ./common {
-        inherit machines;
+        inherit machines treefmt-nix;
         outputs = self;
         server-deploy = server.deploymenteffect;
       };
       immobiles = [ laptop server chat ];
       mobiles = [ phone ];
       others = [ ubuntu ];
-    in
-    with common; {
-      formatter.${machines.common.system} = machines.common.pkgs.nixpkgs-fmt;
+    in with common; {
+      formatter.${machines.common.system} = format;
 
       apps = nixinate.nixinate.${machines.common.system} self;
 
@@ -98,7 +91,7 @@
       devShells.${laptop.system}."${laptop.drv-name-prefix}homeshell" =
         laptop.homeshell;
 
-      checks.${machines.common.system}.lint = lint;
+      checks.${machines.common.system}.formatted = format.${system}.check self;
 
       herculesCI = herc;
     };
