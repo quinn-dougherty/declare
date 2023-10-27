@@ -3,8 +3,7 @@
 let
   known-hosts-fragment = with server;
     import ./knownhostsfragment.nix { inherit ip; };
-in
-with server.pkgs;
+in with server.pkgs;
 hci-effects.runIf (ref == "refs/heads/main") (hci-effects.mkEffect {
   effectScript = ''
     ${nixination.${server.hostname}.program}
@@ -26,5 +25,5 @@ hci-effects.runIf (ref == "refs/heads/main") (hci-effects.mkEffect {
   '';
 
   # This is directly from docs, but is causing deployment to break.
-  # ssh.destination = server.ip;
+  ssh.destination = server.ip;
 })

@@ -16,12 +16,12 @@ system = "aarch64-linux"
 [server]
 hostname = "server"
 username = "admin"
-user-fullname = "Hercules Administrator"
+user-fullname = "Server Admin"
 ip = "192.168.7.236"
 static4 = "192.168.42.42"
 
 [ubuntu]
-hostname = "ubuntu"
+hostname = "ubuntu-qd"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 
