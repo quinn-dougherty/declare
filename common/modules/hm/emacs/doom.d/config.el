@@ -58,7 +58,8 @@
    ; (julia . t)
    (python . t)
    (jupyter . t)))
-
+(setq org-modern-label-border nil)
+(global-org-modern-mode)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.

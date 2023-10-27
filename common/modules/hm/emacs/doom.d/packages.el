@@ -57,9 +57,12 @@
 ;; (package! org-kanban)
 (package! org-transclusion)
 ;; (package! (org-clock-reminder :recipe (:host github :repo inickey/org-clock-reminder)))
-(package! org-modern)
 (package! org-sync)
 (package! org-sync-snippets)
+(use-package! org-modern
+  :hook (org-mode . global-org-modern-mode)
+  :config
+  (setq org-modern-label-border 0.3))
 (package! nov)
 (package! direnv)
 (package! envrc)
