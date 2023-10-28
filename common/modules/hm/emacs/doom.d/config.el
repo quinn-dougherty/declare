@@ -62,6 +62,8 @@
 (setq org-modern-label-border nil)
 (global-org-modern-mode)
 
+(add-hook 'elfeed-search-mode-hook #'elfeed-update)
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)

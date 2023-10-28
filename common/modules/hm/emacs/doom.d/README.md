@@ -2,8 +2,12 @@
 
 Notice `rescript-mode` manual wiring up in `config.el` (hence the git submodules right now), as [here](https://github.com/jjlee/rescript-mode#doom-emacs).
 
-## TODO:
+`rescript-mode` is currently broken.
 
-- [x] Fix `agda` (see commented out code in `config.el`)
-- [x] Fix `python3` bug in `treemacs` at startup.
-- [ ] Fix `rescript-mode` (eh idk, whenever really haha)
+`./extras` for custom `.el` stuff that gets imported into `./config.el`
+
+
+kk 
+- 
+- 
+okfk

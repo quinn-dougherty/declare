@@ -9,6 +9,7 @@ import           XMonad
 import           XMonad.Actions.SpawnOn    (manageSpawn, spawnHere, spawnOn)
 import           XMonad.Config
 import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.FadeInactive
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Util.EZConfig      (additionalKeys)
@@ -21,8 +22,8 @@ unfocusedWindowOpacity = 0.7
 modShift = mod4Mask .|. shiftMask
 alt = mod1Mask
 
-keybinds = [ ((modShift, xK_z), spawn "xscreensaver-command -lock")
-    , ((mod4Mask, xK_q), restart "xmonad" True)
+keybinds =
+    [ ((mod4Mask, xK_q), restart "xmonad" True)
     , ((modShift, xK_w), spawnOn "1" "firefox") -- w is for www
     , ((modShift, xK_m), spawnOn "3" "thunderbird") -- m is for mail
     , ((modShift, xK_s), spawnHere "flameshot launcher") -- s is for screenshot
@@ -51,7 +52,7 @@ compileRestart resume = do
           )
 
 
-myConfig xmproc = docks def
+myConfig xmproc = (docks . ewmh) def
     { terminal = terminalEmulator
     , layoutHook = avoidStruts $ layoutHook def
     , logHook = fadeInactiveLogHook unfocusedWindowOpacity
@@ -66,6 +67,5 @@ myConfig xmproc = docks def
 
 
 main = do
-  xmproc <- spawnPipe "xmobar ~/projects/declare/laptop/system/services/x/xmobarrc.hs"
-
-  xmonad (myConfig xmproc)
+  xmproc <- spawnPipe "trayer & xmobar ~/projects/declare/laptop/system/services/x/xmobarrc.hs"
+  xmonad $ myConfig xmproc
