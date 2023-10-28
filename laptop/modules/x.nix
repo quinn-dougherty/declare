@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
   hardware.acpilight.enable = true;
   environment.systemPackages = with pkgs; [
+    arandr
     dmenu
     tmate
     haskellPackages.xmobar
