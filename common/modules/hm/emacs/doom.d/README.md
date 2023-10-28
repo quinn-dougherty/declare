@@ -5,9 +5,3 @@ Notice `rescript-mode` manual wiring up in `config.el` (hence the git submodules
 `rescript-mode` is currently broken.
 
 `./extras` for custom `.el` stuff that gets imported into `./config.el`
-
-
-kk 
-- 
-- 
-okfk
