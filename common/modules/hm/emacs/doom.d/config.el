@@ -51,7 +51,8 @@
    :leader
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
-(map! :after org :map org-mode-map :prefix "SPC m d" "p" #'org-download-clipboard-pdf)
+;; (map! :after org :map org-mode-map :prefix "SPC m d" "p" #'org-download-clipboard-pdf)
+(map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
