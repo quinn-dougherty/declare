@@ -24,7 +24,7 @@
   services = {
     fwupd.enable = true;
     printing.enable = true;
-    # getty.autologinUser = server.username;  # This nuked boot...
+    getty.autologinUser = server.username;
   };
 
   users.users = {

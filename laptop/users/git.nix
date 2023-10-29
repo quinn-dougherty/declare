@@ -6,6 +6,10 @@
     s = "status";
     c = "commit";
     a = "add";
+    p = "push";
+    f = "fetch";
+    ck = "checkout";
+    b = "branch";
   };
   lfs.enable = true;
   ignores = [ "*~" "*.swp" ".DS_Store" ".idea" ];
