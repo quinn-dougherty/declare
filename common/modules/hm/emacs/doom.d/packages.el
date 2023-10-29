@@ -70,6 +70,7 @@
 (package! rescript-mode)
 (package! lsp-rescript)
 (package! gptel)
+(package! chatgpt-shell)
 ; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)
