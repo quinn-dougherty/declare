@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-# This was initialized/generated. Keeping it in git tree for now, for historical reasons.
+# This was initialized/generated. Keeping it in git tree for now, for historical reasons, to check if we want to revert?
 
 { config, pkgs, ... }:
 

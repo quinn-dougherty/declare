@@ -3,3 +3,5 @@ backups
 result
 phone/bootstrapping
 authinfo
+keys/port
+common/keys/port
