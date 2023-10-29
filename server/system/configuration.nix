@@ -24,7 +24,7 @@
   services = {
     fwupd.enable = true;
     printing.enable = true;
-    gett.autologinUser = server.username;
+    getty.autologinUser = server.username;
   };
 
   users.users = {
