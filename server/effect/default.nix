@@ -14,5 +14,5 @@ hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
     EOF
   '';
 
-  ssh.destination = server.static4;
+  ssh.destination = server.ip;
 })
