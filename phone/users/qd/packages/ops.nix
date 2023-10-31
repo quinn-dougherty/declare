@@ -1,10 +1,11 @@
 { pkgs }:
 with pkgs; [
   # useful CLI/admin tools to have during setup
-  fatresize
-  gptfdisk
+  # fatresize
+  # gptfdisk
   # networkmanager
   # sudo
   wget
   curl
+  git
 ]

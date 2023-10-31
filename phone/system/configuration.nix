@@ -1,5 +1,5 @@
 { phone }:
-
+# Much copied from installer initialization
 with phone; {
 
   networking = {
@@ -7,6 +7,16 @@ with phone; {
     networkmanager.enable = true;
     interfaces.wlan0.useDHCP = true;
   };
+  hardware = {
+    sensor.iio.enable = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
+  };
+  powerManagement.enable = true;
+
+  zramSwap.enable = true;
 
   time.timeZone = timezone;
   # Select internationalisation properties.
@@ -20,11 +30,12 @@ with phone; {
         isNormalUser = true;
         description = user-fullname;
         home = "/home/" + username;
+        shell = pkgs.fish;
         # uid = 1000;
         # make this numeric so that you can enter it in the phosh lockscreen.
         # DON'T leave this empty: not all greeters support passwordless users.
         initialPassword = "9999";
-        extraGroups = [ "wheel" "networkmanager" ];
+        extraGroups = [ "wheel" "networkmanager" "dialout" "feedbackd" "video" ];
         openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
       };
   };
@@ -36,5 +47,12 @@ with phone; {
 
   nixpkgs.config = config;
 
+  programs = {
+    fish.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
   system.stateVersion = "23.11";
 }

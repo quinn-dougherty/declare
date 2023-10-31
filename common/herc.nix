@@ -4,20 +4,18 @@ hci-inputs: {
     # TODO: clean this up with `common/lib.nix`
     ${machines.laptop.hostname}.outputs = {
       home-shell =
-        outputs.devShells.${machines.laptop.system}."${machines.laptop.drv-name-prefix}homeshell";
+        outputs.devShells.${machines.laptop.system}."${machines.laptop.drv-name-prefix}:homeshell";
       operating-system =
         outputs.nixosConfigurations.${machines.laptop.hostname}.config.system.build.toplevel;
     };
 
-    ${machines.phone.hostname}.outputs =
-      let
-        phone-uboot =
-          outputs.nixosConfigurations.${machines.phone.hostname}.config.mobile.outputs.u-boot;
-      in
-      {
-        os_disk-image = phone-uboot.disk-image;
-        os_boot-partition = phone-uboot.boot-partition;
-      };
+    ${machines.phone.hostname}.outputs = let
+      phone-uboot =
+        outputs.nixosConfigurations.${machines.phone.hostname}.config.mobile.outputs.u-boot;
+    in {
+      os_disk-image = phone-uboot.disk-image;
+      os_boot-partition = phone-uboot.boot-partition;
+    };
 
     ${machines.server.hostname}.outputs = with hci-inputs;
       if ref == "refs/heads/main" then {
