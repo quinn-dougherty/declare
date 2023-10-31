@@ -5,7 +5,7 @@ let
 in
 with server.pkgs;
 hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
-  config = server-os.config;
+  configuration = server-os;
   secretsMap.ssh = "default-ssh";
   userSetupScript = ''
     writeSSHKey ssh
