@@ -9,7 +9,7 @@
 [cachix link]: https://quinn-dougherty.cachix.org
 
 | Host | Function |
-|------=---------|-----------|
+| -----=-------- | --------- |
 | `risencrantz` | phone |
 | `grindenstern` | daily driver |
 | `a-guy-for-a-thing` | hercules ci server, nextcloud (maybe router eventually) |

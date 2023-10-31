@@ -8,8 +8,7 @@
 
   clipcat.enable = true;
 
-  autorandr = import ./x/randr;
-  xserver = import ./x;
+  autorandr.enable = true;
 
   urxvtd.enable = true;
 
@@ -23,10 +22,6 @@
 
   tailscale.enable = false;
   mullvad-vpn.enable = false;
-
-  postgresql = import ./guesstimate-postgres.nix { inherit pkgs; };
-
-  # openssh.enable = true;  # delete if using module import works.
 
   elasticsearch = {
     package = pkgs.elasticsearch7;

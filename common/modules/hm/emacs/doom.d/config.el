@@ -110,6 +110,7 @@
 (setq gpt-openai-temperature 0)
 
 (envrc-global-mode)
+(direnv-mode)
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append

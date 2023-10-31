@@ -6,6 +6,8 @@ timezone = "America/Los_Angeles"
 hostname = "grindenstern"
 username = "qd"
 user-fullname = "Quinn Dougherty"
+# one of xmonad, xfce, gnome, kde
+desktop = "xmonad"
 
 [phone]
 hostname = "risencrantz"

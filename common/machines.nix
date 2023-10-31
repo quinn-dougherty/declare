@@ -18,6 +18,7 @@ in
     user-fullname = machines.laptop.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
+    desktop = machines.laptop.desktop;
     drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
     overlays =
       let
