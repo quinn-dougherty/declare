@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-stable, hercules-ci-effects }:
+{ nixpkgs-master, nixpkgs, nixpkgs-stable, hercules-ci-effects }:
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
   server-onprem-tz = "America/Los_Angeles";

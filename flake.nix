@@ -1,8 +1,10 @@
 {
-  description = "quinnd's NixOS configurations";
+  description = "Quinn's personal infra hub";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixos.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.05";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
@@ -31,7 +33,9 @@
 
   outputs =
     { self
+    , nixpkgs-master
     , nixpkgs
+    , nixos
     , nixpkgs-stable
     , nixos-hardware
     , home-manager
@@ -45,7 +49,7 @@
     let
       lib = nixpkgs.lib;
       machines = import ./common/machines.nix {
-        inherit nixpkgs nixpkgs-stable hercules-ci-effects;
+        inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
       };
       laptop = import ./laptop {
         inherit lib nixos-hardware home-manager nix-doom-emacs smos;
@@ -83,7 +87,6 @@
 
       homeConfigurations = commonlib.hmForAll others;
 
-      # Just aliases to `nix build .#<machine.hostname>`
       packages.${machines.common.system} =
         commonlib.packagesFromAllOs { inherit immobiles mobiles others; };
 
