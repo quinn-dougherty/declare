@@ -23,10 +23,7 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    smos = {
-      url = "github:NorfairKing/smos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    smos.url = "github:NorfairKing/smos";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
   };
@@ -90,7 +87,7 @@
       packages.${machines.common.system} =
         commonlib.packagesFromAllOs { inherit immobiles mobiles others; };
 
-      devShells.${laptop.system}."${laptop.drv-name-prefix}homeshell" =
+      devShells.${laptop.system}."${laptop.drv-name-prefix}:homeshell" =
         laptop.homeshell;
 
       checks.${machines.common.system}.formatted =

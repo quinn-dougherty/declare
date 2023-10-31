@@ -7,6 +7,7 @@ with laptop; {
     };
     git = import ./../git.nix;
     vim = import ./../vim.nix;
+    smos.enable = true;
   };
   imports = [
     nix-doom-emacs.hmModule
