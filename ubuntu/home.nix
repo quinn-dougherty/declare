@@ -18,6 +18,6 @@
     homeDirectory = "/home/" + username;
 
     # You can update home-manager without changing this value
-    stateVersion = "20.09";
+    stateVersion = "23.11";
   };
 }

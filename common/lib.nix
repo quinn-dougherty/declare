@@ -21,7 +21,7 @@ let
   };
   packageFromNonNixos = machine: {
     name = "${machine.drv-name-prefix}:homeconfig";
-    value = machine.homemanager;
+    value = machine.homemanager.activationPackage;
   };
   packagesFromAll = fromFn: machines:
     builtins.listToAttrs (map fromFn machines);
