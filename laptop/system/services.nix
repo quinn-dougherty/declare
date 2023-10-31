@@ -6,8 +6,6 @@
     percentageAction = 5;
   };
 
-  clipcat.enable = true;
-
   autorandr.enable = true;
 
   urxvtd.enable = true;
@@ -19,9 +17,6 @@
     enable = true;
     drivers = [ pkgs.hplip ];
   };
-
-  tailscale.enable = false;
-  mullvad-vpn.enable = false;
 
   elasticsearch = {
     package = pkgs.elasticsearch7;

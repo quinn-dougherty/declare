@@ -1,3 +1,2 @@
 xcompmgr -cn &
-clipcatd
-feh --bg-fill -z /home/qd/projects/declare/laptop/system/services/x/desktopbackgrounds/*
+feh --bg-fill -z /home/qd/projects/declare/common/modules/desktops/backgrounds/*
