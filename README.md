@@ -8,9 +8,9 @@
 [cachix badge]: https://img.shields.io/badge/Cachix-quinn--dougherty-blueviolet?style=plastic&logo=nixos
 [cachix link]: https://quinn-dougherty.cachix.org
 
-| Host | Function |
-| -----=-------- | --------- |
-| `risencrantz` | phone |
-| `grindenstern` | daily driver |
-| `a-guy-for-a-thing` | hercules ci server, nextcloud (maybe router eventually) |
-| `the-band-back-together` | just `homeManagerConfiguration` for an ubuntu |
+|           Host           | Function                                                |
+| :----------------------: | :------------------------------------------------------ |
+|      `risencrantz`       | phone                                                   |
+|      `grindenstern`      | daily driver                                            |
+|   `a-guy-for-a-thing`    | hercules ci server, nextcloud (maybe router eventually) |
+| `the-band-back-together` | just `homeManagerConfiguration` for an ubuntu           |
