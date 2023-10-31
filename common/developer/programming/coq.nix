@@ -3,12 +3,11 @@ with pkgs.coqPackages; [
   coq
   coq-ext-lib
   stdpp
-  QuickChick
-  ITree
+  # QuickChick # not in 8.18 yet
+  # ITree # Not in 8.18 yet
   paco
-  # parsec # not for latest coq version
+  parsec
   simple-io
-  # VST # not for latest coq version
   mathcomp
   mathcomp-analysis
 ]

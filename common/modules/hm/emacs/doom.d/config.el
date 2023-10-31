@@ -35,7 +35,14 @@
 ;; gcal sync on boot will be like ~add-hook~
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 
-;; (setq projectile-project-search-path '("~/Dropbox/Projects/") projectile-sort-order 'recentf)
+;; (setq projectile-project-search-path '("~/projects") projectile-sort-order 'recentf)
+
+(setq vterm-eval-cmds '(("find-file" find-file)
+                        ("message" message)
+                        ("vterm-clear-scrollback" vterm-clear-scrollback)
+                        ("dired" dired)
+                        ("ediff-files" ediff-files)))
+; (custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -102,6 +109,7 @@
 (setq gpt-openai-max-tokens 2000)
 (setq gpt-openai-temperature 0)
 
+(envrc-global-mode)
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append

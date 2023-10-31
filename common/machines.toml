@@ -3,25 +3,25 @@ system = "x86_64-linux"
 timezone = "America/Los_Angeles"
 
 [laptop]
-hostname = "laptop"
+hostname = "grindenstern"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 
 [phone]
-hostname = "phone"
+hostname = "risencrantz"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 system = "aarch64-linux"
 
 [server]
-hostname = "server"
+hostname = "a-guy-for-a-thing"
 username = "admin"
 user-fullname = "Server Admin"
 ip = "192.168.7.236"
 static4 = "192.168.42.42"
 
 [ubuntu]
-hostname = "ubuntu-qd"
+hostname = "the-band-back-together"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 

@@ -17,7 +17,10 @@ with laptop; {
     interfaces.wlp170s0.useDHCP = true;
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    # qemu.guestAgent.enable = true;
+    docker.enable = true;
+  };
 
   time.timeZone = timezone;
 
@@ -28,22 +31,21 @@ with laptop; {
 
   services = import ./services { inherit pkgs; };
 
-  users.users =
-    let keys-path = ./../../common/keys;
-    in {
-      ${username} = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
-        home = "/home/" + username;
-        description = user-fullname;
-        shell = pkgs.fish;
-        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
-      };
-      root = {
-        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
-        shell = pkgs.fish;
-      };
+  users.users = let keys-path = ./../../common/keys;
+  in {
+    ${username} = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
+      home = "/home/" + username;
+      description = user-fullname;
+      shell = pkgs.fish;
+      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
     };
+    root = {
+      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+      shell = pkgs.fish;
+    };
+  };
 
   environment = {
     variables = {

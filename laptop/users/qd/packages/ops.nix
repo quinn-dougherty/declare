@@ -19,7 +19,7 @@ with pkgs; [
   qc
   anki
   libreoffice
-  zotero
+  # zotero insecure on oct 30 2023 unstable
   pinta
   obs-studio
   vlc
