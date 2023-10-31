@@ -14,6 +14,7 @@
   networking = {
     hostName = server.hostname;
     networkmanager.enable = true;
+    interfaces.wlp170s0.useDHCP = true;
     # interfaces.wlp170s0.ipv4.addresses = [{
     #   address = server.static4;
     #   prefixLength = 24;

@@ -7,9 +7,9 @@ hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
   configuration = server-os;
   secretsMap.ssh = "default-ssh";
   userSetupScript = ''
-    writeSSHKey ssh
+    writeSSHKey
     cat >>~/.ssh/known_hosts <<EOF
-    ${readFile ./known_hosts}
+    ${known-hosts-fragment}
     EOF
   '';
 

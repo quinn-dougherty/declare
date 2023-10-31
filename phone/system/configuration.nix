@@ -1,5 +1,4 @@
 { phone }:
-# Much copied from installer initialization
 with phone; {
   networking = {
     hostName = hostname;
@@ -26,20 +25,19 @@ with phone; {
   services.xserver.displayManager.autoLogin.user = username;
   users = {
     mutableUsers = false;
-    users.${username} =
-      let keys-path = ./../../common/keys;
-      in {
-        isNormalUser = true;
-        description = user-fullname;
-        home = "/home/" + username;
-        shell = pkgs.fish;
-        uid = 1000;
-        # make this numeric so that you can enter it in the phosh lockscreen.
-        # DON'T leave this empty: not all greeters support passwordless users.
-        initialPassword = "9999";
-        extraGroups = [ "wheel" "networkmanager" "dialout" "feedbackd" "video" ];
-        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
-      };
+    users.${username} = let keys-path = ./../../common/keys;
+    in {
+      isNormalUser = true;
+      description = user-fullname;
+      home = "/home/" + username;
+      shell = pkgs.fish;
+      uid = 1000;
+      # make this numeric so that you can enter it in the phosh lockscreen.
+      # DON'T leave this empty: not all greeters support passwordless users.
+      initialPassword = "9999";
+      extraGroups = [ "wheel" "networkmanager" "dialout" "feedbackd" "video" ];
+      openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+    };
   };
 
   security.sudo = {
