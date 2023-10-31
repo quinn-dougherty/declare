@@ -5,7 +5,7 @@
   (import ./../system/configuration.nix { inherit phone; })
   ./../system/hardware-configuration.nix
   home-manager.nixosModules.home-manager
-  # (import ./phosh.nix { inherit pinephone; })
+  # (import ./phosh.nix { inherit phone; })
   ./plasma.nix
   ./qt.nix
   ./../../common/modules/manyterms.nix
