@@ -13,7 +13,7 @@ with phone; {
     packages = import ./packages { inherit pkgs; };
 
     # You can update home-manager without changing this value
-    stateVersion = "22.05";
+    stateVersion = "23.11";
   };
 
 }
