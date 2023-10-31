@@ -1,4 +1,4 @@
-# `x` for windows!
+# `xmonad`
 
 ## Unfocused opacity
 

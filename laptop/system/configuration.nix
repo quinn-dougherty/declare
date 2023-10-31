@@ -29,7 +29,7 @@ with laptop; {
   #   keyMap = "us";
   # };
 
-  services = import ./services { inherit pkgs; };
+  services = import ./services.nix { inherit pkgs; };
 
   users.users =
     let keys-path = ./../../common/keys;

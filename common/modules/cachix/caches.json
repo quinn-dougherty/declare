@@ -1,12 +1,10 @@
 {
   "substituters": [
     "https://quinn-dougherty.cachix.org",
-    "https://quantified-uncertainty.cachix.org",
     "https://effective-altruism.cachix.org"
   ],
   "trusted-public-keys": [
     "quinn-dougherty.cachix.org-1:Fc8xW/Tgr48SjV5Z/LhHCAOjo1dutikmOp8wQTDsBcc=",
-    "quantified-uncertainty.cachix.org-1:6Dmk4ZKzEPai4o0FovuUyeZ0lZcf3/4v+MTHWaxczzc=",
     "effective-altruism.cachix.org-1:mybF0dFfu2Bxbc+LuNm7rb46MFY4FGG2GhwdHuQPWxU="
   ]
 }

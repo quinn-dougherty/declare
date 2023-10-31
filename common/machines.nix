@@ -3,7 +3,7 @@ let
   machines = fromTOML (builtins.readFile ./machines.toml);
   server-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
-  drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}:";
+  drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}";
 in
 {
   common = machines.common // {
@@ -18,6 +18,7 @@ in
     user-fullname = machines.laptop.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
+    desktop = machines.laptop.desktop;
     drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
     overlays =
       let

@@ -4,7 +4,7 @@ hci-inputs: {
     # TODO: clean this up with `common/lib.nix`
     ${machines.laptop.hostname}.outputs = {
       home-shell =
-        outputs.devShells.${machines.laptop.system}."${machines.laptop.drv-name-prefix}homeshell";
+        outputs.devShells.${machines.laptop.system}."${machines.laptop.drv-name-prefix}:homeshell";
       operating-system =
         outputs.nixosConfigurations.${machines.laptop.hostname}.config.system.build.toplevel;
     };
@@ -27,8 +27,8 @@ hci-inputs: {
           outputs.nixosConfigurations.${machines.server.hostname}.config.system.build.toplevel;
       };
 
-    "${machines.ubuntu.hostname}-home".outputs.homeConfig =
-      outputs.homeConfigurations.${machines.ubuntu.system}.homemanager;
+    "${machines.ubuntu.username}@${machines.ubuntu.hostname}:hm".outputs.homeConfig =
+      outputs.homeConfigurations.${machines.ubuntu.hostname}.activationPackage;
 
     ${machines.chat.hostname}.outputs.operating-system =
       outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
