@@ -17,21 +17,20 @@ let
   };
   packageFromAarchBootPartition = machine: {
     name = "${machine.hostname}-boot-partition";
-    value = machine.operatingsystem.mobile.outputs.u-boot.boot-partition;
+    value = machine.operatingsystem.config.mobile.outputs.u-boot.boot-partition;
   };
   packageFromNonNixos = machine: {
-    name = "${machine.drv-name-prefix}homeconfig";
-    value = machine.homeconfig;
+    name = "${machine.drv-name-prefix}:homeconfig";
+    value = machine.homemanager;
   };
   packagesFromAll = fromFn: machines:
     builtins.listToAttrs (map fromFn machines);
-in
-{
+in {
   osForAll = machines: builtins.listToAttrs (map osFor machines);
+  hmForAll = machines: builtins.listToAttrs (map hmFor machines);
   packagesFromAllOs = { immobiles, mobiles, others }:
     (packagesFromAll packageFromX86 immobiles)
     // (packagesFromAll packageFromAarchDiskImg mobiles)
     // (packagesFromAll packageFromAarchBootPartition mobiles)
     // (packagesFromAll packageFromNonNixos others);
-  hmForAll = machines: builtins.listToAttrs (map hmFor machines);
 }

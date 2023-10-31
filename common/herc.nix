@@ -27,8 +27,8 @@ hci-inputs: {
           outputs.nixosConfigurations.${machines.server.hostname}.config.system.build.toplevel;
       };
 
-    "${machines.ubuntu.hostname}-home".outputs.homeConfig =
-      outputs.homeConfigurations.${machines.ubuntu.system}.homemanager;
+    "${machines.ubuntu.username}@${machines.ubuntu.hostname}:hm".outputs.homeConfig =
+      outputs.homeConfigurations.${machines.ubuntu.hostname}.homemanager;
 
     ${machines.chat.hostname}.outputs.operating-system =
       outputs.nixosConfigurations.${machines.chat.hostname}.config.system.build.toplevel;
