@@ -1,10 +1,12 @@
 { phone }:
 # Much copied from installer initialization
 with phone; {
-
   networking = {
     hostName = hostname;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      unmanaged = [ "rndis0" "usb0" ];
+    };
     interfaces.wlan0.useDHCP = true;
   };
   hardware = {
@@ -21,7 +23,7 @@ with phone; {
   time.timeZone = timezone;
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
-
+  services.xserver.displayManager.autoLogin.user = username;
   users = {
     mutableUsers = false;
     users.${username} =
@@ -31,7 +33,7 @@ with phone; {
         description = user-fullname;
         home = "/home/" + username;
         shell = pkgs.fish;
-        # uid = 1000;
+        uid = 1000;
         # make this numeric so that you can enter it in the phosh lockscreen.
         # DON'T leave this empty: not all greeters support passwordless users.
         initialPassword = "9999";

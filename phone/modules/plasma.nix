@@ -1,11 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
-  services.xserver.desktopManager.plasma5 = {
-    enable = true;
-    mobile = {
-      enable = true;
-      installRecommendedSoftware = true;
-    };
-  };
+{ mobile-nixos }:
+import "${mobile-nixos}/examples/plasma-mobile/plasma-mobile.nix" {
+  device = "pine64-pinephone";
 }

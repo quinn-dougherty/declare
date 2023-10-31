@@ -1,7 +1,1 @@
-{ pinephone }: {
-  services.xserver.desktopManager.phosh = {
-    enable = true;
-    user = pinephone.username;
-    # group = "users";
-  };
-}
+{ mobile-nixos }: import "${mobile-nixos}/examples/phosh/phosh.nix"
