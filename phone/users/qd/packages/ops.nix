@@ -8,4 +8,5 @@ with pkgs; [
   wget
   curl
   git
+  nextcloud-client
 ]
