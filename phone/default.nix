@@ -3,6 +3,6 @@
 phone // {
   operatingsystem = lib.nixosSystem {
     system = phone.system;
-    modules = import ./modules { inherit phone home-manager mobile-nixos; };
+    modules = import ./modules { inherit lib phone home-manager mobile-nixos; };
   };
 }

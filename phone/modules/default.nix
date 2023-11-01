@@ -1,4 +1,4 @@
-{ phone, home-manager, mobile-nixos }:
+{ lib, phone, home-manager, mobile-nixos }:
 
 [
   (import ./../system/mobile.nix { inherit mobile-nixos; })
@@ -7,9 +7,8 @@
   ./booter.nix
   home-manager.nixosModules.home-manager
   (import ./plasma.nix {
-    inherit mobile-nixos;
+    inherit mobile-nixos lib;
     config = phone.config;
-    lib = mobile-nixos.lib;
     pkgs = phone.pkgs;
   })
   # ./qt.nix
