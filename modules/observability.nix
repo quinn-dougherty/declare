@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    nettools
+    netproc
     lm_sensors
     xsensors
     inxi

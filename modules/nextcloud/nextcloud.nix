@@ -4,12 +4,7 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27; # follow migration instructions online
-    hostName = "sync.quinn-dougherty.com";
-
-    nginx.enable = true;
-
-    # Let NixOS install and configure the database automatically.
-    database.createLocally = true;
+    hostName = "quinn-dougherty.com"; # "sync.quinn-dougherty.com";
 
     # Let NixOS install and configure Redis caching automatically.
     configureRedis = true;
@@ -17,7 +12,6 @@
     # Increase the maximum file upload size to avoid problems uploading videos.
     maxUploadSize = "16G";
     https = true;
-    enableBrokenCiphersForSSE = false;
 
     autoUpdateApps.enable = true;
     extraAppsEnable = true;

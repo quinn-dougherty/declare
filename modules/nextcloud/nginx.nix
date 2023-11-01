@@ -11,23 +11,23 @@
 
     # Only allow PFS-enabled ciphers with AES256
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
-    virtualHosts =
-      let
-        hostConfig = {
-          forceSSL = true;
-          enableACME = true;
-        };
-      in
-      {
-        "org.quinn-dougherty.com" = hostConfig;
-        "media.quinn-dougherty.com" = hostConfig;
-        "sync.quinn-dougherty.com" = hostConfig;
+    virtualHosts = let
+      hostConfig = {
+        forceSSL = true;
+        enableACME = true;
       };
+    in {
+      "quinn-dougherty.com" = hostConfig;
+      # "org.quinn-dougherty.com" = hostConfig;
+      # "media.quinn-dougherty.com" = hostConfig;
+      # "sync.quinn-dougherty.com" = hostConfig;
+      # "localhost" = hostConfig;
+    };
   };
   security.acme = {
     acceptTerms = true;
     # Replace the email here!
-    email = "admin@quinn-dougherty.com";
+    defaults.email = "admin@quinn-dougherty.com";
   };
 
 }
