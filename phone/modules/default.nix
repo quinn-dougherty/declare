@@ -16,7 +16,6 @@
   ./../../common/modules/manyterms.nix
   ./../../common/modules/openssh.nix
   ./../../common/modules/nix.nix
-  ./../../common/modules/bluetooth.nix
   ./../../common/modules/openssh.nix
   (import ./hm.nix { inherit phone; })
 ]

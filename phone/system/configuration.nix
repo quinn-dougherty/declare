@@ -2,20 +2,18 @@
 with phone; {
   networking = {
     hostName = hostname;
-    networkmanager = {
-      enable = true;
-      unmanaged = [ "rndis0" "usb0" ];
-    };
+    networkmanager.unmanaged = [ "rndis0" "usb0" ];
     interfaces.wlan0.useDHCP = true;
+    wireless.enable = false;
+    # networkmanager.enable = true; if called without plasma module, or double check.
   };
-  hardware = {
-    sensor.iio.enable = true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-    };
-  };
-  powerManagement.enable = true;
+  # hardware = {
+  #   sensor.iio.enable = true;
+  #   opengl = {
+  #     enable = true;
+  #     driSupport = true;
+  #   };
+  # };
 
   zramSwap.enable = true;
 
