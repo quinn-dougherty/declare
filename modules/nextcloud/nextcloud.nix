@@ -40,8 +40,4 @@
       adminuser = "admin";
     };
   };
-  systemd.services."nextcloud-setup" = {
-    requires = [ "postgresql.service" ];
-    after = [ "postgresql.service" ];
-  };
 }

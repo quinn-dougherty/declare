@@ -5,16 +5,16 @@
   nixos-hardware.nixosModules.framework # 11th gen
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service
-  ./../common/modules/cachix
-  ./../common/modules/hercules.nix
-  ./../common/modules/nextcloud
-  ./../common/modules/nix.nix
-  ./../common/modules/audit.nix
-  ./../common/modules/crosscompilation.nix
-  ./../common/modules/observability.nix
-  ./../common/modules/ivpn.nix
-  ./../common/modules/devops.nix
-  ./../common/modules/utilities.nix
-  ./../common/modules/il8n.nix
-  ./../common/modules/allowUnfree.nix
+  ./../modules/cachix
+  ./../modules/hercules.nix
+  # ./../modules/nextcloud
+  ./../modules/nix.nix
+  ./../modules/audit.nix
+  ./../modules/crosscompilation.nix
+  ./../modules/observability.nix
+  ./../modules/ivpn.nix
+  ./../modules/devops.nix
+  ./../modules/utilities.nix
+  ./../modules/il8n.nix
+  ./../modules/allowUnfree.nix
 ]

@@ -1,5 +1,5 @@
 { laptop, nixos-hardware, home-manager, nix-doom-emacs, smos }:
-let cmodpath = ./../../common/modules;
+let cmodpath = ./../../modules;
 in [
   (import ./../system/configuration.nix { inherit laptop; })
   "${cmodpath}/desktops/${laptop.desktop}"

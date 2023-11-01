@@ -67,5 +67,5 @@ myConfig xmproc = (docks . ewmh) def
 
 
 main = do
-  xmproc <- spawnPipe "trayer & xmobar ~/projects/declare/common/modules/desktops/xmonad/xmobarrc.hs"
+  xmproc <- spawnPipe "trayer & xmobar ~/projects/declare/modules/desktops/xmonad/xmobarrc.hs"
   xmonad $ myConfig xmproc

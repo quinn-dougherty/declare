@@ -12,9 +12,9 @@
     pkgs = phone.pkgs;
   })
   # ./qt.nix
-  ./../../common/modules/manyterms.nix
-  ./../../common/modules/openssh.nix
-  ./../../common/modules/nix.nix
-  ./../../common/modules/openssh.nix
+  ./../../modules/manyterms.nix
+  ./../../modules/openssh.nix
+  ./../../modules/nix.nix
+  ./../../modules/openssh.nix
   (import ./hm.nix { inherit phone; })
 ]
