@@ -7,7 +7,7 @@
   hercules-ci-agent.nixosModules.agent-service
   ./../common/modules/cachix
   ./../common/modules/hercules.nix
-  ./../common/modules/nextcloud.nix
+  ./../common/modules/nextcloud
   ./../common/modules/nix.nix
   ./../common/modules/audit.nix
   ./../common/modules/crosscompilation.nix
