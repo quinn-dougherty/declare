@@ -28,23 +28,25 @@
     getty.autologinUser = server.username;
   };
 
-  users.users = let
-    keyspath = ./../../common/keys;
-    authorizedKeyFiles = [
-      "${keyspath}/id_ed255519.pub"
-      "${keyspath}/id_server_ed25519.pub"
-      "${keyspath}/id_server_rsa_effectsdefault.pub"
-    ];
-  in {
-    ${server.username} = {
-      isNormalUser = true;
-      description = server.user-fullname;
-      extraGroups = [ "networkmanager" "wheel" ];
-      openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
-      shell = server.pkgs.fish;
+  users.users =
+    let
+      keyspath = ./../../common/keys;
+      authorizedKeyFiles = [
+        "${keyspath}/id_ed255519.pub"
+        "${keyspath}/id_server_ed25519.pub"
+        "${keyspath}/id_server_rsa_effectsdefault.pub"
+      ];
+    in
+    {
+      ${server.username} = {
+        isNormalUser = true;
+        description = server.user-fullname;
+        extraGroups = [ "networkmanager" "wheel" ];
+        openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
+        shell = server.pkgs.fish;
+      };
+      root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
     };
-    root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
-  };
 
   programs = {
     fish.enable = true;
