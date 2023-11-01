@@ -2,13 +2,15 @@
 let
   known-hosts-fragment = with server;
     import ./knownhostsfragment.nix { inherit ip; };
-in
-with server.pkgs;
+in with server.pkgs;
 hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
   configuration = server-os;
-  secretsMap.default-ssh = "default-ssh";
+  secretsMap.ssh = "default-ssh";
   userSetupScript = ''
-    writeSSHKey default-ssh
+    writeSSHKey ssh
+    cat >>~/.ssh/known_hosts <<EOF
+    ${known-hosts-fragment}
+    EOF
   '';
 
   ssh.destination = server.ip;
