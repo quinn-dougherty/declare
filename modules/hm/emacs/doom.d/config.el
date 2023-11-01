@@ -69,7 +69,7 @@
 (setq org-modern-label-border nil)
 (global-org-modern-mode)
 
-(setq org-agenda-files '("health.org" "file2.org" "beaur/november2023.org" "november2023.org" "../profesh/casper/process.org" "../applications.org"))
+(setq org-agenda-files '("health.org" "file2.org" "beaur/november2023.org" "beaur/december2023.org" "profesh/casper/process.org" "profesh/applications.org"))
 
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
 

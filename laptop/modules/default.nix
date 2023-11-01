@@ -23,5 +23,5 @@ in [
   "${modpath}/utilities.nix"
 
   # Testing/learning
-  "${modpath}/nextcloud"
+  # "${modpath}/nextcloud"
 ]
