@@ -69,6 +69,8 @@
 (setq org-modern-label-border nil)
 (global-org-modern-mode)
 
+(setq org-agenda-files '("health.org" "file2.org" "beaur/november2023.org" "november2023.org" "../profesh/casper/process.org" "../applications.org"))
+
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line

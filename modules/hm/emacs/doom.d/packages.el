@@ -50,9 +50,8 @@
 ;(unpin! t)
 
 ;;; Code:
-; (package! multi-term)
+(package! multi-term)
 (package! all-the-icons)
-;; (package! yaml-mode)  ; I think there's an item in init.el that covers this.
 (package! pdf-tools)
 (package! org-kanban)
 (package! org-transclusion)
