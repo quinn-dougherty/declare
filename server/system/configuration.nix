@@ -32,7 +32,7 @@
     let
       keyspath = ./../../common/keys;
       authorizedKeyFiles = [
-        "${keyspath}/id_ed255519.pub"
+        "${keyspath}/id_ed25519.pub"
         "${keyspath}/id_server_ed25519.pub"
         "${keyspath}/id_server_rsa_effectsdefault.pub"
       ];
