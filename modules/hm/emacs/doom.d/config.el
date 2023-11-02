@@ -35,7 +35,7 @@
 ;; gcal sync on boot will be like ~add-hook~
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 
-;; (setq projectile-project-search-path '("~/projects") projectile-sort-order 'recentf)
+(setq projectile-project-search-path '("~/projects") projectile-sort-order 'recentf)
 
 (setq vterm-eval-cmds '(("find-file" find-file)
                         ("message" message)
