@@ -3,7 +3,7 @@ laptop // {
   operatingsystem = lib.nixosSystem {
     system = laptop.system;
     # specialArgs = laptop;  # TODO: clean up all module declaration syntax with specialArgs
-    modules = import ./modules {
+    modules = import ./modules.nix {
       inherit laptop nixos-hardware home-manager nix-doom-emacs smos;
     };
   };

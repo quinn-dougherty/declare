@@ -1,12 +1,12 @@
 { laptop, nixos-hardware, home-manager, nix-doom-emacs, smos }:
-let modpath = ./../../modules;
+let modpath = ./../modules;
 in [
-  (import ./../system/configuration.nix { inherit laptop; })
+  (import ./system/configuration.nix { inherit laptop; })
   "${modpath}/desktops/${laptop.desktop}"
-  ./../system/hardware-configuration.nix
+  ./system/hardware-configuration.nix
   nixos-hardware.nixosModules.framework-13th-gen-intel
   home-manager.nixosModules.home-manager
-  (import ./hm.nix { inherit laptop nix-doom-emacs smos; })
+  (import ./users/homes.nix { inherit laptop nix-doom-emacs smos; })
   "${modpath}/manyterms.nix"
   "${modpath}/fonts.nix"
   "${modpath}/audio.nix"
