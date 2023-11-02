@@ -8,6 +8,7 @@ with laptop; {
     git = import ./../git.nix;
     vim = import ./../vim.nix;
     smos.enable = true;
+    vscode = import ./packages/codium.nix { inherit pkgs; };
   };
   imports = [
     nix-doom-emacs.hmModule

@@ -100,6 +100,16 @@
     (defun +coq--fix-company-coq-hack-h ()
       (add-hook! 'after-change-major-mode-hook :local #'+coq--record-company-backends-h)
       (add-hook! 'after-change-major-mode-hook :append :local #'+coq--replay-company-backends-h))))
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (push '(coq-mode . "coq") lsp-language-id-configuration)
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "coq-lsp")
+                    :activation-fn (lsp-activate-on "coq")
+                    :server-id 'coq-lsp))
+  :commands lsp)
 
 (after! rescript-mode
 	(setq lsp-rescript-server-command
