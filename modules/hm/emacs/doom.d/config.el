@@ -69,7 +69,7 @@
 (setq org-modern-label-border nil)
 (global-org-modern-mode)
 
-(setq org-agenda-files '("health.org" "file2.org" "beaur/november2023.org" "beaur/december2023.org" "profesh/casper/process.org" "profesh/applications.org"))
+(setq org-agenda-files '("health.org" "beaur.org" "profesh" "profesh/casper"))
 
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
 
@@ -86,6 +86,20 @@
 (custom-set-variables
  `(coq-prog-name "coqtop")
  )
+;; `+company-init-backends-h' in `after-change-major-mode-hook' overrides
+;; `company-backends' set by `company-coq' package. This dirty hack fixes
+;; completion in coq-mode. TODO: remove when company backends builder is
+;; reworked.
+(defvar-local +coq--company-backends nil)
+(after! company-coq
+  (defun +coq--record-company-backends-h ()
+    (setq +coq--company-backends company-backends))
+  (defun +coq--replay-company-backends-h ()
+    (setq company-backends +coq--company-backends))
+  (add-hook! 'company-coq-mode-hook
+    (defun +coq--fix-company-coq-hack-h ()
+      (add-hook! 'after-change-major-mode-hook :local #'+coq--record-company-backends-h)
+      (add-hook! 'after-change-major-mode-hook :append :local #'+coq--replay-company-backends-h))))
 
 (after! rescript-mode
 	(setq lsp-rescript-server-command

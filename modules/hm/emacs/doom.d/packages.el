@@ -66,6 +66,7 @@
 (package! nov)
 (package! direnv)
 (package! envrc)
+(package! helm-projectile)
 (package! rescript-mode)
 (package! lsp-rescript)
 (package! gptel)
