@@ -35,5 +35,17 @@
         version = "1.4.0";
         sha256 = "sha256-qqqq0QKTR0ZCLdPltsnQh5eTqGOh9fV1OSOZMjj4xXg=";
       }
+      {
+        name = "vscode-direnv";
+        publisher = "cab404";
+        version = "1.0.0";
+        sha256 = "sha256-+nLH+T9v6TQCqKZw6HPN/ZevQ65FVm2SAo2V9RecM3Y=";
+      }
+      {
+        name = "nix-extension-pack";
+        publisher = "pinage404";
+        version = "3.0.0";
+        sha256 = "sha256-cWXd6AlyxBroZF+cXZzzWZbYPDuOqwCZIK67cEP5sNk=";
+      }
     ]);
 }
