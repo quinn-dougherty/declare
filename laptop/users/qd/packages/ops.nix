@@ -25,6 +25,9 @@ with pkgs; [
   vlc
   # cli infra
   ffmpeg
+  djvu2pdf
+  youtube-dl
+  youtube-tui
 
   # music
   puredata

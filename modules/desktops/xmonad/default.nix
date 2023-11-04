@@ -17,4 +17,5 @@
     libinput.enable = true;
   };
   imports = [ ./x.nix ];
+  sound.mediaKeys.enable = true;
 }

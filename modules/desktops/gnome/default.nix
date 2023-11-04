@@ -21,4 +21,8 @@
     "autovt@tty1".enable = false;
   };
   environment.systemPackages = with pkgs; [ trayer ];
+  programs = {
+    evince.enable = true;
+    gnome-terminal.enable = true;
+  };
 }
