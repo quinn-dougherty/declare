@@ -32,7 +32,7 @@ with laptop; {
   services = import ./services.nix { inherit pkgs; };
 
   users.users =
-    let keys-path = ./../../common/keys;
+    let keys-path = ./../../../common/keys;
     in {
       ${username} = {
         isNormalUser = true;

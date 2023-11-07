@@ -10,7 +10,7 @@
     git = import ./../git.nix;
     vim = import ./../vim.nix;
   };
-  imports = [ nix-doom-emacs.hmModule ./../modules/hm/emacs ];
+  imports = [ nix-doom-emacs.hmModule ./../../modules/hm/emacs ];
   # services.dropbox.enable = true;
   home = {
     packages = import ./packages { inherit pkgs; };

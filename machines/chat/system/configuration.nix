@@ -25,9 +25,10 @@
     ${chat.username} = {
       isNormalUser = true;
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      openssh.authorizedKeys.keyFiles = [ ./../../common/keys/authorized_keys ];
+      openssh.authorizedKeys.keyFiles =
+        [ ./../../../common/keys/authorized_keys ];
     };
     root.openssh.authorizedKeys.keyFiles =
-      [ ./../../common/keys/authorized_keys ];
+      [ ./../../../common/keys/authorized_keys ];
   };
 }

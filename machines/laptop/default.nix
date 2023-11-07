@@ -8,7 +8,7 @@ laptop // {
     };
   };
   homeshell = with laptop;
-    import ./../common/developer/shell.nix {
+    import ./../../common/developer/shell.nix {
       inherit pkgs pkgs-stable drv-name-prefix;
     };
 }

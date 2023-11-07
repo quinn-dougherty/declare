@@ -1,5 +1,5 @@
 { laptop, nixos-hardware, home-manager, nix-doom-emacs, smos }:
-let modpath = ./../modules;
+let modpath = ./../../modules;
 in [
   (import ./system/configuration.nix { inherit laptop; })
   "${modpath}/desktops/${laptop.desktop}"

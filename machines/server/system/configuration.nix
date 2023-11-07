@@ -30,7 +30,7 @@
 
   users.users =
     let
-      keyspath = ./../../common/keys;
+      keyspath = ./../../../common/keys;
       authorizedKeyFiles = [
         "${keyspath}/id_ed25519.pub"
         "${keyspath}/id_server_ed25519.pub"

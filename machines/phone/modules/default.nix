@@ -1,6 +1,7 @@
 { lib, phone, home-manager, mobile-nixos }:
 
-[
+let modpath = ./../../../modules;
+in [
   (import ./../system/mobile.nix { inherit mobile-nixos; })
   (import ./../system/configuration.nix { inherit phone; })
   ./../system/hardware-configuration.nix
@@ -12,9 +13,9 @@
     pkgs = phone.pkgs;
   })
   # ./qt.nix
-  ./../../modules/manyterms.nix
-  ./../../modules/openssh.nix
-  ./../../modules/nix.nix
-  ./../../modules/openssh.nix
+  "${modpath}/manyterms.nix"
+  "${modpath}/openssh.nix"
+  "${modpath}/nix.nix"
+  "${modpath}/openssh.nix"
   (import ./hm.nix { inherit phone; })
 ]

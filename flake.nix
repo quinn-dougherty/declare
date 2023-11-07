@@ -45,26 +45,26 @@
     }:
     let
       lib = nixpkgs.lib;
-      machines = import ./common/machines.nix {
+      machines = import ./machines/machines.nix {
         inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
       };
-      laptop = import ./laptop {
+      laptop = import ./machines/laptop {
         inherit lib nixos-hardware home-manager nix-doom-emacs smos;
         laptop = machines.laptop;
       };
-      server = import ./server {
+      server = import ./machines/server {
         inherit lib nixos-hardware hercules-ci-agent;
         server = machines.server;
       };
-      phone = import ./phone {
+      phone = import ./machines/phone {
         inherit lib home-manager mobile-nixos;
         phone = machines.phone;
       };
-      ubuntu = import ./ubuntu {
+      ubuntu = import ./machines/ubuntu {
         inherit lib home-manager nix-doom-emacs;
         ubuntu = machines.ubuntu;
       };
-      chat = import ./chat {
+      chat = import ./machines/chat {
         inherit lib;
         chat = machines.chat;
       };

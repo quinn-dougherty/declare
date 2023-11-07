@@ -12,9 +12,9 @@ with laptop; {
   };
   imports = [
     nix-doom-emacs.hmModule
-    ./../../../modules/hm/emacs
+    ./../../../../modules/hm/emacs
     smos.homeManagerModules.${system}.default
-    ./../../../modules/hm/gaming
+    ./../../../../modules/hm/gaming
   ];
   # services.dropbox.enable = true;
   home = {

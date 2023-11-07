@@ -1,6 +1,6 @@
 backups
 .env
 result
-phone/bootstrapping
+machines/phone/bootstrapping
 authinfo
 common/keys/port
