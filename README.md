@@ -14,3 +14,21 @@
 |      `grindenstern`      | daily driver                                            |
 |   `a-guy-for-a-thing`    | hercules ci server, nextcloud (maybe router eventually) |
 | `the-band-back-together` | just `homeManagerConfiguration` for an ubuntu           |
+
+## Developer shells
+
+I have very basic shells for modest and generic projects in rust, js, python, coq, ocaml, haskell.
+
+```sh
+nix develop github:quinn-dougherty/declare#rust
+nix develop github:quinn-dougherty/declare#python
+```
+
+Including for monorepos of up to two different kits (these are examples, but you can use any permutation of the 6)
+
+```sh
+nix develop github:quinn-dougherty/declare#python-ocaml
+nix develop github:quinn-dougherty/declare#js-rust
+```
+
+The shells are the only aspect of these repo that's vendored for direct usage.

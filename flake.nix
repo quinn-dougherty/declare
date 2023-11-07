@@ -87,8 +87,12 @@
       packages.${machines.common.system} =
         commonlib.packagesFromAllOs { inherit immobiles mobiles others; };
 
-      devShells.${laptop.system}."${laptop.drv-name-prefix}:homeshell" =
-        laptop.homeshell;
+      devShells = {
+        ${laptop.system} = {
+          "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
+        } // (with machines.common;
+          import ./shells { inherit pkgs pkgs-stable; });
+      };
 
       checks.${machines.common.system}.formatted =
         format.config.build.check self;

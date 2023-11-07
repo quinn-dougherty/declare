@@ -11,6 +11,9 @@ in
       system = machines.common.system;
       overlays = herc-effects-overlays;
     };
+    pkgs-stable = import nixpkgs-stable {
+      system = machines.common.system;
+    };
   };
   laptop = rec {
     hostname = machines.laptop.hostname;
