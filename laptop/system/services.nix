@@ -6,6 +6,8 @@
     percentageAction = 5;
   };
 
+  logind.lidSwitch = "hibernate";
+
   autorandr.enable = true;
 
   urxvtd.enable = true;

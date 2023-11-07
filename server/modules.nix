@@ -14,6 +14,7 @@
   ./../modules/observability.nix
   ./../modules/ivpn.nix
   ./../modules/devops.nix
+  # ./../modules/slurm.nix
   ./../modules/utilities.nix
   ./../modules/il8n.nix
   ./../modules/allowUnfree.nix
