@@ -6,4 +6,6 @@ with nodePackages_latest; [
   node2nix
   # haskellPackages.yarn2nix
   npm-check-updates
+  pnpm
+  # turbo # broken rn
 ]

@@ -49,7 +49,7 @@
         inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
       };
       laptop = import ./machines/laptop {
-        inherit lib nixos-hardware home-manager nix-doom-emacs smos;
+        inherit lib nixpkgs nixos-hardware home-manager nix-doom-emacs smos;
         laptop = machines.laptop;
       };
       server = import ./machines/server {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ nixpkgs, ... }:
 
 {
   nix = {
@@ -12,5 +12,6 @@
       dates = "weekly";
       options = "--delete-older-than 65d";
     };
+    nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
 }

@@ -17,7 +17,7 @@
 
 ## Developer shells
 
-I have very basic shells for modest and generic projects in rust, js, python, coq, ocaml, haskell.
+I have very basic shells for modest and generic projects in rust, js, python, coq, ocaml, haskell. Suitable for bootstrapping.
 
 ```sh
 nix develop github:quinn-dougherty/declare#rust
