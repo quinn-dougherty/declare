@@ -14,7 +14,7 @@ with laptop; {
     nix-doom-emacs.hmModule
     ./../../../../modules/hm/emacs
     smos.homeManagerModules.${system}.default
-    ./../../../../modules/hm/gaming
+    # ./../../../../modules/hm/gaming
   ];
   # services.dropbox.enable = true;
   home = {

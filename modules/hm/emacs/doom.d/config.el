@@ -30,7 +30,7 @@
 (rand-theme)
 
 ; other defaults for startup.
-(minimap-mode)
+;; (minimap-mode)
 (add-hook 'window-setup-hook #'treemacs t)
 ;; gcal sync on boot will be like ~add-hook~
 (setq doom-themes-treemacs-enable-variable-pitch nil)
