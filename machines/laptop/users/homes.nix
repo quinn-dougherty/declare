@@ -7,6 +7,5 @@
         import ./qd/home.nix { inherit laptop nix-doom-emacs smos; };
       root = import ./root/home.nix { inherit laptop; };
     };
-    # extraSpecialArgs.daedalus = daedalus;  # Passes more arguments to home.nix
   };
 }
