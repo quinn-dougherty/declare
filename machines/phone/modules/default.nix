@@ -15,7 +15,7 @@ in [
   # ./qt.nix
   "${modpath}/manyterms.nix"
   "${modpath}/openssh.nix"
-  ("${modpath}/nix.nix" { inherit nixpkgs; })
+  (import "${modpath}/nix.nix" { inherit nixpkgs; })
   "${modpath}/openssh.nix"
   (import ./hm.nix { inherit phone; })
 ]

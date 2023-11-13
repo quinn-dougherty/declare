@@ -23,9 +23,11 @@
     "getty@tty1".enable = false;
     "autovt@tty1".enable = false;
   };
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.appindicator
-    gnomeExtensions.vertical-workspaces
+  environment.systemPackages = with pkgs.gnomeExtensions; [
+    appindicator
+    vertical-workspaces
+    # system-monitor-next
+    system-monitor
   ];
   programs = {
     evince.enable = true;
