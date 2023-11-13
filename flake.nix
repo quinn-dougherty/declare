@@ -53,11 +53,11 @@
         laptop = machines.laptop;
       };
       server = import ./machines/server {
-        inherit lib nixos-hardware hercules-ci-agent;
+        inherit nixpkgs lib nixos-hardware hercules-ci-agent;
         server = machines.server;
       };
       phone = import ./machines/phone {
-        inherit lib home-manager mobile-nixos;
+        inherit nixpkgs lib home-manager mobile-nixos;
         phone = machines.phone;
       };
       ubuntu = import ./machines/ubuntu {

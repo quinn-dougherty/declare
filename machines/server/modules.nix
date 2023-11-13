@@ -1,4 +1,4 @@
-{ server, nixos-hardware, hercules-ci-agent }:
+{ nixpkgs, server, nixos-hardware, hercules-ci-agent }:
 let modpath = ./../../modules;
 in [
   (import ./system/configuration.nix { inherit server; })
@@ -8,7 +8,7 @@ in [
   "${modpath}/cachix"
   "${modpath}/hercules.nix"
   # "${modpath}/nextcloud"
-  "${modpath}/nix.nix"
+  (import "${modpath}/nix.nix" { inherit nixpkgs; })
   "${modpath}/audit.nix"
   "${modpath}/crosscompilation.nix"
   "${modpath}/observability.nix"

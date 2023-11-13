@@ -1,4 +1,4 @@
-{ lib, phone, home-manager, mobile-nixos }:
+{ nixpkgs, lib, phone, home-manager, mobile-nixos }:
 
 let modpath = ./../../../modules;
 in [
@@ -15,7 +15,7 @@ in [
   # ./qt.nix
   "${modpath}/manyterms.nix"
   "${modpath}/openssh.nix"
-  "${modpath}/nix.nix"
+  ("${modpath}/nix.nix" { inherit nixpkgs; })
   "${modpath}/openssh.nix"
   (import ./hm.nix { inherit phone; })
 ]
