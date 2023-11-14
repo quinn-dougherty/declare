@@ -26,7 +26,7 @@
   environment.systemPackages = with pkgs.gnomeExtensions; [
     appindicator
     vertical-workspaces
-    # system-monitor-next
+    workspace-matrix
     system-monitor
   ];
   programs = {
