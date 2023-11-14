@@ -28,6 +28,7 @@
     getty.autologinUser = server.username;
   };
 
+  # secrix.defaultEncryptKeys.${server.username} = map builtins.readFile config.users.users.${username}.openssh.authorizedKeys.keyFiles;
   users.users =
     let
       keyspath = ./../../../common/keys;

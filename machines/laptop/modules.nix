@@ -1,4 +1,4 @@
-{ nixpkgs, laptop, nixos-hardware, home-manager, nix-doom-emacs, smos }:
+{ nixpkgs, laptop, nixos-hardware, secrix, home-manager, nix-doom-emacs, smos }:
 let modpath = ./../../modules;
 in [
   (import ./system/configuration.nix { inherit laptop; })
@@ -8,6 +8,7 @@ in [
   home-manager.nixosModules.home-manager
   (import ./users/homes.nix { inherit laptop nix-doom-emacs smos; })
   "${modpath}/manyterms.nix"
+  secrix.nixosModules.default
   "${modpath}/fonts.nix"
   "${modpath}/audio.nix"
   "${modpath}/bluetooth.nix"

@@ -19,6 +19,7 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    secrix.url = "github:Platonic-Systems/secrix";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +39,7 @@
     , home-manager
     , mobile-nixos
     , nix-doom-emacs
+    , secrix
     , treefmt-nix
     , smos
     , hercules-ci-agent
@@ -50,15 +52,15 @@
       };
       web = with machines.common; import ./website { inherit pkgs; };
       laptop = import ./machines/laptop {
-        inherit lib nixpkgs nixos-hardware home-manager nix-doom-emacs smos;
+        inherit lib nixpkgs nixos-hardware secrix home-manager nix-doom-emacs smos;
         laptop = machines.laptop;
       };
       server = import ./machines/server {
-        inherit nixpkgs lib nixos-hardware hercules-ci-agent web;
+        inherit nixpkgs lib nixos-hardware hercules-ci-agent secrix web;
         server = machines.server;
       };
       phone = import ./machines/phone {
-        inherit nixpkgs lib home-manager mobile-nixos;
+        inherit nixpkgs lib home-manager mobile-nixos secrix;
         phone = machines.phone;
       };
       ubuntu = import ./machines/ubuntu {
@@ -66,7 +68,7 @@
         ubuntu = machines.ubuntu;
       };
       chat = import ./machines/chat {
-        inherit lib;
+        inherit lib secrix;
         chat = machines.chat;
       };
       common = import ./common {
@@ -97,6 +99,8 @@
         } // (with machines.common;
           import ./shells { inherit pkgs pkgs-stable; });
       };
+
+      apps.${laptop.system}.secrix = secrix.secrix self;
 
       checks.${machines.common.system}.formatted =
         format.config.build.check self;

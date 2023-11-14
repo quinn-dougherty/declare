@@ -1,5 +1,5 @@
 { laptop, ... }:
-with laptop; {
+with laptop; let d = x: builtins.trace x x; in {
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -31,6 +31,8 @@ with laptop; {
 
   services = import ./services.nix { inherit pkgs; };
 
+  # secrix.defaultEncryptKeys.${username} = d (map builtins.readFile config.users.users.${username}.openssh.authorizedKeys.keyFiles);
+  secrix.defaultEncryptKeys.${username} = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOCId3WkAFP0uzlMn9K3aAST2bkNlzkw7dEr+dk8TPK quinnd@riseup.net" ];
   users.users =
     let keys-path = ./../../../common/keys;
     in {

@@ -1,4 +1,4 @@
-{ nixpkgs, lib, phone, home-manager, mobile-nixos }:
+{ nixpkgs, lib, phone, home-manager, mobile-nixos, secrix }:
 
 let modpath = ./../../../modules;
 in [
@@ -6,6 +6,7 @@ in [
   (import ./../system/configuration.nix { inherit phone; })
   ./../system/hardware-configuration.nix
   ./booter.nix
+  secrix.nixosModules.default
   home-manager.nixosModules.home-manager
   (import ./plasma.nix {
     inherit mobile-nixos lib;
