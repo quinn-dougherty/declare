@@ -19,4 +19,6 @@ in [
   (import "${modpath}/jellyfin.nix" { inherit server; })
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
+  # Temp for jellyfin config
+  "${modpath}/desktops/gnome"
 ]
