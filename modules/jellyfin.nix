@@ -5,7 +5,7 @@
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
-      recommendedOptimization = true;
+      recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
 
