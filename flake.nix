@@ -20,6 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrix.url = "github:Platonic-Systems/secrix";
+    # secrix.url = "path:/home/qd/projects/secrix";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
