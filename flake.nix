@@ -48,12 +48,13 @@
       machines = import ./machines/machines.nix {
         inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
       };
+      web = with machines.common; import ./website { inherit pkgs; };
       laptop = import ./machines/laptop {
         inherit lib nixpkgs nixos-hardware home-manager nix-doom-emacs smos;
         laptop = machines.laptop;
       };
       server = import ./machines/server {
-        inherit nixpkgs lib nixos-hardware hercules-ci-agent;
+        inherit nixpkgs lib nixos-hardware hercules-ci-agent web;
         server = machines.server;
       };
       phone = import ./machines/phone {
@@ -84,8 +85,11 @@
 
       homeConfigurations = commonlib.hmForAll others;
 
-      packages.${machines.common.system} =
-        commonlib.packagesFromAllOs { inherit immobiles mobiles others; };
+      packages.${machines.common.system} = with web;
+        {
+          inherit site;
+        }
+        // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
 
       devShells = {
         ${laptop.system} = {

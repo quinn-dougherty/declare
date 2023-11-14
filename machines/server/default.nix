@@ -1,4 +1,4 @@
-{ nixpkgs, lib, server, nixos-hardware, hercules-ci-agent }:
+{ nixpkgs, lib, server, nixos-hardware, hercules-ci-agent, web }:
 let
   os = lib.nixosSystem {
     system = server.system;
@@ -9,8 +9,6 @@ let
 in
 server // {
   operatingsystem = os;
-  deploymenteffect-nixinate = { ref, nixination }:
-    import ./effect/nixinate.nix { inherit ref server nixination; };
   deploymenteffect = { ref }:
     import ./effect {
       inherit ref server;
