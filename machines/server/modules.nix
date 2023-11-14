@@ -16,6 +16,7 @@ in [
   "${modpath}/devops.nix"
   # "${modpath}/slurm.nix"
   "${modpath}/utilities.nix"
+  (import "${modpath}/jellyfin.nix" { inherit server; })
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
 ]
