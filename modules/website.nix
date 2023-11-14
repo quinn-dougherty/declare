@@ -10,7 +10,7 @@
     };
     security.acme = {
       acceptTerms = true;
-      email = "quinnd@riseup.net";
+      certs."quinn-dougherty.com".email = "quinnd@riseup.net";
     };
   };
 }
