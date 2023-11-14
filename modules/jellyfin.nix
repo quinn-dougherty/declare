@@ -1,6 +1,10 @@
 { server, ... }:
 
 {
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 80 443 8096 8920 ];
+  };
   services = {
     nginx = {
       enable = true;
@@ -12,7 +16,7 @@
       virtualHosts."media.quinn-dougherty.com" = {
         addSSL = true;
         enableACME = true;
-        locations."/" = { proxyPass = "http://localhost:8096"; };
+        locations."/".proxyPass = "http://localhost:8096";
       };
     };
     jellyfin = {

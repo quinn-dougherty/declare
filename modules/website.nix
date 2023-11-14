@@ -1,6 +1,10 @@
 { site, ... }:
 
 {
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 80 443 ];
+  };
   services.nginx = {
     enable = true;
     virtualHosts."quinn-dougherty.com" = {

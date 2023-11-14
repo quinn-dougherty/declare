@@ -73,7 +73,7 @@ with laptop; {
       enable = true;
       enableSSHSupport = true;
     };
-    thunar.enable = true;
+    thunar.enable = desktop == "xmonad";
     slock.enable = true;
   };
   hardware.opengl.driSupport32Bit = true; # helps with lutris?
