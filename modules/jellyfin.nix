@@ -15,14 +15,14 @@
         locations."/" = { proxyPass = "http://localhost:8096"; };
       };
     };
-    security.acme = {
-      acceptTerms = true;
-      certs."media.quinn-dougherty.com".email = "quinnd@riseup.net";
-    };
     jellyfin = {
       enable = true;
       user = server.username;
     };
     jellyseerr.enable = true;
+  };
+  security.acme = {
+    acceptTerms = true;
+    certs."media.quinn-dougherty.com".email = "quinnd@riseup.net";
   };
 }
