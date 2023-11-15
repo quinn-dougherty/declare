@@ -1,7 +1,7 @@
 let
   herc = {
     secrix.services.hercules-ci-agent.secrets = {
-      "binary-caches.json.age" = {
+      "binary-caches.json" = {
         encrypted.file = ./binary-caches.json.age;
         #decrypted.owner = "root";
         #decrypted.builder = ''
@@ -11,7 +11,7 @@ let
         #  ln -s $inFile /var/lib/hercules-ci-agent/secrets/binary-caches.json
         #'';
       };
-      "secrets.json.age" = {
+      "secrets.json" = {
         encrypted.file = ./secrets.json.age;
         #decrypted.owner = "root";
         #decrypted.builder = ''
@@ -21,7 +21,7 @@ let
         #  ln -s $inFile /var/lib/hercules-ci-agent/secrets/secrets.json
         #'';
       };
-      "cluster-join-token.key.age" = {
+      "cluster-join-token.key" = {
         encrypted.file = ./cluster-join-token.key.age;
         #decrypted.owner = "root";
         #decrypted.builder = ''

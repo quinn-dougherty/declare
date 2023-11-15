@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       concurrentTasks = "auto";
-      staticSecretsDirectory = "/run/hercules-ci-agent-keys"; # config.secrix.hercules-ci-agent.secrets;
+      staticSecretsDirectory = "/run/hercules-ci-agent-keys"; # config.secrix.hercules-ci-agent.secrets.dirName;
     };
   };
   networking.firewall.allowedTCPPorts = [ 443 ];
