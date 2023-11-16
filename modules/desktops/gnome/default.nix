@@ -7,7 +7,15 @@
 
       # Enable the GNOME Desktop Environment.
       desktopManager.gnome.enable = true;
-      displayManager.gdm.enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = false;
+      };
+      deviceSection = ''
+        Option "TearFree" "true"
+      '';
+      useGlamor = true;
+      videoDrivers = [ "modesetting" ];
 
       # Gnome has touchpad support by default, so we skip this.
       # libinput.enable = true;

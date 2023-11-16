@@ -19,11 +19,11 @@ in [
   "${modpath}/ivpn.nix"
   "${modpath}/crosscompilation.nix"
   "${modpath}/openssh.nix"
-  # "${modpath}/slurm.nix"
   "${modpath}/devops.nix"
   "${modpath}/il8n.nix"
   "${modpath}/utilities.nix"
 
   # Testing/learning
   # "${modpath}/nextcloud"
+  # "${modpath}/slurm.nix"
 ]
