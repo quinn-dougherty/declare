@@ -1,16 +1,7 @@
 { pkgs, pkgs-stable }:
 
-let
-  nixpkgsSwitch = switch: if switch == "stable" then pkgs-stable else pkgs;
-  mkShell = development:
-    pkgs.mkShell {
-      name = "${development.name}-developer";
-      buildInputs = import ./programming/${development.name}.nix {
-        pkgs = nixpkgsSwitch development.nixpkgsSwitch;
-      };
-    };
-in
-[
+let lib = import ./../lib.nix { inherit pkgs pkgs-stable; };
+in with lib; [
   {
     name = "rust";
     value = mkShell {

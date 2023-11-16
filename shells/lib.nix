@@ -5,20 +5,10 @@ let
   mkShellInputs = devenvs:
     (with pkgs; [ nixpkgs-fmt ])
     ++ (builtins.concatLists (map (shell: shell.buildInputs) devenvs));
-  mkShell = devenvs:
-    pkgs.mkShell {
-      name = mkShellName devenvs;
-      buildInputs = mkShellInputs devenvs;
-    };
-  mkDevShells = developers:
-    (builtins.mapAttrs
-      (name: developer: {
-        name = name;
-        value = developer;
-      })
-      developers);
 
-  mkShell' = s1: s2:
+  nixpkgsSwitch = switch: if switch == "stable" then pkgs-stable else pkgs;
+
+  mkDevShell = s1: s2:
     let name = "${s1.name}-${s2.name}";
     in {
       name = name;
@@ -28,11 +18,30 @@ let
       };
     };
 
-  # length 2, without repetition and where order matters
-  combinatorics.permute2 = l: builtins.concatMap (x: map (y: if x == y then x else mkShell' x y) l) l;
+  combinatorics = rec {
+    permute2 = l:
+      builtins.concatMap (x: map (y: if x == y then x else mkDevShell x y) l) l;
+    permute3 = l:
+      with builtins;
+      concatMap
+        (x:
+          let perms = permute2 (filter (x': x != x') l);
+          in map (y: mkDevShell x y) perms)
+        l;
+  };
 in
 {
   developersWithPermutations = developers:
-    (builtins.listToAttrs developers)
-    // (builtins.listToAttrs (combinatorics.permute2 developers));
+    with builtins;
+    (listToAttrs developers)
+    // (listToAttrs (combinatorics.permute2 developers))
+    // (listToAttrs (combinatorics.permute3 developers));
+
+  mkShell = development:
+    pkgs.mkShell {
+      name = "${development.name}-developer";
+      buildInputs = import ./developers/programming/${development.name}.nix {
+        pkgs = nixpkgsSwitch development.nixpkgsSwitch;
+      };
+    };
 }

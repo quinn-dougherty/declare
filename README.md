@@ -24,11 +24,12 @@ nix develop github:quinn-dougherty/declare#rust
 nix develop github:quinn-dougherty/declare#python
 ```
 
-Including for monorepos of up to two different kits (these are examples, but you can use any permutation of the 6)
+Including for monorepos of up to three different kits (these are examples, but you can use any permutation of the 6)
 
 ```sh
 nix develop github:quinn-dougherty/declare#python-ocaml
 nix develop github:quinn-dougherty/declare#js-rust
+nix develop github:quinn-dougherty/declare#haskell-coq-js
 ```
 
 The shells are the only aspect of these repo that's vendored for direct usage.
