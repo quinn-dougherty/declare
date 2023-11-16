@@ -14,7 +14,6 @@
       deviceSection = ''
         Option "TearFree" "true"
       '';
-      useGlamor = true;
       videoDrivers = [ "modesetting" ];
 
       # Gnome has touchpad support by default, so we skip this.

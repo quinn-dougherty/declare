@@ -1286,11 +1286,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1697469666,
-        "narHash": "sha256-PXRmuRClRy0Uj23SszPR0sDgnObRaVPWvUfCvabIzo4=",
+        "lastModified": 1700131917,
+        "narHash": "sha256-Zv6eoElHGGD4tqckvCl2z4Yxc5SdaRZaz1dE81dtY3c=",
         "owner": "Platonic-Systems",
         "repo": "secrix",
-        "rev": "ef52d767048a78f9375078450d2844a454ce1e7b",
+        "rev": "cd2ca60df5b4a5a3251d038ff170281db7d5b996",
         "type": "github"
       },
       "original": {
