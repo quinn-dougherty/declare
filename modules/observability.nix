@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     nettools
     netproc
+    nmap
     lm_sensors
     xsensors
     inxi
