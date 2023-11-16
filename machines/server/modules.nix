@@ -2,7 +2,7 @@
 let modpath = ./../../modules;
 in [
   (import ./system/configuration.nix { inherit server; })
-  nixos-hardware.nixosModules.framework # 11th gen
+  nixos-hardware.nixosModules.framework-11th-gen-intel
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service
   secrix.nixosModules.default
