@@ -140,8 +140,14 @@
 (direnv-mode)
 
 (load! "./extras/exwm-config.el")
+(load! "./extras/exwm-systemtray")
+(require 'exwm-xim)
 (exwm-config-example)
-; (exwm-enable)
+(exwm-systemtray-enable)
+(exwm-xim-enable)
+
+(exwm-enable)
+
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append
