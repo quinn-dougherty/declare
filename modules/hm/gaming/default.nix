@@ -4,6 +4,8 @@ let
   vulkan = [
     mesa
     dxvk
+    vkdt
+    vkd3d-proton
     vkBasalt
     vulkan-tools
     vulkan-loader
@@ -11,8 +13,9 @@ let
     vulkan-headers
     vulkan-tools-lunarg
   ];
+  intel = [ libdrm intel-media-driver intel-ocl intel-vaapi-driver ];
 in
 {
   imports = [ ./light.nix ];
-  home.packages = vulkan;
+  home.packages = vulkan ++ intel;
 }

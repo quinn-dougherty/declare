@@ -18,4 +18,5 @@
   };
   imports = [ ./../common-none ];
   sound.mediaKeys.enable = true;
+  programs.evince.enable = true;
 }

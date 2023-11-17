@@ -139,15 +139,15 @@
 (envrc-global-mode)
 (direnv-mode)
 
-(load! "./extras/exwm-config.el")
-(require 'exwm-systemtray)
-(require 'exwm-randr)
+; (load! "./extras/exwm-config.el")
+; (require 'exwm-systemtray)
+; (require 'exwm-randr)
 ; (require 'exwm-xim)
-(exwm-config-example)
-(exwm-systemtray-enable)
+; (exwm-config-example)
+; (exwm-systemtray-enable)
 ; (exwm-xim-enable)
 
-(exwm-enable)
+; (exwm-enable)
 
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist

@@ -1,5 +1,7 @@
 { laptop, ... }:
-with laptop; let d = x: builtins.trace x x; in {
+with laptop;
+let d = x: builtins.trace x x;
+in {
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -32,7 +34,9 @@ with laptop; let d = x: builtins.trace x x; in {
   services = import ./services.nix { inherit pkgs; };
 
   # secrix.defaultEncryptKeys.${username} = d (map builtins.readFile config.users.users.${username}.openssh.authorizedKeys.keyFiles);
-  secrix.defaultEncryptKeys.${username} = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOCId3WkAFP0uzlMn9K3aAST2bkNlzkw7dEr+dk8TPK quinnd@riseup.net" ];
+  secrix.defaultEncryptKeys.${username} = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOCId3WkAFP0uzlMn9K3aAST2bkNlzkw7dEr+dk8TPK quinnd@riseup.net"
+  ];
   users.users =
     let keys-path = ./../../../common/keys;
     in {
@@ -78,7 +82,20 @@ with laptop; let d = x: builtins.trace x x; in {
     thunar.enable = desktop == "xmonad";
     slock.enable = true;
   };
-  hardware.opengl.driSupport32Bit = true; # helps with lutris?
+  #hardware.opengl = {
+  #  enable = false;
+  #  extraPackages = with pkgs; [
+  #    intel-media-driver
+  #    intel-ocl
+  #    intel-vaapi-driver
+  #  ];
+  #  driSupport32Bit = true; # helps with lutris?
+  #  extraPackages32 = with pkgs.pkgsi686Linux; [
+  #    intel-media-driver
+  #    vaapiIntel
+  #  ];
+  #
+  #};
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
