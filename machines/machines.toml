@@ -7,7 +7,7 @@ hostname = "grindenstern"
 username = "qd"
 user-fullname = "Quinn Dougherty"
 # one of xmonad, xfce, gnome, kde, emacs (exwm)
-desktop = "emacs"
+desktop = "xmonad"
 
 [phone]
 hostname = "risencrantz"

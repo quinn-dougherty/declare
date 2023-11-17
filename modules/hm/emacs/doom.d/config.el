@@ -140,11 +140,12 @@
 (direnv-mode)
 
 (load! "./extras/exwm-config.el")
-(load! "./extras/exwm-systemtray")
-(require 'exwm-xim)
+(require 'exwm-systemtray)
+(require 'exwm-randr)
+; (require 'exwm-xim)
 (exwm-config-example)
 (exwm-systemtray-enable)
-(exwm-xim-enable)
+; (exwm-xim-enable)
 
 (exwm-enable)
 

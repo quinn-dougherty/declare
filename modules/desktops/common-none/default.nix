@@ -3,7 +3,7 @@
   services.picom = {
     enable = true;
     vSync = true;
-    inactiveOpacity = 0.8;
+    inactiveOpacity = 0.7;
   };
   environment.systemPackages = with pkgs; [
     arandr
