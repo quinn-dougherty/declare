@@ -16,7 +16,6 @@ with laptop; {
     smos.homeManagerModules.${system}.default
     ./../../../../modules/hm/gaming
   ];
-  # services.dropbox.enable = true;
   home = {
     packages = import ./packages { inherit pkgs; };
     username = username;

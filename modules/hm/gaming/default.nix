@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 with pkgs;
 let
   vulkan = [
+    jansson
     mesa
-    # driversi686Linux.mesa
     dxvk
     vkdt
     vkd3d-proton
