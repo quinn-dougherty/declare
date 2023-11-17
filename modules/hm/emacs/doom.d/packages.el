@@ -74,3 +74,4 @@
 ; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)
+(package! exwm)

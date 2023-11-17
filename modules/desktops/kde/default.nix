@@ -5,7 +5,8 @@
     enable = true;
 
     # Enable the GNOME Desktop Environment.
-    desktopManager.plasma.enable = true;
+    desktopManager.plasma5.enable = true;
     displayManager.sddm.enable = true;
   };
+  qt.platformTheme = "kde";
 }

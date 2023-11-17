@@ -14,7 +14,7 @@ with laptop; {
     nix-doom-emacs.hmModule
     ./../../../../modules/hm/emacs
     smos.homeManagerModules.${system}.default
-    # ./../../../../modules/hm/gaming
+    ./../../../../modules/hm/gaming
   ];
   # services.dropbox.enable = true;
   home = {
@@ -25,5 +25,5 @@ with laptop; {
     # You can update home-manager without changing this value
     stateVersion = "20.09";
   };
-  services = if desktop == "xmonad" then import ./services.nix else { };
+  services = if desktop == "xmonad" then import ./xservices.nix else { };
 }

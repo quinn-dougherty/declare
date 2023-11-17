@@ -138,6 +138,10 @@
 
 (envrc-global-mode)
 (direnv-mode)
+
+(load! "./extras/exwm-config.el")
+(exwm-config-example)
+; (exwm-enable)
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append

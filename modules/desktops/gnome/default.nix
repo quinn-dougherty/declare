@@ -2,6 +2,10 @@
 
 {
   services = {
+    # picom = {
+    #   enable = true;
+    #   vSync = true;
+    # };
     xserver = {
       enable = true;
 
@@ -12,9 +16,10 @@
         wayland = false;
       };
       deviceSection = ''
+        Option "DRI" "2"
         Option "TearFree" "true"
       '';
-      videoDrivers = [ "modesetting" ];
+      videoDrivers = [ "intel" "modesetting" ];
 
       # Gnome has touchpad support by default, so we skip this.
       # libinput.enable = true;

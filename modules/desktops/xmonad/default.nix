@@ -16,6 +16,6 @@
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
-  imports = [ ./x.nix ];
+  imports = [ ./../common-none ];
   sound.mediaKeys.enable = true;
 }
