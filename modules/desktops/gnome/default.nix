@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./../greeter.nix ];
   services = {
     # picom = {
     #   enable = true;

@@ -1,2 +1,2 @@
-xcompmgr -cn &
+xcompmgr -cnF &
 feh --bg-fill -z /home/qd/projects/declare/modules/desktops/backgrounds/*

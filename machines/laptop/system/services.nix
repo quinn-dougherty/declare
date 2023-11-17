@@ -8,11 +8,6 @@
 
   logind.lidSwitch = "hibernate";
 
-  factorio = {
-    enable = true;
-    openFirewall = true;
-  };
-
   autorandr.enable = true;
 
   urxvtd.enable = true;

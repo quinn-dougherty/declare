@@ -3,6 +3,7 @@ with pkgs;
 let
   wine-etc = [
     wine # I think just for bootstrapping?
+    # wineWowPackages.stable
     lutris # Launcher
     # bottles # Alt launcher
     gamemode # Cpu optimizations

@@ -1,16 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./../greeter.nix ];
   services.xserver = {
     enable = true;
-    displayManager.lightdm = {
-      enable = true;
-      greeters.slick = {
-        enable = true;
-        theme.name = "Adwaita-dark";
-        font.name = "Monospace";
-      };
-    };
     windowManager.exwm = {
       enable = true;
       enableDefaultConfig = true;
