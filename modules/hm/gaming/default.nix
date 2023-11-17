@@ -3,6 +3,7 @@ with pkgs;
 let
   vulkan = [
     mesa
+    # driversi686Linux.mesa
     dxvk
     vkdt
     vkd3d-proton
