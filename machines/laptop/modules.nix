@@ -17,6 +17,7 @@ in [
   "${modpath}/cachix"
   "${modpath}/audit.nix"
   "${modpath}/observability.nix"
+  "${modpath}/wirelessregdom.nix" # update if travel outside of US
   "${modpath}/ivpn.nix"
   "${modpath}/crosscompilation.nix"
   "${modpath}/openssh.nix"

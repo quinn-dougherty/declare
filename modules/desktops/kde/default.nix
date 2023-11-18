@@ -1,12 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
-  # imports = [ ./../greeter.nix ];
+  # imports = [ ./../picom.nix ]
   services.xserver = {
     enable = true;
 
-    # Enable the GNOME Desktop Environment.
-    desktopManager.plasma5.enable = true;
+    desktopManager.plasma5 = {
+      enable = true;
+      useQtScaling = true;
+    };
     displayManager.sddm.enable = true;
   };
   qt.platformTheme = "kde";

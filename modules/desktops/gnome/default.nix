@@ -1,13 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  # imports = [ ./../greeter.nix ];
+  # imports = [ ./../picom.nix ];
   services = {
-    # picom = {
-    #   enable = true;
-    #   vSync = true;
-    #   inactiveOpacity = 0.73;
-    # };
     xserver = {
       enable = true;
 

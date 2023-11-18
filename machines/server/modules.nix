@@ -6,6 +6,7 @@ in [
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service
   secrix.nixosModules.default
+  "${modpath}/wirelessregdom.nix"
   "${modpath}/cachix"
   "${modpath}/hercules.nix"
   # "${modpath}/nextcloud"
@@ -17,9 +18,9 @@ in [
   "${modpath}/devops.nix"
   # "${modpath}/slurm.nix"
   "${modpath}/utilities.nix"
-  # (import "${modpath}/jellyfin.nix" { inherit server; })
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
+  # (import "${modpath}/jellyfin.nix" { inherit server; })
   # Temp for jellyfin config
   "${modpath}/desktops/gnome"
 ]
