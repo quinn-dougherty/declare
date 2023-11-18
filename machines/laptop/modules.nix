@@ -7,6 +7,7 @@ in [
   nixos-hardware.nixosModules.framework-13th-gen-intel
   home-manager.nixosModules.home-manager
   (import ./users/homes.nix { inherit laptop nix-doom-emacs smos; })
+  (with laptop; import "${modpath}/gaming" { inherit pkgs pkgs-stable; })
   "${modpath}/manyterms.nix"
   secrix.nixosModules.default
   "${modpath}/fonts.nix"

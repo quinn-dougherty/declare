@@ -6,5 +6,6 @@
     texlive.combined.scheme-full
     pandoc
     graphviz
+    typst
   ];
 }

@@ -7,7 +7,7 @@
     ./python.nix
     ./rust.nix
     ./fonts.nix
-    ./latex.nix
+    ./markup.nix
   ];
   home.packages = with pkgs; [ nixpkgs-fmt sqlite ];
 }

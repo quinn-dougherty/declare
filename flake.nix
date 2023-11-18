@@ -6,6 +6,7 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     nixos.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.05";
+    nixpkgs-2305.url = "nixpkgs/nixos-23.05";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -35,6 +36,7 @@
     , nixpkgs
     , nixos
     , nixpkgs-stable
+    , nixpkgs-2305
     , nixos-hardware
     , home-manager
     , mobile-nixos
@@ -52,7 +54,8 @@
       };
       web = with machines.common; import ./website { inherit pkgs; };
       laptop = import ./machines/laptop {
-        inherit lib nixpkgs nixos-hardware secrix home-manager nix-doom-emacs smos;
+        inherit lib nixpkgs nixos-hardware secrix home-manager nix-doom-emacs
+          smos;
         laptop = machines.laptop;
       };
       server = import ./machines/server {

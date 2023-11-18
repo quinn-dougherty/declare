@@ -81,20 +81,6 @@ with laptop; {
     thunar.enable = desktop == "xmonad";
     slock.enable = true;
   };
-  hardware.opengl = {
-    #  enable = false;
-    #  extraPackages = with pkgs; [
-    #    intel-media-driver
-    #    intel-ocl
-    #    intel-vaapi-driver
-    #  ];
-    driSupport32Bit = true; # helps with lutris?
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      intel-media-driver
-      vaapiIntel
-    ];
-    #
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

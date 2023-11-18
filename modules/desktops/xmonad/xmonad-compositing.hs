@@ -55,7 +55,7 @@ compileRestart resume = do
 myConfig xmproc = (docks . ewmh) def
     { terminal = terminalEmulator
     , layoutHook = avoidStruts $ layoutHook def
-    -- , logHook = fadeInactiveLogHook unfocusedWindowOpacity
+    , logHook = fadeInactiveLogHook unfocusedWindowOpacity
       <+> dynamicLogWithPP xmobarPP
                   { ppOutput = hPutStrLn xmproc
                   , ppTitle = xmobarColor xmobarFGColor "" . shorten 50

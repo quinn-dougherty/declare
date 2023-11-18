@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./../greeter.nix ];
+  # imports = [ ./../greeter.nix ];
   services.xserver = {
     enable = true;
 
