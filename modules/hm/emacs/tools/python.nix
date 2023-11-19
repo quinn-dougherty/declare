@@ -1,12 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; let pypkgs = ps: with ps; [ jupyterlab jedi-language-server ]; in [
+    (python311.withPackages pypkgs)
     openai
     jupyter
     black
     poetry
-    python311Packages.jupyterlab
-    python311Packages.jedi-language-server
   ];
 }

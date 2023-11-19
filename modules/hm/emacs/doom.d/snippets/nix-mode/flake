@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: flake.nix boilerplate
+# key: mkFlake
+# uuid: mkFlake
+# condition: (eq 1 (line-number-at-pos))
+# --
+{
+    description = "qd flake";
+    inputs = { nixpkgs.url = "github:nixos/nixpkgs"; };
+    ouputs = { self, nixpkgs, ... }: {  };
+}

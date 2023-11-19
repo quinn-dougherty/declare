@@ -136,6 +136,8 @@
 (setq gpt-openai-max-tokens 2000)
 (setq gpt-openai-temperature 0)
 
+(add-to-list 'company-backends 'company-nixos-options)
+
 (envrc-global-mode)
 (direnv-mode)
 
