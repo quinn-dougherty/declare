@@ -1,20 +1,20 @@
 { laptop, nix-doom-emacs, smos, ... }:
-with laptop; {
+with laptop; let modpath = ./../../../../modules/hm; in {
   programs = {
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
-    git = import ./../git.nix;
-    vim = import ./../vim.nix;
     smos.enable = true;
-    vscode = import ./packages/codium.nix { inherit pkgs; };
+    # vscode = import ./packages/codium.nix { inherit pkgs; };
   };
   imports = [
     nix-doom-emacs.hmModule
-    ./../../../../modules/hm/emacs
+    "${modpath}/emacs"
+    "${modpath}/git.nix"
+    "${modpath}/vim.nix"
+    "${modpath}/codium.nix"
     smos.homeManagerModules.${system}.default
-    # ./../../../../modules/hm/gaming
   ];
   home = {
     packages = import ./packages { inherit pkgs; };

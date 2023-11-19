@@ -4,31 +4,26 @@ timezone = "America/Los_Angeles"
 
 [laptop]
 hostname = "grindenstern"
-username = "qd"
 user-fullname = "Quinn Dougherty"
 # one of xmonad, xfce, gnome, kde, emacs (exwm)
 desktop = "kde"
 
 [phone]
 hostname = "risencrantz"
-username = "qd"
 user-fullname = "Quinn Dougherty"
 system = "aarch64-linux"
 
 [server]
 hostname = "a-guy-for-a-thing"
-username = "admin"
 user-fullname = "Server Admin"
 ip = "192.168.6.32"
 static4 = "192.168.42.42"
 
 [ubuntu]
 hostname = "the-band-back-together"
-username = "qd"
 user-fullname = "Quinn Dougherty"
 
 [chat]
 hostname = "chat"
-username = "synapse-admin"
 user-fullname = "Matrix Administrator"
 ip = ""

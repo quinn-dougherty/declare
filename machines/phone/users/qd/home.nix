@@ -3,10 +3,8 @@ with phone; {
   programs = {
     home-manager.enable = true;
     firefox.enable = true;
-    git.enable = true;
-    vim.enable = true;
   };
-
+  imports = let modpath = ./../../../../modules/hm; in [ "${modpath}/git.nix" "${modpath}/vim.nix" ];
   home = {
     username = username;
     homeDirectory = "/home/" + username;

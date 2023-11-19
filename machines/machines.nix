@@ -4,6 +4,8 @@ let
   server-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
   drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}";
+  qd = "qd";
+  admin = "admin";
 in
 {
   common = machines.common // {
@@ -17,7 +19,7 @@ in
   };
   laptop = rec {
     hostname = machines.laptop.hostname;
-    username = machines.laptop.username;
+    username = qd;
     user-fullname = machines.laptop.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
@@ -31,6 +33,9 @@ in
             token = "\${FACTORIO_KEY}";
           };
         };
+        mesa-backwards = final: prev: {
+          mesa = pkgs-stable.mesa;
+        };
       in
       [ factorio-overlay ];
     config.allowUnfree = true;
@@ -39,7 +44,7 @@ in
   };
   phone = rec {
     hostname = machines.phone.hostname;
-    username = machines.phone.username;
+    username = qd;
     user-fullname = machines.phone.user-fullname;
     system = machines.phone.system;
     timezone = machines.common.timezone;
@@ -48,7 +53,7 @@ in
   };
   server = rec {
     hostname = machines.server.hostname;
-    username = machines.server.username;
+    username = admin;
     user-fullname = machines.server.user-fullname;
     system = machines.common.system;
     timezone = server-onprem-tz;
@@ -61,7 +66,7 @@ in
   };
   ubuntu = rec {
     hostname = machines.ubuntu.hostname;
-    username = machines.ubuntu.username;
+    username = qd;
     user-fullname = machines.ubuntu.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;
@@ -71,7 +76,7 @@ in
   };
   chat = rec {
     hostname = machines.chat.hostname;
-    username = machines.chat.username;
+    username = admin;
     user-fullname = machines.chat.user-fullname;
     system = machines.common.system;
     timezone = machines.common.timezone;

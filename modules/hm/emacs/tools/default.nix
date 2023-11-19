@@ -8,6 +8,7 @@
     ./rust.nix
     ./fonts.nix
     ./markup.nix
+    ./ops.nix
   ];
-  home.packages = with pkgs; [ nixpkgs-fmt sqlite ];
+  home.packages = with pkgs; [ nixpkgs-fmt ];
 }

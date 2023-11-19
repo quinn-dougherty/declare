@@ -77,3 +77,5 @@
 (package! exwm)
 (package! nixos-options)
 (package! company-nixos-options)
+(package! ix)
+(package! age)
