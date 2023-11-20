@@ -12,9 +12,9 @@
       enableACME = true;
       root = site;
     };
-    security.acme = {
-      acceptTerms = true;
-      certs."quinn-dougherty.com".email = "quinnd@riseup.net";
-    };
+  };
+  security.acme = {
+    acceptTerms = true;
+    certs."quinn-dougherty.com".email = "quinnd@riseup.net";
   };
 }
