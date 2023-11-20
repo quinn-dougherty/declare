@@ -12,5 +12,7 @@ with pkgs; [
   wasmtime
   binaryen
   wasm-bindgen-cli
+  # Cargo dependencies
   libressl
+  pkg-config
 ]
