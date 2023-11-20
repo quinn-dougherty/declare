@@ -20,7 +20,7 @@ in [
   "${modpath}/utilities.nix"
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
-  # (import "${modpath}/jellyfin.nix" { inherit server; })
+  (import "${modpath}/jellyfin.nix" { inherit server; })
   # Temp for jellyfin config
   "${modpath}/desktops/gnome"
 ]

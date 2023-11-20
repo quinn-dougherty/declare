@@ -16,7 +16,7 @@
       virtualHosts."media.quinn-dougherty.com" = {
         addSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://localhost:8096";
+        locations."/".proxyPass = "http://127.0.0.1:8096";
       };
     };
     jellyfin = {
