@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./../secrets ];
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27; # follow migration instructions online
@@ -27,7 +28,7 @@
       dbuser = "nextcloud";
       dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbname = "nextcloud";
-      dbpassFile = "/run/nextcloud-keys/nextcloud-db-pass";
+      dbpassFile = "${pkgs.writeText "adminpass" "test123"}"; # "/run/nextcloud-keys/nextcloud-db-pass";
 
       adminpassFile = "${pkgs.writeText "adminpass"
         "test123"}"; # "/var/nextcloud-admin-pass";
