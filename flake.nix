@@ -52,7 +52,7 @@
       machines = import ./machines/machines.nix {
         inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
       };
-      web = with machines.common; import ./website { inherit pkgs; };
+      web = with machines.common; import ./modules/website { inherit pkgs; };
       laptop = import ./machines/laptop {
         inherit lib nixpkgs nixos-hardware secrix home-manager nix-doom-emacs
           smos;
