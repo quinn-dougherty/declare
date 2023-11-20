@@ -20,10 +20,6 @@
       in
       {
         "sync.quinn-dougherty.com" = hostConfig;
-        # "org.quinn-dougherty.com" = hostConfig;
-        # "media.quinn-dougherty.com" = hostConfig;
-        # "sync.quinn-dougherty.com" = hostConfig;
-        # "localhost" = hostConfig;
       };
   };
   security.acme = {
