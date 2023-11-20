@@ -9,7 +9,6 @@ in [
   "${modpath}/wirelessregdom.nix"
   "${modpath}/cachix"
   "${modpath}/hercules.nix"
-  # "${modpath}/nextcloud"
   (import "${modpath}/nix.nix" { inherit nixpkgs; })
   "${modpath}/audit.nix"
   "${modpath}/crosscompilation.nix"
@@ -21,7 +20,7 @@ in [
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
   (import "${modpath}/jellyfin.nix" { inherit server; })
+  "${modpath}/nextcloud"
   "${modpath}/website"
-  # Temp for jellyfin config
-  "${modpath}/desktops/gnome"
+  # "${modpath}/desktops/gnome" # uncomment for a web browser jellyfin admin task
 ]

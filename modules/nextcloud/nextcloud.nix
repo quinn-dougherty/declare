@@ -4,7 +4,7 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27; # follow migration instructions online
-    hostName = "quinn-dougherty.com"; # "sync.quinn-dougherty.com";
+    hostName = "sync.quinn-dougherty.com"; # "sync.quinn-dougherty.com";
 
     # Let NixOS install and configure Redis caching automatically.
     configureRedis = true;

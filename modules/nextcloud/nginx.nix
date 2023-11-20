@@ -19,7 +19,7 @@
         };
       in
       {
-        "quinn-dougherty.com" = hostConfig;
+        "sync.quinn-dougherty.com" = hostConfig;
         # "org.quinn-dougherty.com" = hostConfig;
         # "media.quinn-dougherty.com" = hostConfig;
         # "sync.quinn-dougherty.com" = hostConfig;
@@ -29,7 +29,7 @@
   security.acme = {
     acceptTerms = true;
     # Replace the email here!
-    defaults.email = "admin@quinn-dougherty.com";
+    defaults.email = "quinnd@riseup.net";
   };
 
 }
