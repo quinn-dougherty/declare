@@ -20,7 +20,7 @@ in [
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
   (import "${modpath}/jellyfin.nix" { inherit server; })
-  "${modpath}/nextcloud"
+  "${modpath}/nextcloud.nix"
   "${modpath}/website"
   # "${modpath}/desktops/gnome" # uncomment for a web browser jellyfin admin task
 ]
