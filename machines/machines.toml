@@ -16,7 +16,7 @@ system = "aarch64-linux"
 [server]
 hostname = "a-guy-for-a-thing"
 user-fullname = "Server Admin"
-ip = "192.168.6.32"
+ip = "192.168.6.33"
 static4 = "192.168.42.42"
 
 [ubuntu]
