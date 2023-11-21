@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  # imports = [ ./../picom.nix ]
+  imports = [ ./../xwayland.nix ];
   services.xserver = {
     enable = true;
 
@@ -11,7 +11,6 @@
     };
     displayManager.sddm.enable = true;
   };
-  programs.xwayland.enable = true;
   qt.platformTheme = "kde";
   environment.systemPackages = [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
 }
