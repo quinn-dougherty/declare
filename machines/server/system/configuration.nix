@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ server, ... }:
+{ server, config, ... }:
 
 {
   # Bootloader.
@@ -28,7 +28,7 @@
     getty.autologinUser = server.username;
   };
 
-  # secrix.defaultEncryptKeys.${server.username} = map builtins.readFile config.users.users.${username}.openssh.authorizedKeys.keyFiles;
+  secrix.defaultEncryptKeys.${server.username} = [ (builtins.readFile ./../../../common/keys/id_server_ed25519.pub) ];
   users.users =
     let
       keyspath = ./../../../common/keys;

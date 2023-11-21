@@ -1,6 +1,5 @@
-{ specialArgs, ... }:
-with specialArgs.laptop; {
-  # _module.args.specialArgs = specialArgs;
+{ laptop, ... }:
+with laptop; {
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -33,10 +32,7 @@ with specialArgs.laptop; {
   services = import ./services.nix { inherit pkgs; };
 
   secrix.defaultEncryptKeys.${username} =
-    [ (builtins.readFile ./../../../common/keys/authorized_keys) ];
-  # secrix.defaultEncryptKeys.${username} = [
-  #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOCId3WkAFP0uzlMn9K3aAST2bkNlzkw7dEr+dk8TPK quinnd@riseup.net"
-  # ];
+    [ (builtins.readFile ./../../../common/keys/id_ed25519.pub) ];
   users.users =
     let keys-path = ./../../../common/keys;
     in {
