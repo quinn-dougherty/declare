@@ -12,6 +12,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    secrix.url = "github:Platonic-Systems/secrix";
     mobile-nixos = {
       url = "github:nixos/mobile-nixos";
       flake = false;
@@ -20,7 +21,10 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    secrix.url = "github:Platonic-Systems/secrix";
+    battlenet = {
+      url = "github:quinn-dougherty/nixos-battlenet";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,6 +45,7 @@
     , home-manager
     , mobile-nixos
     , nix-doom-emacs
+    , battlenet
     , secrix
     , treefmt-nix
     , smos

@@ -12,7 +12,6 @@ with inputs;
   secrix.nixosModules.default
   home-manager.nixosModules.home-manager
   ./users/homes.nix
-  "${modpath-system}/gaming"
   "${modpath-system}/manyterms.nix"
   "${modpath-system}/fonts.nix"
   "${modpath-system}/audio.nix"
@@ -20,7 +19,9 @@ with inputs;
   "${modpath-system}/crosscompilation.nix"
   "${modpath-system}/openssh.nix"
   "${modpath-system}/il8n.nix"
-
+  # "${modpath-system}/gaming"
+  inputs.battlenet.nixosModules.${laptop.system}.default
+  { programs.battlenet.enable = true; gaming.opengl.intel = true; }
   # Testing/learning
   # "${modpath}/nextcloud"
   # "${modpath}/slurm.nix"

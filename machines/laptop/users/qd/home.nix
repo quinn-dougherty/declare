@@ -1,8 +1,8 @@
-{ laptop, nix-doom-emacs, smos, ... }:
+{ laptop, inputs, ... }:
 with laptop; let modpath = ./../../../../modules/hm; in {
   programs.smos.enable = true;
   imports = [
-    nix-doom-emacs.hmModule
+    inputs.nix-doom-emacs.hmModule
     "${modpath}/emacs"
     "${modpath}/git.nix"
     "${modpath}/vim.nix"
@@ -10,7 +10,7 @@ with laptop; let modpath = ./../../../../modules/hm; in {
     "${modpath}/comms.nix"
     "${modpath}/ops.nix"
     "${modpath}/direnv.nix"
-    smos.homeManagerModules.${system}.default
+    inputs.smos.homeManagerModules.${system}.default
   ]; #  ++ (if desktop == "kde" then [ "${modpath}/desktops/kde/settings.nix" ] else [ ]);
   home = {
     username = username;
