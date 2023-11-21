@@ -1,5 +1,5 @@
-{ common, treefmt-nix }:
-treefmt-nix.lib.evalModule common.pkgs ({ pkgs, ... }: {
+{ common-machines, treefmt-nix }:
+treefmt-nix.lib.evalModule common-machines.pkgs ({ pkgs, ... }: {
   projectRootFile = "flake.nix";
   programs = {
     prettier.enable = true;

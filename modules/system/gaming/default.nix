@@ -1,5 +1,6 @@
 { laptop, config, lib, pkgs, ... }:
 let graphics = import ./graphics.nix { inherit laptop; }; in
 {
-  imports = [ ./launch.nix graphics ./opengl32.nix ./steam.nix ];
+  imports = [ ./misc.nix ./launch.nix graphics ./intel.nix ./opengl32.nix ./steam.nix ];
+  # options.intel = lib.mkBoolOption false;
 }

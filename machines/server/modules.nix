@@ -4,19 +4,11 @@ in with inputs; [
   ./system/configuration.nix
   nixos-hardware.nixosModules.framework-11th-gen-intel
   ./system/hardware-configuration.nix
-  hercules-ci-agent.nixosModules.agent-service
   secrix.nixosModules.default
-  "${modpath}/wirelessregdom.nix"
-  "${modpath}/cachix"
+  hercules-ci-agent.nixosModules.agent-service
   "${modpath}/hercules.nix"
-  "${modpath}/nix.nix"
-  "${modpath}/audit.nix"
   "${modpath}/crosscompilation.nix"
-  "${modpath}/observability.nix"
-  "${modpath}/ivpn.nix"
-  "${modpath}/devops.nix"
   # "${modpath}/slurm.nix"
-  "${modpath}/utilities.nix"
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
   "${modpath}/nixserve.nix"
@@ -24,4 +16,4 @@ in with inputs; [
   "${modpath}/nextcloud.nix"
   ./../../modules/website
   # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks.
-]
+] ++ import ./../../modules/common.nix

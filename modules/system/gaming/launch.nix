@@ -11,5 +11,5 @@ let
   ];
 in
 {
-  environment.systemPackages = builtins.concatLists [ [ runelite ] wine-etc ];
+  environment.systemPackages = wine-etc; # builtins.concatLists [ [ runelite ] wine-etc ];
 }

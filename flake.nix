@@ -46,30 +46,10 @@
     , smos
     , hercules-ci-agent
     , hercules-ci-effects
-    }@inputs:
+    }@inputs: with import ./machines { inherit inputs; };
     let
-      lib = nixpkgs.lib;
-      machines = import ./machines {
-        inherit inputs;
-      };
-      soupault = with machines.common; import ./modules/website/soupault.nix { inherit pkgs self; };
-      laptop = import ./machines/laptop {
-        inherit lib inputs;
-        laptop = machines.laptop;
-      };
-      server = import ./machines/server {
-        inherit lib inputs;
-        server = machines.server;
-      };
-      phone = import ./machines/phone {
-        inherit lib inputs;
-        phone = machines.phone;
-      };
-      ubuntu = import ./machines/ubuntu {
-        inherit lib home-manager nix-doom-emacs;
-        ubuntu = machines.ubuntu;
-      };
-      common = import ./common {
+      website = with common-machines; import ./modules/website/soupault.nix { inherit pkgs self; };
+      flk-common = let machines = { inherit laptop server phone ubuntu common-machines; }; in import ./common {
         inherit self machines treefmt-nix;
         server-deploy = server.deploymenteffect;
       };
@@ -77,17 +57,17 @@
       mobiles = [ phone ];
       others = [ ubuntu ];
     in
-    with common; {
+    with flk-common; {
       nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
       homeConfigurations = commonlib.hmForAll others;
-      packages.${machines.common.system} = { website = soupault; } // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
+      packages.${common-machines.system} = { inherit website; } // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
       devShells.${laptop.system} = {
-        "${machines.laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
-      } // (with machines.common;
+        "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
+      } // (with common-machines;
         import ./shells { inherit pkgs pkgs-stable; });
       apps.${laptop.system}.secrix = secrix.secrix self;
-      formatter.${machines.common.system} = format.config.build.wrapper;
-      checks.${machines.common.system}.formatted =
+      formatter.${common-machines.system} = format.config.build.wrapper;
+      checks.${common-machines.system}.formatted =
         format.config.build.check self;
       herculesCI = herc;
     };

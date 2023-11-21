@@ -1,9 +1,9 @@
 { lib, laptop, inputs }:
 {
-  inherit (laptop) system hostname;
+  inherit (laptop) system hostname drv-name-prefix;
   operatingsystem = lib.nixosSystem {
     system = laptop.system;
-    specialArgs = { inherit laptop inputs; }; # TODO: clean up all module declaration syntax with specialArgs
+    specialArgs = { inherit laptop inputs; };
     modules = import ./modules.nix {
       inherit laptop inputs;
     };

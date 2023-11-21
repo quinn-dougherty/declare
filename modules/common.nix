@@ -1,0 +1,10 @@
+[
+  ./system/wirelessregdom.nix
+  ./system/cachix
+  ./system/nix.nix
+  ./system/audit.nix
+  ./system/observability.nix
+  ./system/ivpn.nix
+  ./system/devops.nix
+  ./system/utilities.nix
+]

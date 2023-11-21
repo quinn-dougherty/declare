@@ -15,8 +15,7 @@ let
     vulkan-headers
     vulkan-tools-lunarg
   ];
-  intel = [ libdrm intel-media-driver intel-ocl intel-vaapi-driver ];
 in
 {
-  environment.systemPackages = graphics ++ intel;
+  environment.systemPackages = graphics;
 }
