@@ -1,5 +1,6 @@
-{ laptop, ... }:
-with laptop; {
+{ specialArgs, ... }:
+with specialArgs.laptop; {
+  # _module.args.specialArgs = specialArgs;
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.

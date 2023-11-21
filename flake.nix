@@ -46,7 +46,7 @@
     , smos
     , hercules-ci-agent
     , hercules-ci-effects
-    }:
+    }@inputs:
     let
       lib = nixpkgs.lib;
       machines = import ./machines/machines.nix {
@@ -54,8 +54,7 @@
       };
       soupault = with machines.common; import ./modules/system/website/soupault.nix { inherit pkgs; };
       laptop = import ./machines/laptop {
-        inherit lib nixpkgs nixos-hardware secrix home-manager nix-doom-emacs
-          smos;
+        inherit lib inputs;
         laptop = machines.laptop;
       };
       server = import ./machines/server {

@@ -35,6 +35,8 @@ hci-inputs: {
         builtins.removeAttrs outputs.devShells.${machines.laptop.system}
           [ qdhomeshell ];
 
+      website.outputs = outputs.packages.${machines.common.system}.website;
+
       format.outputs.check = outputs.checks.${machines.common.system}.formatted;
 
     };
