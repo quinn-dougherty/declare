@@ -1,12 +1,10 @@
 {
   "substituters": [
     "https://quinn-dougherty.cachix.org",
-    "https://effective-altruism.cachix.org",
-    "https://bincache.quinn-dougherty.com"
+    "https://effective-altruism.cachix.org"
   ],
   "trusted-public-keys": [
     "quinn-dougherty.cachix.org-1:Fc8xW/Tgr48SjV5Z/LhHCAOjo1dutikmOp8wQTDsBcc=",
-    "effective-altruism.cachix.org-1:mybF0dFfu2Bxbc+LuNm7rb46MFY4FGG2GhwdHuQPWxU=",
-    "bincache.quinn-dougherty.com:RtM40SblTLNhjJSrJc7NwQL2vLzxy0iBXWxgG+TJQa8="
+    "effective-altruism.cachix.org-1:mybF0dFfu2Bxbc+LuNm7rb46MFY4FGG2GhwdHuQPWxU="
   ]
 }
