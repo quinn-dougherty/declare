@@ -19,6 +19,7 @@ in [
   "${modpath}/utilities.nix"
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
+  "${modpath}/nixserve.nix"
   (import "${modpath}/jellyfin.nix" { inherit server; })
   "${modpath}/nextcloud.nix"
   "${modpath}/website"

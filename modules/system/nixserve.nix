@@ -4,7 +4,7 @@
   services.nix-serve = {
     enable = true;
     secretKeyFile =
-      "/var/cache-priv-key.pem"; # just an example, not done yet, will be done with secrix
+      "/run/nix-serve-keys/cache-priv-key.pem"; # just an example, not done yet, will be done with secrix
   };
   services.nginx = {
     enable = true;
