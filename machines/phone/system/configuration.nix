@@ -1,4 +1,4 @@
-{ phone }:
+{ phone, ... }:
 with phone; {
   networking = {
     hostName = hostname;

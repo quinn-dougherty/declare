@@ -7,7 +7,7 @@ in with inputs; [
   nixos-hardware.nixosModules.framework-13th-gen-intel
   secrix.nixosModules.default
   home-manager.nixosModules.home-manager
-  (import ./users/homes.nix { inherit laptop nix-doom-emacs smos; })
+  ./users/homes.nix
   "${modpath}/gaming"
   "${modpath}/manyterms.nix"
   "${modpath}/fonts.nix"

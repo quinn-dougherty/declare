@@ -1,21 +1,17 @@
-{ nixpkgs, lib, phone, home-manager, mobile-nixos, secrix }:
-
+{ lib, phone, inputs }:
+with inputs;
 let modpath = ./../../../modules/system;
 in [
-  (import ./../system/mobile.nix { inherit mobile-nixos; })
-  (import ./../system/configuration.nix { inherit phone; })
+  ./../system/mobile.nix
+  ./../system/configuration.nix
   ./../system/hardware-configuration.nix
   ./booter.nix
   secrix.nixosModules.default
   home-manager.nixosModules.home-manager
-  (import ./plasma.nix {
-    inherit mobile-nixos lib;
-    config = phone.config;
-    pkgs = phone.pkgs;
-  })
+  ./plasma.nix
   # ./qt.nix
   "${modpath}/manyterms.nix"
   "${modpath}/openssh.nix"
-  (import "${modpath}/nix.nix" { inherit nixpkgs; })
-  (import ./hm.nix { inherit phone; })
+  "${modpath}/nix.nix"
+  ./hm.nix
 ]

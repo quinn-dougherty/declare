@@ -1,9 +1,10 @@
-{ nixpkgs, lib, phone, home-manager, mobile-nixos, secrix }:
+{ lib, phone, inputs }:
 
 phone // {
   operatingsystem = lib.nixosSystem {
+    specialArgs = { inherit lib phone inputs; };
     system = phone.system;
     modules =
-      import ./modules { inherit nixpkgs lib phone home-manager mobile-nixos secrix; };
+      import ./modules { inherit lib phone inputs; };
   };
 }

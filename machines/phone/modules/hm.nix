@@ -1,4 +1,4 @@
-{ phone }: {
+{ phone, ... }: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;

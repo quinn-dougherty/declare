@@ -1,9 +1,10 @@
-{ nixpkgs, lib, server, nixos-hardware, hercules-ci-agent, secrix }:
+{ lib, inputs, server }:
 let
   os = lib.nixosSystem {
     system = server.system;
+    specialArgs = { inherit server inputs; };
     modules = import ./modules.nix {
-      inherit nixpkgs server nixos-hardware hercules-ci-agent secrix;
+      inherit server inputs;
     };
   };
 in

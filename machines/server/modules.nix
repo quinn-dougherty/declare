@@ -1,7 +1,7 @@
-{ nixpkgs, server, nixos-hardware, hercules-ci-agent, secrix }:
+{ server, inputs }:
 let modpath = ./../../modules/system;
-in [
-  (import ./system/configuration.nix { inherit server; })
+in with inputs; [
+  ./system/configuration.nix
   nixos-hardware.nixosModules.framework-11th-gen-intel
   ./system/hardware-configuration.nix
   hercules-ci-agent.nixosModules.agent-service
@@ -9,7 +9,7 @@ in [
   "${modpath}/wirelessregdom.nix"
   "${modpath}/cachix"
   "${modpath}/hercules.nix"
-  (import "${modpath}/nix.nix" { inherit nixpkgs; })
+  "${modpath}/nix.nix"
   "${modpath}/audit.nix"
   "${modpath}/crosscompilation.nix"
   "${modpath}/observability.nix"
@@ -20,7 +20,7 @@ in [
   "${modpath}/il8n.nix"
   "${modpath}/allowUnfree.nix"
   "${modpath}/nixserve.nix"
-  (import "${modpath}/jellyfin.nix" { inherit server; })
+  "${modpath}/jellyfin.nix"
   "${modpath}/nextcloud.nix"
   "${modpath}/website"
   # "${modpath}/desktops/gnome" # uncomment for a web browser jellyfin admin task
