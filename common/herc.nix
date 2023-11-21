@@ -7,7 +7,6 @@ let
       packages = self.packages.${machines.common.system};
     in
     {
-      ciSystems = [ machines.common.system ];
       ${machines.laptop.hostname}.outputs = {
         # home-shell = self.devShells.${machines.laptop.system}.${qdhomeshell};
         operating-system = packages.${machines.laptop.hostname};
@@ -38,6 +37,7 @@ let
     };
 in
 {
+  ciSystems = [ machines.common.system ];
   inherit onPush;
   onSchedule.auto-update = {
     outputs.effects = machines.common.pkgs.effects.flakeUpdate {
