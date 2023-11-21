@@ -1,9 +1,9 @@
-{ pkgs, pkgs-stable, ... }:
-with pkgs;
+{ laptop, ... }:
+with laptop.pkgs;
 let
   vulkan = [
     jansson
-    pkgs-stable.mesa
+    laptop.pkgs-stable.mesa
     dxvk
     vkdt
     vkd3d-proton

@@ -1,10 +1,10 @@
-{ lib, nixpkgs, laptop, nixos-hardware, secrix, home-manager, nix-doom-emacs, smos }:
+{ lib, laptop, inputs }:
 laptop // {
   operatingsystem = lib.nixosSystem {
     system = laptop.system;
-    # specialArgs = laptop;  # TODO: clean up all module declaration syntax with specialArgs
+    specialArgs = { inherit laptop inputs; }; # TODO: clean up all module declaration syntax with specialArgs
     modules = import ./modules.nix {
-      inherit nixpkgs laptop nixos-hardware secrix home-manager nix-doom-emacs smos;
+      inherit laptop inputs;
     };
   };
   homeshell = with laptop;

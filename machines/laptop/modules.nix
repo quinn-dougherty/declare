@@ -1,19 +1,19 @@
-{ nixpkgs, laptop, nixos-hardware, secrix, home-manager, nix-doom-emacs, smos }:
-let modpath = ./../../modules;
-in [
-  (import ./system/configuration.nix { inherit laptop; })
+{ laptop, inputs }:
+let modpath = ./../../modules/system;
+in with inputs; [
+  ./system/configuration.nix
   "${modpath}/desktops/${laptop.desktop}"
   ./system/hardware-configuration.nix
   nixos-hardware.nixosModules.framework-13th-gen-intel
-  home-manager.nixosModules.home-manager
-  (import ./users/homes.nix { inherit laptop nix-doom-emacs smos; })
-  (with laptop; import "${modpath}/gaming" { inherit pkgs pkgs-stable; })
-  "${modpath}/manyterms.nix"
   secrix.nixosModules.default
+  home-manager.nixosModules.home-manager
+  ./users/homes.nix
+  "${modpath}/gaming"
+  "${modpath}/manyterms.nix"
   "${modpath}/fonts.nix"
   "${modpath}/audio.nix"
   "${modpath}/bluetooth.nix"
-  (import "${modpath}/nix.nix" { inherit nixpkgs; })
+  "${modpath}/nix.nix"
   "${modpath}/cachix"
   "${modpath}/audit.nix"
   "${modpath}/observability.nix"

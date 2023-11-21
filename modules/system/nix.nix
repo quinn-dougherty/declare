@@ -1,4 +1,4 @@
-{ nixpkgs, ... }:
+{ inputs, ... }:
 
 {
   nix = {
@@ -12,6 +12,6 @@
       dates = "weekly";
       options = "--delete-older-than 111d";
     };
-    nixPath = [ "nixpkgs=${nixpkgs}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 }

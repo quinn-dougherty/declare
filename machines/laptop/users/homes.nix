@@ -1,4 +1,4 @@
-{ laptop, nix-doom-emacs, smos }: {
+{ laptop, inputs, ... }: with inputs; {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
