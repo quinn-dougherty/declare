@@ -11,7 +11,7 @@ with laptop; let modpath = ./../../../../modules/hm; in {
     "${modpath}/ops.nix"
     "${modpath}/direnv.nix"
     smos.homeManagerModules.${system}.default
-  ];
+  ]; #  ++ (if desktop == "kde" then [ "${modpath}/desktops/kde/settings.nix" ] else [ ]);
   home = {
     username = username;
     homeDirectory = "/home/" + username;
