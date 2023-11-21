@@ -16,4 +16,5 @@
     # };
     pulse.enable = true;
   };
+  environment.systemPackages = [ pkgs.pavucontrol ];
 }

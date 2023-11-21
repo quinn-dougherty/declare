@@ -1,5 +1,5 @@
 { nixpkgs, laptop, nixos-hardware, secrix, home-manager, nix-doom-emacs, smos }:
-let modpath = ./../../modules;
+let modpath = ./../../modules/system;
 in [
   (import ./system/configuration.nix { inherit laptop; })
   "${modpath}/desktops/${laptop.desktop}"

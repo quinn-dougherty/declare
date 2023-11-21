@@ -1,4 +1,4 @@
-{ nixpkgs, lib, server, nixos-hardware, hercules-ci-agent, secrix, web }:
+{ nixpkgs, lib, server, nixos-hardware, hercules-ci-agent, secrix }:
 let
   os = lib.nixosSystem {
     system = server.system;

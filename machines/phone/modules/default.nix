@@ -1,6 +1,6 @@
 { nixpkgs, lib, phone, home-manager, mobile-nixos, secrix }:
 
-let modpath = ./../../../modules;
+let modpath = ./../../../modules/system;
 in [
   (import ./../system/mobile.nix { inherit mobile-nixos; })
   (import ./../system/configuration.nix { inherit phone; })
@@ -17,6 +17,5 @@ in [
   "${modpath}/manyterms.nix"
   "${modpath}/openssh.nix"
   (import "${modpath}/nix.nix" { inherit nixpkgs; })
-  "${modpath}/openssh.nix"
   (import ./hm.nix { inherit phone; })
 ]

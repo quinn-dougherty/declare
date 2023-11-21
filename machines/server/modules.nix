@@ -1,5 +1,5 @@
 { nixpkgs, server, nixos-hardware, hercules-ci-agent, secrix }:
-let modpath = ./../../modules;
+let modpath = ./../../modules/system;
 in [
   (import ./system/configuration.nix { inherit server; })
   nixos-hardware.nixosModules.framework-11th-gen-intel

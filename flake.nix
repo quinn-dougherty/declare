@@ -52,14 +52,14 @@
       machines = import ./machines/machines.nix {
         inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
       };
-      web = with machines.common; import ./modules/website { inherit pkgs; };
+      soupault = with machines.common; import ./modules/system/website/soupault.nix { inherit pkgs; };
       laptop = import ./machines/laptop {
         inherit lib nixpkgs nixos-hardware secrix home-manager nix-doom-emacs
           smos;
         laptop = machines.laptop;
       };
       server = import ./machines/server {
-        inherit nixpkgs lib nixos-hardware hercules-ci-agent secrix web;
+        inherit nixpkgs lib nixos-hardware hercules-ci-agent secrix;
         server = machines.server;
       };
       phone = import ./machines/phone {
@@ -70,16 +70,12 @@
         inherit lib home-manager nix-doom-emacs;
         ubuntu = machines.ubuntu;
       };
-      chat = import ./machines/chat {
-        inherit lib secrix;
-        chat = machines.chat;
-      };
       common = import ./common {
         inherit machines treefmt-nix;
         outputs = self;
         server-deploy = server.deploymenteffect;
       };
-      immobiles = [ laptop server chat ];
+      immobiles = [ laptop server ];
       mobiles = [ phone ];
       others = [ ubuntu ];
     in
@@ -90,11 +86,7 @@
 
       homeConfigurations = commonlib.hmForAll others;
 
-      packages.${machines.common.system} = with web;
-        {
-          inherit site;
-        }
-        // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
+      packages.${machines.common.system} = { website = soupault; } // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
 
       devShells = {
         ${laptop.system} = {
