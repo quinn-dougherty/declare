@@ -1,6 +1,7 @@
-{ config, lib, pkgs, ... }:
 # https://nixos.wiki/wiki/Binary_Cache
+{ inputs, config, ... }:
 {
+  imports = [ "${inputs.self}/secrets" ];
   services = {
     nix-serve = {
       enable = true;

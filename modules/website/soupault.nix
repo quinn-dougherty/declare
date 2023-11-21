@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 
 pkgs.stdenv.mkDerivation {
   name = "quinn-dougherty.com-soupault";
-  src = ./soupault;
+  src = "${self}/website";
   buildInputs = [ pkgs.soupault pkgs.pandoc ];
   buildPhase = "soupault";
   installPhase = ''

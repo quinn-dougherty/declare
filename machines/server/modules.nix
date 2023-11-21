@@ -22,6 +22,6 @@ in with inputs; [
   "${modpath}/nixserve.nix"
   "${modpath}/jellyfin.nix"
   "${modpath}/nextcloud.nix"
-  "${modpath}/website"
-  # "${modpath}/desktops/gnome" # uncomment for a web browser jellyfin admin task
+  ./../../modules/website
+  # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks.
 ]

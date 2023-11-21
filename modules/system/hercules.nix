@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ inputs, ... }:
 
 {
-  imports = [ ./openssh.nix ./secrets ];
+  imports = [ ./openssh.nix "${inputs.self}/secrets" ];
   services.hercules-ci-agent = {
     enable = true;
     settings = {

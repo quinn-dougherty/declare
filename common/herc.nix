@@ -26,6 +26,7 @@ hci-inputs: {
         } else {
           operating-system =
             outputs.nixosConfigurations.${machines.server.hostname}.config.system.build.toplevel;
+          website = outputs.packages.${machines.server.system}.website;
         };
 
       "${machines.ubuntu.username}@${machines.ubuntu.hostname}:hm".outputs.homeConfig =
@@ -34,8 +35,6 @@ hci-inputs: {
       developers.outputs =
         builtins.removeAttrs outputs.devShells.${machines.laptop.system}
           [ qdhomeshell ];
-
-      website.outputs = outputs.packages.${machines.common.system}.website;
 
       format.outputs.check = outputs.checks.${machines.common.system}.formatted;
 

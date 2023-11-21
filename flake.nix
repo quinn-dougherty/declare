@@ -52,7 +52,7 @@
       machines = import ./machines/machines.nix {
         inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
       };
-      soupault = with machines.common; import ./modules/system/website/soupault.nix { inherit pkgs; };
+      soupault = with machines.common; import ./modules/website/soupault.nix { inherit pkgs self; };
       laptop = import ./machines/laptop {
         inherit lib inputs;
         laptop = machines.laptop;
