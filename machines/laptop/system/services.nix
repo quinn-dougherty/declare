@@ -6,6 +6,8 @@
     percentageAction = 5;
   };
 
+  thermald.enable = true;
+
   logind.lidSwitch = "hibernate";
 
   autorandr.enable = true;

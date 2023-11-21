@@ -6,3 +6,4 @@ authinfo
 common/keys/port
 modules/website/soupault/build
 website/build
+cache-priv-key.pem

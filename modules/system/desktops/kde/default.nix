@@ -11,6 +11,7 @@
     };
     displayManager.sddm.enable = true;
   };
+  programs.xwayland.enable = true;
   qt.platformTheme = "kde";
   environment.systemPackages = [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
 }

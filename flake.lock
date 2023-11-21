@@ -1302,11 +1302,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1700131917,
-        "narHash": "sha256-Zv6eoElHGGD4tqckvCl2z4Yxc5SdaRZaz1dE81dtY3c=",
+        "lastModified": 1700527501,
+        "narHash": "sha256-STsI/m41qxtmxo+guJX8NCBRpVT4LZg5CaQitR9mNIM=",
         "owner": "Platonic-Systems",
         "repo": "secrix",
-        "rev": "cd2ca60df5b4a5a3251d038ff170281db7d5b996",
+        "rev": "94a6f928da9584f24203b559b2596ec36d19ab2f",
         "type": "github"
       },
       "original": {
