@@ -2,11 +2,10 @@
 with pkgs;
 let
   wine-etc = [
-    wine # I think just for bootstrapping?
+    # wine # I think just for bootstrapping? lutris manages their own wines
     # wineWowPackages.stable
     lutris # Launcher
     # bottles # Alt launcher
-    gamemode # Cpu optimizations
     protonup-qt # Manage wine packages to finetune lutris (gui)
     protonup-ng # Manage wine packages (cli)
   ];

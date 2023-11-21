@@ -1,6 +1,6 @@
 { lib, phone, inputs }:
-
-phone // {
+{
+  inherit (phone) system hostname;
   operatingsystem = lib.nixosSystem {
     specialArgs = { inherit lib phone inputs; };
     system = phone.system;

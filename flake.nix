@@ -49,8 +49,8 @@
     }@inputs:
     let
       lib = nixpkgs.lib;
-      machines = import ./machines/machines.nix {
-        inherit nixpkgs-master nixpkgs nixpkgs-stable hercules-ci-effects;
+      machines = import ./machines {
+        inherit inputs;
       };
       soupault = with machines.common; import ./modules/website/soupault.nix { inherit pkgs self; };
       laptop = import ./machines/laptop {
@@ -70,8 +70,7 @@
         ubuntu = machines.ubuntu;
       };
       common = import ./common {
-        inherit machines treefmt-nix;
-        outputs = self;
+        inherit self machines treefmt-nix;
         server-deploy = server.deploymenteffect;
       };
       immobiles = [ laptop server ];
@@ -79,26 +78,17 @@
       others = [ ubuntu ];
     in
     with common; {
-      formatter.${machines.common.system} = format.config.build.wrapper;
-
       nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
-
       homeConfigurations = commonlib.hmForAll others;
-
       packages.${machines.common.system} = { website = soupault; } // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
-
-      devShells = {
-        ${laptop.system} = {
-          "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
-        } // (with machines.common;
-          import ./shells { inherit pkgs pkgs-stable; });
-      };
-
+      devShells.${laptop.system} = {
+        "${machines.laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
+      } // (with machines.common;
+        import ./shells { inherit pkgs pkgs-stable; });
       apps.${laptop.system}.secrix = secrix.secrix self;
-
+      formatter.${machines.common.system} = format.config.build.wrapper;
       checks.${machines.common.system}.formatted =
         format.config.build.check self;
-
       herculesCI = herc;
     };
 }

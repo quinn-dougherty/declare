@@ -1,5 +1,5 @@
 { laptop, ... }:
-with laptop; {
+with laptop; let keyspath = ./../../../common/keys; in {
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -32,20 +32,22 @@ with laptop; {
   services = import ./services.nix { inherit pkgs; };
 
   secrix.defaultEncryptKeys.${username} =
-    [ (builtins.readFile ./../../../common/keys/id_ed25519.pub) ];
+    [ (builtins.readFile "${keyspath}/id_ed25519.pub") ];
   users.users =
-    let keys-path = ./../../../common/keys;
-    in {
+    let
+      authorized-key-files = [ "${keyspath}/id_ed25519.pub" "${keyspath}/id_server_ed25519.pub" ];
+    in
+    {
       ${username} = {
         isNormalUser = true;
         extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
         home = "/home/" + username;
         description = user-fullname;
         shell = pkgs.fish;
-        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+        openssh.authorizedKeys.keyFiles = authorized-key-files;
       };
       root = {
-        openssh.authorizedKeys.keyFiles = [ "${keys-path}/authorized_keys" ];
+        openssh.authorizedKeys.keyFiles = authorized-key-files;
         shell = pkgs.fish;
       };
     };
@@ -69,7 +71,6 @@ with laptop; {
   nixpkgs.config = config;
 
   programs = {
-    steam.enable = true;
     fish.enable = true;
     gnupg.agent = {
       enable = true;

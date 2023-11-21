@@ -1,22 +1,5 @@
-{ laptop, ... }:
-with laptop.pkgs;
-let
-  vulkan = [
-    jansson
-    laptop.pkgs-stable.mesa
-    dxvk
-    vkdt
-    vkd3d-proton
-    vkBasalt
-    vulkan-tools
-    vulkan-loader
-    vulkan-extension-layer
-    vulkan-headers
-    vulkan-tools-lunarg
-  ];
-  intel = [ libdrm intel-media-driver intel-ocl intel-vaapi-driver ];
-in
+{ laptop, config, lib, pkgs, ... }:
+let graphics = import ./graphics.nix { inherit laptop; }; in
 {
-  imports = [ ./light.nix ./opengl32.nix ];
-  environment.systemPackages = vulkan ++ intel;
+  imports = [ ./launch.nix graphics ./opengl32.nix ./steam.nix ];
 }

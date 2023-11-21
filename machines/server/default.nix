@@ -8,7 +8,8 @@ let
     };
   };
 in
-server // {
+{
+  inherit (server) system hostname;
   operatingsystem = os;
   deploymenteffect = { ref }:
     import ./effect {

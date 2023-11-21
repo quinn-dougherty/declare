@@ -1,5 +1,6 @@
 { lib, laptop, inputs }:
-laptop // {
+{
+  inherit (laptop) system hostname;
   operatingsystem = lib.nixosSystem {
     system = laptop.system;
     specialArgs = { inherit laptop inputs; }; # TODO: clean up all module declaration syntax with specialArgs

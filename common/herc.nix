@@ -1,23 +1,22 @@
-{ outputs, machines, server-deploy }:
-hci-inputs: {
+{ self, machines, server-deploy }:
+hci-inputs:
+let
   onPush =
-    let qdhomeshell = "${machines.laptop.drv-name-prefix}:homeshell";
-    in {
-      # TODO: clean this up with `common/lib.nix`
+    let
+      qdhomeshell = "${machines.laptop.drv-name-prefix}:homeshell";
+      packages = self.packages.${machines.common.system};
+    in
+    {
+      ciSystems = [ machines.common.system ];
       ${machines.laptop.hostname}.outputs = {
-        home-shell = outputs.devShells.${machines.laptop.system}.${qdhomeshell};
-        operating-system =
-          outputs.nixosConfigurations.${machines.laptop.hostname}.config.system.build.toplevel;
+        # home-shell = self.devShells.${machines.laptop.system}.${qdhomeshell};
+        operating-system = packages.${machines.laptop.hostname};
       };
 
       ${machines.phone.hostname}.outputs =
-        let
-          phone-uboot =
-            outputs.nixosConfigurations.${machines.phone.hostname}.config.mobile.outputs.u-boot;
-        in
         {
-          os_disk-image = phone-uboot.disk-image;
-          os_boot-partition = phone-uboot.boot-partition;
+          os_disk-image = packages."${machines.phone.hostname}-disk-image";
+          os_boot-partition = packages."${machines.phone.hostname}-boot-partition";
         };
 
       ${machines.server.hostname}.outputs = with hci-inputs;
@@ -25,25 +24,26 @@ hci-inputs: {
           effects.deployment = server-deploy { inherit ref; };
         } else {
           operating-system =
-            outputs.nixosConfigurations.${machines.server.hostname}.config.system.build.toplevel;
-          website = outputs.packages.${machines.server.system}.website;
+            packages.${machines.server.hostname};
+          website = packages.website;
         };
 
       "${machines.ubuntu.username}@${machines.ubuntu.hostname}:hm".outputs.homeConfig =
-        outputs.homeConfigurations.${machines.ubuntu.hostname}.activationPackage;
+        self.homeConfigurations.${machines.ubuntu.hostname}.activationPackage;
 
-      developers.outputs =
-        builtins.removeAttrs outputs.devShells.${machines.laptop.system}
-          [ qdhomeshell ];
+      developers.outputs = self.devShells.${machines.common.system};
 
-      format.outputs.check = outputs.checks.${machines.common.system}.formatted;
+      format.outputs.check = self.checks.${machines.common.system}.formatted;
 
     };
+in
+{
+  inherit onPush;
   onSchedule.auto-update = {
     outputs.effects = machines.common.pkgs.effects.flakeUpdate {
       autoMergeMethod = "merge";
       gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
     };
-    when.dayOfMonth = [ 1 ];
+    when.dayOfMonth = [ 16 ];
   };
 }

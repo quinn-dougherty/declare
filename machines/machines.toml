@@ -20,5 +20,5 @@ ip = "192.168.6.33"
 static4 = "192.168.42.42"
 
 [ubuntu]
-hostname = "the-band-back-together"
+hostname = "duck-you-sucker"
 user-fullname = "Quinn Dougherty"
