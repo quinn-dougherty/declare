@@ -1,24 +1,24 @@
 { self, machines, server-deploy }:
-hci-inputs:
+hci-inputs: with machines;
 let
   onPush =
     let
-      qdhomeshell = "${machines.laptop.drv-name-prefix}:homeshell";
+      qdhomeshell = "${laptop.drv-name-prefix}:homeshell";
       packages = self.packages.${machines.common.system};
     in
     {
-      ${machines.laptop.hostname}.outputs = {
+      ${laptop.hostname}.outputs = {
         # home-shell = self.devShells.${machines.laptop.system}.${qdhomeshell};
         operating-system = packages.${machines.laptop.hostname};
       };
 
-      ${machines.phone.hostname}.outputs =
+      ${phone.hostname}.outputs =
         {
-          os_disk-image = packages."${machines.phone.hostname}-disk-image";
-          os_boot-partition = packages."${machines.phone.hostname}-boot-partition";
+          os_disk-image = packages."${phone.hostname}-disk-image";
+          os_boot-partition = packages."${phone.hostname}-boot-partition";
         };
 
-      ${machines.server.hostname}.outputs = with hci-inputs;
+      ${server.hostname}.outputs = with hci-inputs;
         if ref == "refs/heads/main" then {
           effects.deployment = server-deploy { inherit ref; };
         } else {
@@ -27,20 +27,19 @@ let
           website = packages.website;
         };
 
-      "${machines.ubuntu.username}@${machines.ubuntu.hostname}:hm".outputs.homeConfig =
-        self.homeConfigurations.${machines.ubuntu.hostname}.activationPackage;
+      "${ubuntu.username}@${ubuntu.hostname}:hm".outputs.homeConfig =
+        self.homeConfigurations.${ubuntu.hostname}.activationPackage;
 
-      developers.outputs = self.devShells.${machines.common.system};
+      developers.outputs = self.devShells.${common-machines.system};
 
-      format.outputs.check = self.checks.${machines.common.system}.formatted;
-
+      format.outputs.check = self.checks.${common-machines.system}.formatted;
     };
 in
 {
-  ciSystems = [ machines.common.system ];
+  ciSystems = [ common-machines.system ];
   inherit onPush;
   onSchedule.auto-update = {
-    outputs.effects = machines.common.pkgs.effects.flakeUpdate {
+    outputs.effects = common-machines.pkgs.effects.flakeUpdate {
       autoMergeMethod = "merge";
       gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
     };
