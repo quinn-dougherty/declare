@@ -4,7 +4,7 @@ let
   onPush =
     let
       qdhomeshell = "${laptop.drv-name-prefix}:homeshell";
-      packages = self.packages.${machines.common.system};
+      packages = self.packages.${machines.common-machines.system};
     in
     {
       ${laptop.hostname}.outputs = {
