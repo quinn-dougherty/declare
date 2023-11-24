@@ -6,7 +6,7 @@
     percentageAction = 5;
   };
 
-  # flatpak.enable = true;
+  flatpak.enable = true;
 
   thermald.enable = true;
 
