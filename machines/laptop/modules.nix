@@ -19,7 +19,6 @@ with inputs;
   "${modpath-system}/crosscompilation.nix"
   "${modpath-system}/openssh.nix"
   "${modpath-system}/il8n.nix"
-  # "${modpath-system}/gaming"
   inputs.battlenet.nixosModules.${laptop.system}.default
   { programs.battlenet.enable = true; gaming.opengl.intel = true; }
   # Testing/learning
