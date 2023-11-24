@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }: {
-
+  imports = [ ./../picom.nix ];
   services = {
-    picom = {
-      enable = true;
-      vSync = true;
-      # inactiveOpacity = 0.7;
-    };
     xserver = {
       #  videoDrivers = [ "intel" "modesetting" "fbdev" ];
       deviceSection = ''

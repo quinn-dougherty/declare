@@ -32,8 +32,8 @@ keybinds =
     , ((modShift, xK_g), spawnHere "firefox --new-window \"chat.openai.com?model=gpt-4\"") -- g is for gpt
     , ((modShift, xK_t), spawnHere "firefox --new-window \"claude.ai/chats\"") -- t is for talk
     , ((modShift, xK_p), spawnOn "6" "bitwarden") -- p is for password
-    , ((modShift, xK_b), spawnOn "9" "lutris battlenet & lutris trade-skill-master") -- b is for battlenet
-    , ((modShift, xK_e), spawnOn "4" "emacs")
+    , ((modShift, xK_b), spawnOn "9" "flatpak run net.lutris.Lutris") -- b is for battlenet
+    , ((modShift, xK_e), spawnOn "2" "emacs")
     , ((alt, xK_F1), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
     , ((alt, xK_F2), spawn "wpctl set-sink-volume @DEFAULT_SINK@ -10%")
     , ((alt, xK_F3), spawn "wpctl set-sink-volume @DEFAULT_SINK@ +10%")
@@ -55,7 +55,7 @@ compileRestart resume = do
 myConfig xmproc = (docks . ewmh) def
     { terminal = terminalEmulator
     , layoutHook = avoidStruts $ layoutHook def
-    -- , logHook = fadeInactiveLogHook unfocusedWindowOpacity
+    , logHook = fadeInactiveLogHook unfocusedWindowOpacity
       <+> dynamicLogWithPP xmobarPP
                   { ppOutput = hPutStrLn xmproc
                   , ppTitle = xmobarColor xmobarFGColor "" . shorten 50
@@ -67,5 +67,5 @@ myConfig xmproc = (docks . ewmh) def
 
 
 main = do
-  xmproc <- spawnPipe "trayer & xmobar ~/projects/declare/modules/desktops/xmonad/xmobarrc.hs"
+  xmproc <- spawnPipe "trayer & xmobar ~/projects/declare/modules/system/desktops/xmonad/xmobarrc.hs"
   xmonad $ myConfig xmproc

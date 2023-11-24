@@ -19,4 +19,9 @@
   imports = [ ./../greeter.nix ./../common-none ];
   sound.mediaKeys.enable = true;
   programs.evince.enable = true;
+  xdg.portal = {
+    enable = true; # Needed for flatpak
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
 }

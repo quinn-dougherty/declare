@@ -2,7 +2,7 @@
 
 # Don't forget also to edit path to `xmobar` in `xmonad.hs`
 
-pushd ~/projects/declare/modules/desktops/xmonad
+pushd ~/projects/declare/modules/system/desktops/xmonad
 HERE=$(pwd)
 rm -rf ~/.xprofile
 rm -rf ~/.config/xmonad/xmonad.hs
