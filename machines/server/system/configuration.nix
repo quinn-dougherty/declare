@@ -31,7 +31,7 @@
   secrix.defaultEncryptKeys.${server.username} = [ (builtins.readFile ./../../../common/keys/id_server_ed25519.pub) ];
   users.users =
     let
-      keyspath = ./../../../common/keys;
+      keyspath = ./../../../keys;
       authorizedKeyFiles = [
         "${keyspath}/id_ed25519.pub"
         "${keyspath}/id_server_ed25519.pub"

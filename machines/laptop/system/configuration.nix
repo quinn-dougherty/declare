@@ -1,5 +1,5 @@
 { laptop, ... }:
-with laptop; let keyspath = ./../../../common/keys; in {
+with laptop; let keyspath = ./../../../keys; in {
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.

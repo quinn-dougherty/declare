@@ -24,7 +24,7 @@ with phone; {
   users = {
     mutableUsers = false;
     users.${username} =
-      let keyspath = ./../../../common/keys;
+      let keyspath = ./../../../keys;
       in {
         isNormalUser = true;
         description = user-fullname;
