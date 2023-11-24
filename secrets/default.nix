@@ -8,6 +8,6 @@
     nextcloud.secrets = {
       "nextcloud-db-pass".encrypted.file = ./nextcloud-db-pass.age;
     };
-    # nix-serve.secrets."cache-priv-key.pem".encrypted.file = ./cache-priv-key.pem.age;
+    nix-serve.secrets."cache-priv-key.pem".encrypted.file = ./cache-priv-key.pem.age;
   };
 }
