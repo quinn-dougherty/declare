@@ -1,6 +1,6 @@
 [
   ./system/wirelessregdom.nix
-  ./system/cachix
+  ./system/substituters
   ./system/nix.nix
   ./system/audit.nix
   ./system/observability.nix
