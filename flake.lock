@@ -57,11 +57,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1700802874,
-        "narHash": "sha256-Nr1QcBRhNk7hmmKLJ/SSLsaabXc/WoGSwE39Wbe7NW4=",
+        "lastModified": 1700803126,
+        "narHash": "sha256-9/N7D0F7VVIokyQGWbEzh4zYkCDWAUnKrrHSEMhsWPY=",
         "owner": "quinn-dougherty",
         "repo": "nixos-battlenet",
-        "rev": "0aa0a6a2f40ee41e120051e169e41ceb29f29488",
+        "rev": "0a4f08e91ddb692493914a505fe011fb128c9a51",
         "type": "github"
       },
       "original": {
