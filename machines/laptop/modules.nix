@@ -20,7 +20,13 @@ with inputs;
   "${modpath-system}/openssh.nix"
   "${modpath-system}/il8n.nix"
   inputs.battlenet.nixosModules.${laptop.system}.default
-  { programs.battlenet.enable = true; gaming.opengl.intel = true; }
+  {
+    programs.flatpak-lutris = {
+      enable = true;
+      opengl32.enable = true;
+      intel.enable = true;
+    };
+  }
   # Testing/learning
   # "${modpath}/nextcloud"
   # "${modpath}/slurm.nix"

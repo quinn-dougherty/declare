@@ -57,11 +57,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1700795464,
-        "narHash": "sha256-5F0E1rYEfdNu6IThQWh1T5U+EOdoK72CTYzw1xZLEnI=",
+        "lastModified": 1700802874,
+        "narHash": "sha256-Nr1QcBRhNk7hmmKLJ/SSLsaabXc/WoGSwE39Wbe7NW4=",
         "owner": "quinn-dougherty",
         "repo": "nixos-battlenet",
-        "rev": "87b1e7bd8ea1c104c08067587300c0fa3eba737e",
+        "rev": "0aa0a6a2f40ee41e120051e169e41ceb29f29488",
         "type": "github"
       },
       "original": {
@@ -886,11 +886,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1700794826,
-        "narHash": "sha256-RyJTnTNKhO0yqRpDISk03I/4A67/dp96YRxc86YOPgU=",
+        "lastModified": 1700798228,
+        "narHash": "sha256-Kz1cnw/CEAMVs6yUlJ2O+/TPghJiiMKA97z4XPOvcj8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5a09cb4b393d58f9ed0d9ca1555016a8543c2ac8",
+        "rev": "00d4968679d4943b33639891a041daa07a4f7395",
         "type": "github"
       },
       "original": {

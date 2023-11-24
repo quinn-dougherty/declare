@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./../xwayland.nix ];
+  imports = [ ./../xwayland.nix ./../picom.nix ];
   services.xserver = {
     enable = true;
 
