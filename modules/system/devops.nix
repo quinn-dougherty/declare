@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     certbot-full
     # python311Packages.certbot-dns-route53
-    awscli2
+    # awscli2
     cachix
     # morph
     heroku
