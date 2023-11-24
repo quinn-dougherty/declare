@@ -6,7 +6,7 @@
     nix-serve = {
       enable = true;
       secretKeyFile =
-        "/run/nix-serve-keys/cache-priv-key.pem"; # just an example, not done yet, will be done with secrix
+        "/run/nix-serve-keys/cache-qd-priv-key.pem"; # just an example, not done yet, will be done with secrix
     };
     nginx = {
       enable = true;
