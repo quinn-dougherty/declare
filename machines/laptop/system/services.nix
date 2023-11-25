@@ -6,8 +6,6 @@
     percentageAction = 5;
   };
 
-  flatpak.enable = true;
-
   thermald.enable = true;
 
   logind.lidSwitch = "hibernate";

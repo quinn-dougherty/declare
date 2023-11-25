@@ -19,6 +19,7 @@ with inputs;
   "${modpath-system}/crosscompilation.nix"
   "${modpath-system}/openssh.nix"
   "${modpath-system}/il8n.nix"
+  "${modpath-system}/flatpak.nix"
   #inputs.battlenet.nixosModules.${laptop.system}.default
   #{ graphics.mesa.enable = true; }
   #{
