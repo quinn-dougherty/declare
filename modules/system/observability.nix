@@ -10,6 +10,7 @@
     termshark
     conntrack-tools
     linuxKernel.packages.linux_libre.perf
+    conky
     # postman
   ];
   programs = {

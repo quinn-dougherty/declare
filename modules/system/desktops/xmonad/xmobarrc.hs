@@ -11,8 +11,8 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                                          , "--high"     , "darkred"
                                          ] 10
 
-                    , Run MultiCpu ["-t","Cpu: <total0>% * <total2>% * <total4>% * <total6>% * <total8>% * <total10>% * <total12>% * <total14>% * <total16>% * <total18>%"
-                                   ,"-L","3"
+                    , Run Cpu [ -- "-t", "Cpu: <total>%"
+                              "-L","3"
                                    ,"-H","50"
                                    ,"--normal","green"
                                    ,"--high","red"
@@ -36,6 +36,6 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %volumelevel%    |    %dynnetwork%    |    %multicpu%    |    %memory% * %swap%    |    %battery%    |    %date%    |    %EGPF%"
+       , template = "%StdinReader% }{ %volumelevel%    |    %dynnetwork%    |    %cpu%    |    %memory% * %swap%    |    %battery%    |    %date%    |    %EGPF%"
        , allDesktops = True
        }
