@@ -15,7 +15,8 @@
     hostName = server.hostname;
     wireless = {
       enable = true;
-      networks."Andromeda".pskRaw = "2cf19bae44e4982c910947e054825495a8c52220307e75bb9604f0e2db4d8ec7";
+      networks."Andromeda".pskRaw =
+        "2cf19bae44e4982c910947e054825495a8c52220307e75bb9604f0e2db4d8ec7";
     };
     interfaces.wlp170s0.useDHCP = true;
     # interfaces.wlp170s0.ipv4.addresses = [{
@@ -31,26 +32,25 @@
     getty.autologinUser = server.username;
   };
 
-  secrix.defaultEncryptKeys.${server.username} = [ (builtins.readFile ./../../../common/keys/id_server_ed25519.pub) ];
-  users.users =
-    let
-      keyspath = ./../../../keys;
-      authorizedKeyFiles = [
-        "${keyspath}/id_ed25519.pub"
-        "${keyspath}/id_server_ed25519.pub"
-        "${keyspath}/id_server_rsa_effectsdefault.pub"
-      ];
-    in
-    {
-      ${server.username} = {
-        isNormalUser = true;
-        description = server.user-fullname;
-        extraGroups = [ "networkmanager" "wheel" ];
-        openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
-        shell = server.pkgs.fish;
-      };
-      root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
+  secrix.defaultEncryptKeys.${server.username} =
+    [ (builtins.readFile ./../../../common/keys/id_server_ed25519.pub) ];
+  users.users = let
+    keyspath = ./../../../keys;
+    authorizedKeyFiles = [
+      "${keyspath}/id_ed25519.pub"
+      "${keyspath}/id_server_ed25519.pub"
+      "${keyspath}/id_server_rsa_effectsdefault.pub"
+    ];
+  in {
+    ${server.username} = {
+      isNormalUser = true;
+      description = server.user-fullname;
+      extraGroups = [ "networkmanager" "wheel" ];
+      openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
+      shell = server.pkgs.fish;
     };
+    root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
+  };
 
   programs = {
     fish.enable = true;

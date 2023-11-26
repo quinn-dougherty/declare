@@ -1,7 +1,9 @@
-{ ubuntu, home-manager, ... }: with ubuntu;
+{ ubuntu, home-manager, ... }:
+with ubuntu;
 home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
-  modules = let modpath = ./../../modules/hm; in [
+  modules = let modpath = ./../../modules/hm;
+  in [
     "${modpath}/git.nix"
     "${modpath}/vim.nix"
     "${modpath}/ops.nix"

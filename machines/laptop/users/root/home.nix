@@ -1,5 +1,7 @@
 { laptop, ... }:
-with laptop; let modpath = ./../../../../modules/hm; in {
+with laptop;
+let modpath = ./../../../../modules/hm;
+in {
   programs = {
     direnv = {
       enable = true;

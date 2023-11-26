@@ -3,12 +3,9 @@ let
   os = lib.nixosSystem {
     system = server.system;
     specialArgs = { inherit server inputs; };
-    modules = import ./modules.nix {
-      inherit server inputs;
-    };
+    modules = import ./modules.nix { inherit server inputs; };
   };
-in
-{
+in {
   inherit (server) system hostname;
   operatingsystem = os;
   deploymenteffect = { ref }:

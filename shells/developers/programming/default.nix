@@ -7,8 +7,7 @@ let
   ocaml-development = import ./ocaml.nix { inherit pkgs; };
   haskell-development = import ./haskell.nix { inherit pkgs; };
   ruby-development = import ./ruby.nix { pkgs = pkgs-stable; };
-in
-builtins.concatLists [
+in builtins.concatLists [
   coq-development
   python-development
   rust-development

@@ -23,20 +23,20 @@ with phone; {
   services.xserver.displayManager.autoLogin.user = username;
   users = {
     mutableUsers = false;
-    users.${username} =
-      let keyspath = ./../../../keys;
-      in {
-        isNormalUser = true;
-        description = user-fullname;
-        home = "/home/" + username;
-        shell = pkgs.fish;
-        uid = 1000;
-        # make this numeric so that you can enter it in the phosh lockscreen.
-        # DON'T leave this empty: not all greeters support passwordless users.
-        initialPassword = "9999";
-        extraGroups = [ "wheel" "networkmanager" "dialout" "feedbackd" "video" ];
-        openssh.authorizedKeys.keyFiles = [ "${keyspath}/id_ed25519.pub" "${keyspath}/id_server_ed25519.pub" ];
-      };
+    users.${username} = let keyspath = ./../../../keys;
+    in {
+      isNormalUser = true;
+      description = user-fullname;
+      home = "/home/" + username;
+      shell = pkgs.fish;
+      uid = 1000;
+      # make this numeric so that you can enter it in the phosh lockscreen.
+      # DON'T leave this empty: not all greeters support passwordless users.
+      initialPassword = "9999";
+      extraGroups = [ "wheel" "networkmanager" "dialout" "feedbackd" "video" ];
+      openssh.authorizedKeys.keyFiles =
+        [ "${keyspath}/id_ed25519.pub" "${keyspath}/id_server_ed25519.pub" ];
+    };
   };
 
   security.sudo = {

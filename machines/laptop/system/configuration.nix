@@ -1,5 +1,7 @@
 { laptop, ... }:
-with laptop; let keyspath = ./../../../keys; in {
+with laptop;
+let keyspath = ./../../../keys;
+in {
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -33,24 +35,23 @@ with laptop; let keyspath = ./../../../keys; in {
 
   secrix.defaultEncryptKeys.${username} =
     [ (builtins.readFile "${keyspath}/id_ed25519.pub") ];
-  users.users =
-    let
-      authorized-key-files = [ "${keyspath}/id_ed25519.pub" "${keyspath}/id_server_ed25519.pub" ];
-    in
-    {
-      ${username} = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
-        home = "/home/" + username;
-        description = user-fullname;
-        shell = pkgs.fish;
-        openssh.authorizedKeys.keyFiles = authorized-key-files;
-      };
-      root = {
-        openssh.authorizedKeys.keyFiles = authorized-key-files;
-        shell = pkgs.fish;
-      };
+  users.users = let
+    authorized-key-files =
+      [ "${keyspath}/id_ed25519.pub" "${keyspath}/id_server_ed25519.pub" ];
+  in {
+    ${username} = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
+      home = "/home/" + username;
+      description = user-fullname;
+      shell = pkgs.fish;
+      openssh.authorizedKeys.keyFiles = authorized-key-files;
     };
+    root = {
+      openssh.authorizedKeys.keyFiles = authorized-key-files;
+      shell = pkgs.fish;
+    };
+  };
 
   environment = {
     variables = {

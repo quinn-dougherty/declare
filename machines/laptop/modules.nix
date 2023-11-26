@@ -2,8 +2,7 @@
 let
   modpath = ./../../modules;
   modpath-system = "${modpath}/system";
-in
-with inputs;
+in with inputs;
 [
   ./system/configuration.nix
   "${modpath-system}/desktops/${laptop.desktop}"

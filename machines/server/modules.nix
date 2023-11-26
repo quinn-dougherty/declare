@@ -1,6 +1,7 @@
 { server, inputs }:
 let modpath = ./../../modules/system;
-in with inputs; [
+in with inputs;
+[
   ./system/configuration.nix
   nixos-hardware.nixosModules.framework-11th-gen-intel
   ./system/hardware-configuration.nix

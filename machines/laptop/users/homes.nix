@@ -1,10 +1,10 @@
-{ laptop, inputs, ... }: with inputs; {
+{ laptop, inputs, ... }:
+with inputs; {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {
-      ${laptop.username} =
-        import ./qd/home.nix { inherit laptop inputs; };
+      ${laptop.username} = import ./qd/home.nix { inherit laptop inputs; };
       root = import ./root/home.nix { inherit laptop; };
     };
   };

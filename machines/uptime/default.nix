@@ -3,12 +3,9 @@ let
   os = lib.nixosSystem {
     system = uptime.system;
     specialArgs = { inherit uptime inputs; };
-    modules = import ./modules.nix {
-      inherit uptime inputs;
-    };
+    modules = import ./modules.nix { inherit uptime inputs; };
   };
-in
-{
+in {
   inherit (inputs) system hostname;
   operatingsystem = os;
   deploymenteffect = { ref }:

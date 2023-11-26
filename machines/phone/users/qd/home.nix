@@ -4,7 +4,8 @@ with phone; {
     home-manager.enable = true;
     firefox.enable = true;
   };
-  imports = let modpath = ./../../../../modules/hm; in [ "${modpath}/git.nix" "${modpath}/vim.nix" ];
+  imports = let modpath = ./../../../../modules/hm;
+  in [ "${modpath}/git.nix" "${modpath}/vim.nix" ];
   home = {
     username = username;
     homeDirectory = "/home/" + username;

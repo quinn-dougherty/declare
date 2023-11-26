@@ -4,6 +4,6 @@ treefmt-nix.lib.evalModule common-machines.pkgs ({ pkgs, ... }: {
   programs = {
     prettier.enable = true;
     stylish-haskell.enable = true;
-    nixpkgs-fmt.enable = true;
+    nixfmt.enable = true;
   };
 })

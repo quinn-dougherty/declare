@@ -1,5 +1,7 @@
 { laptop, inputs, ... }:
-with laptop; let modpath = ./../../../../modules/hm; in {
+with laptop;
+let modpath = ./../../../../modules/hm;
+in {
   programs.smos.enable = true;
   imports = [
     inputs.nix-doom-emacs.hmModule
@@ -11,7 +13,7 @@ with laptop; let modpath = ./../../../../modules/hm; in {
     "${modpath}/ops.nix"
     "${modpath}/direnv.nix"
     inputs.smos.homeManagerModules.${system}.default
-  ]; #  ++ (if desktop == "kde" then [ "${modpath}/desktops/kde/settings.nix" ] else [ ]);
+  ]; # ++ (if desktop == "kde" then [ "${modpath}/desktops/kde/settings.nix" ] else [ ]);
   home = {
     username = username;
     homeDirectory = "/home/" + username;

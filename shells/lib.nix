@@ -23,14 +23,11 @@ let
       builtins.concatMap (x: map (y: if x == y then x else mkDevShell x y) l) l;
     permute3 = l:
       with builtins;
-      concatMap
-        (x:
-          let perms = permute2 (filter (x': x != x') l);
-          in map (y: mkDevShell x y) perms)
-        l;
+      concatMap (x:
+        let perms = permute2 (filter (x': x != x') l);
+        in map (y: mkDevShell x y) perms) l;
   };
-in
-{
+in {
   developersWithPermutations = developers:
     with builtins;
     (listToAttrs developers)

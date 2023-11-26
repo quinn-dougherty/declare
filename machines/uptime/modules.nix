@@ -1,6 +1,7 @@
 { server, inputs }:
 let modpath = ./../../modules/system;
-in with inputs; [
+in with inputs;
+[
   ./system/configuration.nix
   # ./system/hardware-configuration.nix
   secrix.nixosModules.default

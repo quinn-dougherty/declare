@@ -1,21 +1,19 @@
 { inputs }:
-with inputs; let
+with inputs;
+let
   machines = fromTOML (builtins.readFile ./machines.toml);
   server-onprem-tz = "America/Los_Angeles";
   herc-effects-overlays = [ hercules-ci-effects.overlay ];
   drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}";
   qd = "qd";
   admin = "admin";
-in
-{
+in {
   common = machines.common // {
     pkgs = import nixpkgs {
       system = machines.common.system;
       overlays = herc-effects-overlays;
     };
-    pkgs-stable = import nixpkgs-stable {
-      system = machines.common.system;
-    };
+    pkgs-stable = import nixpkgs-stable { system = machines.common.system; };
   };
   laptop = rec {
     hostname = machines.laptop.hostname;
@@ -25,19 +23,15 @@ in
     timezone = machines.common.timezone;
     desktop = machines.laptop.desktop;
     drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
-    overlays =
-      let
-        factorio-overlay = final: prev: {
-          factorio = prev.factorio.override {
-            username = "quinnd";
-            token = "\${FACTORIO_KEY}";
-          };
+    overlays = let
+      factorio-overlay = final: prev: {
+        factorio = prev.factorio.override {
+          username = "quinnd";
+          token = "\${FACTORIO_KEY}";
         };
-        mesa-backwards = final: prev: {
-          mesa = pkgs-stable.mesa;
-        };
-      in
-      [ factorio-overlay ];
+      };
+      mesa-backwards = final: prev: { mesa = pkgs-stable.mesa; };
+    in [ factorio-overlay ];
     config.allowUnfree = true;
     pkgs = import nixpkgs { inherit system overlays config; };
     pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
