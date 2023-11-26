@@ -19,17 +19,5 @@ with inputs;
   "${modpath-system}/crosscompilation.nix"
   "${modpath-system}/openssh.nix"
   "${modpath-system}/il8n.nix"
-  "${modpath-system}/flatpak.nix"
-  #inputs.battlenet.nixosModules.${laptop.system}.default
-  #{ graphics.mesa.enable = true; }
-  #{
-  #  programs.flatpak-lutris = {
-  #    enable = true;
-  #    opengl.enable = true;
-  #    intel.enable = true;
-  #  };
-  #}
-  # Testing/learning
-  # "${modpath}/nextcloud"
-  # "${modpath}/slurm.nix"
+  # "${modpath-system}/flatpak.nix"
 ] ++ import "${modpath}/common.nix"

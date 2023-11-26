@@ -3,10 +3,9 @@
 {
   services.xserver.displayManager.lightdm = {
     enable = true;
-    greeters.slick = {
+    greeters.gtk = {
       enable = true;
       theme.name = "Adwaita-dark";
-      font.name = "Monospace";
     };
   };
 }

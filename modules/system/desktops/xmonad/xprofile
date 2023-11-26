@@ -1,3 +1,4 @@
 # picom &
 xcompmgr -cn &
 feh --bg-fill -z /home/qd/projects/declare/modules/system/desktops/backgrounds/*
+autorandr december-andromeda
