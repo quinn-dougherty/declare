@@ -8,7 +8,7 @@
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
     nixpkgs-2305.url = "nixpkgs/nixos-23.05";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    nix-master.url = "github:nixos/nix";
+    nix-latest.url = "github:nixos/nix/latest-release";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +39,7 @@
   };
 
   outputs = { self, nixpkgs-master, nixpkgs, nixos, nixpkgs-stable, nixpkgs-2305
-    , nixos-hardware, nix-master, home-manager, mobile-nixos, nix-doom-emacs
+    , nixos-hardware, nix-latest, home-manager, mobile-nixos, nix-doom-emacs
     , battlenet, secrix, treefmt-nix, smos, hercules-ci-agent
     , hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
