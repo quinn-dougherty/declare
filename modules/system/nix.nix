@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   nix = {
@@ -13,6 +13,6 @@
       options = "--delete-older-than 111d";
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    package = inputs.nix.packages.default;
+    package = inputs.nix-master.packages.${pkgs.system}.default;
   };
 }

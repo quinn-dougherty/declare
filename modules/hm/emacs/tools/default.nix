@@ -10,5 +10,5 @@
     ./markup.nix
     ./ops.nix
   ];
-  home.packages = with pkgs; [ nixpgks-fmt ];
+  home.packages = with pkgs; [ nixpkgs-fmt ];
 }
