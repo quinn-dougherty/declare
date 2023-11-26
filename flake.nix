@@ -8,6 +8,7 @@
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
     nixpkgs-2305.url = "nixpkgs/nixos-23.05";
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    nix-master.url = "github:nixos/nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +43,7 @@
     , nixpkgs-stable
     , nixpkgs-2305
     , nixos-hardware
+    , nix-master
     , home-manager
     , mobile-nixos
     , nix-doom-emacs

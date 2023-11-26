@@ -14,5 +14,7 @@
     onionshare
     minicom
     age
+
+    tmate
   ];
 }

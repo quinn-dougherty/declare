@@ -13,5 +13,6 @@
       options = "--delete-older-than 111d";
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    package = inputs.nix.packages.default;
   };
 }
