@@ -32,42 +32,35 @@
     };
     smos.url = "github:NorfairKing/smos";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hercules-ci-effects = {
+      url = "github:hercules-ci/hercules-ci-effects";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    { self
-    , nixpkgs-master
-    , nixpkgs
-    , nixos
-    , nixpkgs-stable
-    , nixpkgs-2305
-    , nixos-hardware
-    , nix-master
-    , home-manager
-    , mobile-nixos
-    , nix-doom-emacs
-    , battlenet
-    , secrix
-    , treefmt-nix
-    , smos
-    , hercules-ci-agent
-    , hercules-ci-effects
-    }@inputs: with import ./machines { inherit inputs; };
+  outputs = { self, nixpkgs-master, nixpkgs, nixos, nixpkgs-stable, nixpkgs-2305
+    , nixos-hardware, nix-master, home-manager, mobile-nixos, nix-doom-emacs
+    , battlenet, secrix, treefmt-nix, smos, hercules-ci-agent
+    , hercules-ci-effects }@inputs:
+    with import ./machines { inherit inputs; };
     let
-      website = with common-machines; import ./modules/website/soupault.nix { inherit pkgs self; };
-      flk-common = let machines = { inherit laptop server phone ubuntu common-machines; }; in import ./common {
-        inherit self machines treefmt-nix;
-        server-deploy = server.deploymenteffect;
-      };
+      website = with common-machines;
+        import ./modules/website/soupault.nix { inherit pkgs self; };
+      flk-common =
+        let machines = { inherit laptop server phone ubuntu common-machines; };
+        in import ./common {
+          inherit self machines treefmt-nix;
+          server-deploy = server.deploymenteffect;
+        };
       immobiles = [ laptop server ];
       mobiles = [ phone ];
       others = [ ubuntu ];
-    in
-    with flk-common; {
+    in with flk-common; {
       nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
       homeConfigurations = commonlib.hmForAll others;
-      packages.${common-machines.system} = { inherit website; } // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
+      packages.${common-machines.system} = {
+        inherit website;
+      } // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
       devShells.${laptop.system} = {
         "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
       } // (with common-machines;
