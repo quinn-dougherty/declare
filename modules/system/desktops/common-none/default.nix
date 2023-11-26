@@ -1,14 +1,14 @@
 { config, lib, pkgs, ... }: {
-  imports = [ ./../picom.nix ];
-  services = {
-    xserver = {
-      #  videoDrivers = [ "intel" "modesetting" "fbdev" ];
-      deviceSection = ''
-        Option "DRI" "2"
-        Option "TearFree" "true"
-      '';
-    };
-  };
+  # imports = [ ./../picom.nix ];
+  #services = {
+  #  xserver = {
+  #    #  videoDrivers = [ "intel" "modesetting" "fbdev" ];
+  #    deviceSection = ''
+  #      Option "DRI" "2"
+  #      Option "TearFree" "true"
+  #    '';
+  #  };
+  #};
   environment.systemPackages = with pkgs; [
     arandr
     dmenu
