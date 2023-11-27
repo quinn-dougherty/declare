@@ -4,7 +4,7 @@ let
     value = machine.operatingsystem;
   };
   hmFor = machine: {
-    name = machine.hostname;
+    name = "${machine.username}@${machine.hostname}";
     value = machine.homemanager;
   };
   packageFromX86 = machine: {

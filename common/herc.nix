@@ -24,7 +24,7 @@ let
         website = packages.website;
       };
 
-    "${ubuntu.username}@${ubuntu.hostname}:hm".outputs.homeConfig =
+    "${ubuntu.username}@${ubuntu.hostname}:hm".outputs.homeConfiguration =
       self.homeConfigurations.${ubuntu.hostname}.activationPackage;
 
     developers.outputs = self.devShells.${common-machines.system};
