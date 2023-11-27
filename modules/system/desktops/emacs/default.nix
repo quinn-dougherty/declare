@@ -16,5 +16,5 @@
       '';
     };
   };
-  imports = [ ./../common-none ];
+  imports = [ ./../common-none.nix ];
 }
