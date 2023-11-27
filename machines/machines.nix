@@ -61,9 +61,9 @@ in {
         seahub = nps.seahub;
       })
     ];
-    pkgs = import nixpkgs {
+    pkgs = import nixpkgs-seafile {
       inherit system;
-      overlays = overlays;
+      overlays = herc-effects-overlays;
     };
   };
   ubuntu = rec {
