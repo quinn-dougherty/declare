@@ -8,12 +8,12 @@
       hostName = "127.0.0.1";
       https = true;
       config = {
-        dbtype = "pgsql";
+        # dbtype = "pgsql";
         adminuser = "qd-admin";
         adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
       };
       configureRedis = true;
-      database.createLocally = true;
+      # database.createLocally = true;
     };
     nginx.virtualHosts."sync.quinn-dougherty.com" =
       { # ${config.services.nextcloud.hostName} = {
