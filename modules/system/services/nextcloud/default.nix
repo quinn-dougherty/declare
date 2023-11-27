@@ -18,7 +18,7 @@
     nginx.virtualHosts."sync.quinn-dougherty.com" =
       { # ${config.services.nextcloud.hostName} = {
         locations."/".proxyPass = "http://127.0.0.1:8187";
-        forceSSL = true;
+        # forceSSL = true;
         enableACME = true;
       };
   };
