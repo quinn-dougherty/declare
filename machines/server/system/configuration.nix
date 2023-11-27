@@ -27,6 +27,7 @@
   time.timeZone = server.timezone;
 
   services = {
+    logrotate.enable = true;
     fwupd.enable = true;
     printing.enable = true;
     getty.autologinUser = server.username;

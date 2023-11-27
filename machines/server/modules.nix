@@ -1,5 +1,6 @@
 { server, inputs }:
 let
+  website = "${inputs.self}/modules/website";
   modpath = "${inputs.self}/modules/system";
   servpath = "${modpath}/services";
 in with inputs;
@@ -17,6 +18,6 @@ in with inputs;
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
   "${servpath}/nextcloud"
-  ./../../modules/website
+  website
   # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks.
 ] ++ import "${inputs.self}/modules/common.nix"
