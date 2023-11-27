@@ -18,6 +18,7 @@ in with inputs;
   {
     services.nginx.enable = true;
     networking.firewall.enable = true;
+    security.acme.acceptTerms = true;
   }
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
