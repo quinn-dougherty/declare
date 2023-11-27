@@ -11,12 +11,10 @@
 
     # Only allow PFS-enabled ciphers with AES256
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
-    virtualHosts = let
-      hostConfig = {
-        forceSSL = true;
-        enableACME = true;
-      };
-    in { "sync.quinn-dougherty.com" = hostConfig; };
+    virtualHosts."sync.quinn-dougherty.com" = {
+      forceSSL = true;
+      enableACME = true;
+    };
   };
   security.acme = {
     acceptTerms = true;

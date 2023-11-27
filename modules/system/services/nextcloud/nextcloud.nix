@@ -1,11 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
-  imports = [ ./../secrets ];
+  imports = [ "${inputs.self}/secrets" ./db.nix ];
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27; # follow migration instructions online
-    hostName = "sync.quinn-dougherty.com"; # "sync.quinn-dougherty.com";
+    hostName = "127.0.0.1"; # "sync.quinn-dougherty.com";
 
     # Let NixOS install and configure Redis caching automatically.
     configureRedis = true;

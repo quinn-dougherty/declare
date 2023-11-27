@@ -16,7 +16,7 @@ in with inputs;
   "${modpath}/allowUnfree.nix"
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
-  "${servpath}/nextcloud.nix"
+  "${servpath}/nextcloud"
   ./../../modules/website
   # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks.
 ] ++ import "${inputs.self}/modules/common.nix"
