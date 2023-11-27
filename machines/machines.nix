@@ -61,7 +61,7 @@ in {
         seahub = nps.seahub;
       })
     ];
-    pkgs = import nixpkgs-seafile {
+    pkgs = import nixpkgs {
       inherit system;
       overlays = herc-effects-overlays;
     };

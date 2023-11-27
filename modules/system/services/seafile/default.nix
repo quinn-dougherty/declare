@@ -1,9 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ inputs, server, config, lib, pkgs, ... }:
 
 {
   services = {
     seafile = {
       enable = true;
+      seafilePackage =
+        inputs.nixpkgs-seafile.legacyPackages.${server.system}.seafile-server;
       adminEmail = "quinnd@riseup.net";
       initialAdminPassword = "test123";
       ccnetSettings = {
