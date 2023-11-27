@@ -14,10 +14,8 @@
       configureRedis = true;
       database.createLocally = true;
     };
-    nginx.virtualHosts.${config.services.nextcloud.hostName} = {
-      locations."/".proxyPass = "http://127.0.0.1:8080";
-      # forceSSL = true;
-      # enableACME = true;
-    };
+    nginx.virtualHosts.${config.services.nextcloud.hostName}.locations."/".proxyPass =
+      "http://127.0.0.1:80";
   };
+  networking.firewall.allowedTCPPorts = [ 8080 80 ];
 }

@@ -1,10 +1,7 @@
 { server, ... }:
 
 {
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 80 443 8096 8920 ];
-  };
+  networking.firewall.allowedTCPPorts = [ 8096 8920 ];
   services = {
     nginx = {
       enable = true;
