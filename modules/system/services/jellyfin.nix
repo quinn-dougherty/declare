@@ -1,10 +1,10 @@
 { server, ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [ 8096 8920 ];
+  # networking.firewall.allowedTCPPorts = [ 8096 8920 ];
   services = {
     nginx = {
-      enable = true;
+      # enable = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
@@ -18,7 +18,8 @@
     };
     jellyfin = {
       enable = true;
-      user = server.username;
+      user = "qd-${server.username}";
+      openFirewall = true;
     };
     jellyseerr.enable = true;
   };

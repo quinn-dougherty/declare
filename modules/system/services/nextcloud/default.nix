@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.etc."nextcloud-admin-pass".text = "test123";
   services = {
     nextcloud = {
       enable = true;
@@ -9,12 +8,12 @@
       hostName = "sync.quinn-dougherty.com";
       https = true;
       config = {
-        # dbtype = "pgsql";
+        dbtype = "pgsql";
         adminuser = "qd-admin";
-        adminpassFile = "/etc/nextcloud-admin-pass";
+        adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
       };
       configureRedis = true;
-      # database.createLocally = true;
+      database.createLocally = true;
     };
   };
   networking.firewall.allowedTCPPorts = [ 8080 80 8187 ];

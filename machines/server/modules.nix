@@ -24,5 +24,5 @@ in with inputs;
   "${servpath}/jellyfin.nix"
   "${servpath}/nextcloud"
   website
-  # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks.
+  "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks.
 ] ++ import "${inputs.self}/modules/common.nix"
