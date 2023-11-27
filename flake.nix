@@ -29,6 +29,7 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-seafile.url = "github:greizgh/nixpkgs/seafile-10";
     smos.url = "github:NorfairKing/smos";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
     hercules-ci-effects = {
@@ -39,7 +40,7 @@
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
     , nixos-hardware, nix-latest, home-manager, mobile-nixos, nix-doom-emacs
-    , battlenet, secrix, treefmt-nix, smos, hercules-ci-agent
+    , battlenet, secrix, treefmt-nix, nixpkgs-seafile, smos, hercules-ci-agent
     , hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let

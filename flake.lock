@@ -1004,6 +1004,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-seafile": {
+      "locked": {
+        "lastModified": 1700303967,
+        "narHash": "sha256-snBkmrF1cyzhvBZPZaKEibWL6XASPSmBVd/2pXC+Pms=",
+        "owner": "greizgh",
+        "repo": "nixpkgs",
+        "rev": "a312393f1432d5b39a7215ef8d847c13c007ede3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "greizgh",
+        "ref": "seafile-10",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1700403855,
@@ -1385,6 +1401,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-2305": "nixpkgs-2305",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-seafile": "nixpkgs-seafile",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "secrix": "secrix",
         "smos": "smos",
