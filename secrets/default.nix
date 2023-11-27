@@ -9,7 +9,9 @@
     nextcloud.secrets = {
       "nextcloud-db-pass".encrypted.file = ./nextcloud-db-pass.age;
     };
-    nix-serve.secrets."cache-qd-priv-key.pem".encrypted.file =
-      ./cache-qd-priv-key.pem.age;
+    nix-serve.secrets."cache-qd-priv-key.pem" = {
+      encrypted.file = ./cache-qd-priv-key.pem.age;
+      decrypted.permissions = "600";
+    };
   };
 }

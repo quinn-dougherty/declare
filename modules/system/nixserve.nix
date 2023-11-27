@@ -4,7 +4,7 @@
   services = {
     nix-serve = {
       enable = true;
-      secretKeyFile = "/run/nix-serve-keys/cache-qdpriv-key.pem";
+      secretKeyFile = "/run/nix-serve-keys/cache-qd-priv-key.pem";
     };
     nginx = {
       enable = true;
