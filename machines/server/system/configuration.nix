@@ -28,7 +28,10 @@
 
   services = {
     logrotate.enable = true;
-    fwupd.enable = true;
+    fwupd = {
+      enable = true;
+      uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
+    };
     printing.enable = true;
     getty.autologinUser = server.username;
   };

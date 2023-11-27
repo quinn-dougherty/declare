@@ -28,7 +28,7 @@
       dbuser = "nextcloud";
       # dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbname = "nextcloud";
-      dbpassFile = "${pkgs.writeText "adminpass"
+      dbpassFile = "${pkgs.writeText "dbpass"
         "test123"}"; # "/run/nextcloud-keys/nextcloud-db-pass";
 
       adminpassFile = "${pkgs.writeText "adminpass"
