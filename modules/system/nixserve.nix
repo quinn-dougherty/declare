@@ -27,4 +27,8 @@
       isSystemUser = true;
     };
   };
+  security.acme = {
+    acceptTerms = true;
+    certs."bincache.quinn-dougherty.com".email = "quinnd@riseup.net";
+  };
 }
