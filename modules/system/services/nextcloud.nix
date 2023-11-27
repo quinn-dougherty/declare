@@ -1,14 +1,39 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
+  imports = [ "${inputs.self}/secrets" ];
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud27;
+    package = pkgs.nextcloud27; # follow migration instructions online
+    hostName = "sync.quinn-dougherty.com";
+
+    # Let NixOS install and configure Redis caching automatically.
     configureRedis = true;
-    hostName = "127.0.0.1";
+
+    # Increase the maximum file upload size to avoid problems uploading videos.
+    maxUploadSize = "16G";
+    https = true;
+
+    autoUpdateApps.enable = true;
+    extraAppsEnable = true;
+    # extraApps = with config.services.nextcloud.package.packages.apps; {
+    #   inherit notes polls tasks calendar twofactor_webauthn bookmarks;
+    # };
     config = {
-      adminuser = "qd-admin";
-      adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
+      # Further forces Nextcloud to use HTTPS
+      overwriteProtocol = "https";
+
+      # Nextcloud PostegreSQL database configuration, recommended over using SQLite
+      dbtype = "pgsql";
+      dbuser = "nextcloud";
+      # dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
+      dbname = "nextcloud";
+      dbpassFile = "${pkgs.writeText "dbpass"
+        "test123"}"; # "/run/nextcloud-keys/nextcloud-db-pass";
+
+      adminpassFile = "${pkgs.writeText "adminpass"
+        "test123"}"; # "/var/nextcloud-admin-pass";
+      adminuser = "admin";
     };
   };
 }
