@@ -5,7 +5,7 @@
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud27;
-      hostName = "127.0.0.1";
+      hostName = "127.0.0.1:8187";
       https = true;
       config = {
         # dbtype = "pgsql";
@@ -17,11 +17,11 @@
     };
     nginx.virtualHosts."sync.quinn-dougherty.com" =
       { # ${config.services.nextcloud.hostName} = {
-        locations."/".proxyPass = "http://127.0.0.1:8080";
+        locations."/".proxyPass = "http://127.0.0.1:8187";
         forceSSL = true;
         enableACME = true;
       };
   };
   security.acme.certs."sync.quinn-dougherty.com".email = "quinnd@riseup.net";
-  networking.firewall.allowedTCPPorts = [ 8080 80 ];
+  networking.firewall.allowedTCPPorts = [ 8080 80 8187 ];
 }
