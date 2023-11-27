@@ -11,7 +11,7 @@
     };
     nix-serve.secrets."cache-qd-priv-key.pem" = {
       encrypted.file = ./cache-qd-priv-key.pem.age;
-      decrypted.permissions = "600";
+      decrypted.mode = "0600";
     };
   };
 }
