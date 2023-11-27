@@ -29,6 +29,9 @@
   };
   security.acme = {
     acceptTerms = true;
-    certs."bincache.quinn-dougherty.com".email = "quinnd@riseup.net";
+    certs."bincache.quinn-dougherty.com" = {
+      dnsProvider = "route53";
+      email = "quinnd@riseup.net";
+    };
   };
 }
