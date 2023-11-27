@@ -4,8 +4,9 @@
   services = {
     nextcloud = {
       enable = true;
+      nginx.enable = true;
       package = pkgs.nextcloud27;
-      hostName = "127.0.0.1:8187";
+      hostName = "sync.quinn-dougherty.com";
       https = true;
       config = {
         # dbtype = "pgsql";
@@ -15,13 +16,13 @@
       configureRedis = true;
       # database.createLocally = true;
     };
-    nginx.virtualHosts."sync.quinn-dougherty.com" =
-      { # ${config.services.nextcloud.hostName} = {
-        locations."/".proxyPass = "http://127.0.0.1:8187";
-        # forceSSL = true;
-        enableACME = true;
-      };
+    #nginx.virtualHosts."sync.quinn-dougherty.com" =
+    #  { # ${config.services.nextcloud.hostName} = {
+    #    locations."/".proxyPass = "http://127.0.0.1:8187";
+    #    # forceSSL = true;
+    #    enableACME = true;
+    #  };
   };
-  security.acme.certs."sync.quinn-dougherty.com".email = "quinnd@riseup.net";
+  # security.acme.certs."sync.quinn-dougherty.com".email = "quinnd@riseup.net";
   networking.firewall.allowedTCPPorts = [ 8080 80 8187 ];
 }
