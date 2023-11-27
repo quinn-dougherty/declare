@@ -5,12 +5,18 @@
     sqlite
 
     # dropbox-cli
+    # Browsers
     firefox
     brave
     nyxt
     lynx
     tor-browser-bundle-bin
     tor
+
+    # Bitwarden
+    bitwarden
+    bitwarden-cli
+    bitwarden-menu
 
     # Media apps and stuff
     obsidian

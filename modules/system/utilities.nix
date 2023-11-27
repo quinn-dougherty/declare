@@ -16,8 +16,5 @@
     ncdu
     tree
     nix-tree
-    bitwarden
-    bitwarden-cli
-    bitwarden-menu
   ];
 }
