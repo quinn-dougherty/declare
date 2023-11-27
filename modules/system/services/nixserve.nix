@@ -7,7 +7,6 @@
       secretKeyFile = "/run/nix-serve-keys/cache-qd-priv-key.pem";
     };
     nginx = {
-      enable = true;
       recommendedProxySettings = true;
       virtualHosts."bincache.quinn-dougherty.com" = {
         locations."/".proxyPass =

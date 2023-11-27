@@ -15,6 +15,7 @@ in with inputs;
   # "${modpath}/slurm.nix"
   "${modpath}/desktops/il8n.nix"
   "${modpath}/allowUnfree.nix"
+  { services.nginx.enable = true; }
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
   "${servpath}/nextcloud"
