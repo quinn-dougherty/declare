@@ -13,11 +13,11 @@
 
   networking = {
     hostName = server.hostname;
-    wireless = {
-      enable = true;
-      networks."Andromeda".pskRaw =
-        "2cf19bae44e4982c910947e054825495a8c52220307e75bb9604f0e2db4d8ec7";
-    };
+    # wireless = {
+    #   enable = true;
+    #   networks."Andromeda".pskRaw =
+    #     "2cf19bae44e4982c910947e054825495a8c52220307e75bb9604f0e2db4d8ec7";
+    # };
     interfaces.wlp170s0.useDHCP = true;
     # interfaces.wlp170s0.ipv4.addresses = [{
     #  address = server.static4;
