@@ -20,4 +20,11 @@
       };
     };
   };
+  users = {
+    groups.nix-serve = { };
+    users.nix-serve = {
+      group = "nix-serve";
+      isSystemUser = true;
+    };
+  };
 }
