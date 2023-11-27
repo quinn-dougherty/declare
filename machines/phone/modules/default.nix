@@ -1,7 +1,5 @@
 { lib, phone, inputs }:
-with inputs;
-let modpath = ./../../../modules/system;
-in [
+with inputs; [
   ./../system/mobile.nix
   ./../system/configuration.nix
   ./../system/hardware-configuration.nix
@@ -10,8 +8,6 @@ in [
   home-manager.nixosModules.home-manager
   ./plasma.nix
   # ./qt.nix
-  "${modpath}/manyterms.nix"
-  "${modpath}/openssh.nix"
-  "${modpath}/nix.nix"
+  "${inputs.self}/modules/system/manyterms.nix"
   ./hm.nix
 ]

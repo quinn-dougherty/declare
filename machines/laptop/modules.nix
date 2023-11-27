@@ -1,6 +1,6 @@
 { laptop, inputs }:
 let
-  modpath = ./../../modules;
+  modpath = "${inputs.self}/modules";
   modpath-system = "${modpath}/system";
 in with inputs;
 [
@@ -12,11 +12,10 @@ in with inputs;
   home-manager.nixosModules.home-manager
   ./users/homes.nix
   "${modpath-system}/manyterms.nix"
-  "${modpath-system}/fonts.nix"
-  "${modpath-system}/audio.nix"
+  "${modpath-system}/desktops/fonts.nix"
+  "${modpath-system}/desktops/audio.nix"
   "${modpath-system}/bluetooth.nix"
   "${modpath-system}/crosscompilation.nix"
-  "${modpath-system}/openssh.nix"
-  "${modpath-system}/il8n.nix"
-  # "${modpath-system}/flatpak.nix"
+  "${modpath-system}/desktops/il8n.nix"
+  "${modpath-system}/services/flatpak.nix"
 ] ++ import "${modpath}/common.nix"

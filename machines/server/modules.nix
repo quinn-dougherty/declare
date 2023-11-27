@@ -1,5 +1,7 @@
 { server, inputs }:
-let modpath = ./../../modules/system;
+let
+  modpath = "${inputs.self}/modules/system";
+  servpath = "${modpath}/services";
 in with inputs;
 [
   ./system/configuration.nix
@@ -7,14 +9,14 @@ in with inputs;
   ./system/hardware-configuration.nix
   secrix.nixosModules.default
   hercules-ci-agent.nixosModules.agent-service
-  "${modpath}/hercules.nix"
+  "${servpath}/hercules.nix"
   "${modpath}/crosscompilation.nix"
   # "${modpath}/slurm.nix"
-  "${modpath}/il8n.nix"
+  "${modpath}/desktops/il8n.nix"
   "${modpath}/allowUnfree.nix"
-  "${modpath}/nixserve.nix"
-  "${modpath}/jellyfin.nix"
-  "${modpath}/nextcloud.nix"
+  "${servpath}/nixserve.nix"
+  "${servpath}/jellyfin.nix"
+  "${servpath}/nextcloud.nix"
   ./../../modules/website
   # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks.
-] ++ import ./../../modules/common.nix
+] ++ import "${inputs.self}/modules/common.nix"

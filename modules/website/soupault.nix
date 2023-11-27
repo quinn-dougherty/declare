@@ -3,7 +3,7 @@
 pkgs.stdenv.mkDerivation {
   name = "quinn-dougherty.com-soupault";
   src = "${self}/website";
-  buildInputs = [ pkgs.soupault pkgs.pandoc ];
+  buildInputs = with pkgs; [ soupault pandoc ];
   buildPhase = "soupault";
   installPhase = ''
     mkdir -p $out

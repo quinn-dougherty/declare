@@ -1,10 +1,11 @@
 [
+  ./system/services/openssh.nix
   ./system/wirelessregdom.nix
   ./system/substituters
   ./system/nix.nix
   ./system/audit.nix
   ./system/observability.nix
-  ./system/ivpn.nix
+  ./system/services/ivpn.nix
   ./system/devops.nix
   ./system/utilities.nix
 ]
