@@ -4,7 +4,6 @@
   services = {
     nextcloud = {
       enable = true;
-      nginx.enable = true;
       package = pkgs.nextcloud27;
       hostName = "sync.quinn-dougherty.com";
       https = true;
