@@ -18,7 +18,7 @@
     };
     jellyfin = {
       enable = true;
-      user = "qd-${server.username}";
+      user = server.username; # "qd-${server.username}";
       openFirewall = true;
     };
     jellyseerr.enable = true;
