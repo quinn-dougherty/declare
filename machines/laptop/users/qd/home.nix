@@ -2,7 +2,10 @@
 with laptop;
 let modpath = "${inputs.self}/modules/hm";
 in {
-  programs.smos.enable = true;
+  programs = {
+    smos.enable = true;
+    firefox.enable = true;
+  };
   imports = [
     inputs.nix-doom-emacs.hmModule
     "${modpath}/emacs"

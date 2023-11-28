@@ -4,14 +4,13 @@
     nextcloud-client
     sqlite
 
-    # dropbox-cli
-    # Browsers
-    firefox
+    # Browsers # firefox comes with fresh installations, so is omitted.
     brave
     nyxt
     lynx
     tor-browser-bundle-bin
     tor
+    opera
 
     # Bitwarden
     bitwarden
