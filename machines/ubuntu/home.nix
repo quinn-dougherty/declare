@@ -17,5 +17,16 @@ home-manager.lib.homeManagerConfiguration {
         stateVersion = "23.11";
       };
     }
+    {
+      targets.genericLinux.enable = true;
+      home.activation = {
+        linkDesktopApplications = {
+          after = [ "writeBoundary" "createXdgUserDirectories" ];
+          before = [ ];
+          data =
+            "/usr/bin/sudo /usr/bin/chmod -R 777 $HOME/.nix-profile/share/applications && /usr/bin/update-desktop-database $HOME/.nix-profile/share/applications";
+        };
+      };
+    }
   ];
 }
