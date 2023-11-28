@@ -9,6 +9,7 @@ home-manager.lib.homeManagerConfiguration {
     "${modpath}/ops.nix"
     "${modpath}/comms.nix"
     "${modpath}/direnv.nix"
+    ./desktop.nix
     {
       programs.home-manager.enable = true;
       home = {
@@ -20,12 +21,12 @@ home-manager.lib.homeManagerConfiguration {
     {
       targets.genericLinux.enable = true;
       xdg.mime.enable = true;
-      programs.bash = {
-        enable = true;
-        profileExtra = ''
-          export XDG_DATA_DIRS=$HOME/.home-manager-share:$XDG_DATA_DIRS
-        '';
-      };
+      #programs.bash = {
+      #  enable = true;
+      #  profileExtra = ''
+      #    export XDG_DATA_DIRS=$HOME/.home-manager-share:$XDG_DATA_DIRS
+      #  '';
+      #};
 
       home.activation = {
         linkDesktopApplications = {
