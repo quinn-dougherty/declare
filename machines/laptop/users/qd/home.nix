@@ -1,6 +1,6 @@
 { laptop, inputs, ... }:
 with laptop;
-let modpath = ./../../../../modules/hm;
+let modpath = "${inputs.self}/modules/hm";
 in {
   programs.smos.enable = true;
   imports = [

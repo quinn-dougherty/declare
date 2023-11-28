@@ -25,7 +25,7 @@ let
       };
 
     "${ubuntu.username}@${ubuntu.hostname}:hm".outputs.homeConfiguration =
-      self.homeConfigurations.${ubuntu.hostname}.activationPackage;
+      self.homeConfigurations."${ubuntu.username}@${ubuntu.hostname}".activationPackage;
 
     developers.outputs = self.devShells.${common-machines.system};
 

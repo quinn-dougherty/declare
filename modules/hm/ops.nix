@@ -29,6 +29,7 @@
     obs-studio
     vlc
     # cli infra
+    ix
     ffmpeg
     djvu2pdf
     youtube-dl
