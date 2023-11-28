@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./../greeter.nix ];
+  imports = [ ./../greeter.nix ./../common-none.nix ];
   services.xserver = {
     enable = true;
     windowManager.exwm = {
@@ -16,5 +16,4 @@
       '';
     };
   };
-  imports = [ ./../common-none.nix ];
 }

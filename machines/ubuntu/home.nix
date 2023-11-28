@@ -2,43 +2,41 @@
 with ubuntu;
 home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
-  modules = let modpath = ./../../modules/hm;
+  modules = let
+    modpath = ./../../modules/hm;
+    homeDirectory = "/home/${username}";
   in [
     "${modpath}/git.nix"
     "${modpath}/vim.nix"
     "${modpath}/ops.nix"
     "${modpath}/comms.nix"
     "${modpath}/direnv.nix"
-    ./desktop.nix
     {
       programs.home-manager.enable = true;
       home = {
+        inherit homeDirectory;
         username = username;
-        homeDirectory = "/home/${username}";
         stateVersion = "23.11";
       };
     }
     {
       targets.genericLinux.enable = true;
-      xdg.mime.enable = true;
-      #programs.bash = {
-      #  enable = true;
-      #  profileExtra = ''
-      #    export XDG_DATA_DIRS=$HOME/.home-manager-share:$XDG_DATA_DIRS
-      #  '';
-      #};
-
-      home.activation = {
-        linkDesktopApplications = {
-          after = [ "writeBoundary" "createXdgUserDirectories" ];
-          before = [ ];
-          data = ''
-            rm -rf $HOME/.home-manager-share
-            mkdir -p $HOME/.home-manager-share
-            cp -Lr --no-preserve=mode,ownership /home/${username}/.nix-profile/share/* $HOME/.home-manager-share
-          '';
-        };
+      xdg = {
+        mime.enable = true;
+        systemDirs.data =
+          [ "${homeDirectory}/.nix-profile/share/applications" ];
       };
+      #home.activation = {
+      #  linkDesktopApplications = {
+      #    after = [ "writeBoundary" "createXdgUserDirectories" ];
+      #    before = [ ];
+      #    data = ''
+      #      rm -rf $HOME/.home-manager-share
+      #      mkdir -p $HOME/.home-manager-share
+      #      cp -Lr --no-preserve=mode,ownership ${homeDirectory}/.nix-profile/share/* $HOME/.home-manager-share
+      #    '';
+      #  };
+      #};
     }
     { programs.fish.enable = true; }
   ];
