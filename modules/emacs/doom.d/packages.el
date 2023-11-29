@@ -59,6 +59,7 @@
 (package! org-sync)
 (package! org-sync-snippets)
 (package! org-modern)
+(package! org-mime)
 ; (use-package! org-modern
 ;   :hook (org-mode . global-org-modern-mode)
 ;  :config

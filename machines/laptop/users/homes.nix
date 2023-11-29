@@ -1,4 +1,4 @@
-{ laptop, inputs, config, ... }:
+{ laptop, inputs, config, pkgs, ... }:
 with inputs; {
   home-manager = {
     useGlobalPkgs = true;
@@ -7,8 +7,8 @@ with inputs; {
     in { inherit laptop inputs secrets; };
     users = {
       ${laptop.username} =
-        import ./qd/home.nix { inherit laptop inputs secrets; };
-      root = import ./root/home.nix { inherit laptop; };
+        import ./qd/home.nix; # { inherit laptop inputs secrets; };
+      root = import ./root/home.nix; # { inherit laptop; };
     };
   };
 }
