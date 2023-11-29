@@ -12,6 +12,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-generators.url = "github:nix-community/nixos-generators";
     secrix.url = "github:Platonic-Systems/secrix";
     mobile-nixos = {
       url = "github:nixos/mobile-nixos";
@@ -39,9 +40,9 @@
   };
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
-    , nixos-hardware, nix-latest, home-manager, mobile-nixos, nix-doom-emacs
-    , battlenet, secrix, treefmt-nix, nixpkgs-seafile, smos, hercules-ci-agent
-    , hercules-ci-effects }@inputs:
+    , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
+    , mobile-nixos, nix-doom-emacs, battlenet, treefmt-nix, nixpkgs-seafile
+    , smos, hercules-ci-agent, hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let
       website = with common-machines;

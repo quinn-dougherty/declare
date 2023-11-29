@@ -1,6 +1,11 @@
 { inputs, config, lib, pkgs, ... }:
 
 {
+  boot.plymouth = {
+    enable = true;
+    # logo = "${inputs.self}/website/site/assets/wizard.png";
+    theme = "breeze";
+  };
   services.xserver.displayManager.lightdm = {
     enable = true;
     greeters.gtk = {
