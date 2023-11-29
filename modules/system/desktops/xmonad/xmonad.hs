@@ -15,7 +15,7 @@ import           XMonad.Hooks.ManageDocks
 import           XMonad.Util.EZConfig      (additionalKeys)
 import           XMonad.Util.Run           (spawnPipe)
 
-terminalEmulator = "xfce4-terminal"
+terminalEmulator = "konsole"
 xmobarFGColor = "yellow"
 unfocusedWindowOpacity = 0.7
 

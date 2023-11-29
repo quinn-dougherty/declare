@@ -34,8 +34,11 @@ with phone; {
       # DON'T leave this empty: not all greeters support passwordless users.
       initialPassword = "9999";
       extraGroups = [ "wheel" "networkmanager" "dialout" "feedbackd" "video" ];
-      openssh.authorizedKeys.keyFiles =
-        [ "${keyspath}/id_ed25519.pub" "${keyspath}/id_server_ed25519.pub" ];
+      openssh.authorizedKeys.keyFiles = [
+        "${keyspath}/id_ed25519.pub"
+        "${keyspath}/id_server_ed25519.pub"
+        "${keyspath}/id_qd_ed25519.pub"
+      ];
     };
   };
 

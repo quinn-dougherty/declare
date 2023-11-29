@@ -33,11 +33,16 @@ in {
 
   services = import ./services.nix { inherit pkgs; };
 
-  secrix.defaultEncryptKeys.${username} =
-    [ (builtins.readFile "${keyspath}/id_ed25519.pub") ];
+  secrix.defaultEncryptKeys.${username} = [
+    (builtins.readFile "${keyspath}/id_ed25519.pub")
+    (builtins.readFile "${keyspath}/id_qd_ed25519.pub")
+  ];
   users.users = let
-    authorized-key-files =
-      [ "${keyspath}/id_ed25519.pub" "${keyspath}/id_server_ed25519.pub" ];
+    authorized-key-files = [
+      "${keyspath}/id_ed25519.pub"
+      "${keyspath}/id_server_ed25519.pub"
+      "${keyspath}/id_qd_ed25519.pub"
+    ];
   in {
     ${username} = {
       isNormalUser = true;

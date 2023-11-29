@@ -153,6 +153,8 @@
 ; (setq exwm-input-global-keys '(([?\s-x] . (lambda (command)
 ;                                          (interactive (list (read-shell-command "Launch program:$ ")))
 ;                                                     (start-process-shell-command command nil command))))
+(display-time-mode)
+(display-battery-mode)
 (require 'exwm)
 (require 'exwm-config)
 (exwm-config-default)
@@ -166,7 +168,13 @@
       (start-process-shell-command command nil command)
       )
 (map! :map exwm-mode-map "s-x" #'launcher-prompt)
-
+(setq exwm-workspace-number 10
+      exwm-randr-workspace-monitor-plist '(0 "DP-3" 1 "eDP-1")
+      exwm-input-simulation-keys '(([?\s-F] . [?\C-f]))
+      exwm-input-global-keys '(([?\s-x] . (lambda (command)
+                                            (interactive (list (read-shell-command "Launch program: ")))
+                                            (start-process-shell-command command nil command))))
+      )
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
 ;;   (append

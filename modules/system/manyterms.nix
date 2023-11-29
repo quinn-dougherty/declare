@@ -5,6 +5,6 @@
     libsForQt5.konsole
     xterm
     sakura
-    xfce.xfce4-terminal
+    # xfce.xfce4-terminal
   ];
 }
