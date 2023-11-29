@@ -15,7 +15,7 @@ in {
     "${modpath}/comms.nix"
     "${modpath}/ops.nix"
     "${modpath}/direnv.nix"
-    # "${modpath}/gaming.nix"
+    # "${modpath}/games.nix"
     inputs.smos.homeManagerModules.${system}.default
   ]; # ++ (if desktop == "kde" then [ "${modpath}/desktops/kde/settings.nix" ] else [ ]);
   home = {

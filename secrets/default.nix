@@ -16,7 +16,13 @@
       };
     };
     system.secrets = {
-      "factorio-token".encrypted.file = ./factorio-token.age;
+      "factorio-token" = {
+        encrypted.file = ./factorio-token.age;
+        decrypted.builder = ''
+          mkdir -p /var/lib/factorio
+          ln -s $inFile /var/lib/factorio
+        '';
+      };
     };
   };
 }

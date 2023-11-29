@@ -1,6 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
+  imports = [ "${inputs.self}/secrets" ];
   environment.systemPackages = let
     factorio = pkgs.factorio.override {
       username = "quinnd";
