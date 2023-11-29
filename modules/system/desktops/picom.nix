@@ -4,6 +4,6 @@
   services.picom = {
     enable = true;
     vSync = true;
-    # inactiveOpacity = 0.73;
+    inactiveOpacity = 0.73;
   };
 }

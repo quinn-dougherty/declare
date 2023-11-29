@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   services.xserver.displayManager.lightdm = {
@@ -6,6 +6,10 @@
     greeters.gtk = {
       enable = true;
       theme.name = "Adwaita-dark";
+      iconTheme.name = "Adwaita-dark";
+      cursorTheme.name = "Adwaita-dark";
+      extraConfig =
+        "background = ${inputs.self}/modules/system/desktops/backgrounds/phaesp.jpg";
     };
   };
 }

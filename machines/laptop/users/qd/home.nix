@@ -8,7 +8,7 @@ in {
   };
   imports = [
     inputs.nix-doom-emacs.hmModule
-    "${modpath}/emacs"
+    # "${modpath}/emacs.nix"
     "${modpath}/git.nix"
     "${modpath}/vim.nix"
     "${modpath}/codium.nix"

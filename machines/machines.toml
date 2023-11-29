@@ -5,8 +5,8 @@ timezone = "America/Los_Angeles"
 [laptop]
 hostname = "grindenstern"
 user-fullname = "Quinn Dougherty"
-# one of xmonad, xfce, gnome, kde, emacs (exwm)
-desktop = "xmonad"
+# one of xmonad, xfce, gnome, kde, exwm
+desktop = "exwm"
 
 [phone]
 hostname = "risencrantz"

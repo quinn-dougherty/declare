@@ -17,5 +17,5 @@ in with inputs;
   "${modpath-system}/bluetooth.nix"
   "${modpath-system}/crosscompilation.nix"
   "${modpath-system}/desktops/il8n.nix"
-  "${modpath-system}/services/flatpak.nix"
+  # "${modpath-system}/services/flatpak.nix"
 ] ++ import "${modpath}/common.nix"

@@ -1,14 +1,14 @@
-{ doomDir, linkFarm, emptyFile }: {
-  enable = true;
-  doomPrivateDir = doomDir;
+{ inputs, pkgs, ... }:
+let
+  doomPrivateDir = ./doom.d;
   doomPackageDir = let
     filteredPath = builtins.path {
-      path = doomDir;
+      path = doomPrivateDir;
       name = "doom-private-dir-filtered";
       filter = path: type:
         builtins.elem (baseNameOf path) [ "init.el" "packages.el" ];
     };
-  in linkFarm "doom-packages-dir" [
+  in pkgs.linkFarm "doom-packages-dir" [
     {
       name = "init.el";
       path = "${filteredPath}/init.el";
@@ -19,7 +19,10 @@
     }
     {
       name = "config.el";
-      path = emptyFile;
+      path = pkgs.emptyFile;
     }
   ];
+  extraPackages = import ./tools { inherit inputs pkgs; };
+in inputs.nix-doom-emacs.packages.${pkgs.system}.default.override {
+  inherit doomPrivateDir doomPackageDir extraPackages;
 }

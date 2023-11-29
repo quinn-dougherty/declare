@@ -48,9 +48,11 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-(load! "./extras/org-download-clipboard-pdf.el")
-;; (add-to-list 'auto-mode-alist '("\\.org\\'" . org-modern-mode))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(load! "./extras/org-download-clipboard-pdf.el")
+(map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
+(load! "./extras/org-invoice-table.el")
+
 (use-package! org-transclusion
   :after org
   :init
@@ -59,8 +61,6 @@
    :leader
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
-;; (map! :after org :map org-mode-map :prefix "SPC m d" "p" #'org-download-clipboard-pdf)
-(map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
@@ -141,15 +141,20 @@
 (envrc-global-mode)
 (direnv-mode)
 
-; (load! "./extras/exwm-config.el")
-; (require 'exwm-systemtray)
-; (require 'exwm-randr)
-; (require 'exwm-xim)
-; (exwm-config-example)
-; (exwm-systemtray-enable)
-; (exwm-xim-enable)
+(use-package! exwm)
+(exwm-enable)
 
-; (exwm-enable)
+(use-package! exwm-systemtray)
+(exwm-systemtray-enable)
+
+(use-package! exwm-randr)
+(exwm-randr-enable)
+
+(defun launcher-prompt (command)
+      (interactive (list (read-shell-command "Launch program:$")))
+      (start-process-shell-command command nil command)
+      )
+(map! :after exwm :map exwm-mode-map :prefix "s-x" #'launcher-prompt)
 
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist
