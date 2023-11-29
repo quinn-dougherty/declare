@@ -60,8 +60,8 @@ in {
 
   environment = {
     variables = {
-      EDITOR = "emacs";
-      VISUAL = "emacs";
+      EDITOR = "vim";
+      VISUAL = "vim";
     };
     etc."xdg/user-dirs.defaults".text = ''
       DESKTOP=desktop

@@ -1,4 +1,4 @@
-{ laptop, inputs, ... }:
+{ laptop, inputs, secrets, ... }:
 with laptop;
 let modpath = "${inputs.self}/modules/hm";
 in {
@@ -15,6 +15,7 @@ in {
     "${modpath}/comms.nix"
     "${modpath}/ops.nix"
     "${modpath}/direnv.nix"
+    "${modpath}/gaming.nix"
     inputs.smos.homeManagerModules.${system}.default
   ]; # ++ (if desktop == "kde" then [ "${modpath}/desktops/kde/settings.nix" ] else [ ]);
   home = {

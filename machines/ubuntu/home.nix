@@ -11,6 +11,7 @@ home-manager.lib.homeManagerConfiguration {
     "${modpath}/ops.nix"
     "${modpath}/comms.nix"
     "${modpath}/direnv.nix"
+    "${modpath}/gaming.nix"
     {
       programs.home-manager.enable = true;
       home = {
@@ -26,17 +27,6 @@ home-manager.lib.homeManagerConfiguration {
         systemDirs.data =
           [ "${homeDirectory}/.nix-profile/share/applications" ];
       };
-      #home.activation = {
-      #  linkDesktopApplications = {
-      #    after = [ "writeBoundary" "createXdgUserDirectories" ];
-      #    before = [ ];
-      #    data = ''
-      #      rm -rf $HOME/.home-manager-share
-      #      mkdir -p $HOME/.home-manager-share
-      #      cp -Lr --no-preserve=mode,ownership ${homeDirectory}/.nix-profile/share/* $HOME/.home-manager-share
-      #    '';
-      #  };
-      #};
     }
     { programs.fish.enable = true; }
   ];

@@ -8,3 +8,4 @@ modules/website/soupault/build
 website/build
 cache-priv-key.pem
 cache-qd-priv-key.pem
+factorio-token
