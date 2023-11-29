@@ -141,20 +141,31 @@
 (envrc-global-mode)
 (direnv-mode)
 
-(use-package! exwm)
-(exwm-enable)
+; (use-package! exwm)
+; (exwm-enable)
 
-(use-package! exwm-systemtray)
+; (use-package! exwm-systemtray)
+; (exwm-systemtray-enable)
+
+; (use-package! exwm-randr)
+; (exwm-randr-enable)
+; (after! exwm-mode (setq exwm-input-global-keys))
+; (setq exwm-input-global-keys '(([?\s-x] . (lambda (command)
+;                                          (interactive (list (read-shell-command "Launch program:$ ")))
+;                                                     (start-process-shell-command command nil command))))
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
+(require 'exwm-systemtray)
 (exwm-systemtray-enable)
-
-(use-package! exwm-randr)
+(require 'exwm-randr)
 (exwm-randr-enable)
 
 (defun launcher-prompt (command)
       (interactive (list (read-shell-command "Launch program:$")))
       (start-process-shell-command command nil command)
       )
-(map! :after exwm :map exwm-mode-map :prefix "s-x" #'launcher-prompt)
+(map! :map exwm-mode-map "s-x" #'launcher-prompt)
 
 ;; auto-load agda-mode for .agda and .lagda.md
 ;; (setq auto-mode-alist

@@ -74,6 +74,7 @@
 ; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)
+(package! dmenu)
 (package! exwm)
 (package! nixos-options)
 (package! company-nixos-options)
