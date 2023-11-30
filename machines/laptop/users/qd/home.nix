@@ -8,7 +8,7 @@ let
       home = {
         username = username;
         homeDirectory = "/home/" + username;
-        stateVersion = "20.09";
+        stateVersion = "24.05";
       };
     }
     "${modpath}/mail"
