@@ -1,5 +1,5 @@
 { doom, inputs, config, lib, pkgs, ... }: {
-  # environment.systemPackages = [ doom ];
+  environment.systemPackages = [ doom ];
   imports = [ ./../greeter.nix ./../common-none.nix ./../picom.nix ];
   services.xserver = {
     enable = true;

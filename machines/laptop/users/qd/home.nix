@@ -17,6 +17,7 @@ let
     "${modpath}/codium.nix"
     "${modpath}/comms.nix"
     "${modpath}/ops.nix"
+    "${modpath}/emacstools.nix"
     "${modpath}/direnv.nix"
     # "${modpath}/games.nix"
     { services = if desktop == "xmonad" then import ./xservices.nix else { }; }

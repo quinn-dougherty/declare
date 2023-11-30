@@ -3,7 +3,7 @@
 with pkgs; [
   ix
   sqlite
-  mu
+  # mu
   mu.mu4e
   isync
 ]

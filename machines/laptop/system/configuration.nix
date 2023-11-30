@@ -58,11 +58,11 @@ in {
     };
   };
 
-  environment = {
-    systemPackages = [ pkgs.emacs ];
+  environment = let emacs = "${pkgs.emacs}/bin/emacs";
+  in {
     variables = {
-      EDITOR = "emacs";
-      VISUAL = "emacs";
+      EDITOR = emacs;
+      VISUAL = emacs;
     };
     etc."xdg/user-dirs.defaults".text = ''
       DESKTOP=desktop

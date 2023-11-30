@@ -57,11 +57,11 @@
       mobiles = [ phone ];
       others = [ ubuntu ];
     in with flk-common; {
-      nixosConfigurations = commonlib.osForAll (immobiles ++ mobiles);
-      homeConfigurations = commonlib.hmForAll others;
+      nixosConfigurations = utils.osForAll (immobiles ++ mobiles);
+      homeConfigurations = utils.hmForAll others;
       packages.${common-machines.system} = {
         inherit website;
-      } // (commonlib.packagesFromAllOs { inherit immobiles mobiles others; });
+      } // (utils.packagesFromAllOs { inherit immobiles mobiles others; });
       devShells.${laptop.system} = {
         "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
       } // (with common-machines;
@@ -70,6 +70,6 @@
       formatter.${common-machines.system} = format.config.build.wrapper;
       checks.${common-machines.system}.formatted =
         format.config.build.check self;
-      herculesCI = herc;
+      inherit herculesCI;
     };
 }

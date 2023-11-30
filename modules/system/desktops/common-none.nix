@@ -1,9 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ inputs, config, lib, pkgs, ... }: {
   services.xserver.xautolock = {
     enable = true;
     notify = 75;
   };
-  # imports = [ ./../picom.nix ];
   environment.systemPackages = with pkgs; [
     arandr
     dmenu
@@ -12,7 +11,7 @@
     xorg.xbacklight
     feh
     flameshot
-    xscreensaver
+    # xscreensaver
     xclip
     dunst # systemd configured in homemanager, but this for on the fly cli
 
