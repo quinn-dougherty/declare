@@ -1,3 +1,0 @@
-[submodule "modules/hm/emacs/rescript-vscode"]
-	path = modules/hm/emacs/rescript-vscode
-	url = git@github.com:quinn-dougherty/rescript-vscode.git

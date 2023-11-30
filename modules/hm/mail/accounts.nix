@@ -22,7 +22,7 @@
         userName = "quinn.dougherty92@gmail.com";
         passwordCommand =
           "age -d -i ~/.ssh/id_qd_ed25519 ${secrets.qd92-gmail-pass.encrypted.file}";
-        imap.host = "";
+        imap.host = "imap.gmail.com";
         mu.enable = true;
         mbsync = {
           enable = true;
