@@ -24,6 +24,7 @@
         '';
       };
       "quinnd-riseup-pass".encrypted.file = ./quinnd-riseup-pass.age;
+      "qd92-gmail-pass".encrypted.file = ./qd92-gmail-pass.age;
     };
   };
 }

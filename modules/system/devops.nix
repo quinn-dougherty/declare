@@ -16,5 +16,9 @@
     age
 
     tmate
+
+    # auth
+    oauth2c
+    oauth2-proxy
   ];
 }

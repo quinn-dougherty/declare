@@ -68,6 +68,10 @@
 (package! direnv)
 (package! envrc)
 ;; (package! helm-projectile)
+
+(package! dmenu)
+(package! exwm)
+
 (package! rescript-mode)
 (package! lsp-rescript)
 (package! gptel)
@@ -75,9 +79,9 @@
 ; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)
-(package! dmenu)
-(package! exwm)
 (package! nixos-options)
 (package! company-nixos-options)
 (package! ix)
 (package! age)
+(package! auth-source-xoauth2)
+(package! oauth2-request)
