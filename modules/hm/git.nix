@@ -14,7 +14,6 @@
     };
     lfs.enable = true;
     ignores = [ "*~" "*.swp" ".DS_Store" ".idea" ];
-    # init.defaultBranch = "main";
     # github.user = "quinn-dougherty";
   };
 }

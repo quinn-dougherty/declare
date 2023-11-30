@@ -1,14 +1,17 @@
-{ laptop, inputs, secrets, pkgs, ... }:
+{ laptop, inputs, secrets, doom, ... }:
 with laptop;
-let modpath = "${inputs.self}/modules/hm";
-in {
-  programs = {
-    smos.enable = true;
-    firefox.enable = true;
-  };
+let
+  modpath = "${inputs.self}/modules/hm";
   imports = [
-    inputs.nix-doom-emacs.hmModule
-    # "${modpath}/emacs.nix"
+    {
+      programs.firefox.enable = true;
+      home = {
+        username = username;
+        homeDirectory = "/home/" + username;
+        stateVersion = "20.09";
+      };
+    }
+    "${modpath}/mail"
     "${modpath}/git.nix"
     "${modpath}/vim.nix"
     "${modpath}/codium.nix"
@@ -16,14 +19,10 @@ in {
     "${modpath}/ops.nix"
     "${modpath}/direnv.nix"
     # "${modpath}/games.nix"
-    inputs.smos.homeManagerModules.${system}.default
+    { services = if desktop == "xmonad" then import ./xservices.nix else { }; }
+    {
+      imports = [ inputs.smos.homeManagerModules.${system}.default ];
+      programs.smos.enable = true;
+    }
   ]; # ++ (if desktop == "kde" then [ "${modpath}/desktops/kde/settings.nix" ] else [ ]);
-  home = {
-    username = username;
-    homeDirectory = "/home/" + username;
-
-    # You can update home-manager without changing this value
-    stateVersion = "20.09";
-  };
-  services = if desktop == "xmonad" then import ./xservices.nix else { };
-}
+in { inherit imports; }

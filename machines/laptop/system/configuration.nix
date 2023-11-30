@@ -59,9 +59,10 @@ in {
   };
 
   environment = {
+    systemPackages = [ pkgs.emacs ];
     variables = {
-      EDITOR = "vim";
-      VISUAL = "vim";
+      EDITOR = "emacs";
+      VISUAL = "emacs";
     };
     etc."xdg/user-dirs.defaults".text = ''
       DESKTOP=desktop

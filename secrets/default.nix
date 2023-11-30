@@ -20,9 +20,10 @@
         encrypted.file = ./factorio-token.age;
         decrypted.builder = ''
           mkdir -p /var/lib/factorio
-          ln -s $inFile /var/lib/factorio
+          ln -s $inFile /var/lib/factorio/token
         '';
       };
+      "quinnd-riseup-pass".encrypted.file = ./quinnd-riseup-pass.age;
     };
   };
 }

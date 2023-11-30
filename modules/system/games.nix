@@ -5,8 +5,7 @@
   environment.systemPackages = let
     factorio = pkgs.factorio.override {
       username = "quinnd";
-      token = builtins.readFile
-        config.secrix.system.secrets.factorio-token.decrypted.path;
+      token = builtins.readFile "/var/lib/factorio/token";
     };
   in [ pkgs.runelite factorio ];
 }

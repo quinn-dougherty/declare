@@ -4,7 +4,7 @@
   home.packages = let
     factorio = pkgs.factorio.override {
       username = "quinnd";
-      token = builtins.readFile secrets.factorio-token.decrypted.path;
+      token = "/var/lib/factorio/token";
     };
   in [ pkgs.runelite factorio ];
 }
