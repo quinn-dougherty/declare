@@ -39,6 +39,6 @@ in {
       autoMergeMethod = "merge";
       gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
     };
-    when.dayOfMonth = [ 16 ];
+    when.dayOfMonth = [ 1 ];
   };
 }

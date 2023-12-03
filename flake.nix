@@ -22,10 +22,6 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    battlenet = {
-      url = "github:quinn-dougherty/nixos-battlenet";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,8 +37,8 @@
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
     , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
-    , mobile-nixos, nix-doom-emacs, battlenet, treefmt-nix, nixpkgs-seafile
-    , smos, hercules-ci-agent, hercules-ci-effects }@inputs:
+    , mobile-nixos, nix-doom-emacs, treefmt-nix, nixpkgs-seafile, smos
+    , hercules-ci-agent, hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let
       website = with common-machines;
