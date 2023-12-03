@@ -18,6 +18,6 @@ in with inputs;
   "${modpath-system}/crosscompilation.nix"
   "${modpath-system}/desktops/il8n.nix"
   # "${modpath-system}/games.nix"
-  # "${modpath-system}/services/flatpak.nix"
+  "${modpath-system}/services/flatpak.nix"
   inputs.nixos-generators.nixosModules.all-formats
 ] ++ import "${modpath}/common.nix"

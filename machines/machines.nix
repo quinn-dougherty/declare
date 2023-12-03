@@ -33,8 +33,8 @@ in {
       mesa-backwards = final: prev: { mesa = pkgs-stable.mesa; };
     in [ factorio-overlay ];
     config.allowUnfree = true;
-    pkgs = import nixpkgs { inherit system overlays config; };
-    pkgs-stable = import nixpkgs-stable { inherit system overlays config; };
+    pkgs = import nixpkgs { inherit system config; };
+    pkgs-stable = import nixpkgs-stable { inherit system config; };
   };
   phone = rec {
     hostname = machines.phone.hostname;
