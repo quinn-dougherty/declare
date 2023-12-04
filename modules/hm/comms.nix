@@ -9,8 +9,10 @@
     element-desktop
     zulip
     slack
+    # Email
     tutanota-desktop
     thunderbird
+    electron-mail
     # Video
     zoom-us
   ];

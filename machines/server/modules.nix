@@ -22,8 +22,8 @@ in with inputs;
   }
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
-  # "${servpath}/nextcloud"
-  "${servpath}/seafile"
+  "${servpath}/nextcloud"
+  # "${servpath}/seafile"
   website
   "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks. Remember that networkmanager is activated by gnome, so check `wireless.enable` when you switch
 ] ++ import "${inputs.self}/modules/common.nix"
