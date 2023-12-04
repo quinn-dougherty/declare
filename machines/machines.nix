@@ -2,6 +2,7 @@
 with inputs;
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
+  config.allowUnfree = true;
   server-onprem-tz = "America/Los_Angeles";
   seafile-overlay = system:
     let nps = nixpkgs-seafile-10.legacyPackages.${system};
@@ -20,8 +21,8 @@ let
   drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}";
   qd = "qd";
   admin = "admin";
-in {
-  common = with machines.common; {
+in with machines.common; {
+  common = {
     inherit system timezone;
     pkgs = import nixpkgs {
       inherit system;
@@ -29,35 +30,27 @@ in {
     };
     pkgs-stable = import nixpkgs-stable { inherit system; };
   };
-  laptop = rec {
-    hostname = machines.laptop.hostname;
+  laptop = with machines.laptop; {
+    inherit system config timezone hostname user-fullname desktop;
     username = qd;
-    user-fullname = machines.laptop.user-fullname;
-    system = machines.common.system;
-    timezone = machines.common.timezone;
-    desktop = machines.laptop.desktop;
-    drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
-    config.allowUnfree = true;
+    drv-name-prefix = drv-name-prefix-Fn {
+      username = qd;
+      inherit hostname;
+    };
     pkgs = import nixpkgs {
       inherit system config;
       overlays = [ factorio-overlay ];
     };
     pkgs-stable = import nixpkgs-stable { inherit system config; };
   };
-  phone = rec {
-    hostname = machines.phone.hostname;
+  phone = with machines.phone; {
+    inherit system config hostname user-fullname timezone;
     username = qd;
-    user-fullname = machines.phone.user-fullname;
-    system = machines.phone.system;
-    timezone = machines.common.timezone;
-    config.allowUnfree = true;
-    pkgs = import nixpkgs { inherit system config; };
+    pkgs = import nixpkgs { inherit config system; };
   };
-  server = rec {
-    hostname = machines.server.hostname;
+  server = with machines.server; {
+    inherit system hostname user-fullname;
     username = admin;
-    user-fullname = machines.server.user-fullname;
-    system = machines.common.system;
     timezone = server-onprem-tz;
     ip = machines.server.ip;
     static4 = machines.server.static4;
@@ -70,14 +63,13 @@ in {
       ];
     };
   };
-  ubuntu = rec {
-    hostname = machines.ubuntu.hostname;
+  ubuntu = with machines.ubuntu; {
+    inherit system config hostname user-fullname timezone;
     username = qd;
-    user-fullname = machines.ubuntu.user-fullname;
-    system = machines.common.system;
-    timezone = machines.common.timezone;
-    drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
-    config.allowUnfree = true;
+    drv-name-prefix = drv-name-prefix-Fn {
+      username = qd;
+      inherit hostname;
+    };
     pkgs = import nixpkgs {
       inherit system config;
       overlays = [ factorio-overlay ];
