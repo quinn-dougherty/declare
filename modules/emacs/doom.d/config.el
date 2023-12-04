@@ -27,7 +27,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark doom-manegarm manoj-dark))
+(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark)) ; doom-manegarm ))
 (rand-theme)
 
 ; other defaults for startup.
