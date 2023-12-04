@@ -1,6 +1,15 @@
 #+title: CV
+* Employers
+|-------------------------------------------+----------------------------------+---------------------------------------------------------------------|
+| Casper Association                        | March 2023 - Present (part time) | R&D team: compositional and trustless audits of financial contracts |
+| Quantified Uncertainty Research Institute | March - September 2022           | Squiggle team: programming language for uncertain belief specs      |
+| Ardana/Orbis                              | August 2021 - March 2022         | Quality assurance / red team: formal verification for defi          |
+| Sandbox Banking                           | March - December 2020            | IT team: python, javascript, and linux. Assisting SOC 2 auditors    |
+* Other projects
+|----------------------+---------------+-----------------------------------|
+| Alignable Structures | November 2022 | Ran four-day AI safety conference |
+|                      |               |                                   |
 
-* Experiences and projects
 stub
 * Selected writing
 stub
