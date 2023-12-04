@@ -1,6 +1,6 @@
 { lib, laptop, inputs }:
 let
-  doom = import "${inputs.self}/modules/emacs" {
+  doom = import "${inputs.self}/packages/emacs" {
     inherit inputs;
     inherit (laptop) pkgs;
   };

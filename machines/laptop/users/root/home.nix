@@ -15,6 +15,6 @@ in {
     username = "root";
     homeDirectory = "/root";
 
-    stateVersion = "20.09";
+    stateVersion = "24.05";
   };
 }
