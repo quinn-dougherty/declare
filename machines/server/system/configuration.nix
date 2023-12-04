@@ -53,13 +53,13 @@ in {
       description = server.user-fullname;
       extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
-      shell = server.pkgs.fish;
+      # shell = server.pkgs.fish;
     };
     root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
   };
 
   programs = {
-    fish.enable = true;
+    # fish.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;

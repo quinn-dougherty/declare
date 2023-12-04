@@ -1001,7 +1001,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-seafile": {
+    "nixpkgs-seafile-10": {
       "locked": {
         "lastModified": 1700303967,
         "narHash": "sha256-snBkmrF1cyzhvBZPZaKEibWL6XASPSmBVd/2pXC+Pms=",
@@ -1013,6 +1013,22 @@
       "original": {
         "owner": "greizgh",
         "ref": "seafile-10",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-seafile-11": {
+      "locked": {
+        "lastModified": 1699989766,
+        "narHash": "sha256-DX29TjJGqeCrxkU+kRORaGf9CX1Dp4BjYJIhZRekMGA=",
+        "owner": "mzabani",
+        "repo": "nixpkgs",
+        "rev": "f59eeccfd0d88a11e1dd81de717d3b948b21f098",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mzabani",
+        "ref": "update-seafile-only",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1399,7 +1415,8 @@
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-2305": "nixpkgs-2305",
         "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-seafile": "nixpkgs-seafile",
+        "nixpkgs-seafile-10": "nixpkgs-seafile-10",
+        "nixpkgs-seafile-11": "nixpkgs-seafile-11",
         "nixpkgs-stable": "nixpkgs-stable",
         "secrix": "secrix",
         "smos": "smos",

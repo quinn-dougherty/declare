@@ -53,17 +53,16 @@ in {
     timezone = server-onprem-tz;
     ip = machines.server.ip;
     static4 = machines.server.static4;
-    overlays = let nps = nixpkgs-seafile.legacyPackages.${system};
-    in [
-      hercules-ci-effects.overlay
-      (final: prev: {
+    overlays = let
+      nps = nixpkgs-seafile.legacyPackages.${system};
+      seafile-overlay = final: prev: {
         seafile-server = nps.seafile-server;
         seahub = nps.seahub;
-      })
-    ];
+      };
+    in [ hercules-ci-effects.overlay seafile-overlay ];
     pkgs = import nixpkgs {
       inherit system;
-      overlays = herc-effects-overlays;
+      overlays = overlays;
     };
   };
   ubuntu = rec {

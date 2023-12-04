@@ -4,8 +4,8 @@
   services = {
     seafile = {
       enable = true;
-      seafilePackage =
-        inputs.nixpkgs-seafile.legacyPackages.${server.system}.seafile-server;
+      # seafilePackage =
+      #   inputs.nixpkgs-seafile.legacyPackages.${server.system}.seafile-server;
       adminEmail = "quinnd@riseup.net";
       initialAdminPassword = "test123";
       ccnetSettings = {
