@@ -1,4 +1,4 @@
-{ laptop, inputs }:
+{ inputs, laptop }:
 let
   modpath = "${inputs.self}/modules";
   modpath-system = "${modpath}/system";

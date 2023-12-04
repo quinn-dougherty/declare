@@ -1,10 +1,10 @@
-{ phone }:
+{ inputs, phone }:
 with phone; {
   programs = {
     home-manager.enable = true;
     firefox.enable = true;
   };
-  imports = let modpath = ./../../../../modules/hm;
+  imports = let modpath = "${inputs.self}/modules/hm";
   in [ "${modpath}/git.nix" "${modpath}/vim.nix" ];
   home = {
     username = username;
@@ -14,5 +14,4 @@ with phone; {
     # You can update home-manager without changing this value
     stateVersion = "23.11";
   };
-
 }

@@ -8,8 +8,11 @@ in {
   inherit (laptop) system hostname drv-name-prefix;
   operatingsystem = lib.nixosSystem {
     system = laptop.system;
-    specialArgs = { inherit laptop inputs doom; };
-    modules = import ./modules.nix { inherit laptop inputs; };
+    specialArgs = {
+      inherit inputs laptop doom;
+      inherit (laptop) pkgs;
+    };
+    modules = import ./modules.nix { inherit inputs laptop; };
   };
   homeshell = with laptop;
     import "${inputs.self}/shells/developers/shell.nix" {

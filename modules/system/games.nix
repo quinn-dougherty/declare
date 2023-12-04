@@ -2,6 +2,7 @@
 
 {
   imports = [ "${inputs.self}/secrets" ];
+  config.allowUnfree = true;
   environment.systemPackages = let
     factorio = pkgs.factorio.override {
       username = "quinnd";

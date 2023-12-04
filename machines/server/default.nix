@@ -2,8 +2,11 @@
 let
   os = lib.nixosSystem {
     system = server.system;
-    specialArgs = { inherit server inputs; };
-    modules = import ./modules.nix { inherit server inputs; };
+    specialArgs = {
+      inherit server inputs;
+      inherit (server) pkgs;
+    };
+    modules = import ./modules.nix { inherit inputs; };
   };
 in {
   inherit (server) system hostname;

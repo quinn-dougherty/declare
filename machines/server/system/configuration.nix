@@ -58,6 +58,8 @@ in {
     root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
   };
 
+  # nixpkgs.config = config;
+
   programs = {
     # fish.enable = true;
     gnupg.agent = {

@@ -3,17 +3,31 @@ with inputs;
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
   server-onprem-tz = "America/Los_Angeles";
-  herc-effects-overlays = [ hercules-ci-effects.overlay ];
+  seafile-overlay = system:
+    let nps = nixpkgs-seafile-10.legacyPackages.${system};
+    in final: prev: {
+      seafile-server = nps.seafile-server;
+      seahub = nps.seahub;
+    };
+  mesa-prev-overlay = final: prev: { mesa = pkgs-stable.mesa; };
+  factorio-overlay = final: prev: {
+    factorio = pkgs.factorio.override {
+      username = "quinnd";
+      # see secrets/default.nix
+      token = builtins.readFile "/var/lib/factorio/token";
+    };
+  };
   drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}";
   qd = "qd";
   admin = "admin";
 in {
-  common = machines.common // {
+  common = with machines.common; {
+    inherit system timezone;
     pkgs = import nixpkgs {
-      system = machines.common.system;
-      overlays = herc-effects-overlays;
+      inherit system;
+      overlays = [ hercules-ci-effects.overlay ];
     };
-    pkgs-stable = import nixpkgs-stable { system = machines.common.system; };
+    pkgs-stable = import nixpkgs-stable { inherit system; };
   };
   laptop = rec {
     hostname = machines.laptop.hostname;
@@ -23,17 +37,11 @@ in {
     timezone = machines.common.timezone;
     desktop = machines.laptop.desktop;
     drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
-    overlays = let
-      factorio-overlay = final: prev: {
-        factorio = prev.factorio.override {
-          username = "quinnd";
-          token = "\${FACTORIO_KEY}";
-        };
-      };
-      mesa-backwards = final: prev: { mesa = pkgs-stable.mesa; };
-    in [ factorio-overlay ];
     config.allowUnfree = true;
-    pkgs = import nixpkgs { inherit system config; };
+    pkgs = import nixpkgs {
+      inherit system config;
+      overlays = [ factorio-overlay ];
+    };
     pkgs-stable = import nixpkgs-stable { inherit system config; };
   };
   phone = rec {
@@ -53,16 +61,13 @@ in {
     timezone = server-onprem-tz;
     ip = machines.server.ip;
     static4 = machines.server.static4;
-    overlays = let
-      nps = nixpkgs-seafile.legacyPackages.${system};
-      seafile-overlay = final: prev: {
-        seafile-server = nps.seafile-server;
-        seahub = nps.seahub;
-      };
-    in [ hercules-ci-effects.overlay seafile-overlay ];
     pkgs = import nixpkgs {
       inherit system;
-      overlays = overlays;
+      overlays = [
+        hercules-ci-effects.overlay
+        (seafile-overlay system)
+        factorio-overlay
+      ];
     };
   };
   ubuntu = rec {
@@ -73,6 +78,9 @@ in {
     timezone = machines.common.timezone;
     drv-name-prefix = drv-name-prefix-Fn { inherit username hostname; };
     config.allowUnfree = true;
-    pkgs = import nixpkgs { inherit system config; };
+    pkgs = import nixpkgs {
+      inherit system config;
+      overlays = [ factorio-overlay ];
+    };
   };
 }

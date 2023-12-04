@@ -6,8 +6,8 @@ in {
   laptop = import ./laptop { inherit lib inputs laptop; };
   server = import ./server { inherit lib inputs server; };
   phone = import ./phone { inherit lib inputs phone; };
-  #monitor = import ./monitor {
-  #  inherit lib inputs monitor;
+  #uptime = import ./uptime {
+  #  inherit lib inputs uptime;
   #};
   ubuntu = import ./ubuntu {
     inherit lib ubuntu;

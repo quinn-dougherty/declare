@@ -1,4 +1,4 @@
-{ server, inputs }:
+{ inputs }:
 let
   website = "${inputs.self}/modules/website";
   modpath = "${inputs.self}/modules/system";
