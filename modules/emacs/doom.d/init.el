@@ -17,11 +17,11 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
-       (helm +icons)             ; the *other* search engine for love and life
-       ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
-       vertico
+       (company +childframe +tng)           ; the ultimate code completion backend
+       ;(helm +icons)             ; the *other* search engine for love and life
+       ; ido               ; the other *other* search engine...
+       (ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
+       ;(vertico +icons)
 
        :ui
        ;exwm
@@ -65,7 +65,7 @@
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       dired             ; making dired pretty [functional]
+       (dired +icons)             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -84,7 +84,7 @@
 
        :tools
        ;;ansible
-       biblio
+       ; biblio
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
@@ -101,7 +101,7 @@
        ;;prodigy           ; FIXME managing external services & code builders
        ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
-       terraform         ; infrastructure as code
+       ; terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;tree-sitter
        ;;upload            ; map local to remote projects via ssh/ftp
@@ -158,13 +158,13 @@
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
-       (ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       ; (ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
        (sh +bash +fish)               ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
-       solidity          ; do you need a blockchain? No.
+       ;; solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        (web +lsp)               ; the tubes

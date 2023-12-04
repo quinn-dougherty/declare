@@ -30,6 +30,8 @@
 (setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark)) ; doom-manegarm ))
 (rand-theme)
 
+(map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
+
 ; other defaults for startup.
 ;; (minimap-mode)
 ; (add-hook 'window-setup-hook #'treemacs t)
