@@ -5,9 +5,10 @@ let
 in with inputs;
 [
   ./system/configuration.nix
+  ./system/luks.nix
   "${modpath-system}/desktops/${laptop.desktop}"
   ./system/hardware-configuration.nix
-  nixos-hardware.nixosModules.framework-13th-gen-intel
+  nixos-hardware.nixosModules.framework-11th-gen-intel
   secrix.nixosModules.default
   home-manager.nixosModules.home-manager
   ./users/homes.nix
