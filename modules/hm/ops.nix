@@ -1,7 +1,8 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     seafile-client
-    nextcloud-client
+    seahub
+    # nextcloud-client
     sqlite
 
     # Browsers # firefox comes with fresh installations, so is omitted.

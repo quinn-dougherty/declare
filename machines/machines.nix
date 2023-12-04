@@ -39,7 +39,7 @@ in with machines.common; {
     };
     pkgs = import nixpkgs {
       inherit system config;
-      overlays = [ factorio-overlay ];
+      overlays = [ factorio-overlay (seafile-overlay system) ];
     };
     pkgs-stable = import nixpkgs-stable { inherit system config; };
   };
