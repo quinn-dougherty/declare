@@ -44,16 +44,17 @@
     let
       website = with common-machines;
         import ./website/soupault.nix { inherit pkgs self; };
-      flk-common =
+      operations =
         let machines = { inherit laptop server phone ubuntu common-machines; };
-        in import ./common {
+        in import ./operations.nix {
           inherit self machines treefmt-nix;
           server-deploy = server.deploymenteffect;
         };
+      utils = import ./machines/utils.nix;
       immobiles = [ laptop server ];
       mobiles = [ phone ];
       others = [ ubuntu ];
-    in with flk-common; {
+    in with operations; {
       nixosConfigurations = utils.osForAll (immobiles ++ mobiles);
       homeConfigurations = utils.hmForAll (others ++ [ laptop ]);
       packages.${common-machines.system} = {
@@ -64,9 +65,6 @@
       } // (with common-machines;
         import ./shells { inherit pkgs pkgs-stable; });
       apps.${laptop.system}.secrix = secrix.secrix self;
-      formatter.${common-machines.system} = format.config.build.wrapper;
-      checks.${common-machines.system}.formatted =
-        format.config.build.check self;
-      inherit herculesCI;
+      inherit formatter checks herculesCI;
     };
 }
