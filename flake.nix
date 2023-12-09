@@ -55,7 +55,7 @@
       others = [ ubuntu ];
     in with flk-common; {
       nixosConfigurations = utils.osForAll (immobiles ++ mobiles);
-      homeConfigurations = utils.hmForAll others;
+      homeConfigurations = utils.hmForAll (others ++ [ laptop ]);
       packages.${common-machines.system} = {
         inherit website;
       } // (utils.packagesFromAllOs { inherit immobiles mobiles others; });

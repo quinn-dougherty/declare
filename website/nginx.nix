@@ -1,4 +1,4 @@
-{ site, ... }:
+{ site }:
 
 {
   networking.firewall = {

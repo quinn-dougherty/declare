@@ -12,7 +12,7 @@ let
     };
   mesa-prev-overlay = final: prev: { mesa = pkgs-stable.mesa; };
   factorio-overlay = final: prev: {
-    factorio = pkgs.factorio.override {
+    factorio = prev.factorio.override {
       username = "quinnd";
       # see secrets/default.nix
       token = builtins.readFile "/var/lib/factorio/token";

@@ -5,7 +5,7 @@ let
     inherit (laptop) pkgs;
   };
 in {
-  inherit (laptop) system hostname drv-name-prefix;
+  inherit (laptop) system username hostname drv-name-prefix;
   operatingsystem = lib.nixosSystem {
     system = laptop.system;
     specialArgs = {
@@ -14,8 +14,11 @@ in {
     };
     modules = import ./modules.nix { inherit inputs laptop; };
   };
+  homemanager = (import ./users/configurations.nix {
+    inherit inputs laptop;
+  }).${laptop.username};
   homeshell = with laptop;
-    import "${inputs.self}/shells/developers/shell.nix" {
+    import "${inputs.self}/shells/developers/full-homeshell.nix" {
       inherit pkgs pkgs-stable drv-name-prefix;
     };
 }
