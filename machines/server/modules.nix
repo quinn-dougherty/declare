@@ -1,6 +1,6 @@
 { inputs }:
 let
-  website = "${inputs.self}/modules/website";
+  website = "${inputs.self}/website";
   modpath = "${inputs.self}/modules/system";
   servpath = "${modpath}/services";
 in with inputs;

@@ -43,7 +43,7 @@
     with import ./machines { inherit inputs; };
     let
       website = with common-machines;
-        import ./modules/website/soupault.nix { inherit pkgs self; };
+        import ./website/soupault.nix { inherit pkgs self; };
       flk-common =
         let machines = { inherit laptop server phone ubuntu common-machines; };
         in import ./common {
