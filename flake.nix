@@ -27,7 +27,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-seafile-10.url = "github:greizgh/nixpkgs/seafile-10";
-    nixpkgs-seafile-11.url = "github:mzabani/nixpkgs/update-seafile-only";
     smos.url = "github:NorfairKing/smos";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
     hercules-ci-effects = {
@@ -38,8 +37,8 @@
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
     , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
-    , mobile-nixos, nix-doom-emacs, treefmt-nix, nixpkgs-seafile-10
-    , nixpkgs-seafile-11, smos, hercules-ci-agent, hercules-ci-effects }@inputs:
+    , mobile-nixos, nix-doom-emacs, treefmt-nix, nixpkgs-seafile-10, smos
+    , hercules-ci-agent, hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let
       website = with common-machines;
