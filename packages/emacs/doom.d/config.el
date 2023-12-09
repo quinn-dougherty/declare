@@ -76,6 +76,8 @@
 
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
 
+(load! "./extras/fatebook.el")
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
