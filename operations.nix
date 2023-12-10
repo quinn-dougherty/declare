@@ -21,7 +21,7 @@ let
       when.dayOfMonth = [ 1 ];
     };
   };
-  onPush = hci-inputs:
+  jobs = hci-inputs:
     let
       qdhomeshell = "${laptop.drv-name-prefix}:homeshell";
       packages = self.packages.${machines.common-machines.system};
@@ -53,7 +53,7 @@ let
 in {
   herculesCI = hci-inputs: {
     ciSystems = [ common-machines.system ];
-    inherit onPush;
+    onPush = jobs hci-inputs;
     onSchedule = update hci-inputs;
   };
   formatter.${common-machines.system} = format;
