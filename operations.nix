@@ -21,34 +21,35 @@ let
       when.dayOfMonth = [ 1 ];
     };
   };
-  onPush = let
-    qdhomeshell = "${laptop.drv-name-prefix}:homeshell";
-    packages = self.packages.${machines.common-machines.system};
-  in {
-    ${laptop.hostname}.outputs = {
-      operating-system = packages.${machines.laptop.hostname};
-      home-configuration =
-        self.homeConfigurations."${laptop.username}@${laptop.hostname}".activationPackage;
-    };
-
-    ${phone.hostname}.outputs = {
-      os_disk-image = packages."${phone.hostname}-disk-image";
-      os_boot-partition = packages."${phone.hostname}-boot-partition";
-    };
-
-    ${server.hostname}.outputs = with hci-inputs;
-      if ref == "refs/heads/main" then {
-        effects.deployment = server-deploy { inherit ref; };
-      } else {
-        operating-system = packages.${machines.server.hostname};
-        website = packages.website;
+  onPush = hci-inputs:
+    let
+      qdhomeshell = "${laptop.drv-name-prefix}:homeshell";
+      packages = self.packages.${machines.common-machines.system};
+    in {
+      ${laptop.hostname}.outputs = {
+        operating-system = packages.${machines.laptop.hostname};
+        # home-configuration =
+        #  self.homeConfigurations."${laptop.username}@${laptop.hostname}".activationPackage;
       };
 
-    "${ubuntu.username}@${ubuntu.hostname}:hm".outputs.home-configuration =
-      self.homeConfigurations."${ubuntu.username}@${ubuntu.hostname}".activationPackage;
+      ${phone.hostname}.outputs = {
+        os_disk-image = packages."${phone.hostname}-disk-image";
+        os_boot-partition = packages."${phone.hostname}-boot-partition";
+      };
 
-    developers.outputs = self.devShells.${common-machines.system};
-  };
+      ${server.hostname}.outputs = with hci-inputs;
+        if ref == "refs/heads/main" then {
+          effects.deployment = server-deploy { inherit ref; };
+        } else {
+          operating-system = packages.${machines.server.hostname};
+          website = packages.website;
+        };
+
+      "${ubuntu.username}@${ubuntu.hostname}:hm".outputs.home-configuration =
+        self.homeConfigurations."${ubuntu.username}@${ubuntu.hostname}".activationPackage;
+
+      developers.outputs = self.devShells.${common-machines.system};
+    };
 in {
   herculesCI = hci-inputs: {
     ciSystems = [ common-machines.system ];
