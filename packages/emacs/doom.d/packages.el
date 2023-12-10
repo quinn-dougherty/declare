@@ -54,16 +54,13 @@
 (package! all-the-icons)
 (package! pdf-tools)
 (package! org-kanban)
+(package! org-alert)
 (package! org-transclusion)
 ;; (package! (org-clock-reminder :pin "d3bf97113fd519aa08198e2283ba9c236a6df168" :recipe (:host github :repo inickey/org-clock-reminder)))
 (package! org-sync)
 (package! org-sync-snippets)
 (package! org-modern)
 (package! org-mime)
-; (use-package! org-modern
-;   :hook (org-mode . global-org-modern-mode)
-;  :config
-;  (setq org-modern-label-border 0.3))
 (package! nov)
 (package! direnv)
 (package! envrc)

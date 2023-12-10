@@ -51,10 +51,9 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(load! "./extras/org-download-clipboard-pdf.el")
 (map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
 (load! "./extras/org-invoice-table.el")
-
+(setq alert-default-style 'notifications)
 (use-package! org-transclusion
   :after org
   :init
@@ -74,6 +73,7 @@
 
 (setq org-agenda-files '("health.org" "beaur.org" "profesh" "profesh/casper"))
 
+(load! "./extras/org-download-clipboard-pdf.el")
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
 
 (load! "./extras/fatebook.el")

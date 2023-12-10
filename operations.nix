@@ -9,12 +9,11 @@ let
       nixfmt.enable = true;
     };
   };
-  format =
-    let fmtr = treefmt-nix.lib.evalModule common-machines.pkgs fmt-module;
-    in fmtr.config.build.wrapper;
+  format = let fmtr = treefmt-nix.lib.evalModule common.pkgs fmt-module;
+  in fmtr.config.build.wrapper;
   update = hci-inputs: {
     auto-update = {
-      outputs.effects = common-machines.pkgs.effects.flakeUpdate {
+      outputs.effects = common.pkgs.effects.flakeUpdate {
         autoMergeMethod = "merge";
         gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
       };
@@ -24,7 +23,7 @@ let
   jobs = hci-inputs:
     let
       qdhomeshell = "${laptop.drv-name-prefix}:homeshell";
-      packages = self.packages.${machines.common-machines.system};
+      packages = self.packages.${machines.common.system};
     in {
       ${laptop.hostname}.outputs = {
         operating-system = packages.${machines.laptop.hostname};
@@ -48,14 +47,14 @@ let
       "${ubuntu.drv-name-prefix}:hm".outputs.home-configuration =
         self.homeConfigurations."${ubuntu.drv-name-prefix}".activationPackage;
 
-      developers.outputs = self.devShells.${common-machines.system};
+      developers.outputs = self.devShells.${common.system};
     };
 in {
   herculesCI = hci-inputs: {
-    ciSystems = [ common-machines.system ];
+    ciSystems = [ common.system ];
     onPush = jobs hci-inputs;
     onSchedule = update hci-inputs;
   };
-  formatter.${common-machines.system} = format;
-  checks.${common-machines.system}.formatted = format;
+  formatter.${common.system} = format;
+  checks.${common.system}.formatted = format;
 }

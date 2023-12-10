@@ -41,10 +41,10 @@
     , hercules-ci-agent, hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let
-      website = with common-machines;
+      website = with common;
         import ./website/soupault.nix { inherit pkgs self; };
       operations =
-        let machines = { inherit laptop server phone ubuntu common-machines; };
+        let machines = { inherit laptop server phone ubuntu common; };
         in import ./operations.nix {
           inherit self machines treefmt-nix;
           server-deploy = server.deploymenteffect;
@@ -56,13 +56,12 @@
     in with operations; {
       nixosConfigurations = utils.osForAll (immobiles ++ mobiles);
       homeConfigurations = utils.hmForAll (nonNixos ++ [ laptop ]);
-      packages.${common-machines.system} = {
+      packages.${common.system} = {
         inherit website;
       } // (utils.packagesFromAllOs { inherit immobiles mobiles nonNixos; });
       devShells.${laptop.system} = {
         "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
-      } // (with common-machines;
-        import ./shells { inherit pkgs pkgs-stable; });
+      } // (with common; import ./shells { inherit pkgs pkgs-stable; });
       apps.${laptop.system}.secrix = secrix.secrix self;
       inherit formatter checks herculesCI;
     };
