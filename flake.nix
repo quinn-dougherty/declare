@@ -52,13 +52,13 @@
       utils = import ./machines/utils.nix;
       immobiles = [ laptop server ];
       mobiles = [ phone ];
-      others = [ ubuntu ];
+      nonNixos = [ ubuntu ];
     in with operations; {
       nixosConfigurations = utils.osForAll (immobiles ++ mobiles);
-      homeConfigurations = utils.hmForAll (others ++ [ laptop ]);
+      homeConfigurations = utils.hmForAll (nonNixos ++ [ laptop ]);
       packages.${common-machines.system} = {
         inherit website;
-      } // (utils.packagesFromAllOs { inherit immobiles mobiles others; });
+      } // (utils.packagesFromAllOs { inherit immobiles mobiles nonNixos; });
       devShells.${laptop.system} = {
         "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
       } // (with common-machines;

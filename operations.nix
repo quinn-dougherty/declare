@@ -45,8 +45,8 @@ let
           website = packages.website;
         };
 
-      "${ubuntu.username}@${ubuntu.hostname}:hm".outputs.home-configuration =
-        self.homeConfigurations."${ubuntu.username}@${ubuntu.hostname}".activationPackage;
+      "${ubuntu.drv-name-prefix}:hm".outputs.home-configuration =
+        self.homeConfigurations."${ubuntu.drv-name-prefix}".activationPackage;
 
       developers.outputs = self.devShells.${common-machines.system};
     };

@@ -28,9 +28,9 @@ let
 in {
   osForAll = machines: builtins.listToAttrs (map osFor machines);
   hmForAll = machines: builtins.listToAttrs (map hmFor machines);
-  packagesFromAllOs = { immobiles, mobiles, others }:
+  packagesFromAllOs = { immobiles, mobiles, nonNixos }:
     (packagesFromAll packageFromX86 immobiles)
     // (packagesFromAll packageFromAarchDiskImg mobiles)
     // (packagesFromAll packageFromAarchBootPartition mobiles)
-    // (packagesFromAll packageFromNonNixos others);
+    // (packagesFromAll packageFromNonNixos nonNixos);
 }
