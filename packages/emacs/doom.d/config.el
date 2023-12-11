@@ -53,7 +53,8 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
 (load! "./extras/org-invoice-table.el")
-(setq alert-default-style 'notifications)
+; (org-alert-enable)
+; (setq alert-default-style 'notifications)
 (use-package! org-transclusion
   :after org
   :init
