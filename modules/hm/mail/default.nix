@@ -4,7 +4,7 @@
   imports = [ ./accounts.nix ];
   services.mbsync = {
     enable = true;
-    frequency = "*:0/5";
+    # frequency = "*:0/5";
     # configFile = ./mbsyncrc;
   };
   programs = {

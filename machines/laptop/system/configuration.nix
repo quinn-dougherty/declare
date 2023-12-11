@@ -78,13 +78,7 @@ in {
   nixpkgs.config = config;
 
   programs = {
-    fish = {
-      enable = true;
-      functions.fish_greeting = {
-        description = "need a guy for a thing";
-        body = "you sonofabitch, I'm in";
-      };
-    };
+    fish.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;

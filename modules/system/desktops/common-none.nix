@@ -7,6 +7,7 @@
     arandr
     dmenu
     haskellPackages.xmobar
+    gnome.gnome-clocks
     xcompmgr # removal is possible performance boost?
     xorg.xbacklight
     feh
