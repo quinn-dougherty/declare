@@ -4,7 +4,7 @@
     ./../greeter.nix
     ./../common-none.nix
     ./../picom.nix
-    ./../intel-graphics.nix
+    # ./../intel-graphics.nix
   ];
   services.xserver = {
     enable = true;

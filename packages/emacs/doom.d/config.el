@@ -175,7 +175,7 @@
 (map! :map exwm-mode-map "s-x" #'launcher-prompt)
 (setq exwm-workspace-number 10
       ; DP-2 is hdmi, bottom right
-      exwm-randr-workspace-monitor-plist '(0 "DP-2" 1 "eDP-1")
+      exwm-randr-workspace-monitor-plist '(0 "DP-1" 1 "eDP-1")
       exwm-input-simulation-keys '(([?\s-F] . [?\C-f]))
       exwm-input-global-keys '(([?\s-x] . (lambda (command)
                                             (interactive (list (read-shell-command "Launch program: ")))
