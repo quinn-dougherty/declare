@@ -3,7 +3,7 @@
   imports = [
     ./../greeter.nix
     ./../common-none.nix
-    # ./../picom.nix
+    ./../picom.nix
     # ./../intel-graphics.nix
   ];
   services.xserver = {
