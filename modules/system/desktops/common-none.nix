@@ -8,7 +8,7 @@
     dmenu
     haskellPackages.xmobar
     gnome.gnome-clocks
-    xcompmgr # removal is possible performance boost?
+    # xcompmgr # removal is possible performance boost?
     xorg.xbacklight
     feh
     flameshot
@@ -17,7 +17,7 @@
     dunst # systemd configured in homemanager, but this for on the fly cli
 
     trayer
-    # keyboard
+
     warpd
   ];
 }

@@ -32,6 +32,9 @@
 
 (map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
 
+; (setq max-specpdl-size 13000)
+; (setq max-lisp-eval-depth 13000)
+
 ; other defaults for startup.
 ;; (minimap-mode)
 ; (add-hook 'window-setup-hook #'treemacs t)
@@ -116,17 +119,6 @@
                     :activation-fn (lsp-activate-on "coq")
                     :server-id 'coq-lsp))
   :commands lsp)
-
-(after! rescript-mode
-	(setq lsp-rescript-server-command
-	      '("node" "/home/qd/projects/declare/modules/emacs/rescript-vscode/server/out/server.js" "--stdio"))
-	;; Tell `lsp-mode` about the `rescript-vscode` LSP server
-	(require 'lsp-rescript)
-	;; Enable `lsp-mode` in rescript-mode buffers
-	(add-hook 'rescript-mode-hook 'lsp-deferred)
-	;; Enable display of type information in rescript-mode buffers
-	(require 'lsp-ui)
-	(add-hook 'rescript-mode-hook 'lsp-ui-doc-mode))
 
 (after! lsp-haskell
   (setq lsp-haskell-formatting-provider "stylish-haskell"))

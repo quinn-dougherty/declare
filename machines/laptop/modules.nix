@@ -5,7 +5,6 @@ let
 in with inputs;
 [
   ./system/configuration.nix
-  ./system/luks.nix
   "${modpath-system}/desktops/${laptop.desktop}"
   ./system/hardware-configuration.nix
   nixos-hardware.nixosModules.framework-13th-gen-intel
@@ -19,6 +18,6 @@ in with inputs;
   "${modpath-system}/crosscompilation.nix"
   "${modpath-system}/desktops/il8n.nix"
   # "${modpath-system}/games.nix"
-  "${modpath-system}/services/flatpak.nix"
+  # "${modpath-system}/services/flatpak.nix"
   inputs.nixos-generators.nixosModules.all-formats
 ] ++ import "${modpath}/common.nix"

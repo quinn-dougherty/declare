@@ -11,6 +11,7 @@ in {
     kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
     # trying to improve lid close situation: https://github.com/NixOS/nixos-hardware/pull/717
     # kernelParames = [ "mem_sleep_default=deep" ];
+    kernelPackages = pkgs.linuxPackages_6_6;
   };
 
   networking = {
@@ -58,22 +59,10 @@ in {
     };
   };
 
-  environment = let emacs = "${pkgs.emacs}/bin/emacs";
+  environment.variables = let emacs = "${pkgs.emacs}/bin/emacs";
   in {
-    variables = {
-      EDITOR = emacs;
-      VISUAL = emacs;
-    };
-    etc."xdg/user-dirs.defaults".text = ''
-      DESKTOP=desktop
-      DOWNLOAD=downloads
-      TEMPLATES=pdf
-      PUBLICSHARE=documents
-      PICTURES=screenshots
-      DOCUMENTS=projects
-      MUSIC=org
-      VIDEOS=games
-    '';
+    EDITOR = emacs;
+    VISUAL = emacs;
   };
   nixpkgs.config = config;
 
@@ -83,7 +72,7 @@ in {
       enable = true;
       enableSSHSupport = true;
     };
-    thunar.enable = desktop == "xmonad";
+    thunar.enable = builtins.elem desktop [ "xmonad" "exwm" ];
     slock.enable = true;
   };
 

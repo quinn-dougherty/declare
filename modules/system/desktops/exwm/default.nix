@@ -1,16 +1,19 @@
 { doom, inputs, config, lib, pkgs, ... }: {
-  environment.systemPackages = [ doom ];
+  environment.systemPackages = [ doom pkgs.mesa ];
   imports = [
     ./../greeter.nix
     ./../common-none.nix
-    ./../picom.nix
+    # ./../picom.nix
     # ./../intel-graphics.nix
   ];
   services.xserver = {
     enable = true;
     windowManager.session = lib.singleton {
-      name = "exwm";
-      start = "${doom}/bin/emacs";
+      name = "DOOM";
+      start = ''
+        ${builtins.readFile ./xinitrc}
+        ${doom}/bin/emacs
+      '';
     };
   };
 }
