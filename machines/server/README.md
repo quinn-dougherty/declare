@@ -4,7 +4,3 @@
 ![qd@a-guy-for-a-thing neofetch](neofetch.png "qd@a-guy-for-a-thing neofetch")
 
 This runs on a framework cooler master build
-
-## Imperative assumptions
-
-This code currently assumes some imperative steps have been taken, like copying over a `hercules-ci-agent/secrets` directory manually.
