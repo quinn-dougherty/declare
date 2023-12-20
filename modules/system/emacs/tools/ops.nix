@@ -1,10 +1,9 @@
 { pkgs, ... }:
 
 with pkgs; [
-  cmake
+  xdotool
+  xorg.xwininfo
   ix
-  sqlite
-  # mu
   mu.mu4e
   isync
 ]

@@ -38,6 +38,11 @@ in {
         (mkIf (config.programs.gnupg.agent.enable)
           pinentry-emacs) # in-emacs gnupg prompts
         zstd # for undo-fu-session/undo-tree compression
+
+        ##
+        cmake
+        sqlite
+        libgcc
       ] ++ (import ./tools { inherit inputs pkgs; });
 
     # environment.sessionVariables.emacs = "${emacs}/bin/emacs";
