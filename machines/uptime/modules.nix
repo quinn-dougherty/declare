@@ -7,4 +7,4 @@ in with inputs;
   secrix.nixosModules.default
   # "${modpath}/allowUnfree.nix"
   # ./../../modules/website
-] ++ import ./../../modules/common.nix
+] ++ import ./../../modules/system/common
