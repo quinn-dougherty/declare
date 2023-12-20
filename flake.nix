@@ -18,9 +18,9 @@
       url = "github:nixos/mobile-nixos";
       flake = false;
     };
-    nix-doom-emacs = {
-      url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
+    doom = {
+      url = "github:doomemacs/doomemacs";
+      flake = false;
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -37,7 +37,7 @@
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
     , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
-    , mobile-nixos, nix-doom-emacs, treefmt-nix, nixpkgs-seafile-10, smos
+    , mobile-nixos, doom, treefmt-nix, nixpkgs-seafile-10, smos
     , hercules-ci-agent, hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let

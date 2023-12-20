@@ -1,4 +1,4 @@
-{ doom, laptop, inputs, config, pkgs, ... }:
+{ laptop, inputs, config, pkgs, ... }:
 with inputs;
 let modpath = "${self}/modules/hm";
 in with laptop; {
@@ -7,7 +7,7 @@ in with laptop; {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = let secrets = config.secrix.system.secrets;
-    in { inherit laptop inputs secrets doom; };
+    in { inherit laptop inputs secrets; };
     users = {
       ${username} = import ./qd/home.nix;
       # home-manager.lib.homeManagerConfiguration {

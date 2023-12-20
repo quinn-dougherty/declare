@@ -1,18 +1,22 @@
-{ doom, inputs, config, lib, pkgs, ... }: {
-  environment.systemPackages = [ doom pkgs.mesa ];
+{ inputs, laptop, config, lib, pkgs, ... }: {
   imports = [
+    "${inputs.self}/modules/system/emacs"
     ./../greeter.nix
     ./../common-none.nix
     ./../picom.nix
-    # ./../intel-graphics.nix
+    ./../intel-graphics.nix
   ];
+  editors.emacs = {
+    enable = true;
+    doom.enable = true;
+  };
   services.xserver = {
     enable = true;
     windowManager.session = lib.singleton {
       name = "DOOM";
       start = ''
         ${builtins.readFile ./xinitrc}
-        ${doom}/bin/emacs
+        ${config.editors.emacs.package}/bin/emacs --fullscreen --init-directory='/home/${laptop.username}/.config/emacs/'
       '';
     };
   };

@@ -32,12 +32,14 @@
 
 (map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
 
-; (setq max-specpdl-size 13000)
-; (setq max-lisp-eval-depth 13000)
+(setq shell-file-name (executable-find "bash")) ;; doom doctor said this.
 
-; other defaults for startup.
+                                        ; (setq max-specpdl-size 13000)
+                                        ; (setq max-lisp-eval-depth 13000)
+
+;; other defaults for startup.
 ;; (minimap-mode)
-; (add-hook 'window-setup-hook #'treemacs t)
+                                        ; (add-hook 'window-setup-hook #'treemacs t)
 ;; gcal sync on boot will be like ~add-hook~
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 
@@ -48,7 +50,7 @@
                         ("vterm-clear-scrollback" vterm-clear-scrollback)
                         ("dired" dired)
                         ("ediff-files" ediff-files)))
-; (custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
+                                        ; (custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -56,8 +58,8 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
 (load! "./extras/org-invoice-table.el")
-; (org-alert-enable)
-; (setq alert-default-style 'notifications)
+                                        ; (org-alert-enable)
+                                        ; (setq alert-default-style 'notifications)
 (use-package! org-transclusion
   :after org
   :init
@@ -69,7 +71,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   ; (julia . t)
+                                        ; (julia . t)
    (python . t)
    (jupyter . t)))
 (setq org-modern-label-border nil)
@@ -138,18 +140,18 @@
 (envrc-global-mode)
 (direnv-mode)
 
-; (use-package! exwm)
-; (exwm-enable)
+                                        ; (use-package! exwm)
+                                        ; (exwm-enable)
 
-; (use-package! exwm-systemtray)
-; (exwm-systemtray-enable)
+                                        ; (use-package! exwm-systemtray)
+                                        ; (exwm-systemtray-enable)
 
-; (use-package! exwm-randr)
-; (exwm-randr-enable)
-; (after! exwm-mode (setq exwm-input-global-keys))
-; (setq exwm-input-global-keys '(([?\s-x] . (lambda (command)
-;                                          (interactive (list (read-shell-command "Launch program:$ ")))
-;                                                     (start-process-shell-command command nil command))))
+                                        ; (use-package! exwm-randr)
+                                        ; (exwm-randr-enable)
+                                        ; (after! exwm-mode (setq exwm-input-global-keys))
+                                        ; (setq exwm-input-global-keys '(([?\s-x] . (lambda (command)
+                                        ;                                          (interactive (list (read-shell-command "Launch program:$ ")))
+                                        ;                                                     (start-process-shell-command command nil command))))
 (display-time-mode)
 (display-battery-mode)
 (require 'exwm)
@@ -161,12 +163,12 @@
 (exwm-randr-enable)
 
 (defun launcher-prompt (command)
-      (interactive (list (read-shell-command "Launch program:$")))
-      (start-process-shell-command command nil command)
-      )
+  (interactive (list (read-shell-command "Launch program:$")))
+  (start-process-shell-command command nil command)
+  )
 (map! :map exwm-mode-map "s-x" #'launcher-prompt)
 (setq exwm-workspace-number 10
-      ; DP-2 is hdmi, bottom right
+                                        ; DP-2 is hdmi, bottom right
       exwm-randr-workspace-monitor-plist '(0 "DP-1" 1 "eDP-1")
       exwm-input-simulation-keys '(([?\s-F] . [?\C-f]))
       exwm-input-global-keys '(([?\s-x] . (lambda (command)

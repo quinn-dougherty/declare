@@ -1,4 +1,4 @@
-{ laptop, inputs, secrets, doom, ... }:
+{ laptop, inputs, secrets, ... }:
 with laptop;
 let modpath = "${inputs.self}/modules/hm";
 in {

@@ -1,9 +1,11 @@
 { pkgs, ... }:
 
 with pkgs; [
+  xdotool
+  xorg.xwininfo
   ix
-  sqlite
-  # mu
   mu.mu4e
   isync
+  maim
+  scrot
 ]
