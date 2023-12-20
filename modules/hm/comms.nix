@@ -12,7 +12,7 @@
     # Email
     tutanota-desktop
     thunderbird
-    electron-mail
+    # electron-mail
     # Video
     zoom-us
   ];

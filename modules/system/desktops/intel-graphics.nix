@@ -2,9 +2,9 @@
 
 {
   environment.systemPackages = [ pkgs.mesa ];
-  services.xserver.deviceSection = ''
-    Option "TearFree" "true"
-  '';
+  # services.xserver.deviceSection = ''
+  #   Option "TearFree" "true"
+  # '';
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };

@@ -1,15 +1,15 @@
 { lib, laptop, inputs }:
 let
-  doom = import "${inputs.self}/packages/emacs" {
-    inherit inputs;
-    inherit (laptop) pkgs;
-  };
+  # doom = import "${inputs.self}/packages/emacs" {
+  #   inherit inputs;
+  #   inherit (laptop) pkgs;
+  # };
 in {
   inherit (laptop) system username hostname drv-name-prefix;
   operatingsystem = lib.nixosSystem {
     system = laptop.system;
     specialArgs = {
-      inherit inputs laptop doom;
+      inherit inputs laptop;
       inherit (laptop) pkgs;
     };
     modules = import ./modules.nix { inherit inputs laptop; };

@@ -1,4 +1,4 @@
-{ doom, inputs, config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   imports = [ ./accounts.nix ];
@@ -10,7 +10,7 @@
   programs = {
     mu = {
       enable = true;
-      package = pkgs.mu.override { emacs = doom; };
+      # package = pkgs.mu.override { emacs = doom; };
     };
     msmtp.enable = true;
     mbsync.enable = true;

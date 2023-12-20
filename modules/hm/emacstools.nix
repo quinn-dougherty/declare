@@ -2,5 +2,5 @@
 
 {
   home.packages =
-    import "${inputs.self}/packages/emacs/tools" { inherit inputs pkgs; };
+    import "${inputs.self}/modules/system/emacs/tools" { inherit inputs pkgs; };
 }

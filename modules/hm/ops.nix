@@ -19,7 +19,7 @@
     bitwarden-menu
 
     # Media apps and stuff
-    obsidian
+    # obsidian
     qownnotes
     qc
     anki

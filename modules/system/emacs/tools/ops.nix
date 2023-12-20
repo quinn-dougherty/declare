@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 with pkgs; [
+  cmake
   ix
   sqlite
   # mu

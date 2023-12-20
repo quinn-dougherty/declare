@@ -1,10 +1,10 @@
 { inputs, laptop }:
 with laptop;
 let
-  doom = import "${inputs.self}/packages/emacs" { inherit inputs pkgs; };
+  # doom = import "${inputs.self}/packages/emacs" { inherit inputs pkgs; };
   modpath = "${inputs.self}/modules/hm";
   extraSpecialArgs = let secrets = config.secrix.system.secrets;
-  in { inherit laptop inputs secrets doom; };
+  in { inherit laptop inputs secrets; };
 in {
   ${username} = inputs.home-manager.lib.homeManagerConfiguration {
     inherit pkgs extraSpecialArgs;

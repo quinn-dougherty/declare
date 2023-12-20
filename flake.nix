@@ -18,6 +18,15 @@
       url = "github:nixos/mobile-nixos";
       flake = false;
     };
+    doom = {
+      url = "github:doomemacs/doomemacs";
+      flake = false;
+    };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,8 +46,8 @@
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
     , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
-    , mobile-nixos, nix-doom-emacs, treefmt-nix, nixpkgs-seafile-10, smos
-    , hercules-ci-agent, hercules-ci-effects }@inputs:
+    , mobile-nixos, doom, emacs-overlay, nix-doom-emacs, treefmt-nix
+    , nixpkgs-seafile-10, smos, hercules-ci-agent, hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let
       website = with common;
