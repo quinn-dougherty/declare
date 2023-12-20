@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-pushd ~/
-./.config/emacs/bin/doom sync -u --doomdir=projects/declare/modules/system/emacs/doom
+pushd /home/qd/.config/emacs/bin
+./doom sync -u
 popd

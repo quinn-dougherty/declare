@@ -19,7 +19,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
     environment.systemPackages = with pkgs;
       [
@@ -61,7 +60,10 @@ in {
            chown -R ${laptop.username}:users $XDG_CONFIG_HOME/emacs
            chmod +w -R $XDG_CONFIG_HOME/emacs
         fi
-        ln -sf ${inputs.self}/modules/system/emacs/doom/ ~/.config
+        rm -f $XDG_CONFIG_HOME/doom
+        cp -r ${inputs.self}/modules/system/emacs/doom/ $XDG_CONFIG_HOME/
+        chown -R ${laptop.username}:users $XDG_CONFIG_HOME/doom
+        chmod +w -R $XDG_CONFIG_HOME/doom
       '';
     };
   };
