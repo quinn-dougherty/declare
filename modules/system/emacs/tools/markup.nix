@@ -5,5 +5,6 @@ with pkgs; [
   texlive.combined.scheme-full
   pandoc
   graphviz
+  gnuplot
   typst
 ]

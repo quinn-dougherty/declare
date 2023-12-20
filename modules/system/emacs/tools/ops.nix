@@ -6,4 +6,6 @@ with pkgs; [
   ix
   mu.mu4e
   isync
+  maim
+  scrot
 ]
