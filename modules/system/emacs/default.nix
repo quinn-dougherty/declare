@@ -65,7 +65,7 @@ in {
            chown -R ${laptop.username}:users $XDG_CONFIG_HOME/emacs
            chmod +w -R $XDG_CONFIG_HOME/emacs
         fi
-        rm -f $XDG_CONFIG_HOME/doom
+        rm -rf $XDG_CONFIG_HOME/doom
         cp -r ${inputs.self}/modules/system/emacs/doom/ $XDG_CONFIG_HOME/
         chown -R ${laptop.username}:users $XDG_CONFIG_HOME/doom
         chmod +w -R $XDG_CONFIG_HOME/doom
