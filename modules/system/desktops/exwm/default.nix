@@ -1,5 +1,4 @@
 { inputs, laptop, config, lib, pkgs, ... }: {
-  environment.systemPackages = [ pkgs.mesa ];
   imports = [
     "${inputs.self}/modules/system/emacs"
     ./../greeter.nix
@@ -16,8 +15,8 @@
     windowManager.session = lib.singleton {
       name = "DOOM";
       start = ''
-                ${builtins.readFile ./xinitrc}
-        	${config.editors.emacs.package}/bin/emacs --fullscreen --init-directory='/home/${laptop.username}/.config/emacs/'
+        ${builtins.readFile ./xinitrc}
+        ${config.editors.emacs.package}/bin/emacs --fullscreen --init-directory='/home/${laptop.username}/.config/emacs/'
       '';
     };
   };

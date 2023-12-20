@@ -42,7 +42,7 @@ in {
         ##
         cmake
         sqlite
-        libgcc
+        # libgcc # This isn't helping vterm compile, yet.
       ] ++ (import ./tools { inherit inputs pkgs; });
 
     # environment.sessionVariables.emacs = "${emacs}/bin/emacs";
