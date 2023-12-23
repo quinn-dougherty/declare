@@ -1,0 +1,238 @@
+#+TITLE: Doom Emacs Configuration
+#+PROPERTY: header-args :tangle config.el
+
+#+BEGIN_SRC elisp
+;; ; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+END_SRC
+
+Place your private configuration here! Remember, you do not need to run 'doom
+sync' after modifying this file!
+
+* Identity
+Some functionality uses this to identify you, e.g. GPG configuration, email
+clients, file templates and snippets.
+#+BEGIN_SRC elisp
+(setq user-full-name "Quinn Dougherty"
+      user-mail-address "quinnd@riseup.net")
+#+END_SRC
+* Font and theme
+Doom exposes five (optional) variables for controlling fonts in Doom. Here
+are the three important ones:
+
++ ~doom-font~
++ ~doom-variable-pitch-font~
++ ~doom-big-font~ -- used for ~doom-big-font-mode~; use this for
+  presentations or streaming.
+
+They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+font string. You generally only need these two:
+
+#+BEGIN_SRC elisp
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "mononoki" :size 17)
+      doom-variable-pitch-font (font-spec :family "sans" :size 19)
+      doom-big-font (font-spec :family "monospace" :size 35))
+;; There are two ways to load a theme. Both assume the theme is installed and
+;; available. You can either set `doom-theme' or manually load a theme with the
+;; `load-theme' function. This is the default:
+(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark)) ; doom-manegarm ))
+(rand-theme)
+(setq doom-themes-treemacs-enable-variable-pitch nil)
+#+END_SRC
+This determines the style of line numbers in effect. If set to `nil', line
+numbers are disabled. For relative line numbers, set this to `relative'.
+#+BEGIN_SRC elisp
+(setq display-line-numbers-type t)
+#+END_SRC
+
+* Buffers and search
+#+BEGIN_SRC elisp
+(map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
+(setq projectile-project-search-path '("~/projects") projectile-sort-order 'recentf)
+#+END_SRC
+* EXWM
+#+BEGIN_SRC elisp
+;; (use-package! exwm)
+;; (exwm-enable)
+;; (use-package! exwm-systemtray)
+;; (exwm-systemtray-enable)
+;; (use-package! exwm-randr)
+;; (exwm-randr-enable)
+;; (after! exwm-mode (setq exwm-input-global-keys))
+;; (setq exwm-input-global-keys '(([?\s-x] . (lambda (command)
+;;                                          (interactive (list (read-shell-command "Launch program:$ ")))
+;;                                                     (start-process-shell-command command nil command))))
+(display-time-mode)
+(display-battery-mode)
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
+(require 'exwm-systemtray)
+(exwm-systemtray-enable)
+(require 'exwm-randr)
+(exwm-randr-enable)
+
+(defun launcher-prompt (command)
+  (interactive (list (read-shell-command "Launch program:$")))
+  (start-process-shell-command command nil command)
+  )
+(map! :map exwm-mode-map "s-x" #'launcher-prompt)
+(setq exwm-workspace-number 10
+                                        ; DP-2 is hdmi, bottom right
+      exwm-randr-workspace-monitor-plist '(0 "DP-1" 1 "eDP-1")
+      exwm-input-simulation-keys '(([?\s-F] . [?\C-f]))
+      exwm-input-global-keys '(([?\s-x] . (lambda (command)
+                                            (interactive (list (read-shell-command "Launch program: ")))
+                                            (start-process-shell-command command nil command))))
+      )
+#+END_SRC
+* Shell things
+#+BEGIN_SRC elisp
+(setq shell-file-name (executable-find "bash")) ;; doom doctor said this.
+
+(setq vterm-eval-cmds '(("find-file" find-file)
+                        ("message" message)
+                        ("vterm-clear-scrollback" vterm-clear-scrollback)
+                        ("dired" dired)
+                        ("ediff-files" ediff-files)))
+                                        ; (custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
+#+END_SRC
+* Defaults for startup
+#+BEGIN_SRC elisp
+;; other defaults for startup.
+;; (minimap-mode)
+                                        ; (add-hook 'window-setup-hook #'treemacs t)
+;; gcal sync on boot will be like ~add-hook~
+                                        ; (setq max-specpdl-size 13000)
+                                        ; (setq max-lisp-eval-depth 13000)
+#+END_SRC
+
+* Org mode
+
+If you use `org' and don't want your org files in the default location below,
+change `org-directory'. It must be set before org loads!
+#+BEGIN_SRC elisp
+(setq org-directory "~/org/")
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
+(load! "./extras/org-invoice-table.el")
+                                        ; (org-alert-enable)
+                                        ; (setq alert-default-style 'notifications)
+(use-package! org-transclusion
+  :after org
+  :init
+  (map!
+   :map global-map "<f12>" #'org-transclusion-add
+   :leader
+   :prefix "n"
+   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+                                        ; (julia . t)
+   (python . t)
+   (jupyter . t)))
+(setq org-modern-label-border nil)
+(global-org-modern-mode)
+
+(setq org-agenda-files '("health.org" "beaur.org" "profesh" "profesh/casper"))
+
+(load! "./extras/org-download-clipboard-pdf.el")
+(add-hook 'elfeed-search-mode-hook #'elfeed-update)
+#+END_SRC
+* Making predictions and bets
+#+BEGIN_SRC elisp
+(load! "./extras/fatebook.el")
+#+END_SRC
+* Comms: pdf, markdown, etc.
+#+BEGIN_SRC elisp
+(add-hook `pdf-view-mode-hook `pdf-view-themed-minor-mode)
+(add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
+#+END_SRC
+* Coq and proof general
+#+BEGIN_SRC elisp
+(custom-set-variables '(proof-three-window-enable t))
+(custom-set-variables
+ `(coq-prog-name "coqtop")
+ )
+;; `+company-init-backends-h' in `after-change-major-mode-hook' overrides
+;; `company-backends' set by `company-coq' package. This dirty hack fixes
+;; completion in coq-mode. TODO: remove when company backends builder is
+;; reworked.
+(defvar-local +coq--company-backends nil)
+(after! company-coq
+  (defun +coq--record-company-backends-h ()
+    (setq +coq--company-backends company-backends))
+  (defun +coq--replay-company-backends-h ()
+    (setq company-backends +coq--company-backends))
+  (add-hook! 'company-coq-mode-hook
+    (defun +coq--fix-company-coq-hack-h ()
+      (add-hook! 'after-change-major-mode-hook :local #'+coq--record-company-backends-h)
+      (add-hook! 'after-change-major-mode-hook :append :local #'+coq--replay-company-backends-h))))
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (push '(coq-mode . "coq") lsp-language-id-configuration)
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "coq-lsp")
+                    :activation-fn (lsp-activate-on "coq")
+                    :server-id 'coq-lsp))
+  :commands lsp)
+#+END_SRC
+* Haskell
+#+BEGIN_SRC elisp
+(after! lsp-haskell
+  (setq lsp-haskell-formatting-provider "stylish-haskell"))
+(set-formatter! 'stylish-haskell "stylish-haskell" :modes '(haskell-mode ".hs"))
+#+END_SRC
+* Auth for APIs
+#+BEGIN_SRC elisp
+(setq auth-sources '("~/.authinfo.gpg"))
+
+(setq gpt-openai-key "")
+(setq gpt-openai-engine "gpt-4")
+;; (setq gpt-openai-use-chat-api t)
+;; (setq gpt-openai-org "org-5p...Y")  ;; NOT SET
+(setq gpt-openai-max-tokens 2000)
+(setq gpt-openai-temperature 0)
+#+END_SRC
+* company completion: nixos options
+#+BEGIN_SRC elisp
+(add-to-list 'company-backends 'company-nixos-options)
+#+END_SRC
+* Direnv
+#+BEGIN_SRC elisp
+(envrc-global-mode)
+(direnv-mode)
+#+END_SRC
+* Agda
+#+BEGIN_SRC elisp
+;; auto-load agda-mode for .agda and .lagda.md
+;; (setq auto-mode-alist
+;;   (append
+;;     '(("\\.agda\\'" . agda2-mode)
+;;       ("\\.lagda.md\\'" . agda2-mode))
+;;     auto-mode-alist))
+;; (load-file (let ((coding-system-for-read 'utf-8))
+;;                 (shell-command-to-string "agda-mode locate")))
+#+END_SRC
+
+* Misc help/docs
+ Here are some additional functions/macros that could help you configure Doom:
+
+ - `load!' for loading external *.el files relative to this one
+ - `use-package!' for configuring packages
+ - `after!' for running code after a package has loaded
+ - `add-load-path!' for adding directories to the `load-path', relative to
+   this file. Emacs searches the `load-path' when you load packages with
+   `require' or `use-package'.
+ - `map!' for binding new keys
+
+ To get information about any of these functions/macros, move the cursor over
+ the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+ This will open documentation for it, including demos of how they are used.
+
+ You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
+ they are implemented.
