@@ -1,6 +1,8 @@
 backups
 .env
 result
-phone/bootstrapping
+machines/phone/bootstrapping
 authinfo
 common/keys/port
+modules/website/soupault/build
+website/build

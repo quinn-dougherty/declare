@@ -1,0 +1,28 @@
+[common]
+system = "x86_64-linux"
+timezone = "America/New_York"
+
+[laptop]
+hostname = "grindenstern"
+user-fullname = "Quinn Dougherty"
+# one of xmonad, xfce, gnome, kde, exwm
+desktop = "exwm"
+
+[phone]
+hostname = "risencrantz"
+user-fullname = "Quinn Dougherty"
+system = "aarch64-linux"
+
+[server]
+hostname = "a-guy-for-a-thing"
+user-fullname = "Server Admin"
+ip = "192.168.6.33"
+static4 = "192.168.42.42"
+
+[monitor]
+hostname = "the-band-back-together"
+user-fullname = "Monitor Admin"
+
+[ubuntu]
+hostname = "duck-you-sucker"
+user-fullname = "Quinn Dougherty"
