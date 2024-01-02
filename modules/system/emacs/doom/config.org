@@ -141,6 +141,44 @@ change `org-directory'. It must be set before org loads!
 (load! "./extras/org-download-clipboard-pdf.el")
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
 #+END_SRC
+* Splash screen
+#+BEGIN_SRC elisp
+; (defun for-all ()
+; (let* ((banner '("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMKxOWMMMMMMMMMMMKd0WMMMMMMMMMW"
+;                  "WMMMMMMMMMMX:.xWMMMMMMMMM0,,0MMMMMMMMMMW"
+;                  "WMMMMMMMMMMMX:.dKKKKKKKKk,,0MMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMX:.,looooo:.'0MMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMX:.xWMMM0,,0MMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMX:.xWM0,'OMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMX:'ld,'OMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMK;  'OMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMKdlOMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+;                  "NWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWN"
+;                  ))
+;        (longest-line (apply #'max (mapcar #'length banner))))
+;   (put-text-property
+;    (point)
+;    (dolist (line banner (point))
+;      (insert (+doom-dashboard--center
+;               +doom-dashboard--width
+;               (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+;              "\n"))
+;    'face 'doom-dashboard-banner)))
+
+; (setq +doom-dashboard-ascii-banner-fn #'for-all)
+
+(setq fancy-splash-image (concat doom-private-dir "splash.png"))
+#+END_SRC
 * Making predictions and bets
 #+BEGIN_SRC elisp
 (load! "./extras/fatebook.el")
