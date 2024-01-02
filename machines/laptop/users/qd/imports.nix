@@ -19,8 +19,4 @@
   "${modpath}/direnv.nix"
   # "${modpath}/games.nix"
   { services = if desktop == "xmonad" then import ./xservices.nix else { }; }
-  {
-    imports = [ inputs.smos.homeManagerModules.${system}.default ];
-    programs.smos.enable = true;
-  }
 ]
