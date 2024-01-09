@@ -74,6 +74,9 @@
 (package! lsp-rescript)
 (package! gptel)
 (package! chatgpt-shell)
+(package! editorconfig)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
                                         ; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)

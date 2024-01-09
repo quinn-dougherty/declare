@@ -1,8 +1,4 @@
 # # APPROPRIATED FROM github.com/hlissner/dotfiles
-#
-# Emacs is my main driver. I'm the author of Doom Emacs
-# https://github.com/hlissner/doom-emacs. This module sets it up to meet my
-# particular Doomy needs.
 
 { config, lib, pkgs, inputs, laptop, ... }:
 
@@ -42,7 +38,7 @@ in {
         ##
         cmake
         sqlite
-        # libgcc # This isn't helping vterm compile, yet.
+        libgcc # This isn't helping vterm compile, yet.
       ] ++ (import ./tools { inherit inputs pkgs; });
 
     # environment.sessionVariables.emacs = "${emacs}/bin/emacs";

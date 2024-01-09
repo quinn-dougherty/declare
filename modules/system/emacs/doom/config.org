@@ -45,7 +45,10 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 #+BEGIN_SRC elisp
 (setq display-line-numbers-type t)
 #+END_SRC
-
+* Doom doctor said to do this as long as I have fish
+#+BEGIN_SRC elisp
+(setq shell-file-name (executable-find "bash"))
+#+END_SRC
 * Buffers and search
 #+BEGIN_SRC elisp
 (map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
@@ -227,14 +230,45 @@ change `org-directory'. It must be set before org loads!
 #+END_SRC
 * Auth for APIs
 #+BEGIN_SRC elisp
-(setq auth-sources '("~/.authinfo.gpg"))
+;(setq auth-sources '("/home/qd/projects/declare/secrets/authinfo.gpg"))
+;(defun my-retrieve-openai-api-key ()
+;  "Retrieve the OpenAI API key from the authinfo file."
+;  (require 'auth-source)
+;  (let ((creds (auth-source-search :host "api.openai.com"
+;                                   :user "apikey"
+;                                   :max 1)))
+;    (if creds
+;        (let ((secret (plist-get (car creds) :secret)))
+;          (if (functionp secret)
+;              (funcall secret)
+;            secret))
+;      (error "No API key found for api.openai.com in authinfo"))))
+;; (use-package! gptel
+;; :config
+;; (setq! gptel-api-key (funcall 'my-retrieve-openai-api-key)))
 
-(setq gpt-openai-key "")
-(setq gpt-openai-engine "gpt-4")
+;(after! auth-source
+;    (setq gptel-api-key (auth-source-user-and-password "apikey"))
+; )
+;; (gptel-api-key-from-auth-source)
+;; (setq gpt-openai-key "")
+;; (setq gpt-openai-engine "gpt-4")
 ;; (setq gpt-openai-use-chat-api t)
 ;; (setq gpt-openai-org "org-5p...Y")  ;; NOT SET
-(setq gpt-openai-max-tokens 2000)
-(setq gpt-openai-temperature 0)
+;; (setq gpt-openai-max-tokens 2000)
+;; (setq gpt-openai-temperature 0.0001)
+#+END_SRC
+* Other LLM things
+#+BEGIN_SRC elisp
+; (setq )
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
 #+END_SRC
 * company completion: nixos options
 #+BEGIN_SRC elisp

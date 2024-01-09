@@ -1,4 +1,4 @@
-{ lib, ubuntu, home-manager, nix-doom-emacs }:
+{ lib, ubuntu, home-manager }:
 
 {
   inherit (ubuntu) system username hostname drv-name-prefix;

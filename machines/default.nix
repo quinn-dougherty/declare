@@ -11,6 +11,6 @@ in {
   #};
   ubuntu = import ./ubuntu {
     inherit lib ubuntu;
-    inherit (inputs) home-manager nix-doom-emacs;
+    inherit (inputs) home-manager;
   };
 }

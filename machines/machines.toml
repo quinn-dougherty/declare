@@ -1,12 +1,12 @@
 [common]
 system = "x86_64-linux"
-timezone = "America/New_York"
+timezone = "Europe/Zurich"
 
 [laptop]
 hostname = "grindenstern"
 user-fullname = "Quinn Dougherty"
 # one of xmonad, xfce, gnome, kde, exwm
-desktop = "exwm"
+desktop = "kde"
 
 [phone]
 hostname = "risencrantz"

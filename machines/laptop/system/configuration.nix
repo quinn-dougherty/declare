@@ -1,6 +1,6 @@
-{ laptop, ... }:
+{ laptop, inputs, ... }:
 with laptop;
-let keyspath = ./../../../keys;
+let keyspath = "${inputs.self}/keys";
 in {
   boot = {
     loader = {
