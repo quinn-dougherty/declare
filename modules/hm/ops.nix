@@ -25,6 +25,7 @@
     anki
     libreoffice
     # zotero insecure on oct 30 2023 unstable
+    inkscape
     pinta
     obs-studio
     vlc
