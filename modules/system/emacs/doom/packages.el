@@ -62,6 +62,7 @@
 (package! org-modern)
 (package! org-mime)
 (package! org-present)
+(package! epresent)
 (package! nov)
 (package! direnv)
 (package! envrc)

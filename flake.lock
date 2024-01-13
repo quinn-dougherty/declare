@@ -16,6 +16,28 @@
         "type": "github"
       }
     },
+    "emacs-overlay": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1705135842,
+        "narHash": "sha256-ua/7SiOdMzyM/0Avx8YOgc7K9m7zrOjIE2slEXP+Ecc=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "8363635cc3d70d8869e3ead707eb01e03a203f78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -71,6 +93,24 @@
       "original": {
         "id": "flake-parts",
         "type": "indirect"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1701680307,
+        "narHash": "sha256-kAuep2h5ajznlPMD9rnQyffWG8EM/C73lejGofXvdM8=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "4022d587cbbfd70fe950c1e2083a02621806a725",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
       }
     },
     "haskell-flake": {
@@ -334,6 +374,22 @@
     },
     "nixpkgs-stable": {
       "locked": {
+        "lastModified": 1704874635,
+        "narHash": "sha256-YWuCrtsty5vVZvu+7BchAxmcYzTMfolSPP5io8+WYCg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3dc440faeee9e889fe2d1b4d25ad0f430d449356",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable_2": {
+      "locked": {
         "lastModified": 1703992652,
         "narHash": "sha256-C0o8AUyu8xYgJ36kOxJfXIroy9if/G6aJbNOpA5W0+M=",
         "owner": "NixOS",
@@ -413,6 +469,7 @@
     "root": {
       "inputs": {
         "doom": "doom",
+        "emacs-overlay": "emacs-overlay",
         "hercules-ci-agent": "hercules-ci-agent",
         "hercules-ci-effects": "hercules-ci-effects",
         "home-manager": "home-manager",
@@ -424,7 +481,7 @@
         "nixpkgs-2305": "nixpkgs-2305",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-seafile-10": "nixpkgs-seafile-10",
-        "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs-stable": "nixpkgs-stable_2",
         "secrix": "secrix",
         "treefmt-nix": "treefmt-nix"
       }
@@ -444,6 +501,21 @@
       "original": {
         "owner": "Platonic-Systems",
         "repo": "secrix",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },

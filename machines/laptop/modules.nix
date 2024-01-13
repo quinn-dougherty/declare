@@ -1,6 +1,5 @@
 { inputs, laptop }:
-let
-  modpath = "${inputs.self}/modules/system";
+let modpath = "${inputs.self}/modules/system";
 in with inputs;
 [
   ./system/configuration.nix
@@ -19,5 +18,11 @@ in with inputs;
   # "${modpath}/games.nix"
   "${modpath}/services/flatpak.nix"
   inputs.nixos-generators.nixosModules.all-formats
-  { imports = [ "${modpath}/emacs" ]; editors.emacs = { enable = true; doom.enable = true; }; }
+  {
+    imports = [ "${modpath}/emacs" ];
+    editors.emacs = {
+      enable = true;
+      doom.enable = true;
+    };
+  }
 ] ++ import "${modpath}/common"

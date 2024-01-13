@@ -73,7 +73,7 @@ in {
       enableSSHSupport = true;
     };
     thunar.enable = builtins.elem desktop [ "xmonad" "exwm" ];
-    slock.enable = true;
+    slock.enable = builtins.elem desktop [ "xmonad" "exwm" ];
   };
 
   # This value determines the NixOS release from which the default
