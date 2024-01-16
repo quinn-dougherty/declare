@@ -7,7 +7,7 @@
       # enable = true;
       settings = {
         concurrentTasks = "auto";
-        staticSecretsDirectory = "/run/hercules-ci-agent-keys";
+        staticSecretsDirectory = "/run/hercules-ci-agent-default-keys";
       };
     };
     casper = {
