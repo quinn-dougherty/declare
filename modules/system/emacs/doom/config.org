@@ -97,7 +97,7 @@ numbers are disabled. For relative line numbers, set this to `relative'.
                         ("vterm-clear-scrollback" vterm-clear-scrollback)
                         ("dired" dired)
                         ("ediff-files" ediff-files)))
-(custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
+; (custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
 #+END_SRC
 * Defaults for startup
 #+BEGIN_SRC elisp
