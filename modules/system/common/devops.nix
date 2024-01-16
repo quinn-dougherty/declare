@@ -10,7 +10,7 @@
     heroku
     hci
     arion
-    nixops_unstable # https://github.com/NixOS/nixops/issues/1521
+    # nixops_unstable # https://github.com/NixOS/nixops/issues/1521
     onionshare
     minicom
     age
