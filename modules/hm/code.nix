@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium-fhs;
+    package = pkgs.vscode-fhs;
     extensions = with pkgs.vscode-extensions;
       [
         vscodevim.vim
@@ -64,5 +64,6 @@
         }
       ]);
   };
-  home.packages = [ pkgs.jdk ];
+  # prusti-assistant (direnv doesn't work)
+  home.packages = [ pkgs.jdk pkgs.rustup ];
 }
