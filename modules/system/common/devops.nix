@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    certbot-full
+    # certbot-full
     # python311Packages.certbot-dns-route53
     # awscli2
     cachix
