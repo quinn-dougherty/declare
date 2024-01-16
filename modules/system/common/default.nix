@@ -6,7 +6,6 @@
   ./audit.nix
   ./observability.nix
   ./../services/ivpn.nix
-  ./ld.nix
   ./devops.nix
   ./utilities.nix
 ]

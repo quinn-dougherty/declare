@@ -25,4 +25,5 @@ in with inputs;
       doom.enable = true;
     };
   }
+  "${modpath}/ld.nix"
 ] ++ import "${modpath}/common"
