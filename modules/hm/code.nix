@@ -65,5 +65,5 @@
       ]);
   };
   # prusti-assistant (direnv doesn't work)
-  home.packages = [ pkgs.jdk pkgs.rustup ];
+  home.packages = [ pkgs.jdk ];
 }

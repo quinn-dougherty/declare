@@ -8,4 +8,5 @@ with nodePackages_latest; [
   npm-check-updates
   pnpm
   # turbo # broken rn
+  bun
 ]
