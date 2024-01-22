@@ -1,6 +1,6 @@
 [common]
 system = "x86_64-linux"
-timezone = "Europe/Zurich"
+timezone = "America/Los_Angeles"
 
 [laptop]
 hostname = "grindenstern"
