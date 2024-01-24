@@ -2,19 +2,20 @@
   secrix = {
     services = {
       hci-default.secrets = {
-        "binary-caches.json".encrypted.file = ./herc/binary-caches.json.age;
+        "binary-caches.json" = {
+          encrypted.file = ./herc/binary-caches.json.age;
+          decrypted.mode = "0600";
+        };
         "secrets.json".encrypted.file = ./herc/secrets.json.age;
         "cluster-join-token.key".encrypted.file =
           ./herc/cluster-join-token.key.age;
       };
-      hci-default.secretsDirName = "hci-default-keys";
       hci-casper.secrets = {
         "binary-caches.json".encrypted.file = ./herc/binary-caches.json.age;
         "secrets.json".encrypted.file = ./herc/secrets.json.age;
         "cluster-join-token.key".encrypted.file =
           ./herc/cluster-join-token-casper.key.age;
       };
-      hci-casper.secretsDirName = "hci-casper-keys";
       nextcloud.secrets."nextcloud-db-pass".encrypted.file =
         ./nextcloud-db-pass.age;
       nix-serve.secrets."cache-qd-priv-key.pem" = {
