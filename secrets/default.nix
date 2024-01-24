@@ -1,13 +1,13 @@
 {
   secrix = {
     services = {
-      hci-default.secrets = {
+      hercules-ci-agent-default.secrets = {
         "binary-caches.json".encrypted.file = ./herc/binary-caches.json.age;
         "secrets.json".encrypted.file = ./herc/secrets.json.age;
         "cluster-join-token.key".encrypted.file =
           ./herc/cluster-join-token.key.age;
       };
-      hci-casper.secrets = {
+      hercules-ci-agent-casper.secrets = {
         "binary-caches.json".encrypted.file = ./herc/binary-caches.json.age;
         "secrets.json".encrypted.file = ./herc/secrets.json.age;
         "cluster-join-token.key".encrypted.file =
