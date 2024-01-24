@@ -8,8 +8,7 @@
           ./herc/cluster-join-token.key.age;
       };
       hercules-ci-agent-casper.secrets = {
-        "binary-caches.json".encrypted.file = ./herc/binary-caches.json.age;
-        # "secrets.json".encrypted.file = ./herc/secrets.json.age;
+        "binary-caches.json".encrypted.file = ./herc/binary-caches-casper.json.age;
         "cluster-join-token.key".encrypted.file =
           ./herc/cluster-join-token-casper.key.age;
       };
