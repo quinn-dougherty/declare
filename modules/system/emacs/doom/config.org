@@ -36,7 +36,7 @@ font string. You generally only need these two:
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark tsdh-dark)) ; doom-manegarm ))
+(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark tsdh-dark doom-miramare)) ; doom-manegarm ))
 (rand-theme)
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 #+END_SRC
