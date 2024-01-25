@@ -8,8 +8,9 @@
           ./herc/cluster-join-token.key.age;
       };
       hercules-ci-agent-casper.secrets = {
-        "binary-caches.json".encrypted.file = ./herc/binary-caches-casper.json.age;
-        "cluster-join-token.key".encrypted.file =
+        "binary-caches-casper.json".encrypted.file =
+          ./herc/binary-caches-casper.json.age;
+        "cluster-join-token-casper.key".encrypted.file =
           ./herc/cluster-join-token-casper.key.age;
       };
       nextcloud.secrets."nextcloud-db-pass".encrypted.file =
