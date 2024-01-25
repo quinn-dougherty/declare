@@ -9,4 +9,5 @@ with nodePackages_latest; [
   pnpm
   # turbo # broken rn
   bun
+  stripe-cli
 ]
