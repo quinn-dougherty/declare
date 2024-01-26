@@ -4,7 +4,7 @@ let
     import ./knownhostsfragment.nix { inherit ip; };
 in with uptime.pkgs;
 hci-effects.runIf (ref == "refs/heads/main") (hci-effects.runNixOS {
-  configuration = server-os;
+  configuration = uptime-os;
   secretsMap.ssh = "default-ssh";
   userSetupScript = ''
     writeSSHKey ssh
