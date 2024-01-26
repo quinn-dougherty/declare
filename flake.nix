@@ -53,7 +53,7 @@
           server-deploy = server.deploymenteffect;
         };
       utils = import ./machines/utils.nix;
-      immobiles = [ laptop server ];
+      immobiles = [ laptop server uptime ];
       mobiles = [ phone ];
       nonNixos = [ ubuntu ];
     in with operations; {

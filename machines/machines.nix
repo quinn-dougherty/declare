@@ -63,6 +63,13 @@ in with machines.common; {
       ];
     };
   };
+  uptime = with machines.uptime; {
+    inherit system hostname user-fullname;
+    username = admin;
+    timezone = server-onprem-tz;
+    ip = machines.uptime.ip;
+    pkgs = import nixpkgs { inherit system; };
+  };
   ubuntu = with machines.ubuntu; {
     inherit system config hostname user-fullname timezone;
     username = qd;

@@ -1,19 +1,20 @@
 { lib, laptop, inputs }:
 let
-  # doom = import "${inputs.self}/packages/emacs" {
-  #   inherit inputs;
-  #   inherit (laptop) pkgs;
-  # };
+  inherit (laptop) system;
+  specialArgs = {
+    inherit inputs laptop;
+    inherit (laptop) pkgs;
+  };
+  modules = import ./modules.nix { inherit inputs laptop; };
+  bootstrap = inputs.nixos-generators.nixosGenerate {
+    inherit system modules specialArgs;
+    inherit (laptop) pkgs;
+    format = "iso";
+  };
+  operatingsystem = lib.nixosSystem { inherit system modules specialArgs; };
 in {
   inherit (laptop) system username hostname drv-name-prefix;
-  operatingsystem = lib.nixosSystem {
-    system = laptop.system;
-    specialArgs = {
-      inherit inputs laptop;
-      inherit (laptop) pkgs;
-    };
-    modules = import ./modules.nix { inherit inputs laptop; };
-  };
+  inherit bootstrap operatingsystem;
   homemanager = (import ./users/configurations.nix {
     inherit inputs laptop;
   }).${laptop.username};

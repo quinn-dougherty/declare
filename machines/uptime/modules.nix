@@ -1,10 +1,9 @@
-{ server, inputs }:
-let modpath = ./../../modules/system;
+{ uptime, inputs }:
+let modpath = "${inputs.self}/modules/system";
 in with inputs;
 [
+  ./system/digital-ocean.nix
   ./system/configuration.nix
-  # ./system/hardware-configuration.nix
   secrix.nixosModules.default
   # "${modpath}/allowUnfree.nix"
-  # ./../../modules/website
-] ++ import ./../../modules/system/common
+] ++ import "${modpath}/common"

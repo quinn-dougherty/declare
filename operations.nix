@@ -44,6 +44,13 @@ let
           website = packages.website;
         };
 
+      ${uptime.hostname}.outputs = with hci-inputs;
+        if ref == "refs/heads/main" then {
+          effects.deployment = uptime-deploy { inherit ref; };
+        } else {
+          operating-system = packages.${machines.uptime.hostname};
+        };
+
       "${ubuntu.drv-name-prefix}:hm".outputs.home-configuration =
         self.homeConfigurations."${ubuntu.drv-name-prefix}".activationPackage;
 
