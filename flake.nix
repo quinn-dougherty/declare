@@ -51,6 +51,7 @@
         in import ./operations.nix {
           inherit self machines treefmt-nix;
           server-deploy = server.deploymenteffect;
+          uptime-deploy = uptime.deploymenteffect;
         };
       utils = import ./machines/utils.nix;
       immobiles = [ laptop server uptime ];

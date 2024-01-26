@@ -1,4 +1,4 @@
-{ self, treefmt-nix, machines, server-deploy }:
+{ self, treefmt-nix, machines, server-deploy, uptime-deploy }:
 with machines;
 let
   fmt-module = { ... }: {
