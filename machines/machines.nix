@@ -68,7 +68,10 @@ in with machines.common; {
     username = admin;
     timezone = server-onprem-tz;
     ip = machines.uptime.ip;
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [ hercules-ci-effects.overlay ];
+    };
   };
   ubuntu = with machines.ubuntu; {
     inherit system config hostname user-fullname timezone;
