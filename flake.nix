@@ -47,7 +47,7 @@
       website = with common;
         import ./website/soupault.nix { inherit pkgs self; };
       operations =
-        let machines = { inherit laptop server phone ubuntu common; };
+        let machines = { inherit laptop server uptime phone ubuntu common; };
         in import ./operations.nix {
           inherit self machines treefmt-nix;
           server-deploy = server.deploymenteffect;
