@@ -1,12 +1,10 @@
-# # APPROPRIATED FROM github.com/hlissner/dotfiles
-
 { config, lib, pkgs, inputs, laptop, ... }:
 
 with lib;
 let
   cfg = config.editors.emacs;
   emacsPackage = ((pkgs.emacsPackagesFor pkgs.emacsNativeComp).emacsWithPackages
-    (epkgs: with epkgs; [ vterm ]));
+    (epkgs: with epkgs; [ vterm sqlite3 emacsql ]));
 in {
   options.editors.emacs = {
     enable = mkEnableOption "emacs";
@@ -50,6 +48,7 @@ in {
       installDoomEmacs.text = ''
         export HOME=/home/${laptop.username}
         export XDG_CONFIG_HOME=$HOME/.config
+        echo "Installing doomemacs"
         if [ ! -d "$XDG_CONFIG_HOME/emacs" ]; then
            cp -r ${inputs.doom} $XDG_CONFIG_HOME/emacs
            chown -R ${laptop.username}:users $XDG_CONFIG_HOME/emacs
@@ -59,7 +58,6 @@ in {
         cp -r ${inputs.self}/modules/system/emacs/doom/ $XDG_CONFIG_HOME/
         chown -R ${laptop.username}:users $XDG_CONFIG_HOME/doom
         chmod +w -R $XDG_CONFIG_HOME/doom
-        $XDG_CONFIG_HOME/emacs/bin/doom install
       '';
     };
   };

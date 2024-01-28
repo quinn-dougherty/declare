@@ -3,11 +3,11 @@
     "doom": {
       "flake": false,
       "locked": {
-        "lastModified": 1702066305,
-        "narHash": "sha256-PdQD6f+TGgu0Nf/zvmJOHzrfLC50d4pWjK2dIQIizlw=",
+        "lastModified": 1706420946,
+        "narHash": "sha256-KCGzS8l8ZBh2UPTplIT9xMvhGoxUGKKTKDenNqqNdCQ=",
         "owner": "doomemacs",
         "repo": "doomemacs",
-        "rev": "03d692f129633e3bf0bd100d91b3ebf3f77db6d1",
+        "rev": "ff33ec8f7a89d168ca533612e2562883c89e029f",
         "type": "github"
       },
       "original": {

@@ -252,9 +252,10 @@ change `org-directory'. It must be set before org loads!
 ;  ;; Bind the custom function to <tab> in Evil's insert state
 ;  (evil-define-key 'insert 'global (kbd "<right>") 'my/copilot-rightarrow-or-default))
 #+END_SRC
-* company completion: nixos options
+* completion and lsp
 #+BEGIN_SRC elisp
 (add-to-list 'company-backends 'company-nixos-options 'company-coq)
+(use-package! lsp-tailwindcss)
 #+END_SRC
 * Direnv
 #+BEGIN_SRC elisp

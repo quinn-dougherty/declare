@@ -73,6 +73,8 @@
 
 (package! rescript-mode)
 (package! lsp-rescript)
+(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
+
 (package! gptel)
 (package! chatgpt-shell)
 (package! editorconfig)
