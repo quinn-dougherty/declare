@@ -22,6 +22,7 @@ static4 = "192.168.42.42"
 [uptime]
 hostname = "the-band-back-together"
 user-fullname = "Monitor Admin"
+ip = "143.198.58.137"
 
 [ubuntu]
 hostname = "duck-you-sucker"
