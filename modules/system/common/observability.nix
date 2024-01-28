@@ -11,6 +11,8 @@
     conntrack-tools
     linuxKernel.packages.linux_libre.perf
     conky
+    bottom
+    tldr
     # postman
   ];
   programs = {
