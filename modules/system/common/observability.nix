@@ -13,6 +13,7 @@
     conky
     bottom
     tldr
+    btop
     # postman
   ];
   programs = {

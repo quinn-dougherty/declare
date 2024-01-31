@@ -232,7 +232,7 @@ change `org-directory'. It must be set before org loads!
 #+BEGIN_SRC elisp
 (auth-source-search :host "api.openai.com" :user "apikey")
 (use-package! gptel
- :config (setq! gptel-model "gpt-4-0613"))
+ :config (setq! gptel-model "gpt-4-turbo-preview"))
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
