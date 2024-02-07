@@ -4,12 +4,6 @@ let
   machines = fromTOML (builtins.readFile ./machines.toml);
   config.allowUnfree = true;
   server-onprem-tz = "America/Los_Angeles";
-  seafile-overlay = system:
-    let nps = nixpkgs-seafile-10.legacyPackages.${system};
-    in final: prev: {
-      seafile-server = nps.seafile-server;
-      seahub = nps.seahub;
-    };
   mesa-prev-overlay = final: prev: { mesa = pkgs-stable.mesa; };
   factorio-overlay = final: prev: {
     factorio = prev.factorio.override {
@@ -39,7 +33,7 @@ in with machines.common; {
     };
     pkgs = import nixpkgs {
       inherit system config;
-      overlays = [ factorio-overlay (seafile-overlay system) ];
+      overlays = [ factorio-overlay ];
     };
     pkgs-stable = import nixpkgs-stable { inherit system config; };
   };
@@ -58,7 +52,6 @@ in with machines.common; {
       inherit system;
       overlays = [
         hercules-ci-effects.overlay
-        (seafile-overlay system)
         factorio-overlay
       ];
     };
