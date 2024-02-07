@@ -1,4 +1,4 @@
-{ self, treefmt-nix, machines, server-deploy }:
+{ self, treefmt-nix, machines, server-deploy, uptime-deploy }:
 with machines;
 let
   fmt-module = { ... }: {
@@ -42,6 +42,13 @@ let
         } else {
           operating-system = packages.${machines.server.hostname};
           website = packages.website;
+        };
+
+      ${uptime.hostname}.outputs = with hci-inputs;
+        if ref == "refs/heads/main" then {
+          effects.deployment = uptime-deploy { inherit ref; };
+        } else {
+          operating-system = packages.${machines.uptime.hostname};
         };
 
       "${ubuntu.drv-name-prefix}:hm".outputs.home-configuration =

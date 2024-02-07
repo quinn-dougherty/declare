@@ -9,7 +9,7 @@ in with inputs;
   nixos-hardware.nixosModules.framework-13th-gen-intel
   ./system/hardware-configuration.nix
   secrix.nixosModules.default
-  hercules-ci-agent.nixosModules.agent-service
+  hercules-ci-agent.nixosModules.multi-agent-service
   "${servpath}/hercules.nix"
   "${modpath}/crosscompilation.nix"
   # "${modpath}/slurm.nix"

@@ -22,6 +22,10 @@
       url = "github:doomemacs/doomemacs";
       flake = false;
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,20 +40,21 @@
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
     , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
-    , mobile-nixos, doom, treefmt-nix, nixpkgs-seafile-10, hercules-ci-agent
-    , hercules-ci-effects }@inputs:
+    , mobile-nixos, doom, emacs-overlay, treefmt-nix, nixpkgs-seafile-10
+    , hercules-ci-agent, hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let
       website = with common;
         import ./website/soupault.nix { inherit pkgs self; };
       operations =
-        let machines = { inherit laptop server phone ubuntu common; };
+        let machines = { inherit laptop server uptime phone ubuntu common; };
         in import ./operations.nix {
           inherit self machines treefmt-nix;
           server-deploy = server.deploymenteffect;
+          uptime-deploy = uptime.deploymenteffect;
         };
       utils = import ./machines/utils.nix;
-      immobiles = [ laptop server ];
+      immobiles = [ laptop server uptime ];
       mobiles = [ phone ];
       nonNixos = [ ubuntu ];
     in with operations; {

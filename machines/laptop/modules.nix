@@ -1,23 +1,29 @@
 { inputs, laptop }:
-let
-  modpath = "${inputs.self}/modules";
-  modpath-system = "${modpath}/system";
+let modpath = "${inputs.self}/modules/system";
 in with inputs;
 [
   ./system/configuration.nix
-  "${modpath-system}/desktops/${laptop.desktop}"
+  "${modpath}/desktops/${laptop.desktop}"
   ./system/hardware-configuration.nix
   nixos-hardware.nixosModules.framework-11th-gen-intel
   secrix.nixosModules.default
   home-manager.nixosModules.home-manager
   ./users/homes.nix
-  "${modpath-system}/manyterms.nix"
-  "${modpath-system}/desktops/fonts.nix"
-  "${modpath-system}/desktops/audio.nix"
-  "${modpath-system}/bluetooth.nix"
-  "${modpath-system}/crosscompilation.nix"
-  "${modpath-system}/desktops/il8n.nix"
-  # "${modpath-system}/games.nix"
-  "${modpath-system}/services/flatpak.nix"
+  "${modpath}/manyterms.nix"
+  "${modpath}/desktops/fonts.nix"
+  "${modpath}/desktops/audio.nix"
+  "${modpath}/bluetooth.nix"
+  "${modpath}/crosscompilation.nix"
+  "${modpath}/desktops/il8n.nix"
+  # "${modpath}/games.nix"
+  "${modpath}/services/flatpak.nix"
   inputs.nixos-generators.nixosModules.all-formats
-] ++ import "${modpath}/system/common"
+  {
+    imports = [ "${modpath}/emacs" ];
+    editors.emacs = {
+      enable = true;
+      doom.enable = true;
+    };
+  }
+  "${modpath}/ld.nix"
+] ++ import "${modpath}/common"

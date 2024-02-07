@@ -1,16 +1,10 @@
-# # APPROPRIATED FROM github.com/hlissner/dotfiles
-#
-# Emacs is my main driver. I'm the author of Doom Emacs
-# https://github.com/hlissner/doom-emacs. This module sets it up to meet my
-# particular Doomy needs.
-
 { config, lib, pkgs, inputs, laptop, ... }:
 
 with lib;
 let
   cfg = config.editors.emacs;
-  emacsPackage =
-    pkgs.emacs29; # ((pkgs.emacsPackagesFor pkgs.emacsNativeComp).emacsWithPackages (epkgs: with epkgs; [vterm]));
+  emacsPackage = ((pkgs.emacsPackagesFor pkgs.emacsNativeComp).emacsWithPackages
+    (epkgs: with epkgs; [ vterm sqlite3 emacsql ]));
 in {
   options.editors.emacs = {
     enable = mkEnableOption "emacs";
@@ -19,6 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
     environment.systemPackages = with pkgs;
       [
@@ -45,23 +40,17 @@ in {
         # libgcc # This isn't helping vterm compile, yet.
       ] ++ (import ./tools { inherit inputs pkgs; });
 
-    # environment.sessionVariables.emacs = "${emacs}/bin/emacs";
+    environment.sessionVariables.emacs = "${emacsPackage}/bin/emacs";
 
     fonts.packages = [ pkgs.emacs-all-the-icons-fonts ];
 
-    system.userActivationScripts = let
-      doomrepo = pkgs.fetchFromGitHub {
-        owner = "doomemacs";
-        repo = "doomemacs";
-        rev = "03d692f129633e3bf0bd100d91b3ebf3f77db6d1";
-        sha256 = "sha256-PdQD6f+TGgu0Nf/zvmJOHzrfLC50d4pWjK2dIQIizlw=";
-      };
-    in mkIf cfg.doom.enable {
+    system.userActivationScripts = mkIf cfg.doom.enable {
       installDoomEmacs.text = ''
         export HOME=/home/${laptop.username}
         export XDG_CONFIG_HOME=$HOME/.config
+        echo "Installing doomemacs"
         if [ ! -d "$XDG_CONFIG_HOME/emacs" ]; then
-           cp -r ${doomrepo} $XDG_CONFIG_HOME/emacs
+           cp -r ${inputs.doom} $XDG_CONFIG_HOME/emacs
            chown -R ${laptop.username}:users $XDG_CONFIG_HOME/emacs
            chmod +w -R $XDG_CONFIG_HOME/emacs
         fi

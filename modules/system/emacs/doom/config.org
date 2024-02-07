@@ -36,7 +36,7 @@ font string. You generally only need these two:
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark)) ; doom-manegarm ))
+(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark tsdh-dark doom-miramare)) ; doom-manegarm ))
 (rand-theme)
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 #+END_SRC
@@ -45,14 +45,16 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 #+BEGIN_SRC elisp
 (setq display-line-numbers-type t)
 #+END_SRC
-
+* Doom doctor said to do this as long as I have fish
+#+BEGIN_SRC elisp
+(setq shell-file-name (executable-find "bash"))
+#+END_SRC
 * Buffers and search
 #+BEGIN_SRC elisp
 (map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
 (setq projectile-project-search-path '("~/projects") projectile-sort-order 'recentf)
 #+END_SRC
 * EXWM
-#+BEGIN_SRC elisp
 ;; (use-package! exwm)
 ;; (exwm-enable)
 ;; (use-package! exwm-systemtray)
@@ -86,7 +88,6 @@ numbers are disabled. For relative line numbers, set this to `relative'.
                                             (interactive (list (read-shell-command "Launch program: ")))
                                             (start-process-shell-command command nil command))))
       )
-#+END_SRC
 * Shell things
 #+BEGIN_SRC elisp
 (setq shell-file-name (executable-find "bash")) ;; doom doctor said this.
@@ -96,7 +97,7 @@ numbers are disabled. For relative line numbers, set this to `relative'.
                         ("vterm-clear-scrollback" vterm-clear-scrollback)
                         ("dired" dired)
                         ("ediff-files" ediff-files)))
-                                        ; (custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
+; (custom-set-variables explicit-shell-file-name "/run/current-system/sw/bin/fish")
 #+END_SRC
 * Defaults for startup
 #+BEGIN_SRC elisp
@@ -143,41 +144,39 @@ change `org-directory'. It must be set before org loads!
 #+END_SRC
 * Splash screen
 #+BEGIN_SRC elisp
-; (defun for-all ()
-; (let* ((banner '("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMKxOWMMMMMMMMMMMKd0WMMMMMMMMMW"
-;                  "WMMMMMMMMMMX:.xWMMMMMMMMM0,,0MMMMMMMMMMW"
-;                  "WMMMMMMMMMMMX:.dKKKKKKKKk,,0MMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMX:.,looooo:.'0MMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMX:.xWMMM0,,0MMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMX:.xWM0,'OMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMX:'ld,'OMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMK;  'OMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMKdlOMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
-;                  "NWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWN"
-;                  ))
-;        (longest-line (apply #'max (mapcar #'length banner))))
-;   (put-text-property
-;    (point)
-;    (dolist (line banner (point))
-;      (insert (+doom-dashboard--center
-;               +doom-dashboard--width
-;               (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-;              "\n"))
-;    'face 'doom-dashboard-banner)))
+(defun for-all ()
+ (let* ((banner '("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMKxOWMMMMMMMMMMMKd0WMMMMMMMMMW"
+                  "WMMMMMMMMMMX:.xWMMMMMMMMM0,,0MMMMMMMMMMW"
+                  "WMMMMMMMMMMMX:.dKKKKKKKKk,,0MMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMX:.,looooo:.'0MMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMX:.xWMMM0,,0MMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMX:.xWM0,'OMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMX:'ld,'OMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMK;  'OMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMKdlOMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW"
+                  "NWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWN"
+                  ))
+       (longest-line (apply #'max (mapcar #'length banner))))
+   (put-text-property
+    (point)
+    (dolist (line banner (point))
+      (insert (+doom-dashboard--center
+               +doom-dashboard--width
+               (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+              "\n"))
+    'face 'doom-dashboard-banner)))
 
-; (setq +doom-dashboard-ascii-banner-fn #'for-all)
-
-(setq fancy-splash-image (concat doom-private-dir "splash.png"))
+(setq +doom-dashboard-ascii-banner-fn #'for-all)
 #+END_SRC
 * Making predictions and bets
 #+BEGIN_SRC elisp
@@ -227,18 +226,36 @@ change `org-directory'. It must be set before org loads!
 #+END_SRC
 * Auth for APIs
 #+BEGIN_SRC elisp
-(setq auth-sources '("~/.authinfo.gpg"))
-
-(setq gpt-openai-key "")
-(setq gpt-openai-engine "gpt-4")
-;; (setq gpt-openai-use-chat-api t)
-;; (setq gpt-openai-org "org-5p...Y")  ;; NOT SET
-(setq gpt-openai-max-tokens 2000)
-(setq gpt-openai-temperature 0)
+(setq auth-sources '("/home/qd/projects/declare/secrets/authinfo.gpg"))
 #+END_SRC
-* company completion: nixos options
+* Other LLM things
 #+BEGIN_SRC elisp
-(add-to-list 'company-backends 'company-nixos-options)
+(auth-source-search :host "api.openai.com" :user "apikey")
+(use-package! gptel
+ :config (setq! gptel-model "gpt-4-turbo-preview"))
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<right>" . 'copilot-accept-completion)
+              ("C-<right>" . 'copilot-accept-completion-by-word)))
+;(after! (evil copilot)
+;  ;; Define the custom function that either accepts the completion or does the default behavior
+;  (defun my/copilot-rightarrow-or-default ()
+;    (interactive)
+;    (if (and (bound-and-true-p copilot-mode)
+;             ;; Add any other conditions to check for active copilot suggestions if necessary
+;             )
+;        (copilot-accept-completion)
+;      (evil-insert 1))) ; Default action to insert a tab. Adjust as needed.
+;
+;  ;; Bind the custom function to <tab> in Evil's insert state
+;  (evil-define-key 'insert 'global (kbd "<right>") 'my/copilot-rightarrow-or-default))
+#+END_SRC
+* completion and lsp
+#+BEGIN_SRC elisp
+(add-to-list 'company-backends 'company-nixos-options 'company-coq)
+(use-package! lsp-tailwindcss)
 #+END_SRC
 * Direnv
 #+BEGIN_SRC elisp

@@ -1,6 +1,6 @@
-{ laptop, ... }:
+{ laptop, inputs, ... }:
 with laptop;
-let keyspath = ./../../../keys;
+let keyspath = "${inputs.self}/keys";
 in {
   boot = {
     loader = {
@@ -73,7 +73,7 @@ in {
       enableSSHSupport = true;
     };
     thunar.enable = builtins.elem desktop [ "xmonad" "exwm" ];
-    slock.enable = true;
+    slock.enable = builtins.elem desktop [ "xmonad" "exwm" ];
   };
 
   # This value determines the NixOS release from which the default

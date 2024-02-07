@@ -62,6 +62,7 @@
 (package! org-modern)
 (package! org-mime)
 (package! org-present)
+(package! epresent)
 (package! nov)
 (package! direnv)
 (package! envrc)
@@ -72,8 +73,13 @@
 
 (package! rescript-mode)
 (package! lsp-rescript)
+(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
+
 (package! gptel)
 (package! chatgpt-shell)
+(package! editorconfig)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
                                         ; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)

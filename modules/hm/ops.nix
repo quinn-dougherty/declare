@@ -7,7 +7,7 @@
 
     # Browsers # firefox comes with fresh installations, so is omitted.
     brave
-    nyxt
+    # nyxt
     lynx
     tor-browser-bundle-bin
     tor
@@ -25,6 +25,7 @@
     anki
     libreoffice
     # zotero insecure on oct 30 2023 unstable
+    inkscape
     pinta
     obs-studio
     vlc
