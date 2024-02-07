@@ -12,7 +12,7 @@ in builtins.concatLists [
   python-development
   rust-development
   javascript-development
-  ocaml-development
+  # ocaml-development
   haskell-development
   ruby-development
   [ pkgs.nixfmt pkgs.nixpkgs-fmt ]
