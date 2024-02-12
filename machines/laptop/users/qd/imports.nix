@@ -13,7 +13,7 @@
   "${modpath}/git.nix"
   "${modpath}/vim.nix"
   "${modpath}/codium.nix"
-  "${modpath}/code.nix"
+  # "${modpath}/code.nix"
   "${modpath}/comms.nix"
   "${modpath}/ops.nix"
   "${modpath}/direnv.nix"

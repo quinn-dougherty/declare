@@ -138,3 +138,14 @@
   # By default this widget deletes all elements matching the selector,
   # but you can set this option to false to delete just the first one
   delete_all = true
+
+# [widgets.insert-header]
+#   widget = "include"
+#   file = "templates/header.html"
+#   selector = "div#header"
+
+# [widgets.insert-footer]
+#   widget = "include"
+#   file = "templates/footer.html"
+#   selector = "body"
+#   action = "insert_after"
