@@ -12,7 +12,7 @@
   "${modpath}/mail"
   "${modpath}/git.nix"
   "${modpath}/vim.nix"
-  # "${modpath}/codium.nix"
+  "${modpath}/codium.nix"
   "${modpath}/code.nix"
   "${modpath}/comms.nix"
   "${modpath}/ops.nix"

@@ -1,4 +1,8 @@
 #+title: CV
+* Links
+- https://github.com/quinn-dougherty
+- https://linkedin.com/in/quinn-dougherty
+- https://lesswrong.com/users/quinn-dougherty
 * Employers
 |-------------------------------------------+----------------------------------+---------------------------------------------------------------------|
 | Casper Association                        | March 2023 - Present (part time) | R&D team: compositional and trustless audits of financial contracts |
@@ -9,9 +13,9 @@
 |----------------------+---------------+-----------------------------------|
 | Alignable Structures | November 2022 | Ran four-day AI safety conference |
 |                      |               |                                   |
-
 stub
 * Selected writing
-stub
+- [[https://forum.effectivealtruism.org/posts/4rMxiyPTPdzaFMyGm/high-impact-careers-in-formal-verification-artificial][High Impact Careers in Formal Verification]]
+- [[https://www.lesswrong.com/posts/qg4yy4je3sFm7Z49L/what-is-estimational-programming-squiggle-in-context][What is estimational programming?]]
 * Education
 stub

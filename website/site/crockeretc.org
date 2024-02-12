@@ -1,5 +1,8 @@
 #+title: Crocker, "radical honesty", etc.
 
-I'm often frustrated at feeling like I'm laboring under delusions. I endeavor to make it noncostly to give me negative feedback.
+I want it to be cheap to give me negative feedback. To avoid laboring under delusions (about say how well some project or goal is going) I want to know about my gaffs.
 
-This is a stub. I'll write it properly later.
+(this is a stub, writing more later).
+
+- https://www.lesswrong.com/tag/crockers-rules
+- https://thingofthings.substack.com/p/anonymous-feedback-forms-are-not
