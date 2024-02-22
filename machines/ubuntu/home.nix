@@ -9,6 +9,7 @@ home-manager.lib.homeManagerConfiguration {
     "${modpath}/git.nix"
     "${modpath}/vim.nix"
     "${modpath}/ops.nix"
+    "${modpath}/utilities.nix"
     "${modpath}/comms.nix"
     "${modpath}/direnv.nix"
     # "${modpath}/gaming.nix"
