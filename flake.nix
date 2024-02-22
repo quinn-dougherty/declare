@@ -39,8 +39,8 @@
 
   outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
     , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
-    , mobile-nixos, doom, emacs-overlay, treefmt-nix
-    , hercules-ci-agent, hercules-ci-effects }@inputs:
+    , mobile-nixos, doom, emacs-overlay, treefmt-nix, hercules-ci-agent
+    , hercules-ci-effects }@inputs:
     with import ./machines { inherit inputs; };
     let
       website = with common;

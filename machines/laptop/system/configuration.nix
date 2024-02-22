@@ -8,10 +8,8 @@ in {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
-    # trying to improve lid close situation: https://github.com/NixOS/nixos-hardware/pull/717
-    # kernelParames = [ "mem_sleep_default=deep" ];
-    kernelPackages = pkgs.linuxPackages_6_6;
+    # kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
+    kernelPackages = pkgs.linuxPackages_6_6_hardened;
   };
 
   networking = {

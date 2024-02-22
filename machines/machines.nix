@@ -50,10 +50,7 @@ in with machines.common; {
     static4 = machines.server.static4;
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [
-        hercules-ci-effects.overlay
-        factorio-overlay
-      ];
+      overlays = [ hercules-ci-effects.overlay factorio-overlay ];
     };
   };
   uptime = with machines.uptime; {

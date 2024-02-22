@@ -74,13 +74,14 @@
 (package! rescript-mode)
 (package! lsp-rescript)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
+(package! futhark-mode)
 
 (package! gptel)
 (package! chatgpt-shell)
 (package! editorconfig)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
-                                        ; (package! kanban)
+;; (package! kanban)
 ;; (package! gptel-extensions)
 (package! rand-theme)
 (package! nixos-options)

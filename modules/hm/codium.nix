@@ -64,5 +64,5 @@
         }
       ]);
   };
-  home.packages = with pkgs; [ jdk ]; # for prusti
+  home.packages = with pkgs; [ jdk rustup ]; # for prusti
 }
