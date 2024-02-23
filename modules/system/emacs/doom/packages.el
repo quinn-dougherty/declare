@@ -70,6 +70,7 @@
 
 (package! dmenu)
 (package! exwm)
+(package! kdeconnect)
 
 (package! rescript-mode)
 (package! lsp-rescript)

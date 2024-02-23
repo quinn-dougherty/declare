@@ -14,7 +14,10 @@
       defaultSession = "plasmawayland";
     };
   };
-  programs.dconf.enable = true;
+  programs = {
+    dconf.enable = true;
+    kdeconnect.enable = true;
+  };
   qt.platformTheme = "kde";
   environment.systemPackages = [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
 }
