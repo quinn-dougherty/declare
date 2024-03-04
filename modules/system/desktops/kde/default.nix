@@ -19,5 +19,8 @@
     kdeconnect.enable = true;
   };
   qt.platformTheme = "kde";
-  environment.systemPackages = [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
+  environment = {
+    systemPackages = [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
+    sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
+  };
 }

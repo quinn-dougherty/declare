@@ -1,4 +1,6 @@
 { pkgs, ... }:
 
-with pkgs;
-[ lean4 elan ]
+with pkgs; [
+  lean4
+  elan
+]
