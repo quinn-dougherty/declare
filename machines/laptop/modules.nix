@@ -16,7 +16,6 @@ in with inputs;
   "${modpath}/crosscompilation.nix"
   "${modpath}/desktops/il8n.nix"
   # "${modpath}/games.nix"
-  "${modpath}/services/flatpak.nix"
   inputs.nixos-generators.nixosModules.all-formats
   {
     imports = [ "${modpath}/emacs" ];

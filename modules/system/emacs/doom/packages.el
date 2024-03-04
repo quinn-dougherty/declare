@@ -91,3 +91,6 @@
 (package! age)
 (package! auth-source-xoauth2)
 (package! oauth2-request)
+
+;; https://github.com/doomemacs/doomemacs/issues/7698
+;; (package! rust-mode)
