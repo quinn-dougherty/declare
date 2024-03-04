@@ -3,6 +3,7 @@ let keyspath = "${inputs.self}/keys";
 in {
   time.timeZone = uptime.timezone;
   services.logrotate.enable = true;
+  networking.hostName = uptime.hostname;
 
   secrix.defaultEncryptKeys.${uptime.username} =
     [ (builtins.readFile "${keyspath}/id_qd_ed25519.pub") ];
