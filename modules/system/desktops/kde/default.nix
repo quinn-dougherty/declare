@@ -4,14 +4,13 @@
   imports = [ ./../xwayland.nix ];
   services.xserver = {
     enable = true;
-
-    desktopManager.plasma5 = {
+    desktopManager.plasma6 = {
       enable = true;
-      useQtScaling = true;
+      # useQtScaling = true;
     };
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasmawayland";
+      defaultSession = "plasma";
     };
   };
   programs = {
