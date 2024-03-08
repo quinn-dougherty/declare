@@ -62,6 +62,12 @@
           version = "0.12.5";
           sha256 = "sha256-1oReRa9YlbB6Pb2Ce4Q814OyjNYyLPrSXGgBHyeROH0";
         }
+        {
+          name = "lean";
+          publisher = "jroesch";
+          version = "0.16.58";
+          sha256 = "sha256-e5+C6dAcpet4xOiifmTJ1vm2pNrcPhx/mjl70il5NG0=";
+        }
       ]);
   };
   home.packages = with pkgs; [ jdk rustup ]; # for prusti
