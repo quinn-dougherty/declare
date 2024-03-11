@@ -114,7 +114,7 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 If you use `org' and don't want your org files in the default location below,
 change `org-directory'. It must be set before org loads!
 #+BEGIN_SRC elisp
-(setq org-directory "~/org/")
+(setq org-directory "~/Org/")
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
 (load! "./extras/org-invoice-table.el")

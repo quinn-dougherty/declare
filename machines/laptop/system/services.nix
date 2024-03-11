@@ -17,13 +17,5 @@
   fwupd.enable = true;
 
   # Enable CUPS to print documents.
-  printing = {
-    enable = true;
-    drivers = [ pkgs.hplip ];
-  };
-
-  elasticsearch = {
-    package = pkgs.elasticsearch7;
-    enable = false;
-  };
+  printing.enable = true;
 }

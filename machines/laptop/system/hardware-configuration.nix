@@ -7,21 +7,21 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules =
-    [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
+    [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/22970dd5-9da9-4bc5-bff5-045872d985c6";
+    device = "/dev/disk/by-uuid/a687b46c-c97b-4dcb-a3ba-59718315df93";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-0d229cfd-b0d3-493c-9b8c-f2a90f439e45".device =
-    "/dev/disk/by-uuid/0d229cfd-b0d3-493c-9b8c-f2a90f439e45";
+  boot.initrd.luks.devices."luks-7b9858a7-18b2-4ae2-943e-b1e8df24e476".device =
+    "/dev/disk/by-uuid/7b9858a7-18b2-4ae2-943e-b1e8df24e476";
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/1A7C-5AEB";
+    device = "/dev/disk/by-uuid/8550-580A";
     fsType = "vfat";
   };
 
@@ -36,7 +36,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s13f0u4u4.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp0s13f0u1u3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp0s13f0u3.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp170s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
