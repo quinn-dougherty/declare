@@ -18,8 +18,8 @@
         {
           name = "vscode-squiggle";
           publisher = "QURI";
-          version = "0.5.0";
-          sha256 = "sha256-xkl6K2F3lc8bCds4pz/tHRiuAyk8l5HRfp9nxkUj/AI=";
+          version = "0.9.3";
+          sha256 = "sha256-dtE1k59UfmH/z7E4RKaJAPwElJ7E3Y3S2b0cnQHcs2Q=";
         }
         {
           name = "coq-lsp";
@@ -30,13 +30,13 @@
         {
           name = "vscoq";
           publisher = "maximedenes";
-          version = "2.0.2";
-          sha256 = "sha256-pmvc1Snmxc4MWtbagZ8t2MahWQRhmy66gUM0wqB5qrk=";
+          version = "2.1.2";
+          sha256 = "sha256-cjpDKrn1BhC66tNJM86cMuLrCWgxen+MfSIZ8cmzIDE=";
         }
         {
           name = "vscode-mdx";
           publisher = "unifiedjs";
-          version = "1.4.0";
+          version = "1.8.1";
           sha256 = "sha256-qqqq0QKTR0ZCLdPltsnQh5eTqGOh9fV1OSOZMjj4xXg=";
         }
         {
