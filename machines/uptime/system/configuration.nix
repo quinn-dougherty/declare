@@ -1,7 +1,7 @@
 { inputs, uptime, config, ... }:
 let keyspath = "${inputs.self}/keys";
 in {
-  time.timeZone = uptime.timezone;
+  # time.timeZone = uptime.timezone;
   services.logrotate.enable = true;
   networking.hostName = uptime.hostname;
 
@@ -10,7 +10,7 @@ in {
   users.users = let
     authorizedKeyFiles = [
       "${keyspath}/id_qd_ed25519.pub"
-      "${keyspath}/id_ed25519.pub"
+      # "${keyspath}/id_ed25519.pub"
       "${keyspath}/id_server_ed25519.pub"
       "${keyspath}/id_server_rsa_effectsdefault.pub"
     ];

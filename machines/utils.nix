@@ -34,7 +34,7 @@ in {
   hmForAll = machines: builtins.listToAttrs (map hmFor machines);
   packagesFromAllOs = { immobiles, mobiles, nonNixos }:
     (packagesFromAll packageFromX86 immobiles)
-    // (packagesFromAll bootstrapPackageFromX86 immobiles)
+    # // (packagesFromAll bootstrapPackageFromX86 immobiles)
     // (packagesFromAll packageFromAarchDiskImg mobiles)
     // (packagesFromAll packageFromAarchBootPartition mobiles)
     // (packagesFromAll packageFromNonNixos nonNixos);
