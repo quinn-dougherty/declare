@@ -6,9 +6,9 @@
       enable = true;
       adminEmail = "quinnd@riseup.net";
       initialAdminPassword = "test123";
-      # ccnetSettings = {
-      #   General.SERVICE_URL = "http://sync.quinn-dougherty.com";
-      # };
+      ccnetSettings = {
+        General.SERVICE_URL = "http://sync.quinn-dougherty.com";
+      };
     };
     # nginx.virtualHosts."sync.quinn-dougherty.com" = {
     #   addSSL = true;
