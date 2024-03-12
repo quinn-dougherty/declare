@@ -261,7 +261,7 @@ change `org-directory'. It must be set before org loads!
                       "NWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWN"
                   ))
 (defun banner ()
- (let* ((img #'phaesp-banner)
+ (let* ((img phaesp-banner)
        (longest-line (apply #'max (mapcar #'length img))))
    (put-text-property
     (point)

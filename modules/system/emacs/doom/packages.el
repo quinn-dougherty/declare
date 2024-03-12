@@ -76,6 +76,9 @@
 (package! lsp-rescript)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 (package! futhark-mode)
+(package! lean4-mode
+  :recipe (:host github :repo "leanprover-community/lean4-mode" :files ("*.el" "data")))
+;; (package! company-lean)
 
 (package! gptel)
 (package! chatgpt-shell)

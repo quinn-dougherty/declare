@@ -13,6 +13,7 @@
         ms-python.python
         rust-lang.rust-analyzer
         mkhl.direnv
+        github.copilot
       ] ++ (pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-squiggle";
@@ -63,10 +64,10 @@
           sha256 = "sha256-1oReRa9YlbB6Pb2Ce4Q814OyjNYyLPrSXGgBHyeROH0";
         }
         {
-          name = "lean";
-          publisher = "jroesch";
-          version = "0.16.58";
-          sha256 = "sha256-e5+C6dAcpet4xOiifmTJ1vm2pNrcPhx/mjl70il5NG0=";
+          name = "lean4";
+          publisher = "leanprover";
+          version = "0.0.129";
+          sha256 = "sha256-Exz+Z+asgXwRLQlwgSt7XlWlA4BFjlTEclv83dCmWbs=";
         }
       ]);
   };
