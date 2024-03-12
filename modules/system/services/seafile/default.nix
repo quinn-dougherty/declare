@@ -15,5 +15,5 @@
     #   enableACME = true;
     # };
   };
-  security.acme.certs."sync.quinn-dougherty.com".email = "quinnd@riseup.net";
+  # security.acme.certs."sync.quinn-dougherty.com".email = "quinnd@riseup.net";
 }
