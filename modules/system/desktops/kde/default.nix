@@ -16,7 +16,7 @@
   };
   qt.platformTheme = "kde";
   environment = {
-    systemPackages = [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
+    systemPackages = with pkgs.libsForQt5; [ qtgraphicaleffects kio kio-admin ];
     sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
   };
 }
