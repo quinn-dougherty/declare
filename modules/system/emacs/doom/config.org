@@ -36,7 +36,7 @@ font string. You generally only need these two:
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark tsdh-dark doom-miramare)) ; doom-manegarm ))
+(setq rand-theme-wanted '(doom-outrun-electric doom-acario-dark manoj-dark tsdh-dark doom-miramare tango-dark doom-manegarm))
 (rand-theme)
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 #+END_SRC
@@ -52,7 +52,7 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 * Buffers and search
 #+BEGIN_SRC elisp
 (map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
-(setq projectile-project-search-path '("~/projects") projectile-sort-order 'recentf)
+(setq projectile-project-search-path '("~/Projects") projectile-sort-order 'recentf)
 #+END_SRC
 * EXWM
 ;; (use-package! exwm)
@@ -322,31 +322,32 @@ change `org-directory'. It must be set before org loads!
 #+END_SRC
 * Auth for APIs
 #+BEGIN_SRC elisp
-(setq auth-sources '("/home/qd/projects/declare/secrets/authinfo.gpg"))
+;; (setq auth-sources '("/home/qd/Projects/declare/secrets/authinfo.gpg"))
+(setq auth-sources '("/home/qd/.authinfo"))
 #+END_SRC
 * Other LLM things
 #+BEGIN_SRC elisp
 (auth-source-search :host "api.openai.com" :user "apikey")
 (use-package! gptel
- :config (setq! gptel-model "gpt-4-turbo-preview"))
+ :config (setq! gptel-model "gpt-3.5-turbo"))
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map
               ("<right>" . 'copilot-accept-completion)
               ("C-<right>" . 'copilot-accept-completion-by-word)))
-;(after! (evil copilot)
-;  ;; Define the custom function that either accepts the completion or does the default behavior
-;  (defun my/copilot-rightarrow-or-default ()
-;    (interactive)
-;    (if (and (bound-and-true-p copilot-mode)
-;             ;; Add any other conditions to check for active copilot suggestions if necessary
-;             )
-;        (copilot-accept-completion)
-;      (evil-insert 1))) ; Default action to insert a tab. Adjust as needed.
-;
-;  ;; Bind the custom function to <tab> in Evil's insert state
-;  (evil-define-key 'insert 'global (kbd "<right>") 'my/copilot-rightarrow-or-default))
+;; (after! (evil copilot)
+;;   ;; Define the custom function that either accepts the completion or does the default behavior
+;;   (defun my/copilot-rightarrow-or-default ()
+;;     (interactive)
+;;     (if (and (bound-and-true-p copilot-mode)
+;;              ;; Add any other conditions to check for active copilot suggestions if necessary
+;;              )
+;;         (copilot-accept-completion)
+;;       (evil-insert 1))) ; Default action to insert a tab. Adjust as needed.
+;;
+;;   ;; Bind the custom function to <tab> in Evil's insert state
+;;   (evil-define-key 'insert 'global (kbd "<right>") 'my/copilot-rightarrow-or-default))
 #+END_SRC
 * completion and lsp
 #+BEGIN_SRC elisp
