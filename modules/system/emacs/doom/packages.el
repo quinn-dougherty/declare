@@ -64,8 +64,8 @@
 (package! org-present)
 (package! epresent)
 (package! nov)
-(package! direnv)
 (package! envrc)
+(package! direnv)
 ;; (package! helm-projectile)
 
 (package! dmenu)

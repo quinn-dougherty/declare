@@ -353,11 +353,20 @@ change `org-directory'. It must be set before org loads!
 #+BEGIN_SRC elisp
 (add-to-list 'company-backends 'company-nixos-options 'company-coq)
 (use-package! lsp-tailwindcss)
+
+;; This is so that the hover over text in rust doesn't cut off.
+;; if it doesn't work, try this more complicated thing https://github.com/emacs-lsp/lsp-mode/pull/1740#issuecomment-1776493727
+(setq eldoc-echo-area-use-multiline-p t)
 #+END_SRC
 * Direnv
 #+BEGIN_SRC elisp
 (envrc-global-mode)
 (direnv-mode)
+#+END_SRC
+* Emacs Ipython Notebook
+#+BEGIN_SRC elisp
+(setq ein:jupyter-server-command "jupyter")
+;; (setq ein:jupyter-server-use-subcommand "server")
 #+END_SRC
 * Agda
 #+BEGIN_SRC elisp
