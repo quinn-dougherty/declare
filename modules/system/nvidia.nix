@@ -7,7 +7,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -37,12 +37,12 @@
 
     # Use Nvidia Prime to choose which GPU (iGPU or eGPU) to use.
     prime = {
-        sync.enable = true;
-        allowExternalGpu = true;
+      sync.enable = true;
+      allowExternalGpu = true;
 
-        # Make sure to use the correct Bus ID values for your system!
-        nvidiaBusId = "PCI:127:0:0";
-        intelBusId = "PCI:0:2:0";
+      # Make sure to use the correct Bus ID values for your system!
+      nvidiaBusId = "PCI:127:0:0";
+      intelBusId = "PCI:0:2:0";
     };
   };
 }
