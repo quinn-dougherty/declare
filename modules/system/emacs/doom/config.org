@@ -366,6 +366,7 @@ change `org-directory'. It must be set before org loads!
 * Emacs Ipython Notebook
 #+BEGIN_SRC elisp
 (setq ein:jupyter-server-command "jupyter")
+(setq ein:output-area-inlined-images t)
 ;; (setq ein:jupyter-server-use-subcommand "server")
 #+END_SRC
 * Agda
