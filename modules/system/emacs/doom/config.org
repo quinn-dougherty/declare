@@ -115,6 +115,7 @@ If you use `org' and don't want your org files in the default location below,
 change `org-directory'. It must be set before org loads!
 #+BEGIN_SRC elisp
 (setq org-directory "~/Org/")
+(setq org-roam-directory (file-truename "~/Org/roam"))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
 (load! "./extras/org-invoice-table.el")
@@ -137,7 +138,7 @@ change `org-directory'. It must be set before org loads!
 (setq org-modern-label-border nil)
 (global-org-modern-mode)
 
-(setq org-agenda-files '("health.org" "beaur.org" "profesh" "profesh/casper"))
+(setq org-agenda-files '("health.org" "beaur.org" "profesh/applications.org"))
 
 (load! "./extras/org-download-clipboard-pdf.el")
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)

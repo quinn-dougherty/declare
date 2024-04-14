@@ -5,7 +5,6 @@
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
-    nixpkgs-2305.url = "nixpkgs/nixos-23.05";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nix-latest.url = "github:nixos/nix/latest-release";
     home-manager = {
@@ -37,7 +36,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
+  outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable
     , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
     , mobile-nixos, doom, emacs-overlay, treefmt-nix, hercules-ci-agent
     , hercules-ci-effects }@inputs:

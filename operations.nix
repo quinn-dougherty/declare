@@ -6,7 +6,7 @@ let
     programs = {
       prettier.enable = true;
       stylish-haskell.enable = true;
-      nixfmt.enable = true;
+      nixfmt-rfc-style.enable = true;
     };
   };
   format = let fmtr = treefmt-nix.lib.evalModule common.pkgs fmt-module;
