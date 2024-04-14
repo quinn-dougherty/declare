@@ -1,4 +1,8 @@
-{ lib, laptop, inputs }:
+{
+  lib,
+  laptop,
+  inputs,
+}:
 let
   inherit (laptop) system;
   specialArgs = {
@@ -12,13 +16,18 @@ let
     format = "iso";
   };
   operatingsystem = lib.nixosSystem { inherit system modules specialArgs; };
-in {
-  inherit (laptop) system username hostname drv-name-prefix;
+in
+{
+  inherit (laptop)
+    system
+    username
+    hostname
+    drv-name-prefix
+    ;
   inherit bootstrap operatingsystem;
-  homemanager = (import ./users/configurations.nix {
-    inherit inputs laptop;
-  }).${laptop.username};
-  homeshell = with laptop;
+  homemanager = (import ./users/configurations.nix { inherit inputs laptop; }).${laptop.username};
+  homeshell =
+    with laptop;
     import "${inputs.self}/shells/developers/full-homeshell.nix" {
       inherit pkgs pkgs-stable drv-name-prefix;
     };

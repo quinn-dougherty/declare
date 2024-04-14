@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   programs.git = {
     enable = true;
     userName = "Quinn Dougherty";
@@ -13,7 +19,13 @@
       b = "branch";
     };
     lfs.enable = true;
-    ignores = [ "*~" "*.swp" ".DS_Store" ".idea" ".direnv/" ];
+    ignores = [
+      "*~"
+      "*.swp"
+      ".DS_Store"
+      ".idea"
+      ".direnv/"
+    ];
     # github.user = "quinn-dougherty";
   };
 }

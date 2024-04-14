@@ -1,6 +1,8 @@
 { inputs, laptop }:
-let modpath = "${inputs.self}/modules/system";
-in with inputs;
+let
+  modpath = "${inputs.self}/modules/system";
+in
+with inputs;
 [
   ./system/configuration.nix
   "${modpath}/desktops/${laptop.desktop}"
@@ -26,4 +28,5 @@ in with inputs;
     };
   }
   "${modpath}/ld.nix"
-] ++ import "${modpath}/common"
+]
+++ import "${modpath}/common"

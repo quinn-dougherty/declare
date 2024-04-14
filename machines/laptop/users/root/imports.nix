@@ -1,4 +1,5 @@
-{ modpath }: [
+{ modpath }:
+[
   {
     home = {
       username = "root";

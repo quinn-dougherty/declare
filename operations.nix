@@ -1,16 +1,27 @@
-{ self, treefmt-nix, machines, server-deploy, uptime-deploy }:
+{
+  self,
+  treefmt-nix,
+  machines,
+  server-deploy,
+  uptime-deploy,
+}:
 with machines;
 let
-  fmt-module = { ... }: {
-    projectRootFile = "flake.nix";
-    programs = {
-      prettier.enable = true;
-      stylish-haskell.enable = true;
-      nixfmt-rfc-style.enable = true;
+  fmt-module =
+    { ... }:
+    {
+      projectRootFile = "flake.nix";
+      programs = {
+        prettier.enable = true;
+        stylish-haskell.enable = true;
+        nixfmt-rfc-style.enable = true;
+      };
     };
-  };
-  format = let fmtr = treefmt-nix.lib.evalModule common.pkgs fmt-module;
-  in fmtr.config.build.wrapper;
+  format =
+    let
+      fmtr = treefmt-nix.lib.evalModule common.pkgs fmt-module;
+    in
+    fmtr.config.build.wrapper;
   update = hci-inputs: {
     auto-update = {
       outputs.effects = common.pkgs.effects.flakeUpdate {
@@ -20,11 +31,13 @@ let
       when.dayOfMonth = [ 1 ];
     };
   };
-  jobs = hci-inputs:
+  jobs =
+    hci-inputs:
     let
       qdhomeshell = "${laptop.drv-name-prefix}:homeshell";
       packages = self.packages.${machines.common.system};
-    in {
+    in
+    {
       ${laptop.hostname}.outputs = {
         operating-system = packages.${machines.laptop.hostname};
         # home-configuration =
@@ -36,27 +49,30 @@ let
         os_boot-partition = packages."${phone.hostname}-boot-partition";
       };
 
-      ${server.hostname}.outputs = with hci-inputs;
-        if ref == "refs/heads/main" then {
-          effects.deployment = server-deploy { inherit ref; };
-        } else {
-          operating-system = packages.${machines.server.hostname};
-          website = packages.website;
-        };
+      ${server.hostname}.outputs =
+        with hci-inputs;
+        if ref == "refs/heads/main" then
+          { effects.deployment = server-deploy { inherit ref; }; }
+        else
+          {
+            operating-system = packages.${machines.server.hostname};
+            website = packages.website;
+          };
 
-      ${uptime.hostname}.outputs = with hci-inputs;
-        if ref == "refs/heads/main" then {
-          effects.deployment = uptime-deploy { inherit ref; };
-        } else {
-          operating-system = packages.${machines.uptime.hostname};
-        };
+      ${uptime.hostname}.outputs =
+        with hci-inputs;
+        if ref == "refs/heads/main" then
+          { effects.deployment = uptime-deploy { inherit ref; }; }
+        else
+          { operating-system = packages.${machines.uptime.hostname}; };
 
       "${ubuntu.drv-name-prefix}:hm".outputs.home-configuration =
         self.homeConfigurations."${ubuntu.drv-name-prefix}".activationPackage;
 
       developers.outputs = self.devShells.${common.system};
     };
-in {
+in
+{
   herculesCI = hci-inputs: {
     ciSystems = [ common.system ];
     onPush = jobs hci-inputs;

@@ -9,4 +9,8 @@ let
       nose
     ];
   };
-in [ python pkgs.rye ]
+in
+[
+  python
+  pkgs.rye
+]

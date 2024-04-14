@@ -15,7 +15,9 @@ let
   drv-name-prefix-Fn = { username, hostname }: "${username}@${hostname}";
   qd = "qd";
   admin = "admin";
-in with machines.common; {
+in
+with machines.common;
+{
   common = {
     inherit system timezone;
     pkgs = import nixpkgs {
@@ -25,7 +27,14 @@ in with machines.common; {
     pkgs-stable = import nixpkgs-stable { inherit system; };
   };
   laptop = with machines.laptop; {
-    inherit system config timezone hostname user-fullname desktop;
+    inherit
+      system
+      config
+      timezone
+      hostname
+      user-fullname
+      desktop
+      ;
     username = qd;
     drv-name-prefix = drv-name-prefix-Fn {
       username = qd;
@@ -38,7 +47,13 @@ in with machines.common; {
     pkgs-stable = import nixpkgs-stable { inherit system config; };
   };
   phone = with machines.phone; {
-    inherit system config hostname user-fullname timezone;
+    inherit
+      system
+      config
+      hostname
+      user-fullname
+      timezone
+      ;
     username = qd;
     pkgs = import nixpkgs { inherit config system; };
   };
@@ -50,11 +65,19 @@ in with machines.common; {
     static4 = machines.server.static4;
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [ hercules-ci-effects.overlay factorio-overlay ];
+      overlays = [
+        hercules-ci-effects.overlay
+        factorio-overlay
+      ];
     };
   };
   uptime = with machines.uptime; {
-    inherit system hostname user-fullname ip;
+    inherit
+      system
+      hostname
+      user-fullname
+      ip
+      ;
     username = admin;
     timezone = server-onprem-tz;
     pkgs = import nixpkgs {
@@ -63,7 +86,13 @@ in with machines.common; {
     };
   };
   ubuntu = with machines.ubuntu; {
-    inherit system config hostname user-fullname timezone;
+    inherit
+      system
+      config
+      hostname
+      user-fullname
+      timezone
+      ;
     username = qd;
     drv-name-prefix = drv-name-prefix-Fn {
       username = qd;

@@ -1,4 +1,5 @@
-{ pkgs }: {
+{ pkgs }:
+{
   upower = {
     enable = true;
     percentageLow = 30;

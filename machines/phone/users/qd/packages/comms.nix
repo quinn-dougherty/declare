@@ -1,1 +1,6 @@
-{ pkgs }: with pkgs; [ chatty thunderbird ]
+{ pkgs }:
+with pkgs;
+[
+  chatty
+  thunderbird
+]

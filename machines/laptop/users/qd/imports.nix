@@ -1,4 +1,11 @@
-{ inputs, system, modpath, username, desktop, ... }:
+{
+  inputs,
+  system,
+  modpath,
+  username,
+  desktop,
+  ...
+}:
 
 [
   {

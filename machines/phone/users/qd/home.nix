@@ -1,11 +1,18 @@
 { inputs, phone }:
-with phone; {
+with phone;
+{
   programs = {
     home-manager.enable = true;
     firefox.enable = true;
   };
-  imports = let modpath = "${inputs.self}/modules/hm";
-  in [ "${modpath}/git.nix" "${modpath}/vim.nix" ];
+  imports =
+    let
+      modpath = "${inputs.self}/modules/hm";
+    in
+    [
+      "${modpath}/git.nix"
+      "${modpath}/vim.nix"
+    ];
   home = {
     username = username;
     homeDirectory = "/home/" + username;

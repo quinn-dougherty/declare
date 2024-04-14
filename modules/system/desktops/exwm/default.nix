@@ -1,4 +1,12 @@
-{ inputs, laptop, config, lib, pkgs, ... }: {
+{
+  inputs,
+  laptop,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     "${inputs.self}/modules/system/emacs"
     ./../greeter.nix

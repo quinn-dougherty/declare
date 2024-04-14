@@ -1,8 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium-fhs;
-    extensions = with pkgs.vscode-extensions;
+    extensions =
+      with pkgs.vscode-extensions;
       [
         vscodevim.vim
         yzhang.markdown-all-in-one
@@ -14,7 +16,8 @@
         rust-lang.rust-analyzer
         mkhl.direnv
         github.copilot
-      ] ++ (pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      ]
+      ++ (pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-squiggle";
           publisher = "QURI";
@@ -71,5 +74,8 @@
         }
       ]);
   };
-  home.packages = with pkgs; [ jdk rustup ]; # for prusti
+  home.packages = with pkgs; [
+    jdk
+    rustup
+  ]; # for prusti
 }

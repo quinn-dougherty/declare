@@ -1,6 +1,7 @@
 { pkgs }:
 with pkgs;
-with nodePackages_latest; [
+with nodePackages_latest;
+[
   nodejs
   yarn
   node2nix

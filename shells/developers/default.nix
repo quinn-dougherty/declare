@@ -1,7 +1,10 @@
 { pkgs, pkgs-stable }:
 
-let lib = import ./../lib.nix { inherit pkgs pkgs-stable; };
-in with lib; [
+let
+  lib = import ./../lib.nix { inherit pkgs pkgs-stable; };
+in
+with lib;
+[
   {
     name = "rust";
     value = mkShell {

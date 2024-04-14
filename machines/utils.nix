@@ -27,12 +27,17 @@ let
     name = "${machine.drv-name-prefix}:homeconfig";
     value = machine.homemanager.activationPackage;
   };
-  packagesFromAll = fromFn: machines:
-    builtins.listToAttrs (map fromFn machines);
-in {
+  packagesFromAll = fromFn: machines: builtins.listToAttrs (map fromFn machines);
+in
+{
   osForAll = machines: builtins.listToAttrs (map osFor machines);
   hmForAll = machines: builtins.listToAttrs (map hmFor machines);
-  packagesFromAllOs = { immobiles, mobiles, nonNixos }:
+  packagesFromAllOs =
+    {
+      immobiles,
+      mobiles,
+      nonNixos,
+    }:
     (packagesFromAll packageFromX86 immobiles)
     // (packagesFromAll bootstrapPackageFromX86 immobiles)
     // (packagesFromAll packageFromAarchDiskImg mobiles)
