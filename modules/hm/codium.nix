@@ -72,6 +72,12 @@
           version = "0.0.129";
           sha256 = "sha256-Exz+Z+asgXwRLQlwgSt7XlWlA4BFjlTEclv83dCmWbs=";
         }
+        {
+          name = "vscode-kind2";
+          publisher = "kind2-mc";
+          version = "0.10.0";
+          sha256 = "sha256-10QzoNXwFbJIiR0eLPJCozL1NlfH5ZpbKbriSon8Rl4=";
+        }
       ]);
   };
   home.packages = with pkgs; [
