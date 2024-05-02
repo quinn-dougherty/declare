@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   xdg.desktopEntries = {
@@ -7,8 +12,15 @@
       genericName = "Web Browser";
       exec = "firefox %U";
       terminal = false;
-      categories = [ "Application" "Network" "WebBrowser" ];
-      mimeType = [ "text/html" "text/xml" ];
+      categories = [
+        "Application"
+        "Network"
+        "WebBrowser"
+      ];
+      mimeType = [
+        "text/html"
+        "text/xml"
+      ];
     };
     bitwarden = {
       name = "Bitwarden";

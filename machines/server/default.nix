@@ -1,4 +1,8 @@
-{ lib, inputs, server }:
+{
+  lib,
+  inputs,
+  server,
+}:
 let
   inherit (server) system;
   modules = import ./modules.nix { inherit inputs; };
@@ -17,11 +21,13 @@ let
     };
     format = "iso";
   };
-in {
+in
+{
   inherit (server) system hostname;
   inherit bootstrap;
   operatingsystem = os;
-  deploymenteffect = { ref }:
+  deploymenteffect =
+    { ref }:
     import ./effect {
       inherit ref server;
       server-os = os;

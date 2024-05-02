@@ -1,4 +1,11 @@
-{ inputs, server, config, lib, pkgs, ... }:
+{
+  inputs,
+  server,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   services = {

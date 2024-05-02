@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   services = {
@@ -16,5 +21,9 @@
       database.createLocally = true;
     };
   };
-  networking.firewall.allowedTCPPorts = [ 8080 80 8187 ];
+  networking.firewall.allowedTCPPorts = [
+    8080
+    80
+    8187
+  ];
 }

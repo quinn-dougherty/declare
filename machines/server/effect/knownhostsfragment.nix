@@ -1,3 +1,4 @@
-{ ip }: ''
+{ ip }:
+''
   ${ip} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOvxZnFQUFrgybWuUnQBA9occY7kMooPQGz6u3j1XGA7
 ''

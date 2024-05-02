@@ -8,4 +8,5 @@ with pkgs;
   black
   poetry
   nodePackages.pyright
+  rye
 ]

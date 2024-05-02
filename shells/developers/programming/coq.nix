@@ -1,5 +1,6 @@
 { pkgs }:
-with pkgs.coqPackages; [
+with pkgs.coqPackages;
+[
   coq
   coq-ext-lib
   stdpp

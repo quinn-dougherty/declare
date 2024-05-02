@@ -1,7 +1,9 @@
 { laptop, inputs, ... }:
 with laptop;
-let keyspath = "${inputs.self}/keys";
-in {
+let
+  keyspath = "${inputs.self}/keys";
+in
+{
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -36,32 +38,42 @@ in {
     (builtins.readFile "${keyspath}/id_ed25519.pub")
     (builtins.readFile "${keyspath}/id_qd_ed25519.pub")
   ];
-  users.users = let
-    authorized-key-files = [
-      "${keyspath}/id_ed25519.pub"
-      "${keyspath}/id_server_ed25519.pub"
-      "${keyspath}/id_qd_ed25519.pub"
-    ];
-  in {
-    ${username} = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
-      home = "/home/" + username;
-      description = user-fullname;
-      shell = pkgs.fish;
-      openssh.authorizedKeys.keyFiles = authorized-key-files;
+  users.users =
+    let
+      authorized-key-files = [
+        "${keyspath}/id_ed25519.pub"
+        "${keyspath}/id_server_ed25519.pub"
+        "${keyspath}/id_qd_ed25519.pub"
+      ];
+    in
+    {
+      ${username} = {
+        isNormalUser = true;
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+          "docker"
+          "video"
+        ];
+        home = "/home/" + username;
+        description = user-fullname;
+        shell = pkgs.fish;
+        openssh.authorizedKeys.keyFiles = authorized-key-files;
+      };
+      root = {
+        openssh.authorizedKeys.keyFiles = authorized-key-files;
+        shell = pkgs.fish;
+      };
     };
-    root = {
-      openssh.authorizedKeys.keyFiles = authorized-key-files;
-      shell = pkgs.fish;
-    };
-  };
 
-  environment.variables = let emacs = "${pkgs.emacs}/bin/emacs";
-  in {
-    EDITOR = emacs;
-    VISUAL = emacs;
-  };
+  environment.variables =
+    let
+      emacs = "${pkgs.emacs}/bin/emacs";
+    in
+    {
+      EDITOR = emacs;
+      VISUAL = emacs;
+    };
   nixpkgs.config = config;
 
   programs = {
@@ -70,8 +82,14 @@ in {
       enable = true;
       enableSSHSupport = true;
     };
-    thunar.enable = builtins.elem desktop [ "xmonad" "exwm" ];
-    slock.enable = builtins.elem desktop [ "xmonad" "exwm" ];
+    thunar.enable = builtins.elem desktop [
+      "xmonad"
+      "exwm"
+    ];
+    slock.enable = builtins.elem desktop [
+      "xmonad"
+      "exwm"
+    ];
   };
 
   # This value determines the NixOS release from which the default

@@ -81,7 +81,8 @@
 (package! futhark-mode)
 (package! lean4-mode
   :recipe (:host github :repo "leanprover-community/lean4-mode" :files ("*.el" "data")))
-;; (package! company-lean)
+;; (package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode" :files (:defaults "*.el")))
+(package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))
 
 (package! gptel)
 (package! chatgpt-shell)
@@ -97,6 +98,6 @@
 (package! age)
 (package! auth-source-xoauth2)
 (package! oauth2-request)
-
+(package! dired-git-info)
 ;; https://github.com/doomemacs/doomemacs/issues/7698
 ;; (package! rust-mode)

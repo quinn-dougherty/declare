@@ -5,7 +5,6 @@
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
-    nixpkgs-2305.url = "nixpkgs/nixos-23.05";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nix-latest.url = "github:nixos/nix/latest-release";
     home-manager = {
@@ -37,26 +36,56 @@
     };
   };
 
-  outputs = { self, nixpkgs-master, nixpkgs, nixpkgs-stable, nixpkgs-2305
-    , nixos-hardware, nix-latest, home-manager, nixos-generators, secrix
-    , mobile-nixos, doom, emacs-overlay, treefmt-nix, hercules-ci-agent
-    , hercules-ci-effects }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs-master,
+      nixpkgs,
+      nixpkgs-stable,
+      nixos-hardware,
+      nix-latest,
+      home-manager,
+      nixos-generators,
+      secrix,
+      mobile-nixos,
+      doom,
+      emacs-overlay,
+      treefmt-nix,
+      hercules-ci-agent,
+      hercules-ci-effects,
+    }@inputs:
     with import ./machines { inherit inputs; };
     let
-      website = with common;
-        import ./website/soupault.nix { inherit pkgs self; };
+      website = with common; import ./website/soupault.nix { inherit pkgs self; };
       operations =
-        let machines = { inherit laptop server uptime phone ubuntu common; };
-        in import ./operations.nix {
+        let
+          machines = {
+            inherit
+              laptop
+              server
+              uptime
+              phone
+              ubuntu
+              common
+              ;
+          };
+        in
+        import ./operations.nix {
           inherit self machines treefmt-nix;
           server-deploy = server.deploymenteffect;
           uptime-deploy = uptime.deploymenteffect;
         };
       utils = import ./machines/utils.nix;
-      immobiles = [ laptop server uptime ];
+      immobiles = [
+        laptop
+        server
+        uptime
+      ];
       mobiles = [ phone ];
       nonNixos = [ ubuntu ];
-    in with operations; {
+    in
+    with operations;
+    {
       nixosConfigurations = utils.osForAll (immobiles ++ mobiles);
       homeConfigurations = utils.hmForAll (nonNixos ++ [ laptop ]);
       packages.${common.system} = {

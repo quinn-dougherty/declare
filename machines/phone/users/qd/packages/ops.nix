@@ -1,5 +1,6 @@
 { pkgs }:
-with pkgs; [
+with pkgs;
+[
   # useful CLI/admin tools to have during setup
   # fatresize
   # gptfdisk

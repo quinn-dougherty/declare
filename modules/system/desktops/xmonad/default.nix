@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   services.xserver = {
@@ -16,7 +21,11 @@
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
-  imports = [ ./../greeter.nix ./../common-none.nix ./../intel-graphics.nix ];
+  imports = [
+    ./../greeter.nix
+    ./../common-none.nix
+    ./../intel-graphics.nix
+  ];
   sound.mediaKeys.enable = true;
   programs.evince.enable = true;
 }

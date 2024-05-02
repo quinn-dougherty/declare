@@ -1,6 +1,8 @@
 { inputs, laptop }:
-let modpath = "${inputs.self}/modules/system";
-in with inputs;
+let
+  modpath = "${inputs.self}/modules/system";
+in
+with inputs;
 [
   ./system/configuration.nix
   "${modpath}/desktops/${laptop.desktop}"
@@ -15,6 +17,7 @@ in with inputs;
   "${modpath}/bluetooth.nix"
   "${modpath}/crosscompilation.nix"
   "${modpath}/desktops/il8n.nix"
+  # "${modpath}/nvidia.nix"
   # "${modpath}/games.nix"
   inputs.nixos-generators.nixosModules.all-formats
   {
@@ -25,4 +28,5 @@ in with inputs;
     };
   }
   "${modpath}/ld.nix"
-] ++ import "${modpath}/common"
+]
+++ import "${modpath}/common"

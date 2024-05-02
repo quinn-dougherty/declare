@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # https://community.frame.work/t/framework-nixos-linux-users-self-help/31426/77?u=quinn_dougherty

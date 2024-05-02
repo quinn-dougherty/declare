@@ -1,5 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  fonts.packages = with pkgs; [ mononoki iosevka emacs-all-the-icons-fonts ];
+  fonts.packages = with pkgs; [
+    mononoki
+    iosevka
+    emacs-all-the-icons-fonts
+  ];
 }

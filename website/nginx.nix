@@ -3,7 +3,10 @@
 {
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [
+      80
+      443
+    ];
   };
   services.nginx = {
     enable = true;

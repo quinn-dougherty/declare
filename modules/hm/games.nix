@@ -1,10 +1,20 @@
-{ inputs, secrets, pkgs, ... }:
+{
+  inputs,
+  secrets,
+  pkgs,
+  ...
+}:
 # Battlenet is in flatpak now, these are lighter games.
 {
-  home.packages = let
+  home.packages =
+    let
+    in
     # factorio = pkgs.factorio.override {
     #   username = "quinnd";
     #   token = "/var/lib/factorio/token";
     # };
-  in [ pkgs.runelite pkgs.factorio ];
+    [
+      pkgs.runelite
+      pkgs.factorio
+    ];
 }

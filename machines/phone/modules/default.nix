@@ -1,4 +1,5 @@
-{ inputs }: [
+{ inputs }:
+[
   ./../system/mobile.nix
   ./../system/configuration.nix
   ./../system/hardware-configuration.nix

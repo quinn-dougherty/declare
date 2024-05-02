@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
-with pkgs; [
+with pkgs;
+[
   emacsPackages.preview-dvisvgm
   texlive.combined.scheme-full
   pandoc

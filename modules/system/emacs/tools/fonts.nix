@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
-with pkgs.emacsPackages; [
+with pkgs.emacsPackages;
+[
   treemacs-all-the-icons
   all-the-icons-dired
 ]

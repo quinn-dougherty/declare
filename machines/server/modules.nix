@@ -3,7 +3,8 @@ let
   website = "${inputs.self}/website";
   modpath = "${inputs.self}/modules/system";
   servpath = "${modpath}/services";
-in with inputs;
+in
+with inputs;
 [
   ./system/configuration.nix
   nixos-hardware.nixosModules.framework-13th-gen-intel
@@ -27,4 +28,5 @@ in with inputs;
   # "${servpath}/webdav.nix"
   website
   # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks. Remember that networkmanager is activated by gnome, so check `wireless.enable` when you switch
-] ++ import "${inputs.self}/modules/system/common"
+]
+++ import "${inputs.self}/modules/system/common"

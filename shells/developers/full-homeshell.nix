@@ -1,4 +1,8 @@
-{ pkgs, pkgs-stable, drv-name-prefix }:
+{
+  pkgs,
+  pkgs-stable,
+  drv-name-prefix,
+}:
 
 pkgs.mkShell {
   name = "${drv-name-prefix}:home-shell";

@@ -115,11 +115,13 @@ If you use `org' and don't want your org files in the default location below,
 change `org-directory'. It must be set before org loads!
 #+BEGIN_SRC elisp
 (setq org-directory "~/Org/")
+(setq org-roam-directory (file-truename "~/Org/roam"))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (map! :after org :map org-mode-map :prefix "C-c d" "p" #'org-download-clipboard-pdf)
+;; (map! :map org-mode-map "M-TAB" #'org-cycle-global)
 (load! "./extras/org-invoice-table.el")
-                                        ; (org-alert-enable)
-                                        ; (setq alert-default-style 'notifications)
+;; (org-alert-enable)
+;; (setq alert-default-style 'notifications)
 (use-package! org-transclusion
   :after org
   :init
@@ -131,13 +133,13 @@ change `org-directory'. It must be set before org loads!
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-                                        ; (julia . t)
+   ;; (julia . t)
    (python . t)
    (jupyter . t)))
 (setq org-modern-label-border nil)
 (global-org-modern-mode)
 
-(setq org-agenda-files '("health.org" "beaur.org" "profesh" "profesh/casper"))
+(setq org-agenda-files '("health.org" "beaur.org" "profesh/applications.org"))
 
 (load! "./extras/org-download-clipboard-pdf.el")
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
@@ -282,6 +284,10 @@ change `org-directory'. It must be set before org loads!
 #+BEGIN_SRC elisp
 (add-hook `pdf-view-mode-hook `pdf-view-themed-minor-mode)
 (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
+
+(add-to-list 'treesit-language-source-alist
+             '(typst "https://github.com/uben0/tree-sitter-typst"))
+(treesit-install-language-grammar 'typst)
 #+END_SRC
 * Coq and proof general
 #+BEGIN_SRC elisp
@@ -314,6 +320,9 @@ change `org-directory'. It must be set before org loads!
                     :server-id 'coq-lsp))
   :commands lsp)
 #+END_SRC
+
+#+RESULTS:
+
 * Haskell
 #+BEGIN_SRC elisp
 (after! lsp-haskell
@@ -354,6 +363,9 @@ change `org-directory'. It must be set before org loads!
 (add-to-list 'company-backends 'company-nixos-options 'company-coq)
 (use-package! lsp-tailwindcss)
 
+;; company not playing well with copilot
+(map! :map company-my-keymap "RET" #'company-complete-selection);
+
 ;; This is so that the hover over text in rust doesn't cut off.
 ;; if it doesn't work, try this more complicated thing https://github.com/emacs-lsp/lsp-mode/pull/1740#issuecomment-1776493727
 (setq eldoc-echo-area-use-multiline-p t)
@@ -366,6 +378,7 @@ change `org-directory'. It must be set before org loads!
 * Emacs Ipython Notebook
 #+BEGIN_SRC elisp
 (setq ein:jupyter-server-command "jupyter")
+(setq ein:output-area-inlined-images t)
 ;; (setq ein:jupyter-server-use-subcommand "server")
 #+END_SRC
 * Agda

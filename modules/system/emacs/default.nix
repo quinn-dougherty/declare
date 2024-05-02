@@ -1,11 +1,26 @@
-{ config, lib, pkgs, inputs, laptop, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  laptop,
+  ...
+}:
 
 with lib;
 let
   cfg = config.editors.emacs;
-  emacsPackage = ((pkgs.emacsPackagesFor pkgs.emacsNativeComp).emacsWithPackages
-    (epkgs: with epkgs; [ vterm sqlite3 emacsql ]));
-in {
+  emacsPackage = (
+    (pkgs.emacsPackagesFor pkgs.emacsNativeComp).emacsWithPackages (
+      epkgs: with epkgs; [
+        vterm
+        sqlite3
+        emacsql
+      ]
+    )
+  );
+in
+{
   options.editors.emacs = {
     enable = mkEnableOption "emacs";
     doom.enable = mkEnableOption "doomable emacs";
@@ -15,7 +30,8 @@ in {
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
-    environment.systemPackages = with pkgs;
+    environment.systemPackages =
+      with pkgs;
       [
         ## Emacs itself
         binutils # native-comp needs 'as', provided by this
@@ -30,15 +46,15 @@ in {
         ## Optional dependencies
         fd # faster projectile indexing
         imagemagick # for image-dired
-        (mkIf (config.programs.gnupg.agent.enable)
-          pinentry-emacs) # in-emacs gnupg prompts
+        (mkIf (config.programs.gnupg.agent.enable) pinentry-emacs) # in-emacs gnupg prompts
         zstd # for undo-fu-session/undo-tree compression
 
         ##
         cmake
         sqlite
         # libgcc # This isn't helping vterm compile, yet.
-      ] ++ (import ./tools { inherit inputs pkgs; });
+      ]
+      ++ (import ./tools { inherit inputs pkgs; });
 
     environment.sessionVariables.emacs = "${emacsPackage}/bin/emacs";
 
