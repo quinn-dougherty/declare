@@ -6,7 +6,7 @@ with pkgs;
 [
   openai
   black
-  poetry
+  # poetry
   nodePackages.pyright
   rye
 ]
