@@ -9,7 +9,7 @@ with lib;
     name = "rust";
     value = mkShell {
       name = "rust";
-      nixpkgsSwitch = "stable";
+      nixpkgsSwitch = "unstable";
     };
   }
   {
@@ -33,13 +33,13 @@ with lib;
       nixpkgsSwitch = "unstable";
     };
   }
-  #  {
-  #    name = "ocaml";
-  #    value = mkShell {
-  #      name = "ocaml";
-  #      nixpkgsSwitch = "unstable";
-  #    };
-  #  }
+  # {
+  #   name = "ocaml";
+  #   value = mkShell {
+  #     name = "ocaml";
+  #     nixpkgsSwitch = "unstable";
+  #   };
+  # }
   {
     name = "haskell";
     value = mkShell {
