@@ -42,7 +42,10 @@ with machines.common;
     };
     pkgs = import nixpkgs {
       inherit system config;
-      overlays = [ factorio-overlay ];
+      overlays = [
+        factorio-overlay
+        emacs-overlay.overlay
+      ];
     };
     pkgs-stable = import nixpkgs-stable { inherit system config; };
   };

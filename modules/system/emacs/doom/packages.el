@@ -81,7 +81,6 @@
 (package! futhark-mode)
 (package! lean4-mode
   :recipe (:host github :repo "leanprover-community/lean4-mode" :files ("*.el" "data")))
-;; (package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode" :files (:defaults "*.el")))
 (package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))
 
 (package! gptel)

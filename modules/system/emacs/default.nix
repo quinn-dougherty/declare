@@ -10,14 +10,12 @@
 with lib;
 let
   cfg = config.editors.emacs;
-  emacsPackage = (
-    (pkgs.emacsPackagesFor pkgs.emacsNativeComp).emacsWithPackages (
-      epkgs: with epkgs; [
-        vterm
-        sqlite3
-        emacsql
-      ]
-    )
+  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs-unstable).emacsWithPackages (
+    epkgs: with epkgs; [
+      vterm
+      sqlite3
+      emacsql
+    ]
   );
 in
 {
@@ -28,14 +26,15 @@ in
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
-
+    services.emacs = {
+      enable = true;
+      package = pkgs.emacs-unstable;
+    };
     environment.systemPackages =
       with pkgs;
       [
         ## Emacs itself
         binutils # native-comp needs 'as', provided by this
-        # 28.2 + native-comp
         emacsPackage
 
         ## Doom dependencies
@@ -52,7 +51,9 @@ in
         ##
         cmake
         sqlite
-        # libgcc # This isn't helping vterm compile, yet.
+        # treesit
+        libgcc
+        gcc_multi
       ]
       ++ (import ./tools { inherit inputs pkgs; });
 
