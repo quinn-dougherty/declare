@@ -8,7 +8,6 @@
 
 {
   services.flatpak.enable = true;
-  environment.systemPackages = [ pkgs.winetricks ];
   xdg.portal =
     if
       builtins.elem laptop.desktop [

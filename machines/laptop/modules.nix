@@ -19,6 +19,7 @@ with inputs;
   "${modpath}/desktops/il8n.nix"
   # "${modpath}/nvidia.nix"
   # "${modpath}/games.nix"
+  "${modpath}/battlenet.nix"
   inputs.nixos-generators.nixosModules.all-formats
   {
     imports = [ "${modpath}/emacs" ];
