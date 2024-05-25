@@ -78,6 +78,12 @@
           version = "0.10.0";
           sha256 = "sha256-10QzoNXwFbJIiR0eLPJCozL1NlfH5ZpbKbriSon8Rl4=";
         }
+        {
+          name = "vscode-pvs";
+          publisher = "paolomasci";
+          version = "1.0.65";
+          sha256 = "sha256-j3RcmDkFlWLjKq4bzENoYr2rZfLo22jN/NO7OkmvBZs=";
+        }
       ]);
   };
   home.packages = with pkgs; [
