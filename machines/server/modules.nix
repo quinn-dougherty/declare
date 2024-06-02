@@ -24,7 +24,7 @@ with inputs;
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
   # "${servpath}/nextcloud"
-  "${servpath}/seafile"
+  # "${servpath}/seafile"
   # "${servpath}/webdav.nix"
   website
   # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks. Remember that networkmanager is activated by gnome, so check `wireless.enable` when you switch
