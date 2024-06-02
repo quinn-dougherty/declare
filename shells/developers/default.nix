@@ -33,13 +33,13 @@ with lib;
       nixpkgsSwitch = "unstable";
     };
   }
-  # {
-  #   name = "ocaml";
-  #   value = mkShell {
-  #     name = "ocaml";
-  #     nixpkgsSwitch = "unstable";
-  #   };
-  # }
+  {
+    name = "ocaml";
+    value = mkShell {
+      name = "ocaml";
+      nixpkgsSwitch = "unstable";
+    };
+  }
   {
     name = "haskell";
     value = mkShell {
