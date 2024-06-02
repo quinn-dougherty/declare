@@ -1,6 +1,4 @@
 { pkgs, ... }:
 
 with pkgs;
-[
-  elan
-]
+[ elan ]

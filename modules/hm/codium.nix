@@ -75,8 +75,8 @@
         {
           name = "vscode-kind2";
           publisher = "kind2-mc";
-          version = "0.10.0";
-          sha256 = "sha256-10QzoNXwFbJIiR0eLPJCozL1NlfH5ZpbKbriSon8Rl4=";
+          version = "0.11.1";
+          sha256 = "sha256-Vn7IbHKYmaA+NfLo7PIowADSqf3y7JYxRvAl9ufA4NQ=";
         }
         {
           name = "vscode-pvs";
