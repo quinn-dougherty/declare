@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     seafile-client
-    seahub
+    # seahub
     # nextcloud-client
     sqlite
 
