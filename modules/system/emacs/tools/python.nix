@@ -9,4 +9,5 @@ with pkgs;
   # poetry
   nodePackages.pyright
   rye
+  conda
 ]

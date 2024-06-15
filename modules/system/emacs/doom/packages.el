@@ -82,15 +82,14 @@
 (package! lean4-mode
   :recipe (:host github :repo "leanprover-community/lean4-mode" :files ("*.el" "data")))
 (package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))
-(package! pvs-mode :recipe (:host github :repo "SRI-CSL/PVS" :files ("emacs/*.el" "emacs/ilisp/*.el")))
 
 (package! gptel)
+;; (package! gptel-extensions)
 (package! chatgpt-shell)
 (package! editorconfig)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 ;; (package! kanban)
-;; (package! gptel-extensions)
 (package! rand-theme)
 (package! nixos-options)
 (package! company-nixos-options)
