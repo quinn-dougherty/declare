@@ -16,7 +16,7 @@
       stateVersion = "24.05";
     };
   }
-  "${modpath}/mail"
+  # "${modpath}/mail"
   "${modpath}/git.nix"
   "${modpath}/vim.nix"
   "${modpath}/codium.nix"
