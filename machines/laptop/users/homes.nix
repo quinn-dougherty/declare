@@ -1,5 +1,5 @@
 {
-  laptop,
+  machine,
   inputs,
   config,
   pkgs,
@@ -8,8 +8,9 @@
 with inputs;
 let
   modpath = "${self}/modules/hm";
+  laptop = machine;
 in
-with laptop;
+with machine;
 {
   imports = [ "${self}/secrets" ];
   home-manager = {

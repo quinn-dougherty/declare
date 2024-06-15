@@ -4,9 +4,10 @@
   inputs,
 }:
 let
+  machine = laptop;
   inherit (laptop) system;
   specialArgs = {
-    inherit inputs laptop;
+    inherit inputs machine;
     inherit (laptop) pkgs;
   };
   modules = import ./modules.nix { inherit inputs laptop; };

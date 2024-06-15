@@ -4,6 +4,7 @@
   server,
 }:
 let
+  machine = server;
   inherit (server) system;
   modules = import ./modules.nix { inherit inputs; };
   os = lib.nixosSystem {
@@ -16,7 +17,7 @@ let
   bootstrap = inputs.nixos-generators.nixosGenerate {
     inherit system modules;
     specialArgs = {
-      inherit server inputs;
+      inherit machine inputs;
       inherit (server) pkgs;
     };
     format = "iso";

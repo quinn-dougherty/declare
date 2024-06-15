@@ -1,5 +1,5 @@
-{ laptop, inputs, ... }:
-with laptop;
+{ machine, inputs, ... }:
+with machine;
 let
   keyspath = "${inputs.self}/keys";
 in

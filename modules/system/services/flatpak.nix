@@ -1,5 +1,5 @@
 {
-  laptop,
+  machine,
   config,
   lib,
   pkgs,
@@ -10,7 +10,7 @@
   services.flatpak.enable = true;
   xdg.portal =
     if
-      builtins.elem laptop.desktop [
+      builtins.elem machine.desktop [
         "exwm"
         "xmonad"
       ]

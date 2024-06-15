@@ -3,7 +3,7 @@
   lib,
   pkgs,
   inputs,
-  laptop,
+  machine,
   ...
 }:
 
@@ -63,17 +63,17 @@ in
 
     system.userActivationScripts = mkIf cfg.doom.enable {
       installDoomEmacs.text = ''
-        export HOME=/home/${laptop.username}
+        export HOME=/home/${machine.username}
         export XDG_CONFIG_HOME=$HOME/.config
         echo "Installing doomemacs"
         if [ ! -d "$XDG_CONFIG_HOME/emacs" ]; then
            cp -r ${inputs.doom} $XDG_CONFIG_HOME/emacs
-           chown -R ${laptop.username}:users $XDG_CONFIG_HOME/emacs
+           chown -R ${machine.username}:users $XDG_CONFIG_HOME/emacs
            chmod +w -R $XDG_CONFIG_HOME/emacs
         fi
         rm -rf $XDG_CONFIG_HOME/doom
         cp -r ${inputs.self}/modules/system/emacs/doom/ $XDG_CONFIG_HOME/
-        chown -R ${laptop.username}:users $XDG_CONFIG_HOME/doom
+        chown -R ${machine.username}:users $XDG_CONFIG_HOME/doom
         chmod +w -R $XDG_CONFIG_HOME/doom
       '';
     };
