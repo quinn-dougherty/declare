@@ -16,16 +16,16 @@
         decrypted.mode = "0600";
       };
     };
-#    system.secrets = {
-#      "factorio-token" = {
-#        encrypted.file = ./factorio-token.age;
-#        decrypted.builder = ''
-#          mkdir -p /var/lib/factorio
-#          ln -s $inFile /var/lib/factorio/token
-#        '';
-#      };
-#      "quinnd-riseup-pass".encrypted.file = ./quinnd-riseup-pass.age;
-#      # "qd92-gmail-pass".encrypted.file = ./qd92-gmail-pass.age;
-#    };
+    #    system.secrets = {
+    #      "factorio-token" = {
+    #        encrypted.file = ./factorio-token.age;
+    #        decrypted.builder = ''
+    #          mkdir -p /var/lib/factorio
+    #          ln -s $inFile /var/lib/factorio/token
+    #        '';
+    #      };
+    #      "quinnd-riseup-pass".encrypted.file = ./quinnd-riseup-pass.age;
+    #      # "qd92-gmail-pass".encrypted.file = ./qd92-gmail-pass.age;
+    #    };
   };
 }
