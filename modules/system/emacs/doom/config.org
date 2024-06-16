@@ -285,9 +285,9 @@ change `org-directory'. It must be set before org loads!
 (add-hook `pdf-view-mode-hook `pdf-view-themed-minor-mode)
 (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
 
-(add-to-list 'treesit-language-source-alist
-             '(typst "https://github.com/uben0/tree-sitter-typst"))
-(treesit-install-language-grammar 'typst)
+;; (add-to-list 'treesit-language-source-alist
+;;              '(typst "https://github.com/uben0/tree-sitter-typst"))
+;; (treesit-install-language-grammar 'typst)
 #+END_SRC
 * Coq and proof general
 #+BEGIN_SRC elisp
