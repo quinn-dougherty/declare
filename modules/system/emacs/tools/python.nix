@@ -7,7 +7,7 @@ with pkgs;
   openai
   black
   # poetry
-  nodePackages.pyright
+  pyright
   rye
   conda
 ]

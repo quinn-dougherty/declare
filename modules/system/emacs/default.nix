@@ -10,7 +10,7 @@
 with lib;
 let
   cfg = config.editors.emacs;
-  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs-unstable).emacsWithPackages (
+  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
     epkgs: with epkgs; [
       vterm
       sqlite3
