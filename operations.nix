@@ -14,7 +14,7 @@ let
       programs = {
         prettier.enable = true;
         stylish-haskell.enable = true;
-        nixfmt-rfc-style.enable = true;
+        nixfmt.enable = true;
       };
     };
   format =
@@ -24,7 +24,7 @@ let
     fmtr.config.build.wrapper;
   update = hci-inputs: {
     auto-update = {
-      outputs.effects = common.pkgs.effects.flakeUpdate {
+      outputs.effects = common.pkgs.hci-effects.flakeUpdate {
         autoMergeMethod = "merge";
         gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
       };
