@@ -27,6 +27,6 @@ with inputs;
   # "${servpath}/seafile"
   # "${servpath}/webdav.nix"
   website
-  "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks. Remember that networkmanager is activated by gnome, so check `wireless.enable` when you switch
+  # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks. Remember that networkmanager is activated by gnome, so check `wireless.enable` when you switch
 ]
 ++ import "${inputs.self}/modules/system/common"
