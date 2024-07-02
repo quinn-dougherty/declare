@@ -1,6 +1,10 @@
 {
-  "substituters": ["https://quinn-dougherty.cachix.org"],
+  "substituters": [
+    "https://quinn-dougherty.cachix.org",
+    "https://bincache.quinn-dougherty.com"
+  ],
   "trusted-public-keys": [
-    "quinn-dougherty.cachix.org-1:Fc8xW/Tgr48SjV5Z/LhHCAOjo1dutikmOp8wQTDsBcc="
+    "quinn-dougherty.cachix.org-1:Fc8xW/Tgr48SjV5Z/LhHCAOjo1dutikmOp8wQTDsBcc=",
+    "bincache.quinn-dougherty.com-1:IYBp37cTuDNChE6Bl16CwYu7czY1erSG4zteIGIbk7g="
   ]
 }
