@@ -8,5 +8,4 @@
   ./../services/ivpn.nix
   ./devops.nix
   ./utilities.nix
-  ./virtualbox.nix
 ]

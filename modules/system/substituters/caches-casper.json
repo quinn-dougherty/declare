@@ -1,7 +1,0 @@
-{
-  "substituters": ["https://kairos.cachix.org", "https://cspr.cachix.org"],
-  "trusted-public-keys": [
-    "kairos.cachix.org-1:1EqnyWXEbd4Dn1jCbiWOF1NLOc/bELx+wuqk0ZpbeqQ=",
-    "cspr.cachix.org-1:vEZlmbOsmTXkmEi4DSdqNVyq25VPNpmSm6qCs4IuTgE="
-  ]
-}
