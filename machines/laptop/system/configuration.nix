@@ -11,7 +11,8 @@ in
       efi.canTouchEfiVariables = true;
     };
     # kernel.sysctl = { "fs.inotify.max_user_watches" = 524288; };
-    kernelPackages = pkgs.linuxPackages_6_9_hardened;
+    kernelPackages = pkgs.linuxPackages_6_9;
+    # kernelParams = [ "thunderbolt.chain_limit=1" "pci=realloc" ];
   };
 
   networking = {

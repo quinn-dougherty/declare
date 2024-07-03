@@ -32,6 +32,7 @@ in
           "networkmanager"
           "wheel"
         ];
+        hashedPassword = "$6$fgsLAIlN9.8DUV4i$33jT4kJnZapyJVgcrwCCP.cBW3bpHo2/6Uy66lkvjbIkAmnpHQKgiltXhGGwBqCvgJz7LntqppcemV0WrANiI.";
         openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
         # shell = uptime.pkgs.fish;
       };
@@ -45,5 +46,5 @@ in
     };
     git.enable = true;
   };
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
