@@ -13,6 +13,7 @@
     settings = {
       folders = {
         "${machine.username}" = {
+          # DON'T PUT THIS IN common/default.nix AS IS
           path = "/home/${machine.username}";
           devices = [ machine.hostname ];
         };
