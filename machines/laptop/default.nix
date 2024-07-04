@@ -5,15 +5,14 @@
 }:
 let
   machine = laptop;
-  inherit (laptop) system;
+  inherit (laptop) system pkgs;
   specialArgs = {
-    inherit inputs machine;
-    inherit (laptop) pkgs;
+    inherit inputs machine pkgs;
   };
   modules = import ./modules.nix { inherit inputs laptop; };
   bootstrap = inputs.nixos-generators.nixosGenerate {
     inherit system modules specialArgs;
-    inherit (laptop) pkgs;
+    # inherit (laptop) pkgs;
     format = "iso";
   };
   operatingsystem = lib.nixosSystem { inherit system modules specialArgs; };

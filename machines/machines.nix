@@ -81,7 +81,7 @@ with machines.common;
       user-fullname
       ip
       ;
-    username = admin;
+    username = qd;
     timezone = server-onprem-tz;
     pkgs = import nixpkgs {
       inherit system;

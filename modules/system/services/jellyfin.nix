@@ -1,4 +1,4 @@
-{ server, ... }:
+{ machine, ... }:
 
 {
   # networking.firewall.allowedTCPPorts = [ 8096 8920 ];
@@ -18,7 +18,7 @@
     };
     jellyfin = {
       enable = true;
-      user = server.username; # "qd-${server.username}";
+      user = machine.username;
       openFirewall = true;
     };
     jellyseerr.enable = true;

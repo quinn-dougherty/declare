@@ -1,6 +1,6 @@
 {
   inputs,
-  server,
+  machine,
   config,
   lib,
   pkgs,

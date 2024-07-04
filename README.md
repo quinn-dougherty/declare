@@ -11,7 +11,7 @@
 |      `grindenstern`      | daily driver (framework 13 batch 5)                                        |
 |   `a-guy-for-a-thing`    | hercules ci server, nextcloud (maybe router eventually) (onprem)           |
 | `the-band-back-together` | monitor `a-guy-for-a-thing`, plus other services with digital ocean uptime |
-|    `duck-you-sucker`     | just `homeManagerConfiguration` for an ubuntu                              |
+|     `cogrindenstern`     | just `homeManagerConfiguration` for an ubuntu                              |
 
 ## Developer shells
 

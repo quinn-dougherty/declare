@@ -4,11 +4,12 @@
 
 {
   inputs,
-  server,
+  machine,
   config,
   ...
 }:
 let
+  server = machine;
   keyspath = "${inputs.self}/keys";
 in
 {
