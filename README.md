@@ -5,13 +5,13 @@
 [bwn badge]: https://builtwithnix.org/badge.svg
 [bwn link]: https://builtwithnix.org
 
-|     Machine      | Function                                                                   |
-| :--------------: | :------------------------------------------------------------------------- |
-|     `corise`     | phone (not daily driving yet)                                              |
-|      `rise`      | daily driver (framework 13 batch 5)                                        |
-|     `grind`      | hercules ci server, nextcloud (maybe router eventually) (onprem)           |
-|    `cogrind`     | monitor `a-guy-for-a-thing`, plus other services with digital ocean uptime |
-| `cogrindenstern` | just `homeManagerConfiguration` for an ubuntu                              |
+|     Machine      | Function                                                         |
+| :--------------: | :--------------------------------------------------------------- |
+|     `corise`     | phone (not daily driving yet)                                    |
+|      `rise`      | daily driver (framework 13 batch 5)                              |
+|     `grind`      | hercules ci server, nextcloud (maybe router eventually) (onprem) |
+|    `cogrind`     | monitor `grind`, plus other services with digital ocean uptime   |
+| `cogrindenstern` | just `homeManagerConfiguration` for an ubuntu                    |
 
 ## Developer shells
 

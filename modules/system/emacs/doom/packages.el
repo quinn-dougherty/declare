@@ -81,11 +81,10 @@
 (package! futhark-mode)
 (package! lean4-mode
   :recipe (:host github :repo "leanprover-community/lean4-mode" :files ("*.el" "data")))
-;; (package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))
+(package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))
 
 (package! gptel)
 ;; (package! gptel-extensions)
-(package! chatgpt-shell)
 (package! editorconfig)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
@@ -98,5 +97,7 @@
 (package! auth-source-xoauth2)
 (package! oauth2-request)
 (package! dired-git-info)
-;; https://github.com/doomemacs/doomemacs/issues/7698
-;; (package! rust-mode)
+
+;; (package! fatebook
+;;   :recipe (:host github
+;;            :repo "sonofhypnos/fatebook.el"))
