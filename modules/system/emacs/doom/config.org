@@ -30,8 +30,8 @@ font string. You generally only need these two:
 #+BEGIN_SRC elisp
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "mononoki" :size 17)
-      doom-variable-pitch-font (font-spec :family "sans" :size 19)
+(setq doom-font (font-spec :family "mononoki" :size 20)
+      doom-variable-pitch-font (font-spec :family "sans" :size 22)
       doom-big-font (font-spec :family "monospace" :size 35))
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -337,8 +337,18 @@ change `org-directory'. It must be set before org loads!
 * Other LLM things
 #+BEGIN_SRC elisp
 (auth-source-search :host "api.openai.com" :user "apikey")
+(auth-source-search :host "api.anthropic.com" :user "apikey")
+(defun get-anthropic-skey ()
+  (let ((auth-info (auth-source-search :max 1 :host "api.anthropic.com" :user "apikey")))
+    (when auth-info
+      (let ((secret (plist-get (car auth-info) :secret)))
+        (if (functionp secret)
+            (funcall secret)
+          secret)))))
 (use-package! gptel
- :config (setq! gptel-model "gpt-3.5-turbo"))
+ :config (setq
+          gptel-model "claude-3-5-sonnet-20240620" ; "claude-3-sonnet-20240229", "claude-3-opus-20240229", "claude-3-haiku-20240307" also available
+          gptel-backend (gptel-make-anthropic "Claude" :stream t :key 'get-anthropic-skey)))
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
@@ -364,7 +374,14 @@ change `org-directory'. It must be set before org loads!
 (use-package! lsp-tailwindcss)
 
 ;; company not playing well with copilot
-(map! :map company-my-keymap "RET" #'company-complete-selection);
+;; (map! :map company-my-keymap "TAB" #'company-complete-selection);
+(after! (evil copilot)
+  (defun company-complete-selection-or-default ()
+    (interactive)
+    (if (and (bound-and-true-p company-mode))
+        (company-complete-selection)
+      (evil-insert 1)))
+  (evil-define-key 'insert 'global (kbd "TAB") 'company-complete-selection-or-default))
 
 ;; This is so that the hover over text in rust doesn't cut off.
 ;; if it doesn't work, try this more complicated thing https://github.com/emacs-lsp/lsp-mode/pull/1740#issuecomment-1776493727

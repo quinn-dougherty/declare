@@ -41,5 +41,6 @@
     # music
     puredata
     qtractor
+    spotify
   ];
 }

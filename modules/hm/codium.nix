@@ -88,6 +88,6 @@
   };
   home.packages = with pkgs; [
     jdk
-    rustup
+    # rustup
   ]; # for prusti
 }
