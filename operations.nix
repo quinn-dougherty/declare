@@ -14,7 +14,7 @@ let
       programs = {
         prettier.enable = true;
         stylish-haskell.enable = true;
-        nixfmt.enable = true;
+        nixfmt-rfc-style.enable = true;
       };
     };
   format =
@@ -24,7 +24,7 @@ let
     fmtr.config.build.wrapper;
   update = hci-inputs: {
     auto-update = {
-      outputs.effects = common.pkgs.hci-effects.flakeUpdate {
+      outputs.hci-effects = common.pkgs.hci-effects.flakeUpdate {
         autoMergeMethod = "merge";
         gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
       };
@@ -62,7 +62,7 @@ let
       ${uptime.hostname}.outputs =
         with hci-inputs;
         if ref == "refs/heads/main" then
-          { effects.deployment = uptime-deploy { inherit ref; }; }
+          { hci-effects.deployment = uptime-deploy { inherit ref; }; }
         else
           { operating-system = packages.${machines.uptime.hostname}; };
 

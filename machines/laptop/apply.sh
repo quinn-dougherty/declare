@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 pushd /home/qd/Projects/declare
-sudo nixos-rebuild switch --flake .#grindenstern --show-trace --option eval-cache false
+sudo nixos-rebuild switch --flake .#rise --show-trace --option eval-cache false
 popd
 
 pushd /home/qd/.config/emacs
