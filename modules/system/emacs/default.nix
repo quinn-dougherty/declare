@@ -75,6 +75,9 @@ in
         cp -r ${inputs.self}/modules/system/emacs/doom/ $XDG_CONFIG_HOME/
         chown -R ${machine.username}:users $XDG_CONFIG_HOME/doom
         chmod +w -R $XDG_CONFIG_HOME/doom
+        echo "Running doom install"
+        export PATH=${emacsPackage}/bin:${pkgs.bash}/bin:${pkgs.git}/bin:$PATH
+        $XDG_CONFIG_HOME/emacs/bin/doom install
       '';
     };
   };

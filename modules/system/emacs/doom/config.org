@@ -55,6 +55,7 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 (setq projectile-project-search-path '("~/Projects") projectile-sort-order 'recentf)
 #+END_SRC
 * EXWM
+Add ~#+BEGIN_SRC elisp~ to activate exwm.
 ;; (use-package! exwm)
 ;; (exwm-enable)
 ;; (use-package! exwm-systemtray)
