@@ -35,7 +35,7 @@
     ix
     ffmpeg
     djvu2pdf
-    youtube-dl
+    yt-dlp
     youtube-tui
 
     # music
