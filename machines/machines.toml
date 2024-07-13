@@ -3,23 +3,23 @@ system = "x86_64-linux"
 timezone = "America/Los_Angeles"
 
 [laptop]
-hostname = "grindenstern"
+hostname = "rise"
 user-fullname = "Quinn Dougherty"
 # one of xmonad, xfce, gnome, kde, exwm
 desktop = "kde"
 
 [phone]
-hostname = "risencrantz"
+hostname = "corise"
 user-fullname = "Quinn Dougherty"
 system = "aarch64-linux"
 
 [server]
-hostname = "a-guy-for-a-thing"
+hostname = "grind"
 user-fullname = "Server Admin"
 ip = "135.180.4.12"
 
 [uptime]
-hostname = "the-band-back-together"
+hostname = "cogrind"
 user-fullname = "Monitor Admin"
 ip = "143.198.58.137"
 
