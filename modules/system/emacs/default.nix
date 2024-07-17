@@ -12,7 +12,7 @@ let
   cfg = config.editors.emacs;
   emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
     epkgs: with epkgs; [
-      # vterm
+      vterm
       sqlite3
       emacsql
     ]
@@ -67,8 +67,9 @@ in
         export HOME=/home/${machine.username}
         export XDG_CONFIG_HOME=$HOME/.config
         echo "Installing doomemacs"
-        rm -r $XDG_CONFIG_HOME/emacs
-        cp -r ${inputs.doom} $XDG_CONFIG_HOME/emacs
+        mkdir -p $XDG_CONFIG_HOME/emacs
+        find $XDG_CONFIG_HOME/emacs -mindepth 1 -maxdepth 1 ! -name '.local' -exec rm -rf {} +
+        cp -r ${inputs.doom}/. $XDG_CONFIG_HOME/emacs
         chown -R ${machine.username}:users $XDG_CONFIG_HOME/emacs
         chmod +w -R $XDG_CONFIG_HOME/emacs
         rm -rf $XDG_CONFIG_HOME/doom
