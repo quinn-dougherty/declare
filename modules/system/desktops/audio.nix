@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  sound.enable = false;
   hardware.pulseaudio = {
     enable = false;
     package = pkgs.pulseaudioFull;
