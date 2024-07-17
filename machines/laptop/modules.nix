@@ -30,6 +30,5 @@ with inputs;
   }
   "${modpath}/ld.nix"
   "${modpath}/virtualbox.nix"
-  # ./system/nvidia.nix
 ]
 ++ import "${modpath}/common"

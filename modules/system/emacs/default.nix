@@ -12,7 +12,7 @@ let
   cfg = config.editors.emacs;
   emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
     epkgs: with epkgs; [
-      vterm
+      # vterm
       sqlite3
       emacsql
     ]
@@ -47,7 +47,8 @@ in
         imagemagick # for image-dired
         (mkIf (config.programs.gnupg.agent.enable) pinentry-emacs) # in-emacs gnupg prompts
         zstd # for undo-fu-session/undo-tree compression
-
+        gzip
+        
         ##
         cmake
         sqlite
@@ -66,18 +67,17 @@ in
         export HOME=/home/${machine.username}
         export XDG_CONFIG_HOME=$HOME/.config
         echo "Installing doomemacs"
-        if [ ! -d "$XDG_CONFIG_HOME/emacs" ]; then
-           cp -r ${inputs.doom} $XDG_CONFIG_HOME/emacs
-           chown -R ${machine.username}:users $XDG_CONFIG_HOME/emacs
-           chmod +w -R $XDG_CONFIG_HOME/emacs
-        fi
+        rm -r $XDG_CONFIG_HOME/emacs
+        cp -r ${inputs.doom} $XDG_CONFIG_HOME/emacs
+        chown -R ${machine.username}:users $XDG_CONFIG_HOME/emacs
+        chmod +w -R $XDG_CONFIG_HOME/emacs
         rm -rf $XDG_CONFIG_HOME/doom
         cp -r ${inputs.self}/modules/system/emacs/doom/ $XDG_CONFIG_HOME/
         chown -R ${machine.username}:users $XDG_CONFIG_HOME/doom
         chmod +w -R $XDG_CONFIG_HOME/doom
         echo "Running doom install"
         export PATH=${emacsPackage}/bin:${pkgs.bash}/bin:${pkgs.git}/bin:$PATH
-        $XDG_CONFIG_HOME/emacs/bin/doom install
+        $XDG_CONFIG_HOME/emacs/bin/doom install --force
       '';
     };
   };

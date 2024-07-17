@@ -25,6 +25,7 @@
       qtgraphicaleffects
       kio
       kio-admin
+      pkgs.kup
     ];
     sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
   };

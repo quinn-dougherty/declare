@@ -14,6 +14,7 @@
     patchelf
     openssl
     tree
+    diffsitter
     nix-tree
     wget
     jq
