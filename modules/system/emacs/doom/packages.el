@@ -101,3 +101,5 @@
 ;; (package! fatebook
 ;;   :recipe (:host github
 ;;            :repo "sonofhypnos/fatebook.el"))
+
+(package! flycheck-lilypond)

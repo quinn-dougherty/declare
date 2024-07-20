@@ -332,6 +332,10 @@ change `org-directory'. It must be set before org loads!
   (setq lsp-haskell-formatting-provider "stylish-haskell"))
 (set-formatter! 'stylish-haskell "stylish-haskell" :modes '(haskell-mode ".hs"))
 #+END_SRC
+* Music
+#+BEGIN_SRC elisp
+;; (require 'lilypond)
+#+END_SRC
 * Auth for APIs
 #+BEGIN_SRC elisp
 ;; (setq auth-sources '("/home/qd/Projects/declare/secrets/authinfo.gpg"))

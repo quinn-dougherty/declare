@@ -42,5 +42,9 @@
     puredata
     qtractor
     spotify
+    lilypond-unstable-with-fonts
+    mi2ly
+    timidity
+    musescore
   ];
 }
