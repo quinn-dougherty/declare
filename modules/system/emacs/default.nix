@@ -84,15 +84,28 @@ in
     systemd.services.tangle-doom-config = mkIf cfg.doom.enable {
       description = "Tangle doom emacs config";
       wantedBy = [ "multi-user.target" ];
-      environment = {
+      environment = rec {
         XDG_CONFIG_HOME = "/home/${machine.username}/.config";
         EMACS = "${emacsPackage}/bin/emacs";
+        DOOM = "${XDG_CONFIG_HOME}/emacs/bin/doom";
+        PATH = lib.mkForce (
+          lib.makeBinPath [
+            pkgs.bash
+            pkgs.git
+            emacsPackage
+          ]
+          + ":/run/current-system/sw/bin:$PATH"
+        );
       };
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.bash}/bin/bash ${inputs.self}/modules/system/emacs/tangle.sh";
-        User = machine.username;
-      };
+      serviceConfig =
+        let
+          tangle = "${inputs.self}/modules/system/emacs/tangle.sh";
+        in
+        {
+          Type = "oneshot";
+          ExecStart = "${pkgs.bash}/bin/bash ${tangle}";
+          User = machine.username;
+        };
     };
   };
 }
