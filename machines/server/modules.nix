@@ -7,7 +7,7 @@ in
 with inputs;
 [
   ./system/configuration.nix
-  nixos-hardware.nixosModules.framework-13th-gen-intel
+  nixos-hardware.nixosModules.framework-11th-gen-intel
   ./system/hardware-configuration.nix
   secrix.nixosModules.default
   hercules-ci-agent.nixosModules.multi-agent-service
