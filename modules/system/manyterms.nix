@@ -5,6 +5,7 @@
   ...
 }:
 {
+  services.urxvt.enable = true;
   environment.systemPackages = with pkgs; [
     # Extra terminals
     st
