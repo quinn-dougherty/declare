@@ -19,4 +19,8 @@
 
   # Enable CUPS to print documents.
   printing.enable = true;
+  avahi = {
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 }
