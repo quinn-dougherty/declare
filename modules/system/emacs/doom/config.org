@@ -53,6 +53,7 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 #+BEGIN_SRC elisp
 (map! :map global-map "C-x b" #'ivy-switch-buffer);  "C-x C-f" #'+default/dired)
 (setq projectile-project-search-path '("~/Projects") projectile-sort-order 'recentf)
+(map! :leader :desc "Change window" "b o" #'other-window)
 #+END_SRC
 * EXWM
 Add ~#+BEGIN_SRC elisp~ to activate exwm.
@@ -390,6 +391,7 @@ change `org-directory'. It must be set before org loads!
 ;; This is so that the hover over text in rust doesn't cut off.
 ;; if it doesn't work, try this more complicated thing https://github.com/emacs-lsp/lsp-mode/pull/1740#issuecomment-1776493727
 (setq eldoc-echo-area-use-multiline-p t)
+(map! :leader :desc "rust-analyzer run" "c R" #'lsp-rust-analyzer-run)
 #+END_SRC
 
 #+RESULTS:
