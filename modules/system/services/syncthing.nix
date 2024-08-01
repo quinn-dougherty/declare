@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
   services.syncthing.enable = true;
-  environment.systemPackages = [ pkgs.syncthing pkgs.syncthingtray ];
+  environment.systemPackages = [
+    pkgs.syncthing
+    pkgs.syncthingtray
+  ];
 }

@@ -14,7 +14,7 @@ let
       programs = {
         prettier.enable = true;
         stylish-haskell.enable = true;
-        nixfmt-rfc-style.enable = true;
+        nixfmt.enable = true;
       };
     };
   format =
@@ -44,10 +44,10 @@ let
         #  self.homeConfigurations."${laptop.username}@${laptop.hostname}".activationPackage;
       };
 
-      ${phone.hostname}.outputs = {
-        os_disk-image = packages."${phone.hostname}-disk-image";
-        os_boot-partition = packages."${phone.hostname}-boot-partition";
-      };
+      # ${phone.hostname}.outputs = {
+      #   os_disk-image = packages."${phone.hostname}-disk-image";
+      #   os_boot-partition = packages."${phone.hostname}-boot-partition";
+      # };
 
       ${server.hostname}.outputs =
         with hci-inputs;

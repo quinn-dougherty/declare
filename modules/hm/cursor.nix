@@ -6,9 +6,7 @@ let
   cursor = pkgs.appimageTools.wrapType2 {
     name = "cursor";
     version = "0.35.0";
-    src = pkgs.fetchurl {
-      inherit url sha256;
-    };
+    src = pkgs.fetchurl { inherit url sha256; };
   };
 in
 {
