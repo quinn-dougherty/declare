@@ -81,7 +81,7 @@
         server
         uptime
       ];
-      mobiles = [ phone ];
+      mobiles = []; # [ phone ];
       nonNixos = [ ubuntu ];
     in
     with operations;
