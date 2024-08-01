@@ -8,7 +8,7 @@
 
     # Browsers # firefox comes with fresh installations, so is omitted.
     brave
-    nyxt
+    # nyxt
     lynx
     tor-browser-bundle-bin
     tor

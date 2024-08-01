@@ -391,7 +391,8 @@ change `org-directory'. It must be set before org loads!
 ;; This is so that the hover over text in rust doesn't cut off.
 ;; if it doesn't work, try this more complicated thing https://github.com/emacs-lsp/lsp-mode/pull/1740#issuecomment-1776493727
 (setq eldoc-echo-area-use-multiline-p t)
-(map! :leader :desc "rust-analyzer run" "c R" #'lsp-rust-analyzer-run)
+(use-package! rust-mode :config (map! :leader :desc "rust-analyzer run" "c R" #'lsp-rust-analyzer-run))
+(use-package! lean4-mode :config (map! :leader :desc "lean4 lake exe" "c R" #'lean4-lake-exe))
 #+END_SRC
 
 #+RESULTS:
