@@ -1,13 +1,13 @@
 { pkgs, ... }:
 
 let
-  cursor-url = "https://downloader.cursor.sh/linux/appImage/x64";
+  url = "https://downloader.cursor.sh/linux/appImage/x64";
+  sha256 = "sha256-Qcph6UYR+VtlaYNqHJpIGEVHu1q8Vbfvm5Bv6swf+pM=";
   cursor = pkgs.appimageTools.wrapType2 {
     name = "cursor";
     version = "0.35.0";
     src = pkgs.fetchurl {
-      url = cursor-url;
-      sha256 = "sha256-Wo0mHeOQRo3WxAOXb2OT7h01eZv7dbAyGi6XNsCVtbg=";
+      inherit url sha256;
     };
   };
 in
