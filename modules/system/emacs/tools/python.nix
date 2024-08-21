@@ -8,6 +8,8 @@ with pkgs;
     ps: with ps; [
       numpy
       requests
+      pyflakes
+      isort
     ]
   ))
   openai
@@ -15,5 +17,6 @@ with pkgs;
   # poetry
   pyright
   rye
+  uv
   conda
 ]
