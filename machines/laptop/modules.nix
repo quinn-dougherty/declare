@@ -30,5 +30,6 @@ with inputs;
   }
   "${modpath}/ld.nix"
   "${modpath}/virtualbox.nix"
+  "${modpath}/virtualization.nix"
 ]
 ++ import "${modpath}/common"

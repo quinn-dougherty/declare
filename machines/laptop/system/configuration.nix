@@ -83,6 +83,7 @@ in
       enable = true;
       enableSSHSupport = true;
     };
+    singularity.enable = true;
     thunar.enable = builtins.elem desktop [
       "xmonad"
       "exwm"
