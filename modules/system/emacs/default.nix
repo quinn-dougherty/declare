@@ -54,6 +54,7 @@ in
         sqlite
         # treesit
         libgcc
+        libtool
         gcc_multi
       ]
       ++ (import ./tools { inherit inputs pkgs; });
