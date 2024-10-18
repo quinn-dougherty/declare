@@ -1,9 +1,11 @@
 # NixOS configurations
-
+[![Hercules CI][hci badge]][hci-link]
 [![Built With Nix][bwn badge]][bwn link]
 
 [bwn badge]: https://builtwithnix.org/badge.svg
 [bwn link]: https://builtwithnix.org
+[hci badge]: https://hercules-ci.com/api/v1/site/github/account/quinn-dougherty/project/declare/badge
+[hci link]: https://hercules-ci.com/github/quinn-dougherty/declare/status
 
 |     Machine      | Function                                                         |
 | :--------------: | :--------------------------------------------------------------- |
