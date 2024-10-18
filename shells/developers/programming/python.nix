@@ -6,11 +6,11 @@ let
       flake8
       pytest
       mypy
-      nose
     ];
   };
 in
 [
   python
   pkgs.rye
+  pkgs.uv
 ]

@@ -1,5 +1,5 @@
 # NixOS configurations
-[![Hercules CI][hci badge]][hci-link]
+[![Hercules CI][hci badge]][hci link]
 [![Built With Nix][bwn badge]][bwn link]
 
 [bwn badge]: https://builtwithnix.org/badge.svg
