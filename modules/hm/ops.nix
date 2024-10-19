@@ -23,7 +23,7 @@
     # obsidian
     qownnotes
     qc
-    anki
+    # anki
     remnote
     libreoffice
     # zotero insecure on oct 30 2023 unstable
