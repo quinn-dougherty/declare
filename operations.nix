@@ -22,6 +22,7 @@ let
       fmtr = treefmt-nix.lib.evalModule common.pkgs fmt-module;
     in
     fmtr.config.build.wrapper;
+  # Dead code
   update = hci-inputs: {
     effects.outputs.auto-update = {
       outputs.hci-effects = common.pkgs.hci-effects.flakeUpdate {
@@ -76,7 +77,7 @@ in
   herculesCI = hci-inputs: {
     ciSystems = [ common.system ];
     onPush = jobs hci-inputs;
-    onSchedule = update hci-inputs;
+    # onSchedule = update hci-inputs;
   };
   formatter.${common.system} = format;
   checks.${common.system}.formatted = format;
