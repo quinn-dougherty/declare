@@ -23,7 +23,7 @@ let
     in
     fmtr.config.build.wrapper;
   update = hci-inputs: {
-    effects.auto-update = {
+    effects.outputs.auto-update = {
       outputs.hci-effects = common.pkgs.hci-effects.flakeUpdate {
         autoMergeMethod = "merge";
         gitRemote = hci-inputs.primaryRepo.remoteHttpUrl;
