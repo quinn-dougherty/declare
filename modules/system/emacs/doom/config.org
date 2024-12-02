@@ -364,7 +364,7 @@ change `org-directory'. It must be set before org loads!
 (use-package! gptel
  :config (setq
           gptel-model "claude-3-5-sonnet-20241022"
-          gptel-backend (gptel-make-anthropic "Sonnet3.5" :stream t :key 'get-anthropic-skey))
+          gptel-backend (gptel-make-anthropic "Sonnet3.5.1" :stream t :key 'get-anthropic-skey))
          ;; (gptel-make-openai "ChatGPT-3.5" :stream t :key 'get-openai-skey)
  (map! :leader :desc "Language model send"
        "l" #'gptel-send)

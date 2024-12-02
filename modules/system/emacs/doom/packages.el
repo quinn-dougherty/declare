@@ -80,14 +80,14 @@
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 (package! futhark-mode)
 (package! lean4-mode
-  :recipe (:host github :repo "quinn-dougherty/lean4-mode" :files ("*.el" "data")))
+  :recipe (:host github :repo "leanprover-community/lean4-mode" :files ("*.el" "data")))
 (package! typst-ts-mode :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))
 
 (package! gptel)
 ;; (package! gptel-extensions)
 (package! editorconfig)
 (package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")))
 ;; (package! kanban)
 (package! rand-theme)
 (package! nixos-options)

@@ -19,6 +19,7 @@
     dconf.enable = true;
     kdeconnect.enable = true;
   };
+  xdg.portal.extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
   qt.platformTheme = "kde";
   environment = {
     systemPackages = with pkgs.libsForQt5; [
