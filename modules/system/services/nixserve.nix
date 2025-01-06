@@ -10,7 +10,8 @@
     nginx = {
       recommendedProxySettings = true;
       virtualHosts."bincache.quinn-dougherty.com" = {
-        locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+        locations."/".proxyPass =
+          "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
         enableACME = true;
         addSSL = true;
       };

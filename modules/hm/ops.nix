@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    seafile-client
+    # seafile-client
     # seahub
     # nextcloud-client
     sqlite
@@ -40,7 +40,7 @@
 
     # music
     puredata
-    qtractor
+    # qtractor
     spotify
     lilypond-unstable-with-fonts
     mi2ly

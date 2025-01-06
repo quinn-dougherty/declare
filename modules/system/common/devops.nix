@@ -16,7 +16,10 @@
     arion
     # nixops_unstable # https://github.com/NixOS/nixops/issues/1521
     # onionshare
-    minicom
+    # minicom # some bug 2024-12-29
+
+    # networking
+    lsof
 
     tmate
 
