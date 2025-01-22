@@ -14,6 +14,7 @@ home-manager.lib.homeManagerConfiguration {
       "${modpath}/utilities.nix"
       "${modpath}/comms.nix"
       "${modpath}/direnv.nix"
+      "${modpath}/cursor.nix"
       # "${modpath}/gaming.nix"
       {
         programs.home-manager.enable = true;
