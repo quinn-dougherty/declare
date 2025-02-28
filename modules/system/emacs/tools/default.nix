@@ -11,8 +11,9 @@ in
     "rust"
     "fonts"
     "markup"
-    "ops"
     "c"
     "lean"
+    "misc"
+    "ops"
   ]
 )

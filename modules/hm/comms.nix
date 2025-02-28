@@ -13,6 +13,7 @@
     # Email
     tutanota-desktop
     thunderbird
+    protonmail-desktop
     # electron-mail
     # Video
     zoom-us
