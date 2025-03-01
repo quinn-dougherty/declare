@@ -8,7 +8,7 @@
   programs.git = {
     enable = true;
     userName = "Quinn Dougherty";
-    userEmail = "quinnd@riseup.net";
+    userEmail = "quinn.dougherty.forall@gmail.com";
     aliases = {
       s = "status";
       c = "commit";

@@ -13,6 +13,7 @@ in
     "markup"
     "c"
     "lean"
+    "ocaml"
     "misc"
     "ops"
   ]
