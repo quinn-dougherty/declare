@@ -5,6 +5,7 @@ let
   config.allowUnfree = true;
   config.permittedInsecurePackages = [
     "olm-3.2.16"
+    "electron-32.3.3"
   ];
   server-onprem-tz = "America/Los_Angeles";
   mesa-prev-overlay = final: prev: { mesa = pkgs-stable.mesa; };
