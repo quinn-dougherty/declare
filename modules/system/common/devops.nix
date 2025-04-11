@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     age
     cachix
+    devenv
     # morph
     act
     heroku
