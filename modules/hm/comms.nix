@@ -4,7 +4,7 @@
     # Chat
     discord # Due to updates, this is nix-env'd
     chatty
-    signal-desktop
+    signal-desktop-bin
     tdesktop
     mattermost-desktop
     element-desktop

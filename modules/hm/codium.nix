@@ -3,7 +3,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium-fhs;
-    extensions =
+    profiles.default.extensions =
       with pkgs.vscode-extensions;
       [
         vscodevim.vim
@@ -54,36 +54,36 @@
           version = "3.0.0";
           sha256 = "sha256-cWXd6AlyxBroZF+cXZzzWZbYPDuOqwCZIK67cEP5sNk=";
         }
-        {
-          name = "viper";
-          publisher = "viper-admin";
-          version = "4.2.2";
-          sha256 = "sha256-zaaSFfWGZhodHYzSsrVs4VVpQN6SHJQLeAe3kd8fHL0=";
-        }
-        {
-          name = "prusti-assistant";
-          publisher = "viper-admin";
-          version = "0.12.5";
-          sha256 = "sha256-1oReRa9YlbB6Pb2Ce4Q814OyjNYyLPrSXGgBHyeROH0";
-        }
+        # {
+        #   name = "viper";
+        #   publisher = "viper-admin";
+        #   version = "4.2.2";
+        #   sha256 = "sha256-zaaSFfWGZhodHYzSsrVs4VVpQN6SHJQLeAe3kd8fHL0=";
+        # }
+        # {
+        #   name = "prusti-assistant";
+        #   publisher = "viper-admin";
+        #   version = "0.12.5";
+        #   sha256 = "sha256-1oReRa9YlbB6Pb2Ce4Q814OyjNYyLPrSXGgBHyeROH0";
+        # }
         {
           name = "lean4";
           publisher = "leanprover";
           version = "0.0.129";
           sha256 = "sha256-Exz+Z+asgXwRLQlwgSt7XlWlA4BFjlTEclv83dCmWbs=";
         }
-        {
-          name = "vscode-kind2";
-          publisher = "kind2-mc";
-          version = "0.11.1";
-          sha256 = "sha256-Vn7IbHKYmaA+NfLo7PIowADSqf3y7JYxRvAl9ufA4NQ=";
-        }
-        {
-          name = "vscode-pvs";
-          publisher = "paolomasci";
-          version = "1.0.65";
-          sha256 = "sha256-j3RcmDkFlWLjKq4bzENoYr2rZfLo22jN/NO7OkmvBZs=";
-        }
+        #{
+        #  name = "vscode-kind2";
+        #  publisher = "kind2-mc";
+        #  version = "0.11.1";
+        #  sha256 = "sha256-Vn7IbHKYmaA+NfLo7PIowADSqf3y7JYxRvAl9ufA4NQ=";
+        #}
+        # {
+        #   name = "vscode-pvs";
+        #   publisher = "paolomasci";
+        #   version = "1.0.65";
+        #   sha256 = "sha256-j3RcmDkFlWLjKq4bzENoYr2rZfLo22jN/NO7OkmvBZs=";
+        # }
       ]);
   };
   home.packages = with pkgs; [
