@@ -3,26 +3,26 @@ system = "x86_64-linux"
 timezone = "America/Los_Angeles"
 
 [laptop]
-hostname = "rise"
+hostname = "fixpoint"
 user-fullname = "Quinn Dougherty"
 # one of xmonad, xfce, gnome, kde, exwm
 desktop = "kde"
 
 [phone]
-hostname = "corise"
+hostname = "rise"
 user-fullname = "Quinn Dougherty"
 system = "aarch64-linux"
 
 [server]
-hostname = "grind"
+hostname = "yoneda"
 user-fullname = "Server Admin"
 ip = "135.180.4.12"
 
 [uptime]
-hostname = "cogrind"
+hostname = "grind"
 user-fullname = "Monitor Admin"
 ip = "143.198.58.137"
 
 [ubuntu]
-hostname = "cogrindenstern"
+hostname = "cofix"
 user-fullname = "Quinn Dougherty"

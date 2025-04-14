@@ -8,13 +8,11 @@
 [hci badge]: https://hercules-ci.com/api/v1/site/github/account/quinn-dougherty/project/declare/badge
 [hci link]: https://hercules-ci.com/github/quinn-dougherty/declare/status
 
-|     Machine      | Function                                                         |
-| :--------------: | :--------------------------------------------------------------- |
-|     `corise`     | phone (not daily driving yet)                                    |
-|      `rise`      | daily driver (framework 13 batch 5)                              |
-|     `grind`      | hercules ci server, nextcloud (maybe router eventually) (onprem) |
-|    `cogrind`     | monitor `grind`, plus other services with digital ocean uptime   |
-| `cogrindenstern` | just `homeManagerConfiguration` for an ubuntu                    |
+|  Machine   | Function                                      |
+| :--------: | :-------------------------------------------- |
+| `fixpoint` | daily driver (framework 13 batch 5)           |
+|  `yoneda`  | hercules ci, jellyfin (onprem)                |
+|  `cofix`   | just `homeManagerConfiguration` for an ubuntu |
 
 ## Developer shells
 
