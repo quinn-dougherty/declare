@@ -23,7 +23,6 @@ with inputs;
   }
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
-  "${servpath}/pihole.nix"
   # "${servpath}/nextcloud"
   # "${servpath}/seafile"
   # "${servpath}/webdav.nix"

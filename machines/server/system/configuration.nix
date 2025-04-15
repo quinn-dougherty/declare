@@ -33,6 +33,7 @@ in
     # }];
   };
   time.timeZone = server.timezone;
+  virtualisation.docker.enable = true;
 
   services = {
     logrotate.enable = true;
@@ -64,6 +65,7 @@ in
         extraGroups = [
           "networkmanager"
           "wheel"
+          "docker"
         ];
         openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
         # shell = server.pkgs.fish;
