@@ -67,7 +67,7 @@
   # Page content is inserted into a certain element of the page template.
   # This option is a CSS selector that is used for locating that element.
   # By default the content is inserted into the <body>
-  default_content_selector = "body"
+  default_content_selector = "main"
 
   # You can choose where exactly to insert the content in its parent element.
   # The default is append_child, but there are more, including prepend_child and replace_content

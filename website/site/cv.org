@@ -4,18 +4,18 @@
 - https://linkedin.com/in/quinn-dougherty
 - https://lesswrong.com/users/quinn-dougherty
 * Employers
-|-------------------------------------------+----------------------------------+---------------------------------------------------------------------|
-| Casper Association                        | March 2023 - Present (part time) | R&D team: compositional and trustless audits of financial contracts |
-| Quantified Uncertainty Research Institute | March - September 2022           | Squiggle team: programming language for uncertain belief specs      |
-| Ardana/Orbis                              | August 2021 - March 2022         | Quality assurance / red team: formal verification for defi          |
-| Sandbox Banking                           | March - December 2020            | IT team: python, javascript, and linux. Assisting SOC 2 auditors    |
-* Other projects
-|----------------------+---------------+-----------------------------------|
-| Alignable Structures | November 2022 | Ran four-day AI safety conference |
-|                      |               |                                   |
-stub
-* Selected writing
-- [[https://forum.effectivealtruism.org/posts/4rMxiyPTPdzaFMyGm/high-impact-careers-in-formal-verification-artificial][High Impact Careers in Formal Verification]]
-- [[https://www.lesswrong.com/posts/qg4yy4je3sFm7Z49L/what-is-estimational-programming-squiggle-in-context][What is estimational programming?]]
+|-------------------------------------------+----------------------------+---------------------------------------------------------------------|
+| Beneficial AI Foundation                  | November 2024 - Present    | Research engineering: formal verification automation                |
+| Casper Association                        | March 2023 - November 2024 | R&D team: compositional and trustless audits of financial contracts |
+| Quantified Uncertainty Research Institute | March - September 2022     | Squiggle team: programming language for uncertain belief specs      |
+| Ardana/Orbis                              | August 2021 - March 2022   | Quality assurance / red team: formal verification for defi          |
+| Sandbox Banking                           | March - December 2020      | IT team: python, javascript, and linux. Assisting SOC 2 auditors    |
+* Pubs and other projects
+|------------------------------+---------------+-----------------------------------|
+| [[https://huggingface.co/datasets/quinn-dougherty/fvapps][Proving the Coding Interview]] | February 2025 | ICSE workshop paper               |
+| [[https://proof-scaling-meeting.vercel.app/][Proof Scaling Meeting]]        | December 2024 | Ran two-day FVxAI conference      |
+| [[https://alignable-structures.vercel.app/][Alignable Structures]]         | November 2022 | Ran four-day AI safety conference |
+| [[https://workshop-proceedings.icwsm.org/abstract.php?id=2020_18][SMAT]]                         | June 2020     | ICWSM workshop paper              |
 * Education
-stub
+- Community College of Philadelphia (2016-2018)
+- BloomTech/Lambda School (2018-2019)
