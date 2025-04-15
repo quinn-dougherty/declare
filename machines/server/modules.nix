@@ -29,6 +29,7 @@ with inputs;
       allowedUDPPorts = [ 5354 ];
     }; # docker/pihole
   }
+  "${servpath}/technitium.nix"
   # "${servpath}/nextcloud"
   # "${servpath}/seafile"
   # "${servpath}/webdav.nix"
