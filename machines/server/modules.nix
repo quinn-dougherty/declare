@@ -23,6 +23,12 @@ with inputs;
   }
   "${servpath}/nixserve.nix"
   "${servpath}/jellyfin.nix"
+  {
+    networking.firewall = {
+      allowedTCPPorts = [ 5354 8080 ];
+      allowedUDPPorts = [ 5354 ];
+    }; # docker/pihole
+  }
   # "${servpath}/nextcloud"
   # "${servpath}/seafile"
   # "${servpath}/webdav.nix"
