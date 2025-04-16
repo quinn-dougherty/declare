@@ -11,8 +11,8 @@
 |  Machine   | Function                                      |
 | :--------: | :-------------------------------------------- |
 | `fixpoint` | daily driver (framework 13 batch 5)           |
-|  `yoneda`  | hercules ci, jellyfin (onprem)                |
-|  `cofix`   | just `homeManagerConfiguration` for an ubuntu |
+|  `yoneda`  | hercules ci, jellyfin, vaultwarden (onprem)   |
+|  `cofix`   | just `homeManagerConfiguration` for a Manjaro |
 
 There's a bunch of dead code in here, inactive modules and even inactive hosts.
 

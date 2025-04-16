@@ -1,0 +1,7 @@
+* =grind=
+
+On digital ocean (/aspirational/).
+
+- Prometheus monitoring
+- Hosts =quinn-dougherty.com= soupault site
+- Matrix bridges

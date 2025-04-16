@@ -1,0 +1,5 @@
+* PinePhone
+
+(Not daily driving)
+
+Currently bricked, and defunct

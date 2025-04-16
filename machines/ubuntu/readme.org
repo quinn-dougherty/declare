@@ -1,0 +1,3 @@
+* Manjaro
+
+=home-manager= config for Manjaro
