@@ -13,7 +13,8 @@ let
   keyspath = "${inputs.self}/keys";
 in
 {
-  nixpkgs.pkgs = server.pkgs;
+  # nixpkgs.pkgs = server.pkgs;
+  # nixpkgs.config = config;
   # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;

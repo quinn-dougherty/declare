@@ -35,7 +35,7 @@
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
     hercules-ci-effects = {
       url = "github:hercules-ci/hercules-ci-effects";
-      inputs.nixpkgs.follows = "hercules-ci-agent";
+      # inputs.nixpkgs.follows = "hercules-ci-agent";
     };
   };
 
