@@ -1,8 +1,8 @@
-> "_Out of doubt, out of dark, to the day's rising_"
+> Out of doubt, out of dark, to the day's rising
 
 Éomer
 
-[![./modules/system/desktops/backgrounds/dwarfcitymolteniron.png][dwarven city 2]]
+![dwarvencity-molten](./modules/system/desktops/backgrounds/dwarfcitymolteniron.png)
 
 [![Hercules CI][hci badge]][hci link]
 [![Built With Nix][bwn badge]][bwn link]
@@ -40,4 +40,4 @@ nix develop github:quinn-dougherty/declare#python-rust-js
 
 The shells are the only aspect of these repo that's vendored for direct usage.
 
-[![./modules/system/desktops/backgrounds/dwarfcity.jpg][dwarven city]]
+![dwarvencity](./modules/system/desktops/backgrounds/dwarfcity.jpg)
