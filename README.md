@@ -14,6 +14,8 @@
 |  `yoneda`  | hercules ci, jellyfin (onprem)                |
 |  `cofix`   | just `homeManagerConfiguration` for an ubuntu |
 
+There's a bunch of dead code in here, inactive modules and even inactive hosts.
+
 ## Developer shells
 
 I have very basic shells for modest and generic projects in rust, js, python, coq, ocaml, haskell. Suitable for bootstrapping.

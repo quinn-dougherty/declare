@@ -21,5 +21,6 @@
     jq
     pciutils
     ncdu
+    fzf
   ];
 }
