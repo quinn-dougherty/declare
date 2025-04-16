@@ -12,11 +12,11 @@
 [hci badge]: https://hercules-ci.com/api/v1/site/github/account/quinn-dougherty/project/declare/badge
 [hci link]: https://hercules-ci.com/github/quinn-dougherty/declare/status
 
-|  Machine   | Function                                      |
-| :--------: | :-------------------------------------------- |
-| `fixpoint` | daily driver (framework 13 batch 5)           |
-|  `yoneda`  | hercules ci, jellyfin, vaultwarden (onprem)   |
-|  `cofix`   | just `homeManagerConfiguration` for a Manjaro |
+|   Machine    | Function                                      |
+| :----------: | :-------------------------------------------- |
+|   `nogrod`   | daily driver (framework 13 batch 5)           |
+|  `belegost`  | hercules ci, jellyfin, vaultwarden (onprem)   |
+| `khazad-dum` | just `homeManagerConfiguration` for a Manjaro |
 
 There's a bunch of dead code in here, inactive modules and even inactive hosts.
 

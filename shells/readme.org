@@ -1,17 +1,19 @@
-# Developer shells
-
+* Developer shells
+:PROPERTIES:
+:CUSTOM_ID: developer-shells
+:END:
 - rust
 - python
 - js
 - ocaml
 - coq
 - haskell
-- ~~ruby~~
+- +ruby+
 
 And any length two or three permutation separated by a hyphen.
 
-```sh
+#+begin_src sh
 nix develop github:quinn-dougherty/declare#coq
 nix develop github:quinn-dougherty/declare#js-haskell
 nix develop github:quinn-dougherty/declare#python-ocaml-js
-```
+#+end_src

@@ -10,7 +10,7 @@ Bombadil
 # Framework (daily driver)
 
 ```
-┬─[qd@rise:~/P/declare]─[08:02:21 AM]─[G:main =]
+┬─[qd@nogrod:~/P/declare]─[08:02:21 AM]─[G:main =]
 ╰─>$ nix-shell -p neofetch --run neofetch
 these 3 paths will be fetched (0.18 MiB download, 0.92 MiB unpacked):
   /nix/store/k80yjgsi1k0zyjj7261392jgs3n4s9gx-neofetch-unstable-2021-12-10
@@ -19,7 +19,7 @@ these 3 paths will be fetched (0.18 MiB download, 0.92 MiB unpacked):
 copying path '/nix/store/wh03qg1jcxnpd4gqdx2qz20f27jby9ky-python3.12-docopt-0.6.2' from 'https://cache.nixos.org'...
 copying path '/nix/store/2vrnq0mz2v5ab3ik8d79phvbk7xhjm1c-python3.12-ueberzug-18.1.9' from 'https://cache.nixos.org'...
 copying path '/nix/store/k80yjgsi1k0zyjj7261392jgs3n4s9gx-neofetch-unstable-2021-12-10' from 'https://cache.nixos.org'...
-          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖            qd@rise
+          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖            qd@nogrod
           ▜███▙       ▜███▙  ▟███▛            -------
            ▜███▙       ▜███▙▟███▛             OS: NixOS 25.05.20250409.f675531 (Warbler) x86_64
             ▜███▙       ▜██████▛              Host: Framework FRANMCCP07
