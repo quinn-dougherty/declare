@@ -4,7 +4,6 @@ let
 in
 with inputs;
 [
-  ./system/digital-ocean.nix
   ./system/configuration.nix
   secrix.nixosModules.default
   # "${modpath}/allowUnfree.nix"

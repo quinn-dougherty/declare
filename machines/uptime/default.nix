@@ -12,8 +12,7 @@ let
   operatingsystem = lib.nixosSystem { inherit system modules specialArgs; };
   bootstrap = inputs.nixos-generators.nixosGenerate {
     inherit system modules specialArgs;
-    inherit (uptime) pkgs;
-    format = "do";
+    inherit (uptime) pkgs format;
   };
 in
 {

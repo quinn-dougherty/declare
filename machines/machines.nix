@@ -84,6 +84,7 @@ with machines.common;
       hostname
       user-fullname
       ip
+      format
       ;
     username = qd;
     timezone = server-onprem-tz;

@@ -16,12 +16,13 @@ system = "aarch64-linux"
 [server]
 hostname = "belegost"
 user-fullname = "Server Admin"
-ip = "135.180.4.12"
+ip = "192.184.207.182"
 
 [uptime]
 hostname = "erebor"
 user-fullname = "Monitor Admin"
-ip = "143.198.58.137"
+ip = "13.218.61.51"
+format = "amazon"
 
 [ubuntu]
 hostname = "khazad-dum"

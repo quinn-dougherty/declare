@@ -11,7 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     secrix.url = "github:Platonic-Systems/secrix";
     mobile-nixos = {
       url = "github:nixos/mobile-nixos";
@@ -32,7 +35,7 @@
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
     hercules-ci-effects = {
       url = "github:hercules-ci/hercules-ci-effects";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "hercules-ci-agent";
     };
   };
 
