@@ -17,7 +17,7 @@ with inputs;
   "${modpath}/bluetooth.nix"
   "${modpath}/crosscompilation.nix"
   "${modpath}/desktops/il8n.nix"
-  "${modpath}/services/fprintd.nix"
+  "${modpath}/services/fingerprint.nix"
   inputs.nixos-generators.nixosModules.all-formats
   {
     imports = [ "${modpath}/emacs" ];

@@ -1,3 +1,7 @@
+> Dark door is standing wide; dead hand is broken.
+
+Bombadil
+
 [![made-w-doom-emacs][doom-badge]][doom-repo]
 
 [doom-badge]: https://img.shields.io/badge/Made_with-Doom_Emacs-blueviolet.svg?style=flat-square&logo=GNU%20Emacs&logoColor=white
