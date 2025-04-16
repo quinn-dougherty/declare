@@ -1,0 +1,51 @@
+* [[https://docs.hercules-ci.com/hercules-ci-agent/][Herc CI agent]]
+:PROPERTIES:
+:CUSTOM_ID: herc-ci-agent
+:END:
+#+caption: cooler master build
+[[file:coolermaster.jpg]]
+
+#+begin_example
+[admin@yoneda:~]$ nix-shell -p neofetch --run neofetch
+these 9 paths will be fetched (4.10 MiB download, 21.54 MiB unpacked):
+  /nix/store/mvncq1gfljrgx2v9pjysdmha8gw26cf8-libimagequant-4.3.4
+  /nix/store/7pnad9w5wy66vxsj285n9ki2r58qzb10-libraqm-0.10.2
+  /nix/store/k80yjgsi1k0zyjj7261392jgs3n4s9gx-neofetch-unstable-2021-12-10
+  /nix/store/c7jjk5a8gp6d4hkivnnssccgjfrj4djx-python3.12-attrs-25.1.0
+  /nix/store/wh03qg1jcxnpd4gqdx2qz20f27jby9ky-python3.12-docopt-0.6.2
+  /nix/store/cdn1qgncn3pzs7b3mzryfb7a8p83azp3-python3.12-pillow-11.1.0
+  /nix/store/6a6zh9rxn59dp56jk8fvhg6nh270jl4k-python3.12-psutil-7.0.0
+  /nix/store/2vrnq0mz2v5ab3ik8d79phvbk7xhjm1c-python3.12-ueberzug-18.1.9
+  /nix/store/0b6dc38xkilk91hq8yygdf68sd7799xw-python3.12-xlib-0.33
+copying path '/nix/store/c7jjk5a8gp6d4hkivnnssccgjfrj4djx-python3.12-attrs-25.1.0' from 'https://cache.nixos.org'...
+copying path '/nix/store/wh03qg1jcxnpd4gqdx2qz20f27jby9ky-python3.12-docopt-0.6.2' from 'https://cache.nixos.org'...
+copying path '/nix/store/6a6zh9rxn59dp56jk8fvhg6nh270jl4k-python3.12-psutil-7.0.0' from 'https://cache.nixos.org'...
+copying path '/nix/store/0b6dc38xkilk91hq8yygdf68sd7799xw-python3.12-xlib-0.33' from 'https://cache.nixos.org'...
+copying path '/nix/store/mvncq1gfljrgx2v9pjysdmha8gw26cf8-libimagequant-4.3.4' from 'https://cache.nixos.org'...
+copying path '/nix/store/7pnad9w5wy66vxsj285n9ki2r58qzb10-libraqm-0.10.2' from 'https://cache.nixos.org'...
+copying path '/nix/store/cdn1qgncn3pzs7b3mzryfb7a8p83azp3-python3.12-pillow-11.1.0' from 'https://cache.nixos.org'...
+copying path '/nix/store/2vrnq0mz2v5ab3ik8d79phvbk7xhjm1c-python3.12-ueberzug-18.1.9' from 'https://cache.nixos.org'...
+copying path '/nix/store/k80yjgsi1k0zyjj7261392jgs3n4s9gx-neofetch-unstable-2021-12-10' from 'https://cache.nixos.org'...
+          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖            admin@yoneda
+          ▜███▙       ▜███▙  ▟███▛            ------------
+           ▜███▙       ▜███▙▟███▛             OS: NixOS 25.05.20250412.2631b0b (Warbler) x86_64
+            ▜███▙       ▜██████▛              Host: Framework FRANBMCP0B
+     ▟█████████████████▙ ▜████▛     ▟▙        Kernel: 6.6.56
+    ▟███████████████████▙ ▜███▙    ▟██▙       Uptime: 1 day, 1 hour, 7 mins
+           ▄▄▄▄▖           ▜███▙  ▟███▛       Packages: 1202 (nix-system)
+          ▟███▛             ▜██▛ ▟███▛        Shell: bash 5.2.37
+         ▟███▛               ▜▛ ▟███▛         Terminal: /dev/pts/0
+▟███████████▛                  ▟██████████▙   CPU: 11th Gen Intel i7-1165G7 (8) @ 4.700GHz
+▜██████████▛                  ▟███████████▛   GPU: Intel TigerLake-LP GT2 [Iris Xe Graphics]
+      ▟███▛ ▟▙               ▟███▛            Memory: 2969MiB / 15783MiB
+     ▟███▛ ▟██▙             ▟███▛
+    ▟███▛  ▜███▙           ▝▀▀▀▀
+    ▜██▛    ▜███▙ ▜██████████████████▛
+     ▜▛     ▟████▙ ▜████████████████▛
+           ▟██████▙       ▜███▙
+          ▟███▛▜███▙       ▜███▙
+         ▟███▛  ▜███▙       ▜███▙
+         ▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘
+#+end_example
+
+This runs on a framework cooler master build
