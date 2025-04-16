@@ -40,4 +40,4 @@ with inputs;
   website
   # "${modpath}/desktops/gnome" # uncomment to bootstrap webbrowser admin tasks. Remember that networkmanager is activated by gnome, so check `wireless.enable` when you switch
 ]
-++ import "${inputs.self}/modules/system/common"
+++ import "${modpath}/common"
