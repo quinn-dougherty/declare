@@ -2,9 +2,9 @@
 :PROPERTIES:
 :CUSTOM_ID: nixos-configurations
 :END:
-[[https://hercules-ci.com/github/quinn-dougherty/declare/status][[[https://hercules-ci.com/api/v1/site/github/account/quinn-dougherty/project/declare/badge]]]]
+[[https://hercules-ci.com/api/v1/site/github/account/quinn-dougherty/project/declare/badge][Hercules CI]]
 
-[[https://builtwithnix.org][[[https://builtwithnix.org/badge.svg]]]]
+[[https:builtwithnix.org/badge.svg][Built With Nix]]
 
 | Machine    | Function                                      |
 |------------+-----------------------------------------------|
