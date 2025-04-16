@@ -4,6 +4,7 @@ let
   keyspath = "${inputs.self}/keys";
 in
 {
+  nixpkgs = { inherit config; };
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -75,7 +76,6 @@ in
       EDITOR = emacs;
       VISUAL = emacs;
     };
-  nixpkgs.config = config;
 
   programs = {
     fish.enable = true;

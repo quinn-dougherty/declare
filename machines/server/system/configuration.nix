@@ -13,6 +13,7 @@ let
   keyspath = "${inputs.self}/keys";
 in
 {
+  nixpkgs.pkgs = server.pkgs;
   # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;
@@ -72,8 +73,6 @@ in
       };
       root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
     };
-
-  # nixpkgs.config = config;
 
   programs = {
     # fish.enable = true;

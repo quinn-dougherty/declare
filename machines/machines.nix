@@ -2,13 +2,14 @@
 with inputs;
 let
   machines = fromTOML (builtins.readFile ./machines.toml);
-  config.allowUnfree = true;
-  config.permittedInsecurePackages = [
-    "olm-3.2.16"
-    "electron-32.3.3"
-  ];
+  config = {
+    allowUnfree = true;
+     permittedInsecurePackages = [
+       "olm-3.2.16"
+       "electron-32.3.3"
+     ];
+  };
   server-onprem-tz = "America/Los_Angeles";
-  mesa-prev-overlay = final: prev: { mesa = pkgs-stable.mesa; };
   factorio-overlay = final: prev: {
     factorio = prev.factorio.override {
       username = "quinnd";

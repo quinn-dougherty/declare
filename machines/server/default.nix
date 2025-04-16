@@ -8,7 +8,7 @@ let
   inherit (server) system pkgs;
   modules = import ./modules.nix { inherit inputs; };
   specialArgs = {
-    inherit machine inputs pkgs;
+    inherit machine inputs;
   };
   os = lib.nixosSystem { inherit system modules specialArgs; };
   bootstrap = inputs.nixos-generators.nixosGenerate {

@@ -7,7 +7,7 @@ let
   machine = laptop;
   inherit (laptop) system pkgs;
   specialArgs = {
-    inherit inputs machine pkgs;
+    inherit inputs machine;
   };
   modules = import ./modules.nix { inherit inputs laptop; };
   bootstrap = inputs.nixos-generators.nixosGenerate {

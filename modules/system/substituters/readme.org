@@ -1,0 +1,8 @@
+* Caches
+
+Make ~substituters~ and ~publicKeys~ lists in ~caches.json~ in corresponding order.
+
+** public key for ~bincache.quinn-dougherty.com~
+#+BEGIN_SRC
+"bincache.quinn-dougherty.com-1:IYBp37cTuDNChE6Bl16CwYu7czY1erSG4zteIGIbk7g="
+#+END_SRC
