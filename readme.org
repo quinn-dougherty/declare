@@ -1,0 +1,40 @@
+* NixOS configurations
+:PROPERTIES:
+:CUSTOM_ID: nixos-configurations
+:END:
+[[https://hercules-ci.com/github/quinn-dougherty/declare/status][[[https://hercules-ci.com/api/v1/site/github/account/quinn-dougherty/project/declare/badge]]]]
+[[https://builtwithnix.org][[[https://builtwithnix.org/badge.svg]]]]
+
+| Machine    | Function                                      |
+|------------+-----------------------------------------------|
+| =fixpoint= | daily driver (framework 13 batch 5)           |
+| =yoneda=   | hercules ci, jellyfin (onprem)                |
+| =cofix=    | just =homeManagerConfiguration= for an ubuntu |
+
+There's a bunch of dead code in here, inactive modules and even inactive
+hosts.
+
+** Developer shells
+:PROPERTIES:
+:CUSTOM_ID: developer-shells
+:END:
+I have very basic shells for modest and generic projects in rust, js,
+python, coq, ocaml, haskell. Suitable for bootstrapping.
+
+#+begin_src sh
+nix develop github:quinn-dougherty/declare#rust
+nix develop github:quinn-dougherty/declare#python
+#+end_src
+
+Including for monorepos of up to three different kits (these are
+examples, but you can use any permutation of the 6)
+
+#+begin_src sh
+nix develop github:quinn-dougherty/declare#python-ocaml
+nix develop github:quinn-dougherty/declare#js-rust
+nix develop github:quinn-dougherty/declare#haskell-coq-js
+nix develop github:quinn-dougherty/declare#python-rust-js
+#+end_src
+
+The shells are the only aspect of these repo that's vendored for direct
+usage.

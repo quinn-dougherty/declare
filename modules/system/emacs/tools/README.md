@@ -1,1 +1,0 @@
-Each developer ecosystem is not a complete kit, it's just the parts of the kit that doom relies on.
