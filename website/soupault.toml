@@ -107,7 +107,7 @@
 # Example:
 [preprocessors]
   md = "pandoc -f markdown -t html"
-  org = "pandoc -f org -t html"
+  org = "pandoc -f org -t html --resource-path=.:assets.img"
 #  adoc = "asciidoctor -o -"
 
 # Pages can be further processed with "widgets"

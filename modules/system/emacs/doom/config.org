@@ -278,6 +278,18 @@ change `org-directory'. It must be set before org loads!
 
 (setq +doom-dashboard-ascii-banner-fn #'banner)
 #+END_SRC
+* Evil extras
+Web launcher
+#+BEGIN_SRC elisp
+(after! evil
+  (evil-define-key 'normal 'global
+    (kbd "g w") (lambda ()
+                  (interactive)
+                  (let ((url (thing-at-point 'url)))
+                    (if url
+                        (start-process "firefox" nil "firefox" "--new-window" url)
+                      (message "No URL found at point"))))))
+#+END_SRC
 * Making predictions and bets
 #+BEGIN_SRC elisp
 ;; this should theoretically come in from packages.el
