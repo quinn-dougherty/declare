@@ -4,8 +4,9 @@
 
 I like the bay and I'll probably be back, but currently traveling. Unsure where I want to endgame, so I'm flexible on location.
 
-[[file:/assets/img/two.jpg
-]]
+#+ATTR_HTML: :height 500
+[[./../assets/img/two.jpg]]
+
 * Type of guy
 
 - An ex once reported that I'm "really gung ho about the mortifying ordeal of being known".
@@ -20,7 +21,8 @@ I like the bay and I'll probably be back, but currently traveling. Unsure where 
 - One secret zest for life / high hedonic setpoint trait/behavior that it'd be more fun to surprise you with.
 - Fic/media: mostly scifi and fantasy. Music: metal, prog, jazz.
 
-[[file:/assets/img/jolly.jpg]]
+#+ATTR_HTML: :height 500
+[[./../assets/img/jolly.jpg]]
 
 * Testimonial by my dear friend Gavriel
 #+BEGIN_QUOTE
@@ -29,7 +31,8 @@ What I most admire about Quinn is how much he cares and how much he’s willing 
 Quinn also has a super strong sense of self; he won’t passively fall into trends. I’ve never heard him be insincere or mocking. When so much media and so many conversations contain at least a little bit, and sometimes a lot, of mockery, Quinn has a refreshingly firm focus on topics where he can be completely sincere. Basically, it feels like the idiom “big-hearted” was invented to describe Quinn.
 #+END_QUOTE
 
-[[file:/assets/img/stupid-tshirt.jpg]]
+#+ATTR_HTML: :height 500
+[[./../assets/img/stupid-tshirt.jpg]]
 
 * Traits to make me swoon
 - *Sincerity*: Irony is poison. I admire anyone who's above average in earnestness.
@@ -38,9 +41,11 @@ Quinn also has a super strong sense of self; he won’t passively fall into tren
 - *Compassion*: I often feel like I experience few visceral/involuntary empathy signals, and while there are so many advantages of engaging with empathy on an opt-in basis, I'd like to be in a support role for someone who feels conscripted into caring about others.
 - *Introspectiveness*: There's nothing wrong with having uncertainty about internal state, but in basically every situation it's much better to stare at it and report as much as possible about the uncertainty than to give up.
 
-[[file:/assets/img/swim.jpg]]
+#+ATTR_HTML: :height 500
+[[./../assets/img/swim.jpg]]
 
-[[file:greenswag.jpg]]
+#+ATTR_HTML: :height 500
+[[./../assets/img/greenswag.jpg]]
 
 * Contact
 - ~quinn.dougherty.forall@gmail.com~
