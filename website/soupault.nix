@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ pkgs }:
 
 pkgs.stdenv.mkDerivation {
   name = "quinn-dougherty.com-soupault";

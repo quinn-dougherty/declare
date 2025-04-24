@@ -5,7 +5,7 @@ in
 with inputs;
 [
   ./system/configuration.nix
+  "${modpath}/amazon.nix"
   secrix.nixosModules.default
-  # "${modpath}/allowUnfree.nix"
 ]
 ++ import "${modpath}/common"

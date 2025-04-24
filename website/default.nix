@@ -1,7 +1,6 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 let
-  self = inputs.self;
-  site = import ./soupault.nix { inherit pkgs self; };
+  site = import ./soupault.nix { inherit pkgs; };
 in
 import ./nginx.nix { inherit site; }

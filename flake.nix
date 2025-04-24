@@ -59,7 +59,7 @@
     }@inputs:
     with import ./machines { inherit inputs; };
     let
-      website = with common; import ./website/soupault.nix { inherit pkgs self; };
+      website = with common; import ./website/soupault.nix { inherit pkgs; };
       operations =
         let
           machines = {
