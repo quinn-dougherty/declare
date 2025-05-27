@@ -16,7 +16,7 @@ with inputs;
   "${modpath}/desktops/audio.nix"
   "${modpath}/bluetooth.nix"
   "${modpath}/crosscompilation.nix"
-  "${modpath}/desktops/il8n.nix"
+  # "${modpath}/desktops/il8n.nix"
   "${modpath}/services/fingerprint.nix"
   inputs.nixos-generators.nixosModules.all-formats
   {

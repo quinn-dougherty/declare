@@ -9,7 +9,7 @@
     #   max-free = ${toString (16 * 2048 * 1024 * 1024)}
     settings.auto-optimise-store = true;
     gc = {
-      dates = "weekly";
+      dates = "daily";
       options = "--delete-older-than 111d";
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];

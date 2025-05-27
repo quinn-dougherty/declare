@@ -14,7 +14,7 @@ with inputs;
   "${servpath}/hercules.nix"
   "${modpath}/crosscompilation.nix"
   # "${modpath}/slurm.nix"
-  "${modpath}/desktops/il8n.nix"
+  # "${modpath}/desktops/il8n.nix"
   "${modpath}/allowUnfree.nix"
   {
     services.nginx.enable = true;
