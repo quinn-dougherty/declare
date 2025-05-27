@@ -29,5 +29,6 @@ with inputs;
   "${modpath}/ld.nix"
   "${modpath}/virtualbox.nix"
   "${modpath}/virtualization.nix"
+  "${modpath}/battlenet.nix"
 ]
 ++ import "${modpath}/common"

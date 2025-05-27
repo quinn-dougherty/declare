@@ -1,6 +1,6 @@
 [common]
 system = "x86_64-linux"
-timezone = "America/Los_Angeles"
+timezone = "America/New_York"
 
 [laptop]
 hostname = "nogrod"

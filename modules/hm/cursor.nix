@@ -1,11 +1,12 @@
 { pkgs, ... }:
 
 let
-  url = "https://download.todesktop.com/230313mzl4w4u92/cursor-0.44.11-build-250103fqxdt5u9z-x86_64.AppImage";
-  sha256 = "sha256-eOZuofnpED9F6wic0S9m933Tb7Gq7cb/v0kRDltvFVg=";
+  version = "0.50.5";
+  url = "https://downloads.cursor.com/production/96e5b01ca25f8fbd4c4c10bc69b15f6228c80771/linux/x64/Cursor-0.50.5-x86_64.AppImage";
+  sha256 = "sha256-DUWIgQYD3Wj6hF7NBb00OGRynKmXcFldWFUA6W8CZeM=";
   cursor = pkgs.appimageTools.wrapType2 {
+    inherit version;
     pname = "cursor";
-    version = "0.44.11";
     src = pkgs.fetchurl { inherit url sha256; };
   };
 in
