@@ -12,7 +12,6 @@
     lynx
     tor-browser-bundle-bin
     tor
-    opera
 
     # Bitwarden
     bitwarden
@@ -45,5 +44,8 @@
     mi2ly
     timidity
     musescore
+
+    # coding
+    claude-code
   ];
 }

@@ -19,13 +19,6 @@
       b = "branch";
     };
     lfs.enable = true;
-    ignores = [
-      "*~"
-      "*.swp"
-      ".DS_Store"
-      ".idea"
-      ".direnv/"
-    ];
     # github.user = "quinn-dougherty";
   };
 }

@@ -11,4 +11,5 @@
     nssmdns4 = true;
     openFirewall = true;
   };
+  smartd.enable = true;
 }

@@ -145,7 +145,13 @@ change `org-directory'. It must be set before org loads!
 
 (load! "./extras/org-download-clipboard-pdf.el")
 (add-hook 'elfeed-search-mode-hook #'elfeed-update)
+
+(map! :leader :desc "Org Drill" "d" #'org-drill)
 #+END_SRC
+
+#+RESULTS:
+: gptel-send
+
 * Splash screen
 #+BEGIN_SRC elisp
 (setq phaesp-banner '("......................................................................................................................................................................................................................................"
@@ -375,8 +381,8 @@ Web launcher
 ;; (gptel-make-anthropic "Claude" :stream t :key 'get-anthropic-skey)
 (use-package! gptel
  :config (setq
-          gptel-model "claude-3-7-sonnet-20250219"
-          gptel-backend (gptel-make-anthropic "Sonnet3.7" :stream t :key 'get-anthropic-skey))
+          gptel-model "claude-sonnet-4-20250514"
+          gptel-backend (gptel-make-anthropic "Sonnet4" :stream t :key 'get-anthropic-skey))
          ;; (gptel-make-openai "ChatGPT-3.5" :stream t :key 'get-openai-skey)
  (map! :leader :desc "Language model send"
        "l" #'gptel-send)
