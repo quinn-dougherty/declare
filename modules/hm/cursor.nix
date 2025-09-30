@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 let
-  version = "1.1.6";
-  url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/x64/Cursor-1.1.6-x86_64.AppImage";
-  sha256 = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+  version = "1.6.27";
+  url = "https://downloads.cursor.com/production/d750e54bba5cffada6d7b3d18e5688ba5e944ad9/linux/x64/Cursor-1.6.27-x86_64.AppImage";
+  sha256 = "sha256-U+Iw9uXipona52GxUaPm2QxuDyWtmpPa6VJXnjP30C4=";
   cursor = pkgs.appimageTools.wrapType2 {
     inherit version;
     pname = "cursor";

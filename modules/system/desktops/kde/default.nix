@@ -25,7 +25,7 @@
     systemPackages = with pkgs.libsForQt5; [
       qtgraphicaleffects
       kio
-      kio-admin
+      # kio-admin
       pkgs.kup
     ];
     sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
