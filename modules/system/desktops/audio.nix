@@ -1,21 +1,20 @@
 { pkgs, ... }:
 
 {
-  # hardware.security.rtkit.enable = true;
+  # audio stack (NixOS)
+  security.rtkit.enable = true;
+
   services = {
+    pulseaudio.enable = false; # do NOT run the PulseAudio daemon
+
     pipewire = {
       enable = true;
-      audio.enable = true;
-      # alsa = {
-      #   enable = true;
-      #   support32Bit = true;
-      # };
-      pulse.enable = true;
-    };
-    pulseaudio = {
-      enable = false;
-      package = pkgs.pulseaudioFull;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true; # PipeWire’s PulseAudio compatibility layer
+      jack.enable = true;
     };
   };
-  environment.systemPackages = [ pkgs.pavucontrol ];
 }

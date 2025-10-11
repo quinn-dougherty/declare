@@ -15,7 +15,7 @@
     tcpdump
     termshark
     conntrack-tools
-    linuxKernel.packages.linux_libre.perf
+    perf
     conky
     bottom
     tldr

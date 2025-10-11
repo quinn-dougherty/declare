@@ -2,7 +2,7 @@
 {
   thermald.enable = true;
 
-  logind.lidSwitch = "hibernate";
+  # logind.lidSwitch = "hibernate";
 
   fwupd.enable = true;
 

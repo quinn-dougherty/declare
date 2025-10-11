@@ -93,10 +93,12 @@
       homeConfigurations = utils.hmForAll (nonNixos ++ [ laptop ]);
       packages.${common.system} = {
         inherit website;
-      } // (utils.packagesFromAllOs { inherit immobiles mobiles nonNixos; });
+      }
+      // (utils.packagesFromAllOs { inherit immobiles mobiles nonNixos; });
       devShells.${laptop.system} = {
         "${laptop.drv-name-prefix}:homeshell" = laptop.homeshell;
-      } // (with common; import ./shells { inherit pkgs pkgs-stable; });
+      }
+      // (with common; import ./shells { inherit pkgs pkgs-stable; });
       apps.${laptop.system}.secrix = secrix.secrix self;
       inherit formatter checks herculesCI;
     };
