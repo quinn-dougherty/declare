@@ -6,7 +6,7 @@
 }:
 
 {
-  imports = [ ./../xwayland.nix ];
+  imports = [ ./../xwayland.nix ./../audio.nix ];
   services = {
     xserver.enable = true;
     desktopManager.plasma6.enable = true;
