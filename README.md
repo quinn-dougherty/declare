@@ -1,3 +1,5 @@
+# Goodbye, NixOS. I'm pivoting to Omarchy. My homelab will continue to be off and on out of this repo. It's been a wonderful 4 years daily driving NixOS! Just want something different.
+
 > Out of doubt, out of dark, to the day's rising
 
 Éomer
