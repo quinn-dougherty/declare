@@ -35,6 +35,7 @@ with inputs;
   "${servpath}/technitium.nix"
   "${servpath}/vault.nix"
   "${servpath}/tailscale.nix"
+  "${modpath}/ld.nix"
   # "${servpath}/nextcloud"
   # "${servpath}/seafile"
   # "${servpath}/webdav.nix"
