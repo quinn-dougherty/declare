@@ -10,4 +10,5 @@
   ./devops.nix
   ./utilities.nix
   ./acme.nix
+  ./tmux.nix
 ]
