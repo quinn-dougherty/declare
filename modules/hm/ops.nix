@@ -10,11 +10,11 @@
     brave
     # nyxt
     lynx
-    tor-browser-bundle-bin
+    tor-browser
     tor
 
     # Bitwarden
-    bitwarden
+    bitwarden-desktop
     bitwarden-cli
     bitwarden-menu
 

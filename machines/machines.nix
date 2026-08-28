@@ -68,11 +68,11 @@ with machines.common;
   server = with machines.server; {
     inherit system hostname user-fullname;
     username = admin;
-    timezone = server-onprem-tz;
+    timezone = "America/New_York";
     ip = machines.server.ip;
     static4 = machines.server.static4;
     pkgs = import nixpkgs {
-      inherit system;
+      inherit system config;
       overlays = [
         hercules-ci-effects.overlay
         factorio-overlay

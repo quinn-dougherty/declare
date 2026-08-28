@@ -4,8 +4,8 @@
     # Chat
     discord # Due to updates, this is nix-env'd
     chatty
-    signal-desktop-bin
-    tdesktop
+    signal-desktop
+    telegram-desktop
     mattermost-desktop
     element-desktop
     zulip

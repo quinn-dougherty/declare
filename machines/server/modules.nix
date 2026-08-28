@@ -10,8 +10,21 @@ with inputs;
   nixos-hardware.nixosModules.framework-11th-gen-intel
   ./system/hardware-configuration.nix
   secrix.nixosModules.default
-  hercules-ci-agent.nixosModules.multi-agent-service
-  "${servpath}/hercules.nix"
+  # hercules-ci-agent.nixosModules.multi-agent-service
+  # "${servpath}/hercules.nix"
+  "${modpath}/desktops/kde"
+  "${modpath}/desktops/fonts.nix"
+  (
+    { pkgs, ... }:
+    {
+      programs.firefox.enable = true;
+      environment.systemPackages = with pkgs; [
+        bitwarden-desktop
+        spotify
+        lutris
+      ];
+    }
+  )
   "${modpath}/crosscompilation.nix"
   # "${modpath}/slurm.nix"
   # "${modpath}/desktops/il8n.nix"

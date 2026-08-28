@@ -22,8 +22,7 @@
   xdg.portal.extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
   qt.platformTheme = "kde";
   environment = {
-    systemPackages = with pkgs.libsForQt5; [
-      qtgraphicaleffects
+    systemPackages = with pkgs.kdePackages; [
       kio
       # kio-admin
       # pkgs.kup

@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 with pkgs;
-with nodePackages_latest;
 [
   nodejs
   typescript

@@ -10,9 +10,9 @@ with pkgs;
       requests
       pyflakes
       isort
+      openai
     ]
   ))
-  openai
   black
   # poetry
   pyright

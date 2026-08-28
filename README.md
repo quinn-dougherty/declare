@@ -17,7 +17,7 @@
 |   Machine    | Function                                      |
 | :----------: | :-------------------------------------------- |
 |   `nogrod`   | daily driver (framework 13 batch 5)           |
-|  `belegost`  | hercules ci, jellyfin, vaultwarden (onprem)   |
+| `vivendell`  | jellyfin, vaultwarden, plasma6 desktop (onprem) |
 | `khazad-dum` | just `homeManagerConfiguration` for a Manjaro |
 
 There's a bunch of dead code in here, inactive modules and even inactive hosts.

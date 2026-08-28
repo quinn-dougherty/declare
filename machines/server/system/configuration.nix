@@ -72,6 +72,16 @@ in
         openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
         # shell = server.pkgs.fish;
       };
+      elijah = {
+        isNormalUser = true;
+        description = "Elijah";
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "docker"
+        ];
+        openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
+      };
       root.openssh.authorizedKeys.keyFiles = authorizedKeyFiles;
     };
 

@@ -14,7 +14,7 @@ user-fullname = "Quinn Dougherty"
 system = "aarch64-linux"
 
 [server]
-hostname = "belegost"
+hostname = "vivendell"
 user-fullname = "Server Admin"
 ip = "192.184.207.182"
 
