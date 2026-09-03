@@ -14,6 +14,8 @@ with inputs;
   # "${servpath}/hercules.nix"
   "${modpath}/desktops/kde"
   "${modpath}/desktops/fonts.nix"
+  "${modpath}/desktops/hdmi-audio"
+  "${modpath}/bluetooth.nix"
   (
     { pkgs, ... }:
     {
